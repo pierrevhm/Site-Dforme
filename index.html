@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>DFormPro Digital - Former autrement</title>
+  <!-- Tailwind CSS & Material Icons -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <!-- Custom Font Configuration -->
+  <style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+    body {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+      font-weight: 700;
+      color: #000000;
+      background-color: #FFFFFF;
+    }
+
+    h1,
+    .main-title {
+      font-family: 'Arial', sans-serif !important;
+      font-weight: bold !important;
+      font-style: italic !important;
+    }
+
+    h2,
+    h3,
+    h4,
+    .secondary-title {
+      font-family: 'Arial', sans-serif !important;
+      font-weight: bold !important;
+      font-style: normal !important;
+    }
+
+    .text-cyan-brand {
+      color: #67DAD5;
+    }
+
+    .bg-cyan-brand {
+      background-color: #67DAD5;
+    }
+
+    .border-cyan-brand {
+      border-color: #67DAD5;
+    }
+
+    .text-secondary-gray {
+      color: #74888F;
+    }
+
+    .shadow-neo {
+      box-shadow: 6px 6px 0px 0px #67DAD5;
+    }
+
+    .body-rounded {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyanBrand: '#67DAD5',
+            darkFooter: '#0B1221',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(calc(-400px * 3 - 1.5rem * 3));
+      }
+    }
+
+    .marquee-container {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+
+    .marquee-content {
+      display: flex;
+      animation: scroll 40s linear infinite;
+    }
+
+    .marquee-content:hover {
+      animation-play-state: paused;
+    }
+
+    /* TARGETED DECORATIONS ADDITION */
+    .bg-decorations {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .relative-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* 1. Flat Geometric Shapes & Color Bands */
+    .cyan-band-large {
+      position: absolute;
+      background: #5DD4D4;
+      z-index: 0;
+      opacity: 0.85;
+      /* Flat look, no shadow */
+    }
+
+    .cyan-band-top {
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 600px;
+      border-radius: 0 0 400px 0;
+      transform: translateX(-50px) translateY(-100px);
+    }
+
+    .diagonal-grey-flat {
+      position: absolute;
+      background: #808080;
+      opacity: 0.15;
+      transform: skewY(-15deg);
+      z-index: 0;
+    }
+
+    .grey-band-bottom {
+      bottom: -100px;
+      right: -50px;
+      width: 500px;
+      height: 300px;
+      border-radius: 300px 0 0 0;
+    }
+
+    /* 2. True Topographic Lines (Using SVG Data URI) */
+    .topographic-svg {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      opacity: 0.3;
+      z-index: 0;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      /* Generated simple concentric topographic rings via SVG */
+      background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%234B5563' stroke-width='1' stroke-opacity='0.4'%3E%3Cpath d='M0 400C200 400 300 200 500 200C700 200 800 400 800 400'/%3E%3Cpath d='M0 450C200 450 300 250 500 250C700 250 800 450 800 450'/%3E%3Cpath d='M0 500C200 500 300 300 500 300C700 300 800 500 800 500'/%3E%3Cpath d='M0 550C200 550 300 350 500 350C700 350 800 550 800 550'/%3E%3Cpath d='M0 600C200 600 300 400 500 400C700 400 800 600 800 600'/%3E%3Cpath d='M0 650C200 650 300 450 500 450C700 450 800 650 800 650'/%3E%3Ccircle cx='600' cy='600' r='50'/%3E%3Ccircle cx='600' cy='600' r='75'/%3E%3Ccircle cx='600' cy='600' r='100'/%3E%3Ccircle cx='600' cy='600' r='125'/%3E%3Ccircle cx='600' cy='600' r='150'/%3E%3Ccircle cx='600' cy='600' r='175'/%3E%3Ccircle cx='200' cy='150' r='50'/%3E%3Ccircle cx='200' cy='150' r='80'/%3E%3Ccircle cx='200' cy='150' r='110'/%3E%3Ccircle cx='200' cy='150' r='140'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .topographic-svg-cyan {
+      opacity: 0.25;
+      background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235DD4D4' stroke-width='1.5' stroke-opacity='0.6'%3E%3Cpath d='M0 400C200 400 300 200 500 200C700 200 800 400 800 400'/%3E%3Cpath d='M0 420C200 420 300 220 500 220C700 220 800 420 800 420'/%3E%3Cpath d='M0 440C200 440 300 240 500 240C700 240 800 440 800 440'/%3E%3Cpath d='M0 460C200 460 300 260 500 260C700 260 800 460 800 460'/%3E%3Cpath d='M400 0C400 200 600 300 600 500'/%3E%3Cpath d='M430 0C430 200 630 300 630 500'/%3E%3Cpath d='M460 0C460 200 660 300 660 500'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* 3. Nodal Connectors (circuit style) */
+    .nodal-network {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .nodal-line {
+      position: absolute;
+      background: #000000;
+      width: 2px;
+    }
+
+    .nodal-line-cyan {
+      background: #5DD4D4;
+      width: 3px;
+    }
+
+    .nodal-dot {
+      position: absolute;
+      border-radius: 50%;
+      background: #000000;
+      transform: translate(-50%, -50%);
+    }
+
+    .nodal-dot-cyan {
+      background: #5DD4D4;
+    }
+
+    /* 4. Orbital / Circular Image Masquing (Flat but Thick) */
+    .image-wrapper {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .circular-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      /* Strict flat thick borders, no spread shadow */
+      border: 12px solid #808080;
+      box-shadow: 0 0 0 10px #000000;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      margin: 0 auto;
+    }
+
+    .circular-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Minimal orbit dots, matching nodal style */
+    .orbit-dot {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 3;
+    }
+
+    .orbit-dot-cyan {
+      background: #5DD4D4;
+      width: 16px;
+      height: 16px;
+      top: 5%;
+      left: calc(50% + 140px);
+    }
+
+    .orbit-dot-black {
+      background: #000000;
+      bottom: 15%;
+      right: calc(50% + 150px);
+      width: 24px;
+      height: 24px;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <!-- BEGIN: MainHeader -->
+  <header class="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
+    <nav class="container mx-auto px-6 py-2 flex items-center justify-between relative">
+      <!-- Left Container: Logo -->
+      <div class="flex items-center w-auto" data-purpose="logo-container">
+        <!-- Logo Placeholder -->
+        <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
+          <img src="images/logo.jpg" alt="DFormPro Digital" class="h-16 md:h-24 w-auto object-contain">
+        </a>
+      </div>
+      <!-- Center Container: Navigation Links -->
+      <div
+        class="hidden md:flex items-center justify-center space-x-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
+        <div class="relative group">
+          <a class="hover:text-cyanBrand transition-colors text-black font-bold flex items-center gap-1 py-4"
+            href="formations.html">
+            Nos formations
+            <span
+              class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180">expand_more</span>
+          </a>
+
+          <!-- Mega Menu Dropdown -->
+          <div
+            class="absolute top-full left-1/2 -translate-x-1/2 w-[800px] bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-6 z-50">
+            <div class="grid grid-cols-4 gap-4 mb-4">
+
+              <!-- Preview Card 1 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-24 bg-gray-200 w-full overflow-hidden relative">
+                  <!-- Placeholder - remplacez par l'image drive -->
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/aide_domicile.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-3">
+                  <h4
+                    class="font-bold text-sm text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Le métier d'aide à domicile</h4>
+                  <p class="text-xs text-secondary-gray line-clamp-2" style="color: #74888F;">Les savoirs de base
+                    essentiels pour bien démarrer.</p>
+                </div>
+              </a>
+
+              <!-- Preview Card 2 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-24 bg-gray-200 w-full overflow-hidden relative">
+                  <!-- Placeholder - remplacez par l'image drive -->
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/prevention_risques.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-3">
+                  <h4
+                    class="font-bold text-sm text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Prévention des risques</h4>
+                  <p class="text-xs text-secondary-gray line-clamp-2" style="color: #74888F;">Sécuriser les
+                    interventions au quotidien.</p>
+                </div>
+              </a>
+
+              <!-- Preview Card 3 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-24 bg-gray-200 w-full overflow-hidden relative">
+                  <!-- Placeholder - remplacez par l'image drive -->
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/bientraitance.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-3">
+                  <h4
+                    class="font-bold text-sm text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Bientraitance</h4>
+                  <p class="text-xs text-secondary-gray line-clamp-2" style="color: #74888F;">Prévention de la
+                    maltraitance et bonnes pratiques.</p>
+                </div>
+              </a>
+
+              <!-- Preview Card 4 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-24 bg-gray-200 w-full overflow-hidden relative">
+                  <!-- Placeholder - remplacez par l'image drive -->
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/cadre_vie.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-3">
+                  <h4
+                    class="font-bold text-sm text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Entretien du cadre de vie</h4>
+                  <p class="text-xs text-secondary-gray line-clamp-2" style="color: #74888F;">Techniques et protocoles
+                    d'intervention.</p>
+                </div>
+              </a>
+
+            </div>
+
+            <!-- Footer CTA Mega Menu -->
+            <div class="pt-4 mt-2 border-t border-gray-100 text-center">
+              <a href="formations.html" class="inline-flex items-center text-sm font-bold transition-colors group/link"
+                style="color: #67DAD5;">
+                Voir les 8 formations de notre catalogue
+                <span
+                  class="material-symbols-outlined text-base ml-1 transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">À propos</a>
+        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">Contact</a>
+      </div>
+      <!-- Right Container: Action Buttons -->
+      <div class="flex items-center justify-end gap-3 md:gap-4 w-auto">
+        <a class="hidden md:block hover:text-cyanBrand transition-colors text-black font-bold text-sm whitespace-nowrap"
+          href="inscription.html">Créer un compte</a>
+        <a class="bg-cyanBrand text-white px-4 md:px-6 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all whitespace-nowrap"
+          href="connexion.html" style="background-color: #67DAD5;">
+          Se connecter
+        </a>
+        <a class="bg-white px-4 md:px-6 py-2 rounded-full text-sm font-bold hover:bg-gray-50 transition-all whitespace-nowrap border-2"
+          href="devis.html" style="color: #67DAD5; border-color: #67DAD5;">
+          Demande de devis
+        </a>
+      </div>
+    </nav>
+  </header>
+  <!-- END: MainHeader -->
+  <main class="pt-24">
+    <!-- BEGIN: HeroSection -->
+    <section class="relative relative-section overflow-hidden w-full">
+      <div class="bg-decorations">
+        <div class="cyan-band-large cyan-band-top"></div>
+        <div class="topographic-svg topographic-svg-cyan" style="top: -200px; right: -200px;"></div>
+
+        <!-- Nodal Network Example -->
+        <div class="nodal-network" style="top: 60%; right: 15%;">
+          <div class="nodal-dot nodal-dot-cyan" style="width: 16px; height: 16px; top: 0; left: 0;"></div>
+          <div class="nodal-line nodal-line-cyan"
+            style="height: 120px; transform: rotate(-45deg); top: 0; left: 0; transform-origin: top left;"></div>
+          <div class="nodal-dot nodal-dot-cyan" style="width: 8px; height: 8px; top: 85px; left: 85px;"></div>
+        </div>
+      </div>
+      <div class="py-20 px-6 text-center max-w-4xl mx-auto relative z-10">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight main-title">
+          Former autrement pour<br />mieux accompagner.
+        </h1>
+        <div class="space-y-4 text-gray-600 body-rounded text-lg text-secondary-gray" style="color: #74888F;">
+          <p class="text-secondary-gray" style="color: #74888F;">Chaque jour, vos équipes interviennent au Domicile des
+            personnes les plus fragiles.</p>
+          <p class="text-secondary-gray" style="color: #74888F;">Chaque jour, vous devez concilier qualité de service,
+            contraintes réglementaires, tensions sur les plannings et engagement RSE.</p>
+          <p class="font-bold border-b-4 border-cyanBrand inline-block pb-1 text-secondary-gray"
+            style="color: #74888F;">La formation ne doit plus être une contrainte. Elle doit être un levier.</p>
+        </div>
+      </div>
+    </section>
+    <!-- END: HeroSection -->
+    <!-- BEGIN: ProblemSection -->
+    <section class="py-20 bg-gray-50 px-6 relative relative-section overflow-hidden">
+      <div class="bg-decorations">
+        <div class="topographic-svg" style="bottom: -300px; left: -200px;"></div>
+
+        <!-- Circuit/Nodal connection crossing -->
+        <div class="nodal-network" style="bottom: 30%; right: 10%;">
+          <div class="nodal-dot" style="width: 20px; height: 20px; top: 0; left: 0;"></div>
+          <div class="nodal-line"
+            style="height: 150px; transform: rotate(-30deg); top: 0; left: 0; transform-origin: top left;"></div>
+        </div>
+      </div>
+      <div class="container mx-auto max-w-6xl text-center relative z-10">
+        <h2 class="text-3xl md:text-4xl font-black mb-6 secondary-title">Vous gérez plus qu'un planning. Vous portez une
+          mission.</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left">
+          <!-- Left Column -->
+          <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-neo border-2 border-black h-full">
+            <h3
+              class="text-lg lg:text-xl xl:text-2xl font-bold mb-6 text-black secondary-title border-b-2 border-cyanBrand pb-3 flex items-center xl:whitespace-nowrap"
+              style="border-color: #67DAD5;">Dans le secteur des services à la personne&nbsp;:</h3>
+            <ul class="space-y-4 text-secondary-gray body-rounded font-medium text-lg" style="color: #74888F;">
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                  style="color: #67DAD5;">event_busy</span>
+                <span>Les plannings sont tendus.</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                  style="color: #67DAD5;">directions_car</span>
+                <span>Les équipes sont mobiles.</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                  style="color: #67DAD5;">fact_check</span>
+                <span>Les exigences HAS sont renforcées.</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                  style="color: #67DAD5;">timer</span>
+                <span>Les déplacements sont coûteux et chronophages.</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                  style="color: #67DAD5;">energy_savings_leaf</span>
+                <span>Les engagements RSE deviennent stratégiques.</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Right Column -->
+          <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-neo border-2 border-black h-full">
+            <h3
+              class="text-lg lg:text-xl xl:text-2xl font-bold mb-6 text-black secondary-title border-b-2 border-black pb-3 flex items-center xl:whitespace-nowrap">
+              Former en présentiel, c'est&nbsp;:</h3>
+            <ul class="space-y-4 text-secondary-gray body-rounded font-medium text-lg" style="color: #74888F;">
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-black shrink-0 mt-0.5">warning</span>
+                <span>désorganiser les tournées,</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-black shrink-0 mt-0.5">route</span>
+                <span>multiplier les kilomètres,</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-black shrink-0 mt-0.5">person_off</span>
+                <span>immobiliser les intervenants,</span>
+              </li>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-black shrink-0 mt-0.5">payments</span>
+                <span>générer des coûts indirects.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="text-2xl md:text-3xl text-cyanBrand font-bold mt-20 secondary-title" style="color: #67DAD5;">Il est
+          temps de former différemment.</h3>
+      </div>
+    </section>
+    <!-- END: ProblemSection -->
+    <!-- BEGIN: SolutionSection -->
+    <section class="py-24 relative overflow-hidden bg-white relative-section">
+      <div class="bg-decorations z-0">
+        <div class="topographic-svg topographic-svg-cyan" style="right: -300px; top: 100px;"></div>
+      </div>
+
+      <div class="container mx-auto px-6 max-w-6xl relative z-10 w-full">
+        <!-- Top Center Header -->
+        <div class="text-center mb-16 md:mb-20">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4 secondary-title">
+            La plateforme de formation digitale dédiée aux <span class="text-cyanBrand" style="color: #67DAD5;">services
+              à la personne</span>
+          </h2>
+          <p class="text-gray-500 text-lg md:text-xl body-rounded mx-auto text-secondary-gray" style="color: #74888F;">
+            une solution pensée pour l'ensemble de l'écosystème des services à la personne
+          </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+          <!-- Left Column: Content -->
+          <div class="lg:w-1/2 flex flex-col justify-center space-y-10">
+            <p class="text-lg text-secondary-gray body-rounded font-medium leading-relaxed" style="color: #74888F;">
+              <span class="text-cyanBrand font-bold uppercase" style="color: #67DAD5;">DFORMPRO DIGITAL</span>
+              accompagne toutes les structures d'aide à domicile, indépendamment de leur organisation ou de leur modèle.
+            </p>
+
+            <div>
+              <h3 class="font-bold text-black text-lg md:text-xl mb-4 secondary-title">Notre expertise repose sur une
+                compréhension fine des enjeux :</h3>
+              <ul class="space-y-3 text-cyanBrand font-medium body-rounded text-lg" style="color: #67DAD5;">
+                <li class="flex items-start gap-2">
+                  <span class="mr-1">-</span> Qualité de service
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mr-1">-</span> Exigences réglementaires
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mr-1">-</span> Contraintes de planning
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mr-1">-</span> Engagement RSE
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="mr-1">-</span> Professionnalisation des équipes
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-black text-lg md:text-xl mb-4 secondary-title">Nos formations digitales sont :
+              </h3>
+              <ul class="space-y-3 font-medium body-rounded text-lg text-secondary-gray" style="color: #74888F;">
+                <li class="flex items-start gap-3">
+                  <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
+                  <span><span class="text-cyanBrand" style="color: #67DAD5;">Conformes</span> aux exigences HAS</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
+                  <span><span class="text-cyanBrand" style="color: #67DAD5;">Accessibles</span> sur smartphone</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
+                  <span>Basées sur des <span class="text-cyanBrand" style="color: #67DAD5;">situations
+                      réelles</span></span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
+                  <span>Immédiatement applicables au domicile</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
+                  <span><span class="text-cyanBrand" style="color: #67DAD5;">Déployables</span> sans perturber
+                    l'organisation terrain</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Right Column: Image Presentation -->
+          <div class="lg:w-1/2 flex justify-center lg:justify-end relative">
+            <div class="image-wrapper py-10 w-full max-w-[450px] mx-auto">
+              <div class="relative z-10 w-full" style="max-width: 500px;">
+                <!-- Rounded rectangle image container -->
+                <div class="rounded-2xl overflow-hidden bg-white"
+                  style="border: 4px solid #808080; box-shadow: 12px 12px 0px 0px #67DAD5;">
+                  <img src="imageDForm.png" alt="DFormPro Digital sur tous vos appareils"
+                    class="w-full h-auto object-cover block" />
+                </div>
+              </div>
+
+              <!-- Subtle network details matching theme -->
+              <div class="orbit-dot orbit-dot-cyan" style="top: 0; left: 80%;"></div>
+              <div class="orbit-dot orbit-dot-black" style="bottom: 5%; right: 80%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: SolutionSection -->
+    <!-- BEGIN: StrategicAdvantagesGrid -->
+    <section class="relative overflow-hidden py-16 relative-section">
+      <div class="bg-decorations z-0">
+        <!-- Topographic top left -->
+        <div class="topographic-svg" style="left: -400px; top: -100px; transform: scale(1.5);"></div>
+        <!-- Topographic bottom right -->
+        <div class="topographic-svg topographic-svg-cyan"
+          style="right: -300px; bottom: 50px; transform: scale(0.8) rotate(45deg); opacity: 0.15;"></div>
+
+        <div class="nodal-network" style="top: 20%; right: 15%;">
+          <div class="nodal-dot" style="width: 24px; height: 24px;"></div>
+          <div class="nodal-line"
+            style="height: 200px; transform: rotate(45deg); top: 0; left: 0; transform-origin: top left;"></div>
+          <div class="nodal-dot nodal-dot-cyan" style="width: 16px; height: 16px; top: 141px; left: -141px;"></div>
+        </div>
+
+        <!-- Additional node cluster -->
+        <div class="nodal-network" style="bottom: 15%; left: 5%;">
+          <div class="nodal-dot nodal-dot-cyan" style="width: 12px; height: 12px;"></div>
+          <div class="nodal-line nodal-line-cyan"
+            style="height: 100px; transform: rotate(-30deg); top: 0; left: 0; transform-origin: top left;"></div>
+          <div class="nodal-dot" style="width: 18px; height: 18px; top: -86px; left: -50px;"></div>
+        </div>
+      </div>
+      <div class="container mx-auto max-w-6xl relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-black mb-4 secondary-title">Des avantages stratégiques concrets</h2>
+          <p class="text-gray-500 body-rounded text-secondary-gray" style="color: #74888F;">Une approche optimisée pour
+            transformer vos contraintes en leviers de croissance.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1 -->
+          <div
+            class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
+            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+              <img alt="Planning" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBka07X7tr4iFn1GJ-AmzeiPJA5cxY4_fURhCUGnWEWgXVsc8AxlsqFKyYh3ijIPW8uOeN0TnqkxqYbG_9RBnc9w05Y5zxQ5nme9rHqOzBycP2ksUuvLIrqP0XdLK3R-ZKWfyz5Lmcm2GAmOCioadCZw2aEfKaiuGhlKvZuUjIRUIgjuZ2juTSFw3nCLzix6pQJmwXulyIkL6na7O5h0dz5kJKpG6CmDcQ-35aAR56XBWyHffh4EWNdTRUKSiW9y1lVl0bfhdUpS30" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Réduction de
+                l'impact planning</h3>
+              <p class="text-gray-600 text-sm mb-6 flex-grow"
+                style="font-family: 'Nunito', sans-serif; font-weight: 400;">
+                Formation à la carte, sans immobilisation collective. Pas de salle à réserver. Pas de déplacements.
+                Intégration fluide. La formation s'adapte au terrain. Le terrain ne s'adapte plus à la formation.
+              </p>
+              <a class="inline-flex items-center font-bold text-base transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
+                href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+                En savoir plus <span class="ml-2 text-xl">→</span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div
+            class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
+            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+              <img alt="Réglementaire" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9mXriKTrkrq6h0vedv6j1dUpR3kOPUkO5F3vFnlxGbJiUKQ0tuhPwWbo72J6OD1lEFy5UcfrlChTsr91RSq_y3JhMXKEKjDPK9atFx0B3rCDQgsBcjA19QYTAPLrN0GJ36KuoUP2-BGazD04u6il83aPe4yii9avy4EYw96ovzcvCWmlwEnNEEdEw_UgBQZqK9mjn_lx4oOIcOgT_-YpxHU5s_aOxihfGIGrStJAmehq-5Gkpb8qRwOFOlteb-McazOndHiOH85g" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Sécurisation
+                réglementaire</h3>
+              <p class="text-gray-600 text-sm mb-6 flex-grow"
+                style="font-family: 'Nunito', sans-serif; font-weight: 400;">
+                Suivi des parcours. Certificats de réalisation. Traçabilité complète pour audits HAS. Garantissez la
+                conformité de chaque agent en temps réel.
+              </p>
+              <a class="inline-flex items-center font-bold text-base transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
+                href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+                En savoir plus <span class="ml-2 text-xl">→</span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div
+            class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
+            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+              <img alt="Budget" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWePKrt8xHxZoyj12SWob-6eYnoQids18Th5U031T2YwtQRBvZPo646kRviN8GTngtnyJr67G1L8HALooqlhGOwieWhJ8nfMOfCo6rsWx0hC5prfcshVkYbrZSYUJvGKupqi1TI6qXYk0m2UsE_TrvP3WsC-q7Hmr02qHNkyHvlq5tsWF8CjOUrlT1yg7xuTCKxsqxOWnjpxAC9vodLbkhA1BZx0PhLYZk-UZGP0Xd_TKiivx5YoqGgUTPoWvygplqYzjcKqV6cXo" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Optimisation
+                budgétaire</h3>
+              <p class="text-gray-600 text-sm mb-6 flex-grow"
+                style="font-family: 'Nunito', sans-serif; font-weight: 400;">
+                Suppression des frais logistiques. Réduction des coûts indirects. Déploiement immédiat à grande échelle.
+                Transformez vos coûts fixes en leviers de performance.
+              </p>
+              <a class="inline-flex items-center font-bold text-base transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
+                href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+                En savoir plus <span class="ml-2 text-xl">→</span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div
+            class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-300">
+            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+              <img alt="RSE" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsDwXCv_Hn7_iGQ-8GPEqNErdebj-373B58Z1Rj5D3k-tj2WJSkAgIYjyvmVgrl9KWD526LY6MK48Bi91TZzUl9bVeViO6zxsr7i28fo0B4r2j4_ThTPiGZu6b0cyZv9UUJP5poUKYeFsnbdDWCwGKdXF57ho6Ie4EXjGXEvnnDMfUAzCIxsPfLwKTN1OXs5i_nxNJy-UvAKrfeMTVa-BXtmZ-HpopkeVAqNwadANuDi4p0Z0q2CWIUu4wO-vfH-VzdHafGtjPouM" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="text-2xl font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Engagement RSE
+                et décarbonation</h3>
+              <p class="text-gray-600 text-sm mb-6 flex-grow"
+                style="font-family: 'Nunito', sans-serif; font-weight: 400;">
+                Suppression des déplacements inter-sites. Réduction des kilomètres. Diminution des impressions papier.
+                Former en digital, c'est intégrer la montée en compétences dans une démarche responsable.
+              </p>
+              <a class="inline-flex items-center font-bold text-base transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
+                href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+                En savoir plus <span class="ml-2 text-xl">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: StrategicAdvantagesGrid -->
+    <!-- BEGIN: StepsSection -->
+    <section class="py-24 relative overflow-hidden text-center relative-section">
+      <div class="bg-decorations z-0 opacity-60">
+        <div class="topographic-svg topographic-svg-cyan" style="right: -400px; bottom: -200px; transform: scale(1.2);">
+        </div>
+        <div class="topographic-svg" style="left: -250px; top: -100px; transform: scale(0.6) rotate(15deg);"></div>
+
+        <div class="nodal-network" style="top: 30%; left: 8%;">
+          <div class="nodal-dot nodal-dot-cyan" style="width: 20px; height: 20px;"></div>
+          <div class="nodal-line"
+            style="height: 120px; transform: rotate(15deg); top: 0; left: 0; transform-origin: top left;"></div>
+          <div class="nodal-dot" style="width: 14px; height: 14px; top: 115px; left: -30px;"></div>
+        </div>
+      </div>
+      <div class="container mx-auto px-6 max-w-6xl relative z-10">
+        <div class="text-center mb-24 flex flex-col items-center">
+          <h2 class="text-3xl md:text-4xl font-black mb-4 secondary-title" style="color: #000;">Comment ça fonctionne ?
+          </h2>
+          <p class="text-xl md:text-2xl font-bold text-secondary-gray secondary-title" style="color: #74888F;">
+            Une mise en oeuvre simple, rapide et sécurisée
+          </p>
+        </div>
+
+        <!-- Timeline Container -->
+        <div class="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between mb-16 px-2">
+
+          <!-- Continuous Horizontal Line (Desktop) -->
+          <div class="hidden md:block absolute w-[75%] h-px bg-gray-300 left-[12.5%]" style="top: 107px; z-index: 0;">
+          </div>
+
+          <!-- Item 1 -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0">
+            <!-- Card -->
+            <div
+              class="bg-white px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50">
+              1
+            </div>
+            <!-- Vertical Line & Dot Container -->
+            <div class="hidden md:flex flex-col items-center w-full">
+              <div class="w-px h-6 bg-gray-400"></div>
+              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            </div>
+            <!-- Mobile Connector -->
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
+            <!-- Text Below -->
+            <div
+              class="md:mt-8 font-bold text-lg md:text-xl text-black px-4 max-w-[280px] w-full mx-auto secondary-title"
+              style="color: #000;">
+              Créez votre compte
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0">
+            <!-- Card -->
+            <div
+              class="bg-white px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50">
+              2
+            </div>
+            <!-- Vertical Line & Dot Container -->
+            <div class="hidden md:flex flex-col items-center w-full">
+              <div class="w-px h-6 bg-gray-400"></div>
+              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            </div>
+            <!-- Mobile Connector -->
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
+            <!-- Text Below -->
+            <div
+              class="md:mt-8 font-bold text-lg md:text-xl text-black px-4 max-w-[280px] w-full mx-auto secondary-title"
+              style="color: #000;">
+              Sélectionnez vos formations
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0">
+            <!-- Card -->
+            <div
+              class="bg-white px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50">
+              3
+            </div>
+            <!-- Vertical Line & Dot Container -->
+            <div class="hidden md:flex flex-col items-center w-full">
+              <div class="w-px h-6 bg-gray-400"></div>
+              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            </div>
+            <!-- Mobile Connector -->
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
+            <!-- Text Below -->
+            <div
+              class="md:mt-8 font-bold text-lg md:text-xl text-black px-4 max-w-[280px] w-full mx-auto secondary-title"
+              style="color: #000;">
+              Inscrivez vos équipes
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-8 md:mb-0">
+            <!-- Card -->
+            <div
+              class="bg-white px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50">
+              4
+            </div>
+            <!-- Vertical Line & Dot Container -->
+            <div class="hidden md:flex flex-col items-center w-full">
+              <div class="w-px h-6 bg-gray-400"></div>
+              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            </div>
+            <!-- No Mobile Connector -->
+            <!-- Text Below -->
+            <div
+              class="md:mt-8 font-bold text-lg md:text-xl text-black px-4 max-w-[280px] w-full mx-auto secondary-title"
+              style="color: #000;">
+              Suivez les résultats et téléchargez vos certificats
+            </div>
+          </div>
+
+        </div>
+
+        <footer class="text-center text-lg md:text-xl font-bold body-rounded text-black mt-16 secondary-title"
+          style="color: #000;">
+          En quelques clics, votre plan de formation devient opérationnel.
+        </footer>
+      </div>
+    </section>
+    <!-- END: StepsSection -->
+    <!-- BEGIN: ExpertiseSection -->
+    <section class="py-24 bg-gray-50 relative overflow-hidden relative-section">
+      <div class="bg-decorations z-0 opacity-60">
+        <div class="topographic-svg" style="left: -200px; bottom: 0;"></div>
+        <div class="topographic-svg topographic-svg-cyan"
+          style="right: -450px; top: -100px; transform: scale(1.1) rotate(60deg);"></div>
+
+        <div class="nodal-network" style="top: 10%; right: 25%;">
+          <div class="nodal-dot nodal-dot-cyan" style="width: 20px; height: 20px;"></div>
+          <div class="nodal-line nodal-line-cyan"
+            style="height: 150px; transform: rotate(-60deg); top: 0; left: 0; transform-origin: top left;"></div>
+          <div class="nodal-dot" style="width: 24px; height: 24px; top: -130px; left: 75px;"></div>
+        </div>
+
+        <div class="nodal-network" style="bottom: 25%; left: 15%;">
+          <div class="nodal-dot" style="width: 14px; height: 14px;"></div>
+          <div class="nodal-line"
+            style="height: 90px; transform: rotate(70deg); top: 0; left: 0; transform-origin: top left;"></div>
+          <div class="nodal-dot nodal-dot-cyan" style="width: 18px; height: 18px; top: 30px; left: -84px;"></div>
+        </div>
+      </div>
+      <div class="container mx-auto px-6 relative z-10">
+        <!-- Title -->
+        <h2 class="text-3xl md:text-4xl font-black text-center text-black mb-16 secondary-title">
+          Ensemble, faire progresser le secteur
+        </h2>
+        <!-- Statistics Block -->
+        <div class="border-y border-[#E5E7EB] py-16 mb-24 backdrop-blur-sm bg-white/40">
+          <div class="grid grid-cols-1 md:grid-cols-4">
+            <!-- Col 1 -->
+            <div class="text-center px-4 md:border-r border-[#E5E7EB]">
+              <p class="text-3xl font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
+                style="color: #67DAD5;">+ de 15 ans</p>
+              <p class="text-sm text-[#4B5563] font-sans text-secondary-gray" style="color: #74888F;">d'expertise dans
+                le secteur des services à la personne</p>
+            </div>
+            <!-- Col 2 -->
+            <div class="text-center px-4 md:border-r border-[#E5E7EB] mt-8 md:mt-0">
+              <p class="text-3xl font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
+                style="color: #67DAD5;">Des milliers</p>
+              <p class="text-sm text-[#4B5563] font-sans text-secondary-gray" style="color: #74888F;">d'apprenants
+                formés</p>
+            </div>
+            <!-- Col 3 -->
+            <div class="text-center px-4 md:border-r border-[#E5E7EB] mt-8 md:mt-0">
+              <p class="text-3xl font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
+                style="color: #67DAD5;">100% Terrain</p>
+              <p class="text-sm text-[#4B5563] font-sans text-secondary-gray" style="color: #74888F;">Une plateforme
+                pensée pour le terrain</p>
+            </div>
+            <!-- Col 4 -->
+            <div class="text-center px-4 mt-8 md:mt-0">
+              <p class="text-3xl font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
+                style="color: #67DAD5;">Engagement</p>
+              <p class="text-sm text-[#4B5563] font-sans text-secondary-gray" style="color: #74888F;">Une approche
+                conforme, responsable et moderne</p>
+            </div>
+          </div>
+        </div>
+        <!-- Infinite Scrolling Marquee -->
+        <div class="marquee-container">
+          <div class="marquee-content flex gap-6">
+            <!-- Testimonial 1 -->
+            <div
+              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5;">
+              <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
+                "La traçabilité pour les audits HAS est un soulagement total. Formation sans perturbation de nos
+                plannings."
+              </p>
+              <p class="mt-4 font-bold text-black text-secondary-gray" style="color: #74888F;">Marie L., Directrice.</p>
+            </div>
+            <!-- Testimonial 2 -->
+            <div
+              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5;">
+              <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
+                "Je me forme directement sur mon téléphone entre deux visites. Les situations sont exactement celles du
+                terrain."
+              </p>
+              <p class="mt-4 font-bold text-black text-secondary-gray" style="color: #74888F;">Sophie D., Auxiliaire de
+                vie.</p>
+            </div>
+            <!-- Testimonial 3 -->
+            <div
+              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5;">
+              <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
+                "Plus de frais de déplacements ou de location de salles. Un investissement rentabilisé immédiatement."
+              </p>
+              <p class="mt-4 font-bold text-black text-secondary-gray" style="color: #74888F;">Céline V., Gérante.</p>
+            </div>
+            <!-- Clones for seamless scroll -->
+            <div
+              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5;">
+              <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
+                "La traçabilité pour les audits HAS est un soulagement total. Formation sans perturbation de nos
+                plannings."
+              </p>
+              <p class="mt-4 font-bold text-black text-secondary-gray" style="color: #74888F;">Marie L., Directrice.</p>
+            </div>
+            <div
+              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5;">
+              <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
+                "Je me forme directement sur mon téléphone entre deux visites. Les situations sont exactement celles du
+                terrain."
+              </p>
+              <p class="mt-4 font-bold text-black text-secondary-gray" style="color: #74888F;">Sophie D., Auxiliaire de
+                vie.</p>
+            </div>
+            <div
+              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5;">
+              <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
+                "Plus de frais de déplacements ou de location de salles. Un investissement rentabilisé immédiatement."
+              </p>
+              <p class="mt-4 font-bold text-black text-secondary-gray" style="color: #74888F;">Céline V., Gérante.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: ExpertiseSection -->
+  </main><!-- Giant CTA Section -->
+  <section class="px-6 py-12 md:py-20 bg-white">
+    <div class="max-w-5xl mx-auto bg-cyanBrand rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
+      style="background-color: #67DAD5;">
+      <!-- Decorative circles matching reference -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full translate-x-1/2 -translate-y-1/2">
+      </div>
+      <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-10 rounded-full -translate-x-1/3 translate-y-1/3">
+      </div>
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 secondary-title text-[#0B1221]"
+          style="font-family: 'Arial', sans-serif !important; font-weight: bold !important;">
+          Prêt à digitaliser vos formations ?
+        </h2>
+        <p class="body-rounded text-[#0B1221] text-lg md:text-xl max-w-3xl mx-auto mb-12 opacity-80"
+          style="font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;">
+          Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a class="bg-[#0B1221] text-white font-bold py-4 px-10 rounded-[20px] text-lg hover:bg-opacity-90 transition-all body-rounded"
+            href="#">
+            Demander un devis
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Classic Dark Footer -->
+  <footer class="bg-black text-slate-300 py-16 px-6 md:px-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+        <!-- Column 1: Logo & Intro -->
+        <div class="flex flex-col gap-6">
+          <a href="index.html"
+            class="inline-block hover:opacity-80 transition-opacity bg-white p-2 border border-gray-100 rounded-xl w-max">
+            <img src="images/logo.jpg" alt="DFormPro Digital" class="h-8 md:h-10 w-auto object-contain">
+          </a>
+          <p class="body-rounded text-sm leading-relaxed max-w-xs" style="color: #FFFFFF;">
+            La plateforme de formation digitale dédiée aux services à la personne. Accélérez la montée en compétences de
+            vos équipes.
+          </p>
+          <div class="mt-4">
+            <div class="bg-white p-2 rounded-lg w-32 h-32 flex items-center justify-center">
+              <img alt="QR Code Application" data-alt="QR Code to download the application"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEm-gHzXLKx18aSaODv1evX7Tm3PhvGa8w2m2dO7h84vYRUKgDCPlEFTGah1xnug14fcCU5FUNVe7wC77fs8g_PY7NgMua2iAi7lW8_xbLAEbLfxMEyPlmCP_3J2uQ2OAQulj3oityup93qJUBVVDOb0MUtKcpcgBOZyXyelJq98uvW0HwmwkVGjYMqjrZlmhL3CYEXFcmIAmYT_Vm7dmLmkm37AoX7URRcN3JGMGJNEmZPDg_SwtsU6HHrTqx_eYQo7ClqoVJhQQ" />
+            </div>
+            <p class="text-[10px] mt-2 uppercase tracking-widest font-bold" style="color: #FFFFFF;">Télécharger l'app
+            </p>
+          </div>
+        </div>
+        <!-- Column 2: Contact -->
+        <div class="flex flex-col gap-6">
+          <h3 class="text-cyanBrand font-bold-custom font-bold text-xl uppercase tracking-wider secondary-title"
+            style="color: #67DAD5;">Contact</h3>
+          <div class="flex flex-col gap-4 body-rounded text-sm text-secondary-gray" style="color: #74888F;">
+            <div class="flex items-center gap-4 mb-2">
+              <img src="images/avatar.png" alt="Régis DE OLIVEIRA"
+                class="w-16 h-16 rounded-full border-2 border-cyanBrand object-cover shadow-sm bg-white"
+                style="border-color: #67DAD5;">
+              <div class="flex flex-col">
+                <span class="font-bold text-white text-base" style="color: #FFFFFF;">Régis DE OLIVEIRA</span>
+                <span class="text-cyanBrand text-xs" style="color: #67DAD5;">Directeur</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-cyanBrand text-xl" style="color: #FFFFFF;">call</span>
+              <span class="" style="color: #FFFFFF;">06 64 90 33 43</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-cyanBrand text-xl" style="color: #FFFFFF;">mail</span>
+              <a class="hover:text-cyanBrand transition-colors" href="mailto:r.deoliveira@dformpro.fr"
+                style="color: #FFFFFF;">r.deoliveira@dformpro.fr</a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-cyanBrand text-xl" style="color: #FFFFFF;">location_on</span>
+              <span class="" style="color: #FFFFFF;">15 rue du Pré la Reine, <br />63100 Clermont-Fd.</span>
+            </div>
+          </div>
+        </div>
+        <!-- Column 3: Informations -->
+        <div class="flex flex-col gap-6">
+          <h3 class="text-cyanBrand font-bold-custom font-bold text-xl uppercase tracking-wider secondary-title"
+            style="color: #67DAD5;">Informations</h3>
+          <nav class="flex flex-col gap-3 body-rounded text-sm text-secondary-gray" style="color: #74888F;">
+            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF;">
+              <span class="material-symbols-outlined text-[10px]">chevron_right</span>
+              À propos
+            </a>
+            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF;">
+              <span class="material-symbols-outlined text-[10px]">chevron_right</span>
+              CGV
+            </a>
+            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF;">
+              <span class="material-symbols-outlined text-[10px]">chevron_right</span>
+              Mentions légales
+            </a>
+            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF;">
+              <span class="material-symbols-outlined text-[10px]">chevron_right</span>
+              Politique de confidentialité
+            </a>
+          </nav>
+        </div>
+      </div>
+      <!-- Divider -->
+      <div class="h-px w-full bg-white/10 mb-8"></div>
+      <!-- Bottom Section -->
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="body-rounded text-xs" style="color: #FFFFFF;">
+          © 2024 DFormPro Digital. Tous droits réservés.
+        </p>
+        <div class="flex items-center gap-4">
+          <div class="bg-white rounded p-1">
+            <img alt="Certification Qualiopi" class="h-10 w-auto grayscale contrast-125"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoV_uUi1lnoVRpT4w5XvEwQv2dl7WjTNjS0lbv_1Sqs-ZV3E5VOZ1-r03AjC-vac2v5STr4DMoI0KdnrTXxJbLy6VDv2lHj6AgD8J_Kj6boeULp7OpmwCISuqyq8u3YIT1WLdXu0wAImwctVF2BO0MTf3ksklri9-d78AUPYkxZFPLFGrsoNP7aKTCqncY8LWVhx0OvdSdV4M1rcNA_p0F6b5wSi1jhqNboytPrTpA0u9JQau5I1AdEFuLw31A84lo9g-TUzfBf0k" />
+          </div>
+          <div class="flex gap-4">
+            <a class="text-slate-500 hover:text-cyanBrand" href="#"><span
+                class="material-symbols-outlined">share</span></a>
+            <a class="text-slate-500 hover:text-cyanBrand" href="#"><span
+                class="material-symbols-outlined">language</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- BEGIN: Footer -->
+  <!-- END: Footer -->
+</body>
+
+</html>
