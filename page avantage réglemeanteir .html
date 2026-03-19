@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="fr">
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Sécurisation réglementaire – DFormPro Digital</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
+    /* ── Fond blanc global ── */
+    *,
+    html,
+    body {
+      background-color: #ffffff;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+      font-weight: 700;
+      color: #000;
+      background-color: #ffffff !important;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Arial', sans-serif !important;
+      font-weight: bold !important;
+    }
+
+    h1 {
+      font-style: italic !important;
+    }
+
+    .text-cyan {
+      color: #67DAD5;
+    }
+
+    /* ══ CARD STANDARD : contour noir + ombre cyan ══ */
+    .card {
+      background-color: #ffffff !important;
+      border: 2px solid #000000;
+      border-radius: 20px;
+      box-shadow: 6px 6px 0px 0px #67DAD5;
+    }
+
+    .card * {
+      background-color: transparent !important;
+    }
+
+    /* Exceptions nommées */
+    .card .keep-cyanl {
+      background-color: rgba(103, 218, 213, 0.08) !important;
+    }
+
+    .card .keep-icon-blk {
+      background-color: #000000 !important;
+    }
+
+    .card .keep-icon-cyn {
+      background-color: #67DAD5 !important;
+    }
+
+    .card .keep-hdr-cyn {
+      background-color: #67DAD5 !important;
+    }
+
+    .card .keep-hdr-blk {
+      background-color: #000000 !important;
+    }
+
+    /* ══ CARD CYAN (DFormPro) ══ */
+    .card-cyan {
+      background-color: #67DAD5 !important;
+      border: 2px solid #000000;
+      border-radius: 20px;
+      box-shadow: 6px 6px 0px 0px #000000;
+    }
+
+    .card-cyan * {
+      background-color: transparent !important;
+    }
+
+    .card-cyan .keep-icon-blk {
+      background-color: #000000 !important;
+    }
+
+    .card-cyan .keep-icon-cyn {
+      background-color: #67DAD5 !important;
+    }
+
+    /* ── Badge ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      border: 2px solid;
+      background-color: #ffffff !important;
+    }
+
+    /* ── Citation highlight ── */
+    .highlight-box {
+      border: 2px solid #000;
+      padding: 16px 20px;
+      background-color: #ffffff !important;
+      border-radius: 12px;
+      box-shadow: 6px 6px 0px 0px #67DAD5;
+    }
+
+    .highlight-box * {
+      background-color: transparent !important;
+    }
+
+    /* ── Divider ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: #67DAD5;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    .fade-up {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .delay-1 {
+      animation-delay: 0.15s;
+      opacity: 0;
+    }
+
+    .delay-2 {
+      animation-delay: 0.30s;
+      opacity: 0;
+    }
+
+    .delay-3 {
+      animation-delay: 0.45s;
+      opacity: 0;
+    }
+
+    .bg-deco {
+      pointer-events: none;
+      position: absolute;
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <!-- BEGIN: MainHeader -->
+  <header class="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
+    <nav class="w-full py-2 flex items-center relative"
+      style="justify-content: space-between; padding-left: 0; padding-right: 0;">
+      <!-- Left Container: Logo (flush left) -->
+      <div class="flex items-center flex-shrink-0" data-purpose="logo-container"
+        style="margin-right: auto; padding-left: 0;">
+        <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
+          <img src="images/logo.jpg" alt="DFormPro Digital" class="h-16 md:h-24 w-auto object-contain">
+        </a>
+      </div>
+      <!-- Center Container: Navigation Links (perfectly centered) -->
+      <div
+        class="hidden md:flex items-center justify-center space-x-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
+        <div class="relative group">
+          <a class="hover:text-cyanBrand transition-colors text-black font-bold flex items-center gap-1 py-4"
+            href="formations.html">
+            Nos formations
+            <span
+              class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180">expand_more</span>
+          </a>
+
+          <!-- Mega Menu Dropdown - 3 cols x 2 rows (3x2) -->
+          <div
+            class="absolute top-full left-1/2 -translate-x-1/2 w-[80vw] !bg-white rounded-2xl shadow-xl border border-gray-100 opacity-1 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-[999]">
+            <div class="grid grid-cols-3 gap-5 mb-5">
+
+              <!-- Preview Card 1 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/aide_domicile.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Le métier d'aide à domicile</h4>
+                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Les savoirs de base
+                    essentiels pour bien démarrer.</p>
+                </div>
+              </a>
+
+              <!-- Preview Card 2 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/prevention_risques.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Prévention des risques</h4>
+                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Sécuriser les
+                    interventions au quotidien.</p>
+                </div>
+              </a>
+
+              <!-- Preview Card 3 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/bientraitance.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Bientraitance</h4>
+                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Prévention de la
+                    maltraitance et bonnes pratiques.</p>
+                </div>
+              </a>
+
+              <!-- Preview Card 4 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/cadre_vie.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Entretien du cadre de vie</h4>
+                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Techniques et protocoles
+                    d'intervention.</p>
+                </div>
+              </a>
+
+              <!-- Preview Card 5 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/entretien_linge.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Entretien du linge</h4>
+                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Maîtrisez les techniques
+                    d'entretien textile professionnel.</p>
+                </div>
+              </a>
+
+              <!-- Preview Card 6 -->
+              <a href="formations.html"
+                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                    <span class="material-symbols-outlined text-3xl">image</span>
+                  </div>
+                  <img src="formations_images/repas.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Préparation des repas</h4>
+                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Nutrition, hygiène et
+                    adaptation aux besoins spécifiques.</p>
+                </div>
+              </a>
+
+            </div>
+
+            <!-- Footer CTA Mega Menu - aligned left -->
+            <div class="pt-4 mt-2 border-t border-gray-100 text-left">
+              <a href="formations.html" class="inline-flex items-center text-sm font-bold transition-colors group/link"
+                style="color: #67DAD5;">
+                Voir les 8 formations de notre catalogue
+                <span
+                  class="material-symbols-outlined text-base ml-1 transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">À propos</a>
+        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">Contact</a>
+      </div>
+      <!-- Right Container: Action Buttons (flush right) -->
+      <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1"
+        style="margin-left: auto; padding-right: 0; margin-right: 10px;">
+        <a class="text-black font-bold text-sm whitespace-nowrap cursor-pointer hover:underline"
+          style="text-decoration: none;" href="inscription.html">
+          Créer un compte
+        </a>
+        <a class="hidden md:block text-black font-bold text-sm whitespace-nowrap bg-transparent border-none cursor-pointer px-4 md:px-6 py-2 rounded-full hover:bg-gray-50 transition-all"
+          style="color: #67DAD5; border: 2px solid #67DAD5; background-color: #fff; text-decoration: none;"
+          href="connexion.html">
+          Se connecter
+        </a>
+        <button onclick="document.getElementById('modal-devis').style.display='flex'"
+          class="px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2 cursor-pointer"
+          style="color: #fff; border-color: #67DAD5; background-color: #67DAD5;">
+          Demande de devis
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Modal: Créer un compte -->
+  <div id="modal-inscription"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;"
+    onclick="if(event.target===this)this.style.display='none'">
+    <div
+      style="background:#fff; border-radius:20px; padding:40px; max-width:500px; width:90%; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.15);">
+      <button onclick="document.getElementById('modal-inscription').style.display='none'"
+        style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:24px; cursor:pointer; color:#999;">&times;</button>
+      <h2 style="font-family:Arial,sans-serif; font-weight:bold; font-size:24px; margin-bottom:8px; color:#000;">Créer
+        un compte</h2>
+      <p style="color:#74888F; font-size:14px; margin-bottom:24px;">Rejoignez DFormPro Digital et accédez à nos
+        formations.</p>
+      <form onsubmit="event.preventDefault();">
+        <div style="margin-bottom:16px;">
+          <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Nom
+            complet</label>
+          <input type="text" placeholder="Votre nom"
+            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
+            onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Email</label>
+          <input type="email" placeholder="votre@email.com"
+            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
+            onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <div style="margin-bottom:16px;">
+          <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Mot de
+            passe</label>
+          <input type="password" placeholder="••••••••"
+            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
+            onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <button type="submit"
+          style="width:100%; padding:14px; background-color:#67DAD5; color:#fff; border:none; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; transition:opacity 0.2s;"
+          onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Créer mon compte</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Demande de devis -->
+  <div id="modal-devis"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center; backdrop-filter: blur(4px);"
+    onclick="if(event.target===this)this.style.display='none'">
+    <div
+      style="background:#fff; border-radius:24px; padding:0; max-width:750px; width:95%; max-height: 90vh; position:relative; box-shadow:0 25px 80px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column;">
+      <!-- Header Fixed -->
+      <div
+        style="padding: 24px 40px; border-bottom: 1px solid #f3f4f6; position: relative; background: #fff; z-index: 10;">
+        <button onclick="document.getElementById('modal-devis').style.display='none'"
+          style="position:absolute; top:20px; right:20px; background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; color:#666; transition: all 0.2s;"
+          onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">&times;</button>
+        <h2 style="font-family:Arial,sans-serif; font-weight:bold; font-size:24px; color:#000; margin: 0;">Demande de
+          devis</h2>
+        <p style="color:#74888F; font-size:14px; margin-top: 4px; margin-bottom: 0;">Recevez votre devis personnalisé
+          sous <span class="font-bold text-cyanBrand">48h</span>.</p>
+      </div>
+
+      <!-- Scrollable Body -->
+      <div style="padding: 32px 40px; overflow-y: auto; flex-grow: 1; scroll-behavior: smooth;">
+        <form id="quote-form-modal" onsubmit="event.preventDefault(); handleSubmitDevis();">
+          <div class="space-y-10">
+            <!-- SECTION 1: Informations de contact -->
+            <div>
+              <div class="section-title-modal">
+                <span class="material-symbols-outlined">person</span>
+                Vos coordonnées
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="form-label">Nom *</label>
+                  <input type="text" class="form-input" placeholder="Votre nom" required>
+                </div>
+                <div>
+                  <label class="form-label">Prénom *</label>
+                  <input type="text" class="form-input" placeholder="Votre prénom" required>
+                </div>
+                <div class="md:col-span-2">
+                  <label class="form-label">Adresse e-mail *</label>
+                  <input type="email" class="form-input" placeholder="exemple@email.com" required>
+                </div>
+                <div>
+                  <label class="form-label">Téléphone *</label>
+                  <input type="tel" class="form-input" placeholder="06 00 00 00 00" required>
+                </div>
+                <div>
+                  <label class="form-label">Fonction</label>
+                  <input type="text" class="form-input" placeholder="Ex: Directeur">
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 2: Informations sur la structure -->
+            <div>
+              <div class="section-title-modal">
+                <span class="material-symbols-outlined">business</span>
+                Votre structure
+              </div>
+              <div class="space-y-6">
+                <div>
+                  <label class="form-label">Nom de la structure *</label>
+                  <input type="text" class="form-input" placeholder="Nom de l'entreprise / association" required>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="form-label">Secteur d'activité *</label>
+                    <select class="form-input" required>
+                      <option value="" disabled selected>Choisir un secteur</option>
+                      <option value="aide_domicile">Aide à domicile</option>
+                      <option value="ehpad">EHPAD / Résidence seniors</option>
+                      <option value="siad">SSIAD / HAD</option>
+                      <option value="petite_enfance">Petite enfance</option>
+                      <option value="handicap">Handicap / IME</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="form-label">Nombre d'apprenants *</label>
+                    <select class="form-input" required>
+                      <option value="" disabled selected>Sélectionner</option>
+                      <option value="1-10">1 à 10</option>
+                      <option value="11-25">11 à 25</option>
+                      <option value="26-50">26 à 50</option>
+                      <option value="51-100">51 à 100</option>
+                      <option value="100+">Plus de 100</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: Besoins en formation -->
+            <div>
+              <div class="section-title-modal">
+                <span class="material-symbols-outlined">school</span>
+                Vos besoins
+              </div>
+              <div class="space-y-6">
+                <label class="form-label">Formations souhaitées *</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="bientraitance" class="modal-checkbox">
+                    <span class="text-sm body-rounded font-medium">Bientraitance</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="alzheimer" class="modal-checkbox">
+                    <span class="text-sm body-rounded font-medium">Maladie d'Alzheimer</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="gestes_postures" class="modal-checkbox">
+                    <span class="text-sm body-rounded font-medium">Gestes et postures</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="nutrition" class="modal-checkbox">
+                    <span class="text-sm body-rounded font-medium">Nutrition</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="communication" class="modal-checkbox">
+                    <span class="text-sm body-rounded font-medium">Communication</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="secourisme" class="modal-checkbox">
+                    <span class="text-sm body-rounded font-medium">Premiers secours</span>
+                  </label>
+                </div>
+
+                <div class="pt-4">
+                  <label class="form-label">Message / Précisions</label>
+                  <textarea class="form-input" placeholder="Décrivez vos besoins spécifiques..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- CGU + Submit -->
+            <div class="space-y-6 pb-4">
+              <div class="flex items-start gap-3">
+                <input type="checkbox" required class="modal-checkbox mt-1">
+                <label class="text-xs body-rounded text-secondary-gray" style="font-weight: 400;">
+                  J'accepte que mes informations soient utilisées pour me recontacter conformément à la <a href="#"
+                    class="font-bold text-cyanBrand hover:underline">politique de confidentialité</a>.
+                </label>
+              </div>
+
+              <button type="submit"
+                class="w-full py-4 rounded-full text-white font-bold text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90 active:scale-[0.98] body-rounded"
+                style="background-color: #67DAD5;">
+                Envoyer ma demande
+              </button>
+
+              <p class="text-center text-[10px] body-rounded text-secondary-gray" style="font-weight: 400;">
+                * Champs obligatoires — Réponse garantie sous 48h ouvrées.
+              </p>
+            </div>
+          </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="success-message-modal" class="hidden text-center py-12">
+          <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-cyanBrand/10 mb-6">
+            <span class="material-symbols-outlined text-4xl text-cyanBrand">check_circle</span>
+          </div>
+          <h2 class="text-2xl font-black mb-3 secondary-title">Demande envoyée !</h2>
+          <p class="body-rounded text-secondary-gray mb-8">
+            Votre demande a bien été enregistrée. Notre équipe vous recontactera sous <span
+              class="font-bold text-cyanBrand">48h ouvrées</span>.
+          </p>
+          <button onclick="document.getElementById('modal-devis').style.display='none'"
+            class="inline-block py-3 px-10 rounded-full text-white font-bold transition-all hover:bg-opacity-90 body-rounded"
+            style="background-color: #67DAD5;">
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSubmitDevis() {
+      const formations = document.querySelectorAll('input[name="formations-modal"]:checked');
+      if (formations.length === 0) {
+        alert('Veuillez sélectionner au moins une formation.');
+        return;
+      }
+      document.getElementById('quote-form-modal').style.display = 'none';
+      document.getElementById('success-message-modal').classList.remove('hidden');
+    }
+  </script>
+  <main style="background-color:#ffffff !important;">
+
+    <!-- HERO ─────────────────────────────────── -->
+    <section class="relative overflow-hidden py-20" style="background-color:#ffffff !important;">
+      <img src="images/Angle Gauche .png" class="bg-deco" style="top:0;left:0;width:320px;opacity:0.3;" alt="">
+      <img src="images/Coté droit.png" class="bg-deco" style="top:0;right:0;width:280px;opacity:0.2;" alt="">
+      <div class="max-w-4xl mx-auto px-6 text-center relative z-10" style="background-color:transparent !important;">
+        <div class="flex justify-center mb-6 fade-up" style="background-color:transparent !important;">
+          <span class="badge" style="border-color:#67DAD5;color:#67DAD5;">
+            <span class="material-symbols-outlined" style="font-size:16px;">verified</span>
+            Avantage stratégique n°2
+          </span>
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight fade-up delay-1"
+          style="background-color:transparent !important;">
+          Sécurisation<br />
+          <span class="text-cyan">réglementaire</span>
+        </h1>
+        <p class="text-xl md:text-2xl font-bold fade-up delay-2"
+          style="color:#74888F;font-family:'Arial',sans-serif;font-style:italic;background-color:transparent !important;">
+          Former, c'est aussi se protéger.
+        </p>
+      </div>
+    </section>
+
+    <!-- INTRO ────────────────────────────────── -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
+      <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:280px;opacity:0.15;" alt="">
+      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          style="background-color:transparent !important;">
+
+          <!-- Gauche : texte -->
+          <div style="background-color:transparent !important;">
+            <div class="highlight-box mb-8 fade-up">
+              <p class="text-lg font-bold"
+                style="font-family:'Arial',sans-serif;color:#000;background-color:transparent !important;">
+                Dans le secteur des services à la personne, la formation n'est pas uniquement une démarche de montée en
+                compétences.
+              </p>
+            </div>
+            <p
+              style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:#74888F;margin-bottom:20px;background-color:transparent !important;">
+              Elle constitue un élément central de la conformité réglementaire et de la sécurisation des pratiques
+              professionnelles.
+            </p>
+            <p
+              style="font-family:'Nunito',sans-serif;font-weight:400;font-size:15px;color:#74888F;background-color:transparent !important;">
+              Les exigences de la HAS, les évaluations externes, les audits qualité et les obligations de formation
+              rendent indispensable une <strong style="color:#000;">traçabilité rigoureuse et structurée.</strong>
+            </p>
+          </div>
+
+          <!-- Droite : 3 cards synthèse -->
+          <div class="grid grid-cols-1 gap-4 fade-up delay-1" style="background-color:transparent !important;">
+            <div class="card p-5">
+              <div class="flex items-center gap-4">
+                <div class="keep-icon-cyn rounded-xl p-3" style="background-color:#67DAD5 !important;flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:28px;color:#000;">fact_check</span>
+                </div>
+                <div>
+                  <p
+                    style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">
+                    Exigences HAS</p>
+                  <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Modules
+                    conçus en cohérence avec les attendus du secteur</p>
+                </div>
+              </div>
+            </div>
+            <div class="card p-5">
+              <div class="flex items-center gap-4">
+                <div class="keep-icon-cyn rounded-xl p-3" style="background-color:#67DAD5 !important;flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:28px;color:#000;">shield</span>
+                </div>
+                <div>
+                  <p
+                    style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">
+                    Audits &amp; Contrôles</p>
+                  <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Preuves
+                    formelles immédiatement mobilisables</p>
+                </div>
+              </div>
+            </div>
+            <div class="card p-5">
+              <div class="flex items-center gap-4">
+                <div class="keep-icon-cyn rounded-xl p-3" style="background-color:#67DAD5 !important;flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:28px;color:#000;">monitoring</span>
+                </div>
+                <div>
+                  <p
+                    style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">
+                    Pilotage en temps réel</p>
+                  <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Tableau de
+                    bord direction : équipes, formations, indicateurs</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAÇABILITÉ + JUSTIFICATIFS ─────────── -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
+      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+
+        <div class="text-center mb-14" style="background-color:transparent !important;">
+          <h2 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;">
+            Ce que la plateforme fait pour vous
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" style="background-color:transparent !important;">
+
+          <!-- Traçabilité -->
+          <div class="card fade-up" style="overflow:hidden;">
+            <div class="keep-hdr-cyn flex items-center gap-3 px-6 py-5"
+              style="border-bottom:2px solid #000;background-color:#67DAD5 !important;">
+              <span class="material-symbols-outlined" style="font-size:26px;color:#000;">route</span>
+              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:19px;color:#000;">Traçabilité
+                complète des parcours</h3>
+            </div>
+            <div class="p-6 space-y-3">
+              <p
+                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;margin-bottom:16px;">
+                Chaque action de formation digitale déployée via DFORMPRO DIGITAL permet :
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="keep-icon-blk"
+                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
+                    ✓</div>
+                  <span
+                    style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'identification
+                    nominative des participants</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="keep-icon-blk"
+                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
+                    ✓</div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">Le suivi du
+                    temps de connexion</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="keep-icon-blk"
+                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
+                    ✓</div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La validation
+                    des acquis par évaluation</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="keep-icon-blk"
+                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
+                    ✓</div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La génération
+                    automatique de certificats de réalisation</span>
+                </div>
+              </div>
+              <div class="keep-cyanl mt-5 rounded-xl p-4"
+                style="border:2px solid #67DAD5;background-color:rgba(103,218,213,0.08) !important;">
+                <div class="flex items-start gap-2">
+                  <span class="material-symbols-outlined"
+                    style="font-size:18px;color:#67DAD5;flex-shrink:0;margin-top:2px;">info</span>
+                  <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">
+                    Vous disposez de preuves formelles et immédiatement mobilisables en cas d'audit ou de contrôle.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Centralisation -->
+          <div class="card fade-up delay-1" style="overflow:hidden;">
+            <div class="keep-hdr-cyn flex items-center gap-3 px-6 py-5"
+              style="border-bottom:2px solid #000;background-color:#67DAD5 !important;">
+              <span class="material-symbols-outlined" style="font-size:26px;color:#000;">folder_open</span>
+              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:19px;color:#000;">Centralisation des
+                justificatifs</h3>
+            </div>
+            <div class="p-6 space-y-3">
+              <p
+                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;margin-bottom:16px;">
+                La plateforme permet :
+              </p>
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="keep-icon-blk"
+                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
+                    ✓</div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'archivage
+                    sécurisé des certificats</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="keep-icon-blk"
+                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
+                    ✓</div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'accès aux
+                    historiques de formation</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="keep-icon-blk"
+                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
+                    ✓</div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'export des
+                    données de suivi</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="keep-icon-blk"
+                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
+                    ✓</div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La
+                    consultation des taux d'achèvement</span>
+                </div>
+              </div>
+              <div class="keep-cyanl mt-5 rounded-xl p-4"
+                style="border:2px solid #67DAD5;background-color:rgba(103,218,213,0.08) !important;">
+                <div class="flex items-start gap-2">
+                  <span class="material-symbols-outlined"
+                    style="font-size:18px;color:#67DAD5;flex-shrink:0;margin-top:2px;">check_circle</span>
+                  <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">
+                    Fini les documents dispersés ou les tableaux Excel incomplets.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ALIGNEMENT HAS — 3 COLONNES ─────────── -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
+      <img src="images/2 traits.png" class="bg-deco" style="top:10%;left:0;width:180px;opacity:0.3;" alt="">
+      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" style="background-color:transparent !important;">
+
+          <!-- Col 1 : Alignement HAS -->
+          <div class="card p-6 fade-up">
+            <div class="flex items-center gap-3 pb-4 mb-5" style="border-bottom:2px solid #67DAD5;">
+              <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">gavel</span>
+              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;">Alignement avec les
+                exigences HAS</h3>
+            </div>
+            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;margin-bottom:14px;">
+              Les modules sont conçus en cohérence avec les attendus du secteur :
+            </p>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2"><span
+                  style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span
+                  style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Prévention des
+                  risques</span></div>
+              <div class="flex items-center gap-2"><span
+                  style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span
+                  style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Bientraitance</span>
+              </div>
+              <div class="flex items-center gap-2"><span
+                  style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span
+                  style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Accompagnement des
+                  personnes vulnérables</span></div>
+              <div class="flex items-center gap-2"><span
+                  style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span
+                  style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Qualité des
+                  interventions au domicile</span></div>
+            </div>
+            <div class="keep-cyanl mt-5 rounded-xl p-3"
+              style="border:1px solid #67DAD5;background-color:rgba(103,218,213,0.08) !important;">
+              <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">
+                La formation devient un outil de démonstration de votre engagement qualité.
+              </p>
+            </div>
+          </div>
+
+          <!-- Col 2 : Sécurisation audit -->
+          <div class="card p-6 fade-up delay-1">
+            <div class="flex items-center gap-3 pb-4 mb-5" style="border-bottom:2px solid #67DAD5;">
+              <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">policy</span>
+              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;">Sécurisation en cas
+                de contrôle ou d'évaluation externe</h3>
+            </div>
+            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;margin-bottom:14px;">
+              En cas d'audit, vous pouvez démontrer :</p>
+            <div class="space-y-2 mb-5">
+              <div class="flex items-start gap-2">
+                <div class="keep-icon-blk"
+                  style="width:18px;height:18px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">
+                  ✓</div>
+                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que vos équipes
+                  ont été formées</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <div class="keep-icon-blk"
+                  style="width:18px;height:18px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">
+                  ✓</div>
+                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que les
+                  compétences ont été évaluées</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <div class="keep-icon-blk"
+                  style="width:18px;height:18px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">
+                  ✓</div>
+                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que les actions
+                  ont été tracées</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <div class="keep-icon-blk"
+                  style="width:18px;height:18px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">
+                  ✓</div>
+                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que la
+                  formation est structurée et planifiée</span>
+              </div>
+            </div>
+            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;margin-bottom:10px;">
+              La plateforme contribue à réduire les risques liés :</p>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2"><span
+                  style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span
+                  style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Aux
+                  non-conformités</span></div>
+              <div class="flex items-center gap-2"><span
+                  style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span
+                  style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Aux lacunes de
+                  traçabilité</span></div>
+              <div class="flex items-center gap-2"><span
+                  style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span
+                  style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Aux défauts de
+                  preuve</span></div>
+            </div>
+          </div>
+
+          <!-- Col 3 : Pilotage direction -->
+          <div class="card p-6 fade-up delay-2">
+            <div class="flex items-center gap-3 pb-4 mb-5" style="border-bottom:2px solid #67DAD5;">
+              <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">dashboard</span>
+              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;">Un pilotage clair
+                pour la direction</h3>
+            </div>
+            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;margin-bottom:14px;">
+              Vous visualisez :</p>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 rounded-xl p-3" style="border:1px solid #e5e7eb;">
+                <span class="material-symbols-outlined"
+                  style="font-size:18px;color:#67DAD5;flex-shrink:0;">groups</span>
+                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les équipes
+                  formées</span>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl p-3" style="border:1px solid #e5e7eb;">
+                <span class="material-symbols-outlined"
+                  style="font-size:18px;color:#67DAD5;flex-shrink:0;">school</span>
+                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les formations
+                  en cours</span>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl p-3" style="border:1px solid #e5e7eb;">
+                <span class="material-symbols-outlined"
+                  style="font-size:18px;color:#67DAD5;flex-shrink:0;">autorenew</span>
+                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les modules à
+                  renouveler</span>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl p-3" style="border:1px solid #e5e7eb;">
+                <span class="material-symbols-outlined"
+                  style="font-size:18px;color:#67DAD5;flex-shrink:0;">trending_up</span>
+                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les indicateurs
+                  d'avancement</span>
+              </div>
+            </div>
+            <div class="keep-cyanl mt-5 rounded-xl p-3"
+              style="border:1px solid #67DAD5;background-color:rgba(103,218,213,0.08) !important;">
+              <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#000;">
+                La formation devient pilotable, mesurable et stratégique.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONCLUSION ───────────────────────────── -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
+      <div class="max-w-5xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+
+        <div class="section-divider fade-up" style="background-color:transparent !important;">
+          <span></span>
+          <span class="badge" style="border-color:#67DAD5;color:#67DAD5;white-space:nowrap;">
+            <span class="material-symbols-outlined" style="font-size:16px;">reviews</span>
+            Message de conclusion
+          </span>
+          <span></span>
+        </div>
+
+        <div class="card p-8 md:p-12 fade-up delay-1">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
+            style="background-color:transparent !important;">
+            <div style="background-color:transparent !important;">
+              <p
+                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:15px;color:#74888F;margin-bottom:16px;">
+                Avec DFORMPRO DIGITAL, la formation digitale ne se limite pas à transmettre des compétences.
+              </p>
+              <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;line-height:1.5;">
+                Elle devient un outil de sécurisation réglementaire, un levier qualité et un élément structurant de
+                votre organisation.
+              </p>
+            </div>
+            <div class="space-y-3" style="background-color:transparent !important;">
+              <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
+                <div class="keep-icon-cyn"
+                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">
+                  ✓</div>
+                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Outil de
+                  sécurisation réglementaire</span>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
+                <div class="keep-icon-cyn"
+                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">
+                  ✓</div>
+                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Levier qualité
+                  démontrable</span>
+              </div>
+              <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
+                <div class="keep-icon-cyn"
+                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">
+                  ✓</div>
+                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Élément
+                  structurant de votre organisation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA ─────────────────────────────────── -->
+    <section class="px-6 py-16" style="background-color:#ffffff;">
+      <div class="max-w-5xl mx-auto rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
+        style="background-color:#67DAD5 !important;border:2px solid #000;box-shadow:8px 8px 0px 0px #000;">
+        <div class="absolute top-0 right-0 w-56 h-56 rounded-full translate-x-1/2 -translate-y-1/2"
+          style="background-color:rgba(255,255,255,0.15) !important;"></div>
+        <div class="absolute bottom-0 left-0 w-40 h-40 rounded-full -translate-x-1/3 translate-y-1/3"
+          style="background-color:rgba(255,255,255,0.15) !important;"></div>
+
+        <div class="relative z-10" style="background-color:transparent !important;">
+
+          <h2
+            style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;margin-bottom:16px;background-color:transparent !important;">
+            Sécurisez votre conformité dès maintenant
+          </h2>
+
+          <p
+            style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
+            Demandez votre devis personnalisé et découvrez comment DFORMPRO DIGITAL vous protège à chaque audit.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
+            <a href="index.html"
+              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all"
+              style="background-color:#000 !important;color:#fff;font-family:'Nunito',sans-serif;">
+              Demander un devis
+              <span class="material-symbols-outlined"
+                style="background-color:transparent !important;">arrow_forward</span>
+            </a>
+            <a href="index.html"
+              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all"
+              style="background-color:#ffffff !important;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;">
+              Voir toutes nos formations
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>
