@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-
+ 
 <html lang="fr">
-
+ 
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -14,21 +14,37 @@
   <!-- Custom Font Configuration -->
   <style data-purpose="typography">
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
-
+ 
+    /* GLOBAL BACKGROUND OVERRIDE */
+    *,
+    html,
+    body,
+    body *,
+    section,
+    header,
+    footer,
+    main,
+    nav,
+    div,
+    aside,
+    article {
+      background-color: #F2F0EF;
+    }
+ 
     body {
       font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
       font-weight: 700;
       color: #000000;
-      background-color: #FFFFFF;
+      background-color: #F2F0EF !important;
     }
-
+ 
     h1,
     .main-title {
       font-family: 'Arial', sans-serif !important;
       font-weight: bold !important;
       font-style: italic !important;
     }
-
+ 
     h2,
     h3,
     h4,
@@ -37,29 +53,62 @@
       font-weight: bold !important;
       font-style: normal !important;
     }
-
+ 
     .text-cyan-brand {
       color: #67DAD5;
     }
-
+ 
     .bg-cyan-brand {
-      background-color: #67DAD5;
+      background-color: #67DAD5 !important;
     }
-
+ 
     .border-cyan-brand {
       border-color: #67DAD5;
     }
-
+ 
     .text-secondary-gray {
       color: #74888F;
     }
-
+ 
     .shadow-neo {
       box-shadow: 6px 6px 0px 0px #67DAD5;
     }
-
+ 
     .body-rounded {
       font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+    }
+ 
+    /* Preserve colored backgrounds for specific elements */
+    .bg-cyan-brand,
+    [style*="background-color: #67DAD5"],
+    [style*="background-color:#67DAD5"],
+    .bg-cyanBrand {
+      background-color: #67DAD5 !important;
+    }
+ 
+    [style*="background-color: #0B1221"],
+    [style*="background-color:#0B1221"],
+    .bg-darkFooter,
+    footer.bg-black,
+    .bg-black {
+      background-color: #0B1221 !important;
+    }
+ 
+    [style*="background-color: rgba(0,0,0"],
+    [style*="background:rgba(0,0,0"] {
+      background-color: rgba(0,0,0,0.6) !important;
+    }
+ 
+    /* Keep modal overlays dark */
+    #modal-devis,
+    #modal-inscription {
+      background: rgba(0,0,0,0.6) !important;
+    }
+ 
+    /* Keep modal inner panels white for readability */
+    #modal-devis > div,
+    #modal-inscription > div {
+      background-color: #ffffff !important;
     }
   </style>
   <script>
@@ -79,27 +128,29 @@
       0% {
         transform: translateX(0);
       }
-
+ 
       100% {
         transform: translateX(calc(-400px * 3 - 1.5rem * 3));
       }
     }
-
+ 
     .marquee-container {
       overflow: hidden;
       position: relative;
       width: 100%;
+      background-color: #F2F0EF !important;
     }
-
+ 
     .marquee-content {
       display: flex;
       animation: scroll 40s linear infinite;
+      background-color: #F2F0EF !important;
     }
-
+ 
     .marquee-content:hover {
       animation-play-state: paused;
     }
-
+ 
     /* TARGETED DECORATIONS ADDITION */
     .bg-decorations {
       position: absolute;
@@ -110,22 +161,22 @@
       overflow: hidden;
       pointer-events: none;
       z-index: 0;
+      background-color: transparent !important;
     }
-
+ 
     .relative-section {
       position: relative;
       z-index: 1;
     }
-
+ 
     /* 1. Flat Geometric Shapes & Color Bands */
     .cyan-band-large {
       position: absolute;
       background: #5DD4D4;
       z-index: 0;
       opacity: 0.85;
-      /* Flat look, no shadow */
     }
-
+ 
     .cyan-band-top {
       top: 0;
       left: 0;
@@ -134,7 +185,7 @@
       border-radius: 0 0 400px 0;
       transform: translateX(-50px) translateY(-100px);
     }
-
+ 
     .diagonal-grey-flat {
       position: absolute;
       background: #808080;
@@ -142,7 +193,7 @@
       transform: skewY(-15deg);
       z-index: 0;
     }
-
+ 
     .grey-band-bottom {
       bottom: -100px;
       right: -50px;
@@ -150,8 +201,7 @@
       height: 300px;
       border-radius: 300px 0 0 0;
     }
-
-    /* 2. True Topographic Lines (Using SVG Data URI) */
+ 
     .topographic-svg {
       position: absolute;
       width: 800px;
@@ -161,44 +211,43 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover;
-      /* Generated simple concentric topographic rings via SVG */
       background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%234B5563' stroke-width='1' stroke-opacity='0.4'%3E%3Cpath d='M0 400C200 400 300 200 500 200C700 200 800 400 800 400'/%3E%3Cpath d='M0 450C200 450 300 250 500 250C700 250 800 450 800 450'/%3E%3Cpath d='M0 500C200 500 300 300 500 300C700 300 800 500 800 500'/%3E%3Cpath d='M0 550C200 550 300 350 500 350C700 350 800 550 800 550'/%3E%3Cpath d='M0 600C200 600 300 400 500 400C700 400 800 600 800 600'/%3E%3Cpath d='M0 650C200 650 300 450 500 450C700 450 800 650 800 650'/%3E%3Ccircle cx='600' cy='600' r='50'/%3E%3Ccircle cx='600' cy='600' r='75'/%3E%3Ccircle cx='600' cy='600' r='100'/%3E%3Ccircle cx='600' cy='600' r='125'/%3E%3Ccircle cx='600' cy='600' r='150'/%3E%3Ccircle cx='600' cy='600' r='175'/%3E%3Ccircle cx='200' cy='150' r='50'/%3E%3Ccircle cx='200' cy='150' r='80'/%3E%3Ccircle cx='200' cy='150' r='110'/%3E%3Ccircle cx='200' cy='150' r='140'/%3E%3C/g%3E%3C/svg%3E");
+      background-color: transparent !important;
     }
-
+ 
     .topographic-svg-cyan {
       opacity: 0.25;
+      background-color: transparent !important;
       background-image: url("data:image/svg+xml,%3Csvg width='800' height='800' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235DD4D4' stroke-width='1.5' stroke-opacity='0.6'%3E%3Cpath d='M0 400C200 400 300 200 500 200C700 200 800 400 800 400'/%3E%3Cpath d='M0 420C200 420 300 220 500 220C700 220 800 420 800 420'/%3E%3Cpath d='M0 440C200 440 300 240 500 240C700 240 800 440 800 440'/%3E%3Cpath d='M0 460C200 460 300 260 500 260C700 260 800 460 800 460'/%3E%3Cpath d='M400 0C400 200 600 300 600 500'/%3E%3Cpath d='M430 0C430 200 630 300 630 500'/%3E%3Cpath d='M460 0C460 200 660 300 660 500'/%3E%3C/g%3E%3C/svg%3E");
     }
-
-    /* 3. Nodal Connectors (circuit style) */
+ 
     .nodal-network {
       position: absolute;
       z-index: 1;
     }
-
+ 
     .nodal-line {
       position: absolute;
       background: #000000;
       width: 2px;
     }
-
+ 
     .nodal-line-cyan {
       background: #5DD4D4;
       width: 3px;
     }
-
+ 
     .nodal-dot {
       position: absolute;
       border-radius: 50%;
       background: #000000;
       transform: translate(-50%, -50%);
     }
-
+ 
     .nodal-dot-cyan {
       background: #5DD4D4;
     }
-
-    /* 4. Orbital / Circular Image Masquing (Flat but Thick) */
+ 
     .image-wrapper {
       position: relative;
       display: inline-flex;
@@ -206,13 +255,13 @@
       justify-content: center;
       margin: 0 auto;
       width: 100%;
+      background-color: transparent !important;
     }
-
+ 
     .circular-image {
       width: 250px;
       height: 250px;
       border-radius: 50%;
-      /* Strict flat thick borders, no spread shadow */
       border: 12px solid #808080;
       box-shadow: 0 0 0 10px #000000;
       overflow: hidden;
@@ -220,37 +269,36 @@
       z-index: 2;
       margin: 0 auto;
     }
-
+ 
     .circular-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
-    /* Minimal orbit dots, matching nodal style */
+ 
     .orbit-dot {
       position: absolute;
       border-radius: 50%;
       z-index: 3;
     }
-
+ 
     .orbit-dot-cyan {
-      background: #5DD4D4;
+      background: #5DD4D4 !important;
       width: 16px;
       height: 16px;
       top: 5%;
       left: calc(50% + 140px);
     }
-
+ 
     .orbit-dot-black {
-      background: #000000;
+      background: #000000 !important;
       bottom: 15%;
       right: calc(50% + 150px);
       width: 24px;
       height: 24px;
     }
-
-    /* Form styles for Quote Modal */
+ 
+    /* Form styles */
     .form-input {
       width: 100%;
       padding: 14px 16px;
@@ -264,18 +312,18 @@
       transition: all 0.3s ease !important;
       outline: none !important;
     }
-
+ 
     .form-input:focus {
       border-color: #67DAD5 !important;
       box-shadow: 4px 4px 0px 0px #67DAD5 !important;
     }
-
+ 
     .form-input::placeholder {
       color: #74888F !important;
       font-weight: 400 !important;
       font-family: 'Nunito', sans-serif !important;
     }
-
+ 
     select.form-input {
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2374888F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
@@ -283,14 +331,16 @@
       background-position: right 12px center;
       background-size: 20px;
       padding-right: 44px;
+      background-color: #FFFFFF !important;
     }
-
+ 
     textarea.form-input {
       border-radius: 20px !important;
       resize: vertical;
       min-height: 100px;
+      background-color: #FFFFFF !important;
     }
-
+ 
     .form-label {
       display: flex;
       align-items: center;
@@ -301,12 +351,12 @@
       color: #000;
       margin-bottom: 8px;
     }
-
+ 
     .form-label .material-symbols-outlined {
       font-size: 20px;
       color: #67DAD5;
     }
-
+ 
     .modal-checkbox {
       border-radius: 50% !important;
       -webkit-appearance: none;
@@ -314,18 +364,18 @@
       width: 20px;
       height: 20px;
       border: 2px solid #000 !important;
-      background: #fff;
+      background: #fff !important;
       cursor: pointer;
       position: relative;
       flex-shrink: 0;
       margin: 0 !important;
     }
-
+ 
     .modal-checkbox:checked {
       background-color: #67DAD5 !important;
       border-color: #67DAD5 !important;
     }
-
+ 
     .modal-checkbox:checked::after {
       content: '✓';
       position: absolute;
@@ -336,7 +386,7 @@
       font-size: 12px;
       font-weight: bold;
     }
-
+ 
     .section-title-modal {
       font-family: 'Arial', sans-serif;
       font-weight: bold;
@@ -349,12 +399,12 @@
       margin-bottom: 16px;
       border-bottom: 2px solid #67DAD5;
     }
-
+ 
     .section-title-modal .material-symbols-outlined {
       font-size: 22px;
       color: #67DAD5;
     }
-
+ 
     .formation-checkbox {
       display: flex !important;
       align-items: center !important;
@@ -364,48 +414,105 @@
       border-radius: 12px !important;
       cursor: pointer !important;
       transition: all 0.3s ease !important;
+      background-color: #FFFFFF !important;
     }
-
+ 
     .formation-checkbox:hover {
       border-color: #67DAD5 !important;
       background-color: rgba(103, 218, 213, 0.05) !important;
     }
+ 
+    /* Preserve card backgrounds as white */
+    .bg-white,
+    .testimonial-card {
+      background-color: #ffffff !important;
+    }
+ 
+    /* Footer dark background */
+    footer.bg-black {
+      background-color: #000000 !important;
+    }
+ 
+    /* CTA section cyan background */
+    .bg-cyanBrand,
+    [class*="bg-cyanBrand"] {
+      background-color: #67DAD5 !important;
+    }
+ 
+    /* Gray-50 sections stay as off-white */
+    .bg-gray-50 {
+      background-color: #F2F0EF !important;
+    }
+ 
+    /* Gray-100 image placeholders */
+    .bg-gray-100 {
+      background-color: #e8e6e5 !important;
+    }
+ 
+    /* Gray-200 image placeholders */
+    .bg-gray-200 {
+      background-color: #dedad8 !important;
+    }
+ 
+    /* QR code white bg */
+    .bg-white.rounded.p-1,
+    .bg-white.p-2.rounded-lg {
+      background-color: #ffffff !important;
+    }
+ 
+    /* Keep button backgrounds */
+    button[style*="background-color: #67DAD5"],
+    a[style*="background-color: #67DAD5"] {
+      background-color: #67DAD5 !important;
+    }
+ 
+    button[style*="background-color:#67DAD5"],
+    a[style*="background-color:#67DAD5"] {
+      background-color: #67DAD5 !important;
+    }
+ 
+    button[style*="background-color: #0B1221"],
+    a[style*="background-color: #0B1221"] {
+      background-color: #0B1221 !important;
+    }
   </style>
 </head>
-
-<body class="antialiased">
+ 
+<body class="antialiased" style="background-color: #F2F0EF !important;">
   <!-- BEGIN: MainHeader -->
-  <header class="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
+  <header class="fixed top-0 left-0 right-0 z-50 shadow-sm" style="background-color: #F2F0EF !important;">
     <nav class="w-full py-2 flex items-center relative"
-      style="justify-content: space-between; padding-left: 0; padding-right: 0;">
+      style="justify-content: space-between; padding-left: 0; padding-right: 0; background-color: #F2F0EF !important;">
       <!-- Left Container: Logo (flush left) -->
       <div class="flex items-center flex-shrink-0" data-purpose="logo-container"
-        style="margin-right: auto; padding-left: 0;">
-        <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
+        style="margin-right: auto; padding-left: 0; background-color: #F2F0EF !important;">
+        <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity" style="background-color: transparent !important;">
           <img src="images/logo.jpg" alt="DFormPro Digital" class="h-16 md:h-24 w-auto object-contain">
         </a>
       </div>
       <!-- Center Container: Navigation Links (perfectly centered) -->
       <div
-        class="hidden md:flex items-center justify-center space-x-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
-        <div class="relative group">
+        class="hidden md:flex items-center justify-center space-x-8 text-sm font-medium absolute left-1/2 -translate-x-1/2" style="background-color: transparent !important;">
+        <div class="relative group" style="background-color: transparent !important;">
           <a class="hover:text-cyanBrand transition-colors text-black font-bold flex items-center gap-1 py-4"
-            href="formations.html">
+            href="formations.html" style="background-color: transparent !important;">
             Nos formations
             <span
               class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180">expand_more</span>
           </a>
-
-          <!-- Mega Menu Dropdown - 3 cols x 2 rows (3x2) -->
+ 
+          <!-- Mega Menu Dropdown -->
           <div
-            class="absolute top-full left-1/2 -translate-x-1/2 w-[80vw] bg-white rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-50">
-            <div class="grid grid-cols-3 gap-5 mb-5">
-
+            class="absolute top-full left-1/2 -translate-x-1/2 w-[80vw] rounded-2xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-50"
+            style="background-color: #F2F0EF !important;">
+            <div class="grid grid-cols-3 gap-5 mb-5" style="background-color: transparent !important;">
+ 
               <!-- Preview Card 1 -->
               <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #e8e6e5 !important;">
+                <div class="h-36 w-full overflow-hidden relative" style="background-color: #dedad8 !important;">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400" style="background-color: transparent !important;">
                     <span class="material-symbols-outlined text-3xl">image</span>
                   </div>
                   <img src="formations_images/aide_domicile.jpg" alt=""
@@ -413,7 +520,7 @@
                     onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
                     onerror="this.remove()">
                 </div>
-                <div class="p-4">
+                <div class="p-4" style="background-color: transparent !important;">
                   <h4
                     class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
                     Le métier d'aide à domicile</h4>
@@ -421,12 +528,13 @@
                     essentiels pour bien démarrer.</p>
                 </div>
               </a>
-
+ 
               <!-- Preview Card 2 -->
               <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #e8e6e5 !important;">
+                <div class="h-36 w-full overflow-hidden relative" style="background-color: #dedad8 !important;">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400" style="background-color: transparent !important;">
                     <span class="material-symbols-outlined text-3xl">image</span>
                   </div>
                   <img src="formations_images/prevention_risques.jpg" alt=""
@@ -434,7 +542,7 @@
                     onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
                     onerror="this.remove()">
                 </div>
-                <div class="p-4">
+                <div class="p-4" style="background-color: transparent !important;">
                   <h4
                     class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
                     Prévention des risques</h4>
@@ -442,12 +550,13 @@
                     interventions au quotidien.</p>
                 </div>
               </a>
-
+ 
               <!-- Preview Card 3 -->
               <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #e8e6e5 !important;">
+                <div class="h-36 w-full overflow-hidden relative" style="background-color: #dedad8 !important;">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400" style="background-color: transparent !important;">
                     <span class="material-symbols-outlined text-3xl">image</span>
                   </div>
                   <img src="formations_images/bientraitance.jpg" alt=""
@@ -455,7 +564,7 @@
                     onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
                     onerror="this.remove()">
                 </div>
-                <div class="p-4">
+                <div class="p-4" style="background-color: transparent !important;">
                   <h4
                     class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
                     Bientraitance</h4>
@@ -463,12 +572,13 @@
                     maltraitance et bonnes pratiques.</p>
                 </div>
               </a>
-
+ 
               <!-- Preview Card 4 -->
               <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #e8e6e5 !important;">
+                <div class="h-36 w-full overflow-hidden relative" style="background-color: #dedad8 !important;">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400" style="background-color: transparent !important;">
                     <span class="material-symbols-outlined text-3xl">image</span>
                   </div>
                   <img src="formations_images/cadre_vie.jpg" alt=""
@@ -476,7 +586,7 @@
                     onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
                     onerror="this.remove()">
                 </div>
-                <div class="p-4">
+                <div class="p-4" style="background-color: transparent !important;">
                   <h4
                     class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
                     Entretien du cadre de vie</h4>
@@ -484,12 +594,13 @@
                     d'intervention.</p>
                 </div>
               </a>
-
+ 
               <!-- Preview Card 5 -->
               <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #e8e6e5 !important;">
+                <div class="h-36 w-full overflow-hidden relative" style="background-color: #dedad8 !important;">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400" style="background-color: transparent !important;">
                     <span class="material-symbols-outlined text-3xl">image</span>
                   </div>
                   <img src="formations_images/entretien_linge.jpg" alt=""
@@ -497,7 +608,7 @@
                     onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
                     onerror="this.remove()">
                 </div>
-                <div class="p-4">
+                <div class="p-4" style="background-color: transparent !important;">
                   <h4
                     class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
                     Entretien du linge</h4>
@@ -505,12 +616,13 @@
                     d'entretien textile professionnel.</p>
                 </div>
               </a>
-
+ 
               <!-- Preview Card 6 -->
               <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
+                class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #e8e6e5 !important;">
+                <div class="h-36 w-full overflow-hidden relative" style="background-color: #dedad8 !important;">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400" style="background-color: transparent !important;">
                     <span class="material-symbols-outlined text-3xl">image</span>
                   </div>
                   <img src="formations_images/repas.jpg" alt=""
@@ -518,7 +630,7 @@
                     onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
                     onerror="this.remove()">
                 </div>
-                <div class="p-4">
+                <div class="p-4" style="background-color: transparent !important;">
                   <h4
                     class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
                     Préparation des repas</h4>
@@ -526,13 +638,13 @@
                     adaptation aux besoins spécifiques.</p>
                 </div>
               </a>
-
+ 
             </div>
-
-            <!-- Footer CTA Mega Menu - aligned left -->
-            <div class="pt-4 mt-2 border-t border-gray-100 text-left">
+ 
+            <!-- Footer CTA Mega Menu -->
+            <div class="pt-4 mt-2 border-t border-gray-100 text-left" style="background-color: transparent !important;">
               <a href="formations.html" class="inline-flex items-center text-sm font-bold transition-colors group/link"
-                style="color: #67DAD5;">
+                style="color: #67DAD5; background-color: transparent !important;">
                 Voir les 8 formations de notre catalogue
                 <span
                   class="material-symbols-outlined text-base ml-1 transition-transform group-hover/link:translate-x-1">arrow_forward</span>
@@ -540,38 +652,38 @@
             </div>
           </div>
         </div>
-        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">À propos</a>
-        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">Contact</a>
+        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#" style="background-color: transparent !important;">À propos</a>
+        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#" style="background-color: transparent !important;">Contact</a>
       </div>
       <!-- Right Container: Action Buttons (flush right) -->
       <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1"
-        style="margin-left: auto; padding-right: 0;">
+        style="margin-left: auto; padding-right: 0; background-color: transparent !important;">
         <a class="text-black font-bold text-sm whitespace-nowrap cursor-pointer hover:underline"
-          style="text-decoration: none;" href="connexion.html">
+          style="text-decoration: none; background-color: transparent !important;" href="connexion.html">
           Se connecter
         </a>
         <button onclick="document.getElementById('modal-inscription').style.display='flex'"
-          class="hidden md:block text-black font-bold text-sm whitespace-nowrap bg-transparent border-none cursor-pointer px-4 md:px-6 py-2 rounded-full hover:bg-gray-50 transition-all"
-          style="color: #67DAD5; border: 2px solid #67DAD5; background-color: #fff;">
+          class="hidden md:block text-black font-bold text-sm whitespace-nowrap border-none cursor-pointer px-4 md:px-6 py-2 rounded-full transition-all"
+          style="color: #67DAD5; border: 2px solid #67DAD5; background-color: #F2F0EF !important;">
           Créer un compte
         </button>
         <button onclick="document.getElementById('modal-devis').style.display='flex'"
           class="px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2 cursor-pointer"
-          style="color: #fff; border-color: #67DAD5; background-color: #67DAD5;">
+          style="color: #fff; border-color: #67DAD5; background-color: #67DAD5 !important;">
           Demande de devis
         </button>
       </div>
     </nav>
   </header>
-
+ 
   <!-- Modal: Créer un compte -->
   <div id="modal-inscription"
-    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5) !important; z-index:9999; align-items:center; justify-content:center;"
     onclick="if(event.target===this)this.style.display='none'">
     <div
-      style="background:#fff; border-radius:20px; padding:40px; max-width:500px; width:90%; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.15);">
+      style="background:#fff !important; border-radius:20px; padding:40px; max-width:500px; width:90%; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.15);">
       <button onclick="document.getElementById('modal-inscription').style.display='none'"
-        style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:24px; cursor:pointer; color:#999;">&times;</button>
+        style="position:absolute; top:16px; right:16px; background:none !important; border:none; font-size:24px; cursor:pointer; color:#999;">&times;</button>
       <h2 style="font-family:Arial,sans-serif; font-weight:bold; font-size:24px; margin-bottom:8px; color:#000;">Créer
         un compte</h2>
       <p style="color:#74888F; font-size:14px; margin-bottom:24px;">Rejoignez DFormPro Digital et accédez à nos
@@ -581,94 +693,94 @@
           <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Nom
             complet</label>
           <input type="text" placeholder="Votre nom"
-            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
+            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s; background-color: #ffffff !important;"
             onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
         </div>
         <div style="margin-bottom:16px;">
           <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Email</label>
           <input type="email" placeholder="votre@email.com"
-            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
+            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s; background-color: #ffffff !important;"
             onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
         </div>
         <div style="margin-bottom:16px;">
           <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Mot de
             passe</label>
           <input type="password" placeholder="••••••••"
-            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
+            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s; background-color: #ffffff !important;"
             onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
         </div>
         <button type="submit"
-          style="width:100%; padding:14px; background-color:#67DAD5; color:#fff; border:none; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; transition:opacity 0.2s;"
+          style="width:100%; padding:14px; background-color:#67DAD5 !important; color:#fff; border:none; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; transition:opacity 0.2s;"
           onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Créer mon compte</button>
       </form>
     </div>
   </div>
-
+ 
   <!-- Modal: Demande de devis -->
   <div id="modal-devis"
-    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center; backdrop-filter: blur(4px);"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6) !important; z-index:9999; align-items:center; justify-content:center; backdrop-filter: blur(4px);"
     onclick="if(event.target===this)this.style.display='none'">
     <div
-      style="background:#fff; border-radius:24px; padding:0; max-width:750px; width:95%; max-height: 90vh; position:relative; box-shadow:0 25px 80px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column;">
+      style="background:#fff !important; border-radius:24px; padding:0; max-width:750px; width:95%; max-height: 90vh; position:relative; box-shadow:0 25px 80px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column;">
       <!-- Header Fixed -->
       <div
-        style="padding: 24px 40px; border-bottom: 1px solid #f3f4f6; position: relative; background: #fff; z-index: 10;">
+        style="padding: 24px 40px; border-bottom: 1px solid #f3f4f6; position: relative; background: #fff !important; z-index: 10;">
         <button onclick="document.getElementById('modal-devis').style.display='none'"
-          style="position:absolute; top:20px; right:20px; background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; color:#666; transition: all 0.2s;"
+          style="position:absolute; top:20px; right:20px; background:#f3f4f6 !important; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; color:#666; transition: all 0.2s;"
           onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">&times;</button>
         <h2 style="font-family:Arial,sans-serif; font-weight:bold; font-size:24px; color:#000; margin: 0;">Demande de
           devis</h2>
         <p style="color:#74888F; font-size:14px; margin-top: 4px; margin-bottom: 0;">Recevez votre devis personnalisé
           sous <span class="font-bold text-cyanBrand">48h</span>.</p>
       </div>
-
+ 
       <!-- Scrollable Body -->
-      <div style="padding: 32px 40px; overflow-y: auto; flex-grow: 1; scroll-behavior: smooth;">
+      <div style="padding: 32px 40px; overflow-y: auto; flex-grow: 1; scroll-behavior: smooth; background-color: #ffffff !important;">
         <form id="quote-form-modal" onsubmit="event.preventDefault(); handleSubmitDevis();">
           <div class="space-y-10">
             <!-- SECTION 1: Informations de contact -->
-            <div>
+            <div style="background-color: transparent !important;">
               <div class="section-title-modal">
                 <span class="material-symbols-outlined">person</span>
                 Vos coordonnées
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6" style="background-color: transparent !important;">
+                <div style="background-color: transparent !important;">
                   <label class="form-label">Nom *</label>
                   <input type="text" class="form-input" placeholder="Votre nom" required>
                 </div>
-                <div>
+                <div style="background-color: transparent !important;">
                   <label class="form-label">Prénom *</label>
                   <input type="text" class="form-input" placeholder="Votre prénom" required>
                 </div>
-                <div class="md:col-span-2">
+                <div class="md:col-span-2" style="background-color: transparent !important;">
                   <label class="form-label">Adresse e-mail *</label>
                   <input type="email" class="form-input" placeholder="exemple@email.com" required>
                 </div>
-                <div>
+                <div style="background-color: transparent !important;">
                   <label class="form-label">Téléphone *</label>
                   <input type="tel" class="form-input" placeholder="06 00 00 00 00" required>
                 </div>
-                <div>
+                <div style="background-color: transparent !important;">
                   <label class="form-label">Fonction</label>
                   <input type="text" class="form-input" placeholder="Ex: Directeur">
                 </div>
               </div>
             </div>
-
+ 
             <!-- SECTION 2: Informations sur la structure -->
-            <div>
+            <div style="background-color: transparent !important;">
               <div class="section-title-modal">
                 <span class="material-symbols-outlined">business</span>
                 Votre structure
               </div>
-              <div class="space-y-6">
-                <div>
+              <div class="space-y-6" style="background-color: transparent !important;">
+                <div style="background-color: transparent !important;">
                   <label class="form-label">Nom de la structure *</label>
                   <input type="text" class="form-input" placeholder="Nom de l'entreprise / association" required>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" style="background-color: transparent !important;">
+                  <div style="background-color: transparent !important;">
                     <label class="form-label">Secteur d'activité *</label>
                     <select class="form-input" required>
                       <option value="" disabled selected>Choisir un secteur</option>
@@ -680,7 +792,7 @@
                       <option value="autre">Autre</option>
                     </select>
                   </div>
-                  <div>
+                  <div style="background-color: transparent !important;">
                     <label class="form-label">Nombre d'apprenants *</label>
                     <select class="form-input" required>
                       <option value="" disabled selected>Sélectionner</option>
@@ -694,16 +806,16 @@
                 </div>
               </div>
             </div>
-
+ 
             <!-- SECTION 3: Besoins en formation -->
-            <div>
+            <div style="background-color: transparent !important;">
               <div class="section-title-modal">
                 <span class="material-symbols-outlined">school</span>
                 Vos besoins
               </div>
-              <div class="space-y-6">
+              <div class="space-y-6" style="background-color: transparent !important;">
                 <label class="form-label">Formations souhaitées *</label>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" style="background-color: transparent !important;">
                   <label class="formation-checkbox">
                     <input type="checkbox" name="formations-modal" value="bientraitance" class="modal-checkbox">
                     <span class="text-sm body-rounded font-medium">Bientraitance</span>
@@ -729,40 +841,40 @@
                     <span class="text-sm body-rounded font-medium">Premiers secours</span>
                   </label>
                 </div>
-
-                <div class="pt-4">
+ 
+                <div class="pt-4" style="background-color: transparent !important;">
                   <label class="form-label">Message / Précisions</label>
                   <textarea class="form-input" placeholder="Décrivez vos besoins spécifiques..."></textarea>
                 </div>
               </div>
             </div>
-
+ 
             <!-- CGU + Submit -->
-            <div class="space-y-6 pb-4">
-              <div class="flex items-start gap-3">
+            <div class="space-y-6 pb-4" style="background-color: transparent !important;">
+              <div class="flex items-start gap-3" style="background-color: transparent !important;">
                 <input type="checkbox" required class="modal-checkbox mt-1">
-                <label class="text-xs body-rounded text-secondary-gray" style="font-weight: 400;">
+                <label class="text-xs body-rounded text-secondary-gray" style="font-weight: 400; background-color: transparent !important;">
                   J'accepte que mes informations soient utilisées pour me recontacter conformément à la <a href="#"
                     class="font-bold text-cyanBrand hover:underline">politique de confidentialité</a>.
                 </label>
               </div>
-
+ 
               <button type="submit"
                 class="w-full py-4 rounded-full text-white font-bold text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90 active:scale-[0.98] body-rounded"
-                style="background-color: #67DAD5;">
+                style="background-color: #67DAD5 !important;">
                 Envoyer ma demande
               </button>
-
-              <p class="text-center text-[10px] body-rounded text-secondary-gray" style="font-weight: 400;">
+ 
+              <p class="text-center text-[10px] body-rounded text-secondary-gray" style="font-weight: 400; background-color: transparent !important;">
                 * Champs obligatoires — Réponse garantie sous 48h ouvrées.
               </p>
             </div>
           </div>
         </form>
-
+ 
         <!-- Success Message -->
-        <div id="success-message-modal" class="hidden text-center py-12">
-          <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-cyanBrand/10 mb-6">
+        <div id="success-message-modal" class="hidden text-center py-12" style="background-color: transparent !important;">
+          <div class="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6" style="background-color: rgba(103,218,213,0.1) !important;">
             <span class="material-symbols-outlined text-4xl text-cyanBrand">check_circle</span>
           </div>
           <h2 class="text-2xl font-black mb-3 secondary-title">Demande envoyée !</h2>
@@ -772,14 +884,14 @@
           </p>
           <button onclick="document.getElementById('modal-devis').style.display='none'"
             class="inline-block py-3 px-10 rounded-full text-white font-bold transition-all hover:bg-opacity-90 body-rounded"
-            style="background-color: #67DAD5;">
+            style="background-color: #67DAD5 !important;">
             Fermer
           </button>
         </div>
       </div>
     </div>
   </div>
-
+ 
   <script>
     function handleSubmitDevis() {
       const formations = document.querySelectorAll('input[name="formations-modal"]:checked');
@@ -792,20 +904,20 @@
     }
   </script>
   <!-- END: MainHeader -->
-  <main class="pt-24">
+  <main class="pt-24" style="background-color: #F2F0EF !important;">
     <!-- BEGIN: HeroSection -->
-    <section class="relative relative-section overflow-hidden w-full">
+    <section class="relative relative-section overflow-hidden w-full" style="background-color: #F2F0EF !important;">
       <div class="bg-decorations">
         <img src="images/Angle Gauche .png" alt=""
           style="position:absolute; top:0; left:0; width:350px; opacity:0.5; pointer-events:none; z-index:0;">
         <img src="images/Coté droit.png" alt=""
           style="position:absolute; top:0; right:0; width:300px; opacity:0.4; pointer-events:none; z-index:0;">
       </div>
-      <div class="py-20 px-6 text-center max-w-4xl mx-auto relative z-10">
+      <div class="py-20 px-6 text-center max-w-4xl mx-auto relative z-10" style="background-color: transparent !important;">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 leading-tight main-title">
           Former autrement pour<br />mieux accompagner.
         </h1>
-        <div class="space-y-4 text-gray-600 body-rounded text-lg text-secondary-gray" style="color: #74888F;">
+        <div class="space-y-4 text-gray-600 body-rounded text-lg text-secondary-gray" style="color: #74888F; background-color: transparent !important;">
           <p class="text-secondary-gray" style="color: #74888F;">Chaque jour, vos équipes interviennent au Domicile des
             personnes les plus fragiles.</p>
           <p class="text-secondary-gray" style="color: #74888F;">Chaque jour, vous devez concilier qualité de service,
@@ -817,44 +929,44 @@
     </section>
     <!-- END: HeroSection -->
     <!-- BEGIN: ProblemSection -->
-    <section class="py-20 bg-gray-50 px-6 relative relative-section overflow-hidden">
+    <section class="py-20 px-6 relative relative-section overflow-hidden" style="background-color: #F2F0EF !important;">
       <div class="bg-decorations">
         <img src="images/grand coté gauche.png" alt=""
           style="position:absolute; top:0; left:0; width:350px; opacity:0.4; pointer-events:none; z-index:0;">
         <img src="images/pied de page.png" alt=""
           style="position:absolute; bottom:0; right:0; width:450px; opacity:0.35; pointer-events:none; z-index:0;">
       </div>
-      <div class="container mx-auto max-w-6xl text-center relative z-10">
+      <div class="container mx-auto max-w-6xl text-center relative z-10" style="background-color: transparent !important;">
         <h2 class="text-3xl md:text-4xl font-black mb-6 secondary-title">Vous gérez plus qu'un planning. Vous portez une
           mission.</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 text-left" style="background-color: transparent !important;">
           <!-- Left Column -->
-          <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-neo border-2 border-black h-full">
+          <div class="p-6 lg:p-8 rounded-2xl shadow-neo border-2 border-black h-full" style="background-color: #ffffff !important;">
             <h3
               class="text-lg lg:text-xl xl:text-2xl font-bold mb-6 text-black secondary-title border-b-2 border-cyanBrand pb-3 flex items-center xl:whitespace-nowrap"
               style="border-color: #67DAD5;">Dans le secteur des services à la personne&nbsp;:</h3>
             <ul class="space-y-4 text-secondary-gray body-rounded font-medium text-lg" style="color: #74888F;">
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
                   style="color: #67DAD5;">event_busy</span>
                 <span>Les plannings sont tendus.</span>
               </li>
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
                   style="color: #67DAD5;">directions_car</span>
                 <span>Les équipes sont mobiles.</span>
               </li>
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
                   style="color: #67DAD5;">fact_check</span>
                 <span>Les exigences HAS sont renforcées.</span>
               </li>
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
                   style="color: #67DAD5;">timer</span>
                 <span>Les déplacements sont coûteux et chronophages.</span>
               </li>
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
                   style="color: #67DAD5;">energy_savings_leaf</span>
                 <span>Les engagements RSE deviennent stratégiques.</span>
@@ -862,24 +974,24 @@
             </ul>
           </div>
           <!-- Right Column -->
-          <div class="bg-white p-6 lg:p-8 rounded-2xl shadow-neo border-2 border-black h-full">
+          <div class="p-6 lg:p-8 rounded-2xl shadow-neo border-2 border-black h-full" style="background-color: #ffffff !important;">
             <h3
               class="text-lg lg:text-xl xl:text-2xl font-bold mb-6 text-black secondary-title border-b-2 border-black pb-3 flex items-center xl:whitespace-nowrap">
               Former en présentiel, c'est&nbsp;:</h3>
             <ul class="space-y-4 text-secondary-gray body-rounded font-medium text-lg" style="color: #74888F;">
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-black shrink-0 mt-0.5">warning</span>
                 <span>désorganiser les tournées,</span>
               </li>
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-black shrink-0 mt-0.5">route</span>
                 <span>multiplier les kilomètres,</span>
               </li>
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-black shrink-0 mt-0.5">person_off</span>
                 <span>immobiliser les intervenants,</span>
               </li>
-              <li class="flex items-start gap-4">
+              <li class="flex items-start gap-4" style="background-color: transparent !important;">
                 <span class="material-symbols-outlined text-black shrink-0 mt-0.5">payments</span>
                 <span>générer des coûts indirects.</span>
               </li>
@@ -892,7 +1004,7 @@
     </section>
     <!-- END: ProblemSection -->
     <!-- BEGIN: SolutionSection -->
-    <section class="py-24 relative overflow-hidden bg-white relative-section">
+    <section class="py-24 relative overflow-hidden relative-section" style="background-color: #F2F0EF !important;">
       <div class="bg-decorations z-0">
         <img src="images/grand coté gauche.png" alt=""
           style="position:absolute; top:0; left:0; width:350px; opacity:0.4; pointer-events:none; z-index:0;">
@@ -901,10 +1013,10 @@
         <img src="images/bas droit grand.png" alt=""
           style="position:absolute; bottom:0; right:0; width:400px; opacity:0.3; pointer-events:none; z-index:0;">
       </div>
-
-      <div class="container mx-auto px-6 max-w-6xl relative z-10 w-full">
+ 
+      <div class="container mx-auto px-6 max-w-6xl relative z-10 w-full" style="background-color: transparent !important;">
         <!-- Top Center Header -->
-        <div class="text-center mb-16 md:mb-20">
+        <div class="text-center mb-16 md:mb-20" style="background-color: transparent !important;">
           <h2 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-4 secondary-title">
             La plateforme de formation digitale dédiée aux <span class="text-cyanBrand" style="color: #67DAD5;">services
               à la personne</span>
@@ -913,59 +1025,59 @@
             une solution pensée pour l'ensemble de l'écosystème des services à la personne
           </p>
         </div>
-
-        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+ 
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20" style="background-color: transparent !important;">
           <!-- Left Column: Content -->
-          <div class="lg:w-1/2 flex flex-col justify-center space-y-10">
+          <div class="lg:w-1/2 flex flex-col justify-center space-y-10" style="background-color: transparent !important;">
             <p class="text-lg text-secondary-gray body-rounded font-medium leading-relaxed" style="color: #74888F;">
               <span class="text-cyanBrand font-bold uppercase" style="color: #67DAD5;">DFORMPRO DIGITAL</span>
               accompagne toutes les structures d'aide à domicile, indépendamment de leur organisation ou de leur modèle.
             </p>
-
-            <div>
+ 
+            <div style="background-color: transparent !important;">
               <h3 class="font-bold text-black text-lg md:text-xl mb-4 secondary-title">Notre expertise repose sur une
                 compréhension fine des enjeux :</h3>
               <ul class="space-y-3 text-cyanBrand font-medium body-rounded text-lg" style="color: #67DAD5;">
-                <li class="flex items-start gap-2">
+                <li class="flex items-start gap-2" style="background-color: transparent !important;">
                   <span class="mr-1">-</span> Qualité de service
                 </li>
-                <li class="flex items-start gap-2">
+                <li class="flex items-start gap-2" style="background-color: transparent !important;">
                   <span class="mr-1">-</span> Exigences réglementaires
                 </li>
-                <li class="flex items-start gap-2">
+                <li class="flex items-start gap-2" style="background-color: transparent !important;">
                   <span class="mr-1">-</span> Contraintes de planning
                 </li>
-                <li class="flex items-start gap-2">
+                <li class="flex items-start gap-2" style="background-color: transparent !important;">
                   <span class="mr-1">-</span> Engagement RSE
                 </li>
-                <li class="flex items-start gap-2">
+                <li class="flex items-start gap-2" style="background-color: transparent !important;">
                   <span class="mr-1">-</span> Professionnalisation des équipes
                 </li>
               </ul>
             </div>
-
-            <div>
+ 
+            <div style="background-color: transparent !important;">
               <h3 class="font-bold text-black text-lg md:text-xl mb-4 secondary-title">Nos formations digitales sont :
               </h3>
               <ul class="space-y-3 font-medium body-rounded text-lg text-secondary-gray" style="color: #74888F;">
-                <li class="flex items-start gap-3">
+                <li class="flex items-start gap-3" style="background-color: transparent !important;">
                   <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
                   <span><span class="text-cyanBrand" style="color: #67DAD5;">Conformes</span> aux exigences HAS</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li class="flex items-start gap-3" style="background-color: transparent !important;">
                   <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
                   <span><span class="text-cyanBrand" style="color: #67DAD5;">Accessibles</span> sur smartphone</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li class="flex items-start gap-3" style="background-color: transparent !important;">
                   <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
                   <span>Basées sur des <span class="text-cyanBrand" style="color: #67DAD5;">situations
                       réelles</span></span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li class="flex items-start gap-3" style="background-color: transparent !important;">
                   <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
                   <span>Immédiatement applicables au domicile</span>
                 </li>
-                <li class="flex items-start gap-3">
+                <li class="flex items-start gap-3" style="background-color: transparent !important;">
                   <span class="text-cyanBrand" style="color: #67DAD5;">✓</span>
                   <span><span class="text-cyanBrand" style="color: #67DAD5;">Déployables</span> sans perturber
                     l'organisation terrain</span>
@@ -973,22 +1085,19 @@
               </ul>
             </div>
           </div>
-
+ 
           <!-- Right Column: Image Presentation -->
-          <div class="lg:w-1/2 flex justify-center lg:justify-end relative">
+          <div class="lg:w-1/2 flex justify-center lg:justify-end relative" style="background-color: transparent !important;">
             <div class="image-wrapper py-10 w-full max-w-[450px] mx-auto">
-              <div class="relative z-10 w-full" style="max-width: 500px;">
-                <!-- Rounded rectangle image container -->
-                <div class="rounded-2xl overflow-hidden bg-white"
-                  style="border: 4px solid #808080; box-shadow: 12px 12px 0px 0px #67DAD5;">
+              <div class="relative z-10 w-full" style="max-width: 500px; background-color: transparent !important;">
+                <div class="rounded-2xl overflow-hidden"
+                  style="border: 4px solid #808080; box-shadow: 12px 12px 0px 0px #67DAD5; background-color: #F2F0EF !important;">
                   <img src="imageDForm.png" alt="DFormPro Digital sur tous vos appareils"
                     class="w-full h-auto object-cover block" />
                 </div>
               </div>
-
-              <!-- Subtle network details matching theme -->
-              <div class="orbit-dot orbit-dot-cyan" style="top: 0; left: 80%;"></div>
-              <div class="orbit-dot orbit-dot-black" style="bottom: 5%; right: 80%;"></div>
+              <div class="orbit-dot orbit-dot-cyan" style="top: 0; left: 80%; background-color: #5DD4D4 !important;"></div>
+              <div class="orbit-dot orbit-dot-black" style="bottom: 5%; right: 80%; background-color: #000000 !important;"></div>
             </div>
           </div>
         </div>
@@ -996,7 +1105,7 @@
     </section>
     <!-- END: SolutionSection -->
     <!-- BEGIN: StrategicAdvantagesGrid -->
-    <section class="relative overflow-hidden py-16 relative-section">
+    <section class="relative overflow-hidden py-16 relative-section" style="background-color: #F2F0EF !important;">
       <div class="bg-decorations z-0">
         <img src="images/grand coté gauche.png" alt=""
           style="position:absolute; top:0; left:0; width:500px; opacity:0.4; pointer-events:none; z-index:0;">
@@ -1005,20 +1114,20 @@
         <img src="images/pied de page Grand.png" alt=""
           style="position:absolute; bottom:0; right:0; width:450px; opacity:0.3; pointer-events:none; z-index:0;">
       </div>
-      <div class="container mx-auto max-w-6xl relative z-10">
-        <div class="text-center mb-16">
+      <div class="container mx-auto max-w-6xl relative z-10" style="background-color: transparent !important;">
+        <div class="text-center mb-16" style="background-color: transparent !important;">
           <h2 class="text-4xl font-black mb-4 secondary-title">Des avantages stratégiques concrets</h2>
           <p class="text-gray-500 body-rounded text-secondary-gray" style="color: #74888F;">Une approche optimisée pour
             transformer vos contraintes en leviers de croissance.</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <!-- Card 1 - No hover animation -->
-          <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm">
-            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" style="background-color: transparent !important;">
+          <!-- Card 1 -->
+          <div class="flex flex-col h-full rounded-2xl overflow-hidden shadow-sm" style="background-color: #ffffff !important;">
+            <div class="aspect-video w-full overflow-hidden" style="background-color: #dedad8 !important;">
               <img alt="Planning" class="w-full h-full object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBka07X7tr4iFn1GJ-AmzeiPJA5cxY4_fURhCUGnWEWgXVsc8AxlsqFKyYh3ijIPW8uOeN0TnqkxqYbG_9RBnc9w05Y5zxQ5nme9rHqOzBycP2ksUuvLIrqP0XdLK3R-ZKWfyz5Lmcm2GAmOCioadCZw2aEfKaiuGhlKvZuUjIRUIgjuZ2juTSFw3nCLzix6pQJmwXulyIkL6na7O5h0dz5kJKpG6CmDcQ-35aAR56XBWyHffh4EWNdTRUKSiW9y1lVl0bfhdUpS30" />
             </div>
-            <div class="p-6 flex flex-col flex-grow">
+            <div class="p-6 flex flex-col flex-grow" style="background-color: transparent !important;">
               <h3 class="text-2xl font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Réduction de
                 l'impact planning</h3>
               <p class="text-gray-600 text-sm mb-6 flex-grow"
@@ -1027,18 +1136,18 @@
                 Intégration fluide. La formation s'adapte au terrain. Le terrain ne s'adapte plus à la formation.
               </p>
               <a class="inline-flex items-center font-bold text-base transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
-                href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+                href="#" style="background-color: #67DAD5 !important; color: #FFFFFF;">
                 En savoir plus <span class="ml-2 text-xl">→</span>
               </a>
             </div>
           </div>
-          <!-- Card 2 - No hover animation -->
-          <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm">
-            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+          <!-- Card 2 -->
+          <div class="flex flex-col h-full rounded-2xl overflow-hidden shadow-sm" style="background-color: #ffffff !important;">
+            <div class="aspect-video w-full overflow-hidden" style="background-color: #dedad8 !important;">
               <img alt="Réglementaire" class="w-full h-full object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9mXriKTrkrq6h0vedv6j1dUpR3kOPUkO5F3vFnlxGbJiUKQ0tuhPwWbo72J6OD1lEFy5UcfrlChTsr91RSq_y3JhMXKEKjDPK9atFx0B3rCDQgsBcjA19QYTAPLrN0GJ36KuoUP2-BGazD04u6il83aPe4yii9avy4EYw96ovzcvCWmlwEnNEEdEw_UgBQZqK9mjn_lx4oOIcOgT_-YpxHU5s_aOxihfGIGrStJAmehq-5Gkpb8qRwOFOlteb-McazOndHiOH85g" />
             </div>
-            <div class="p-6 flex flex-col flex-grow">
+            <div class="p-6 flex flex-col flex-grow" style="background-color: transparent !important;">
               <h3 class="text-2xl font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Sécurisation
                 réglementaire</h3>
               <p class="text-gray-600 text-sm mb-6 flex-grow"
@@ -1047,18 +1156,18 @@
                 conformité de chaque agent en temps réel.
               </p>
               <a class="inline-flex items-center font-bold text-base transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
-                href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+                href="#" style="background-color: #67DAD5 !important; color: #FFFFFF;">
                 En savoir plus <span class="ml-2 text-xl">→</span>
               </a>
             </div>
           </div>
-          <!-- Card 3 - No hover animation -->
-          <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm">
-            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+          <!-- Card 3 -->
+          <div class="flex flex-col h-full rounded-2xl overflow-hidden shadow-sm" style="background-color: #ffffff !important;">
+            <div class="aspect-video w-full overflow-hidden" style="background-color: #dedad8 !important;">
               <img alt="Budget" class="w-full h-full object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWePKrt8xHxZoyj12SWob-6eYnoQids18Th5U031T2YwtQRBvZPo646kRviN8GTngtnyJr67G1L8HALooqlhGOwieWhJ8nfMOfCo6rsWx0hC5prfcshVkYbrZSYUJvGKupqi1TI6qXYk0m2UsE_TrvP3WsC-q7Hmr02qHNkyHvlq5tsWF8CjOUrlT1yg7xuTCKxsqxOWnjpxAC9vodLbkhA1BZx0PhLYZk-UZGP0Xd_TKiivx5YoqGgUTPoWvygplqYzjcKqV6cXo" />
             </div>
-            <div class="p-6 flex flex-col flex-grow">
+            <div class="p-6 flex flex-col flex-grow" style="background-color: transparent !important;">
               <h3 class="text-2xl font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Optimisation
                 budgétaire</h3>
               <p class="text-gray-600 text-sm mb-6 flex-grow"
@@ -1067,18 +1176,18 @@
                 Transformez vos coûts fixes en leviers de performance.
               </p>
               <a class="inline-flex items-center font-bold text-base transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
-                href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+                href="#" style="background-color: #67DAD5 !important; color: #FFFFFF;">
                 En savoir plus <span class="ml-2 text-xl">→</span>
               </a>
             </div>
           </div>
-          <!-- Card 4 - No hover animation -->
-          <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm">
-            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+          <!-- Card 4 -->
+          <div class="flex flex-col h-full rounded-2xl overflow-hidden shadow-sm" style="background-color: #ffffff !important;">
+            <div class="aspect-video w-full overflow-hidden" style="background-color: #dedad8 !important;">
               <img alt="RSE" class="w-full h-full object-cover"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsDwXCv_Hn7_iGQ-8GPEqNErdebj-373B58Z1Rj5D3k-tj2WJSkAgIYjyvmVgrl9KWD526LY6MK48Bi91TZzUl9bVeViO6zxsr7i28fo0B4r2j4_ThTPiGZu6b0cyZv9UUJP5poUKYeFsnbdDWCwGKdXF57ho6Ie4EXjGXEvnnDMfUAzCIxsPfLwKTN1OXs5i_nxNJy-UvAKrfeMTVa-BXtmZ-HpopkeVAqNwadANuDi4p0Z0q2CWIUu4wO-vfH-VzdHafGtjPouM" />
             </div>
-            <div class="p-6 flex flex-col flex-grow">
+            <div class="p-6 flex flex-col flex-grow" style="background-color: transparent !important;">
               <h3 class="text-2xl font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Engagement RSE
                 et décarbonation</h3>
               <p class="text-gray-600 text-sm mb-6 flex-grow"
@@ -1087,7 +1196,7 @@
                 Former en digital, c'est intégrer la montée en compétences dans une démarche responsable.
               </p>
               <a class="inline-flex items-center font-bold text-base transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
-                href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+                href="#" style="background-color: #67DAD5 !important; color: #FFFFFF;">
                 En savoir plus <span class="ml-2 text-xl">→</span>
               </a>
             </div>
@@ -1097,7 +1206,7 @@
     </section>
     <!-- END: StrategicAdvantagesGrid -->
     <!-- BEGIN: StepsSection -->
-    <section class="py-24 relative overflow-hidden text-center relative-section">
+    <section class="py-24 relative overflow-hidden text-center relative-section" style="background-color: #F2F0EF !important;">
       <div class="bg-decorations z-0">
         <img src="images/Angle Gauche .png" alt=""
           style="position:absolute; top:0; left:0; width:300px; opacity:0.35; pointer-events:none; z-index:0;">
@@ -1106,157 +1215,145 @@
         <img src="images/coté droite.png" alt=""
           style="position:absolute; top:0; right:0; width:280px; opacity:0.35; pointer-events:none; z-index:0;">
       </div>
-      <div class="container mx-auto px-6 max-w-6xl relative z-10">
-        <div class="text-center mb-24 flex flex-col items-center">
+      <div class="container mx-auto px-6 max-w-6xl relative z-10" style="background-color: transparent !important;">
+        <div class="text-center mb-24 flex flex-col items-center" style="background-color: transparent !important;">
           <h2 class="text-3xl md:text-4xl font-black mb-4 secondary-title" style="color: #000;">Comment ça fonctionne ?
           </h2>
           <p class="text-xl md:text-2xl font-bold text-secondary-gray secondary-title" style="color: #74888F;">
             Une mise en oeuvre simple, rapide et sécurisée
           </p>
         </div>
-
+ 
         <!-- Timeline Container -->
-        <div class="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between mb-16 px-2">
-
+        <div class="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row items-start justify-between mb-16 px-2" style="background-color: transparent !important;">
+ 
           <!-- Continuous Horizontal Line (Desktop) -->
-          <div class="hidden md:block absolute w-[75%] h-px bg-gray-300 left-[12.5%]" style="top: 107px; z-index: 0;">
+          <div class="hidden md:block absolute w-[75%] h-px bg-gray-300 left-[12.5%]" style="top: 107px; z-index: 0; background-color: #d1d5db !important;">
           </div>
-
+ 
           <!-- Item 1 -->
-          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0">
-            <!-- Card -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0" style="background-color: transparent !important;">
             <div
-              class="bg-white px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50">
+              class="px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50"
+              style="background-color: #ffffff !important;">
               1
             </div>
-            <!-- Vertical Line & Dot Container -->
-            <div class="hidden md:flex flex-col items-center w-full">
-              <div class="w-px h-6 bg-gray-400"></div>
-              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            <div class="hidden md:flex flex-col items-center w-full" style="background-color: transparent !important;">
+              <div class="w-px h-6 bg-gray-400" style="background-color: #9ca3af !important;"></div>
+              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]" style="background-color: #000000 !important;"></div>
             </div>
-            <!-- Mobile Connector -->
-            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
-            <!-- Text Below -->
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2" style="background-color: #e5e7eb !important;"></div>
             <div
               class="md:mt-8 font-bold text-lg md:text-xl text-black px-4 max-w-[280px] w-full mx-auto secondary-title"
               style="color: #000;">
               Créez votre compte
             </div>
           </div>
-
+ 
           <!-- Item 2 -->
-          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0">
-            <!-- Card -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0" style="background-color: transparent !important;">
             <div
-              class="bg-white px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50">
+              class="px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50"
+              style="background-color: #ffffff !important;">
               2
             </div>
-            <!-- Vertical Line & Dot Container -->
-            <div class="hidden md:flex flex-col items-center w-full">
-              <div class="w-px h-6 bg-gray-400"></div>
-              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            <div class="hidden md:flex flex-col items-center w-full" style="background-color: transparent !important;">
+              <div class="w-px h-6 bg-gray-400" style="background-color: #9ca3af !important;"></div>
+              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]" style="background-color: #000000 !important;"></div>
             </div>
-            <!-- Mobile Connector -->
-            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
-            <!-- Text Below -->
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2" style="background-color: #e5e7eb !important;"></div>
             <div
               class="md:mt-8 font-bold text-lg md:text-xl text-black px-4 max-w-[280px] w-full mx-auto secondary-title"
               style="color: #000;">
               Sélectionnez vos formations
             </div>
           </div>
-
+ 
           <!-- Item 3 -->
-          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0">
-            <!-- Card -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-12 md:mb-0" style="background-color: transparent !important;">
             <div
-              class="bg-white px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50">
+              class="px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50"
+              style="background-color: #ffffff !important;">
               3
             </div>
-            <!-- Vertical Line & Dot Container -->
-            <div class="hidden md:flex flex-col items-center w-full">
-              <div class="w-px h-6 bg-gray-400"></div>
-              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            <div class="hidden md:flex flex-col items-center w-full" style="background-color: transparent !important;">
+              <div class="w-px h-6 bg-gray-400" style="background-color: #9ca3af !important;"></div>
+              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]" style="background-color: #000000 !important;"></div>
             </div>
-            <!-- Mobile Connector -->
-            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
-            <!-- Text Below -->
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2" style="background-color: #e5e7eb !important;"></div>
             <div
               class="md:mt-8 font-bold text-lg md:text-xl text-black px-4 max-w-[280px] w-full mx-auto secondary-title"
               style="color: #000;">
               Inscrivez vos équipes
             </div>
           </div>
-
+ 
           <!-- Item 4 -->
-          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-8 md:mb-0">
-            <!-- Card -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-8 md:mb-0" style="background-color: transparent !important;">
             <div
-              class="bg-white px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50">
+              class="px-8 shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-xl font-bold text-3xl md:text-4xl text-black h-16 md:h-20 flex items-center justify-center min-w-[4rem] secondary-title border border-gray-50"
+              style="background-color: #ffffff !important;">
               4
             </div>
-            <!-- Vertical Line & Dot Container -->
-            <div class="hidden md:flex flex-col items-center w-full">
-              <div class="w-px h-6 bg-gray-400"></div>
-              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            <div class="hidden md:flex flex-col items-center w-full" style="background-color: transparent !important;">
+              <div class="w-px h-6 bg-gray-400" style="background-color: #9ca3af !important;"></div>
+              <div class="w-1.5 h-1.5 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]" style="background-color: #000000 !important;"></div>
             </div>
-            <!-- No Mobile Connector -->
-            <!-- Text Below -->
             <div
               class="md:mt-8 font-bold text-lg md:text-xl text-black px-4 max-w-[280px] w-full mx-auto secondary-title"
               style="color: #000;">
               Suivez les résultats et téléchargez vos certificats
             </div>
           </div>
-
+ 
         </div>
-
+ 
         <footer class="text-center text-lg md:text-xl font-bold body-rounded text-black mt-16 secondary-title"
-          style="color: #000;">
+          style="color: #000; background-color: transparent !important;">
           En quelques clics, votre plan de formation devient opérationnel.
         </footer>
       </div>
     </section>
     <!-- END: StepsSection -->
     <!-- BEGIN: ExpertiseSection -->
-    <section class="py-24 bg-gray-50 relative overflow-hidden relative-section">
+    <section class="py-24 relative overflow-hidden relative-section" style="background-color: #F2F0EF !important;">
       <div class="bg-decorations z-0">
         <img src="images/angle gauche.png" alt=""
           style="position:absolute; top:0; left:0; width:280px; opacity:0.3; pointer-events:none; z-index:0;">
         <img src="images/Coté droit.png" alt=""
           style="position:absolute; bottom:0; right:0; width:300px; opacity:0.35; pointer-events:none; z-index:0;">
       </div>
-      <div class="container mx-auto px-6 relative z-10">
+      <div class="container mx-auto px-6 relative z-10" style="background-color: transparent !important;">
         <!-- Title -->
         <h2 class="text-3xl md:text-4xl font-black text-center text-black mb-16 secondary-title">
           Ensemble, faire progresser le secteur
         </h2>
         <!-- Statistics Block -->
-        <div class="border-y border-[#E5E7EB] py-16 mb-24 backdrop-blur-sm bg-white/40">
-          <div class="grid grid-cols-1 md:grid-cols-4">
+        <div class="border-y border-[#E5E7EB] py-16 mb-24" style="background-color: rgba(242,240,239,0.4) !important;">
+          <div class="grid grid-cols-1 md:grid-cols-4" style="background-color: transparent !important;">
             <!-- Col 1 -->
-            <div class="text-center px-4 md:border-r border-[#E5E7EB]">
+            <div class="text-center px-4 md:border-r border-[#E5E7EB]" style="background-color: transparent !important;">
               <p class="text-3xl font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
                 style="color: #67DAD5;">+ de 15 ans</p>
               <p class="text-sm text-[#4B5563] font-sans text-secondary-gray" style="color: #74888F;">d'expertise dans
                 le secteur des services à la personne</p>
             </div>
             <!-- Col 2 -->
-            <div class="text-center px-4 md:border-r border-[#E5E7EB] mt-8 md:mt-0">
+            <div class="text-center px-4 md:border-r border-[#E5E7EB] mt-8 md:mt-0" style="background-color: transparent !important;">
               <p class="text-3xl font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
                 style="color: #67DAD5;">Des milliers</p>
               <p class="text-sm text-[#4B5563] font-sans text-secondary-gray" style="color: #74888F;">d'apprenants
                 formés</p>
             </div>
             <!-- Col 3 -->
-            <div class="text-center px-4 md:border-r border-[#E5E7EB] mt-8 md:mt-0">
+            <div class="text-center px-4 md:border-r border-[#E5E7EB] mt-8 md:mt-0" style="background-color: transparent !important;">
               <p class="text-3xl font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
                 style="color: #67DAD5;">100% Terrain</p>
               <p class="text-sm text-[#4B5563] font-sans text-secondary-gray" style="color: #74888F;">Une plateforme
                 pensée pour le terrain</p>
             </div>
             <!-- Col 4 -->
-            <div class="text-center px-4 mt-8 md:mt-0">
+            <div class="text-center px-4 mt-8 md:mt-0" style="background-color: transparent !important;">
               <p class="text-3xl font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
                 style="color: #67DAD5;">Engagement</p>
               <p class="text-sm text-[#4B5563] font-sans text-secondary-gray" style="color: #74888F;">Une approche
@@ -1265,12 +1362,12 @@
           </div>
         </div>
         <!-- Infinite Scrolling Marquee -->
-        <div class="marquee-container">
-          <div class="marquee-content flex gap-6">
+        <div class="marquee-container" style="background-color: transparent !important;">
+          <div class="marquee-content flex gap-6" style="background-color: transparent !important;">
             <!-- Testimonial 1 -->
             <div
-              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
-              style="border-color: #67DAD5;">
+              class="testimonial-card flex-shrink-0 w-[400px] shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5; background-color: #ffffff !important;">
               <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
                 "La traçabilité pour les audits HAS est un soulagement total. Formation sans perturbation de nos
                 plannings."
@@ -1279,8 +1376,8 @@
             </div>
             <!-- Testimonial 2 -->
             <div
-              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
-              style="border-color: #67DAD5;">
+              class="testimonial-card flex-shrink-0 w-[400px] shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5; background-color: #ffffff !important;">
               <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
                 "Je me forme directement sur mon téléphone entre deux visites. Les situations sont exactement celles du
                 terrain."
@@ -1290,8 +1387,8 @@
             </div>
             <!-- Testimonial 3 -->
             <div
-              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
-              style="border-color: #67DAD5;">
+              class="testimonial-card flex-shrink-0 w-[400px] shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5; background-color: #ffffff !important;">
               <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
                 "Plus de frais de déplacements ou de location de salles. Un investissement rentabilisé immédiatement."
               </p>
@@ -1299,8 +1396,8 @@
             </div>
             <!-- Clones for seamless scroll -->
             <div
-              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
-              style="border-color: #67DAD5;">
+              class="testimonial-card flex-shrink-0 w-[400px] shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5; background-color: #ffffff !important;">
               <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
                 "La traçabilité pour les audits HAS est un soulagement total. Formation sans perturbation de nos
                 plannings."
@@ -1308,8 +1405,8 @@
               <p class="mt-4 font-bold text-black text-secondary-gray" style="color: #74888F;">Marie L., Directrice.</p>
             </div>
             <div
-              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
-              style="border-color: #67DAD5;">
+              class="testimonial-card flex-shrink-0 w-[400px] shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5; background-color: #ffffff !important;">
               <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
                 "Je me forme directement sur mon téléphone entre deux visites. Les situations sont exactement celles du
                 terrain."
@@ -1318,8 +1415,8 @@
                 vie.</p>
             </div>
             <div
-              class="testimonial-card flex-shrink-0 w-[400px] bg-white shadow-sm border-l-4 border-cyanBrand p-8 z-10"
-              style="border-color: #67DAD5;">
+              class="testimonial-card flex-shrink-0 w-[400px] shadow-sm border-l-4 border-cyanBrand p-8 z-10"
+              style="border-color: #67DAD5; background-color: #ffffff !important;">
               <p class="text-gray-700 font-sans leading-relaxed text-secondary-gray" style="color: #74888F;">
                 "Plus de frais de déplacements ou de location de salles. Un investissement rentabilisé immédiatement."
               </p>
@@ -1330,56 +1427,63 @@
       </div>
     </section>
     <!-- END: ExpertiseSection -->
-  </main><!-- Giant CTA Section -->
-  <section class="px-6 py-12 md:py-20 bg-white">
-    <div class="max-w-5xl mx-auto bg-cyanBrand rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
-      style="background-color: #67DAD5;">
-      <!-- Decorative circles matching reference -->
-      <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full translate-x-1/2 -translate-y-1/2">
+  </main>
+ 
+  <!-- Giant CTA Section -->
+  <section class="px-6 py-12 md:py-20" style="background-color: #F2F0EF !important;">
+    <div class="max-w-5xl mx-auto rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
+      style="background-color: #67DAD5 !important;">
+      <!-- Decorative circles -->
+      <div class="absolute top-0 right-0 w-64 h-64 opacity-10 rounded-full translate-x-1/2 -translate-y-1/2"
+        style="background-color: #ffffff !important;">
       </div>
-      <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-10 rounded-full -translate-x-1/3 translate-y-1/3">
+      <div class="absolute bottom-0 left-0 w-48 h-48 opacity-10 rounded-full -translate-x-1/3 translate-y-1/3"
+        style="background-color: #ffffff !important;">
       </div>
-      <div class="relative z-10">
+      <div class="relative z-10" style="background-color: transparent !important;">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-black mb-6 secondary-title text-[#0B1221]"
           style="font-family: 'Arial', sans-serif !important; font-weight: bold !important;">
           Prêt à digitaliser vos formations ?
         </h2>
         <p class="body-rounded text-[#0B1221] text-lg md:text-xl max-w-3xl mx-auto mb-12 opacity-80"
-          style="font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;">
+          style="font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif; background-color: transparent !important;">
           Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
         </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <button onclick="document.getElementById('modal-devis').style.display='flex'" class="bg-[#0B1221] text-white font-bold py-4 px-10 rounded-[20px] text-lg hover:bg-opacity-90 transition-all body-rounded cursor-pointer">
+        <div class="flex flex-wrap justify-center gap-4" style="background-color: transparent !important;">
+          <button onclick="document.getElementById('modal-devis').style.display='flex'" class="text-white font-bold py-4 px-10 rounded-[20px] text-lg hover:bg-opacity-90 transition-all body-rounded cursor-pointer" style="background-color: #0B1221 !important;">
             Demander un devis
           </button>
         </div>
       </div>
     </div>
   </section>
+ 
   <!-- Decoration above footer -->
-  <div style="position:relative; width:100%; height: 200px; overflow:hidden; pointer-events:none;">
+  <div style="position:relative; width:100%; height: 200px; overflow:hidden; pointer-events:none; background-color: #F2F0EF !important;">
     <img src="images/2 traits.png" alt=""
       style="position:absolute; bottom:0; left:0; width:300px; opacity:0.5; pointer-events:none;">
     <img src="images/pied de page.png" alt=""
       style="position:absolute; bottom:0; right:0; width:450px; opacity:0.4; pointer-events:none;">
   </div>
+ 
   <!-- Classic Dark Footer -->
-  <footer class="bg-black text-slate-300 py-16 px-6 md:px-12 border-t border-white/10">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+  <footer class="py-16 px-6 md:px-12 border-t border-white/10" style="background-color: #000000 !important;">
+    <div class="max-w-7xl mx-auto" style="background-color: transparent !important;">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16" style="background-color: transparent !important;">
         <!-- Column 1: Logo & Intro -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-6" style="background-color: transparent !important;">
           <a href="index.html"
-            class="inline-block hover:opacity-80 transition-opacity bg-white p-2 border border-gray-100 rounded-xl w-max">
+            class="inline-block hover:opacity-80 transition-opacity border border-gray-100 rounded-xl w-max"
+            style="background-color: #ffffff !important; padding: 8px;">
             <img src="images/logo.jpg" alt="DFormPro Digital" class="h-8 md:h-10 w-auto object-contain">
           </a>
-          <p class="body-rounded text-sm leading-relaxed max-w-xs" style="color: #FFFFFF;">
+          <p class="body-rounded text-sm leading-relaxed max-w-xs" style="color: #FFFFFF; background-color: transparent !important;">
             La plateforme de formation digitale dédiée aux services à la personne. Accélérez la montée en compétences de
             vos équipes.
           </p>
-          <div class="mt-4">
-            <div class="bg-white p-2 rounded-lg w-32 h-32 flex items-center justify-center">
-              <img alt="QR Code Application" data-alt="QR Code to download the application"
+          <div class="mt-4" style="background-color: transparent !important;">
+            <div class="rounded-lg w-32 h-32 flex items-center justify-center" style="background-color: #ffffff !important; padding: 8px;">
+              <img alt="QR Code Application"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEm-gHzXLKx18aSaODv1evX7Tm3PhvGa8w2m2dO7h84vYRUKgDCPlEFTGah1xnug14fcCU5FUNVe7wC77fs8g_PY7NgMua2iAi7lW8_xbLAEbLfxMEyPlmCP_3J2uQ2OAQulj3oityup93qJUBVVDOb0MUtKcpcgBOZyXyelJq98uvW0HwmwkVGjYMqjrZlmhL3CYEXFcmIAmYT_Vm7dmLmkm37AoX7URRcN3JGMGJNEmZPDg_SwtsU6HHrTqx_eYQo7ClqoVJhQQ" />
             </div>
             <p class="text-[10px] mt-2 uppercase tracking-widest font-bold" style="color: #FFFFFF;">Télécharger l'app
@@ -1387,52 +1491,52 @@
           </div>
         </div>
         <!-- Column 2: Contact -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-6" style="background-color: transparent !important;">
           <h3 class="text-cyanBrand font-bold-custom font-bold text-xl uppercase tracking-wider secondary-title"
             style="color: #67DAD5;">Contact</h3>
-          <div class="flex flex-col gap-4 body-rounded text-sm text-secondary-gray" style="color: #74888F;">
-            <div class="flex items-center gap-4 mb-2">
+          <div class="flex flex-col gap-4 body-rounded text-sm text-secondary-gray" style="color: #74888F; background-color: transparent !important;">
+            <div class="flex items-center gap-4 mb-2" style="background-color: transparent !important;">
               <img src="images/avatar.png" alt="Régis DE OLIVEIRA"
-                class="w-16 h-16 rounded-full border-2 border-cyanBrand object-cover shadow-sm bg-white"
-                style="border-color: #67DAD5;">
-              <div class="flex flex-col">
+                class="w-16 h-16 rounded-full border-2 border-cyanBrand object-cover shadow-sm"
+                style="border-color: #67DAD5; background-color: #ffffff !important;">
+              <div class="flex flex-col" style="background-color: transparent !important;">
                 <span class="font-bold text-white text-base" style="color: #FFFFFF;">Régis DE OLIVEIRA</span>
                 <span class="text-cyanBrand text-xs" style="color: #67DAD5;">Directeur</span>
               </div>
             </div>
-            <div class="flex items-start gap-3">
+            <div class="flex items-start gap-3" style="background-color: transparent !important;">
               <span class="material-symbols-outlined text-cyanBrand text-xl" style="color: #FFFFFF;">call</span>
               <span class="" style="color: #FFFFFF;">06 64 90 33 43</span>
             </div>
-            <div class="flex items-start gap-3">
+            <div class="flex items-start gap-3" style="background-color: transparent !important;">
               <span class="material-symbols-outlined text-cyanBrand text-xl" style="color: #FFFFFF;">mail</span>
               <a class="hover:text-cyanBrand transition-colors" href="mailto:r.deoliveira@dformpro.fr"
-                style="color: #FFFFFF;">r.deoliveira@dformpro.fr</a>
+                style="color: #FFFFFF; background-color: transparent !important;">r.deoliveira@dformpro.fr</a>
             </div>
-            <div class="flex items-start gap-3">
+            <div class="flex items-start gap-3" style="background-color: transparent !important;">
               <span class="material-symbols-outlined text-cyanBrand text-xl" style="color: #FFFFFF;">location_on</span>
               <span class="" style="color: #FFFFFF;">15 rue du Pré la Reine, <br />63100 Clermont-Fd.</span>
             </div>
           </div>
         </div>
         <!-- Column 3: Informations -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-6" style="background-color: transparent !important;">
           <h3 class="text-cyanBrand font-bold-custom font-bold text-xl uppercase tracking-wider secondary-title"
             style="color: #67DAD5;">Informations</h3>
-          <nav class="flex flex-col gap-3 body-rounded text-sm text-secondary-gray" style="color: #74888F;">
-            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF;">
+          <nav class="flex flex-col gap-3 body-rounded text-sm text-secondary-gray" style="color: #74888F; background-color: transparent !important;">
+            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF; background-color: transparent !important;">
               <span class="material-symbols-outlined text-[10px]">chevron_right</span>
               À propos
             </a>
-            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF;">
+            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF; background-color: transparent !important;">
               <span class="material-symbols-outlined text-[10px]">chevron_right</span>
               CGV
             </a>
-            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF;">
+            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF; background-color: transparent !important;">
               <span class="material-symbols-outlined text-[10px]">chevron_right</span>
               Mentions légales
             </a>
-            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF;">
+            <a class="hover:text-cyanBrand transition-colors flex items-center gap-2" href="#" style="color: #FFFFFF; background-color: transparent !important;">
               <span class="material-symbols-outlined text-[10px]">chevron_right</span>
               Politique de confidentialité
             </a>
@@ -1440,29 +1544,27 @@
         </div>
       </div>
       <!-- Divider -->
-      <div class="h-px w-full bg-white/10 mb-8"></div>
+      <div class="h-px w-full mb-8" style="background-color: rgba(255,255,255,0.1) !important;"></div>
       <!-- Bottom Section -->
-      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-        <p class="body-rounded text-xs" style="color: #FFFFFF;">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6" style="background-color: transparent !important;">
+        <p class="body-rounded text-xs" style="color: #FFFFFF; background-color: transparent !important;">
           © 2024 DFormPro Digital. Tous droits réservés.
         </p>
-        <div class="flex items-center gap-4">
-          <div class="bg-white rounded p-1">
+        <div class="flex items-center gap-4" style="background-color: transparent !important;">
+          <div class="rounded p-1" style="background-color: #ffffff !important;">
             <img alt="Certification Qualiopi" class="h-10 w-auto grayscale contrast-125"
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoV_uUi1lnoVRpT4w5XvEwQv2dl7WjTNjS0lbv_1Sqs-ZV3E5VOZ1-r03AjC-vac2v5STr4DMoI0KdnrTXxJbLy6VDv2lHj6AgD8J_Kj6boeULp7OpmwCISuqyq8u3YIT1WLdXu0wAImwctVF2BO0MTf3ksklri9-d78AUPYkxZFPLFGrsoNP7aKTCqncY8LWVhx0OvdSdV4M1rcNA_p0F6b5wSi1jhqNboytPrTpA0u9JQau5I1AdEFuLw31A84lo9g-TUzfBf0k" />
           </div>
-          <div class="flex gap-4">
-            <a class="text-slate-500 hover:text-cyanBrand" href="#"><span
+          <div class="flex gap-4" style="background-color: transparent !important;">
+            <a class="text-slate-500 hover:text-cyanBrand" href="#" style="background-color: transparent !important;"><span
                 class="material-symbols-outlined">share</span></a>
-            <a class="text-slate-500 hover:text-cyanBrand" href="#"><span
+            <a class="text-slate-500 hover:text-cyanBrand" href="#" style="background-color: transparent !important;"><span
                 class="material-symbols-outlined">language</span></a>
           </div>
         </div>
       </div>
     </div>
   </footer>
-  <!-- BEGIN: Footer -->
-  <!-- END: Footer -->
 </body>
-
+ 
 </html>
