@@ -8,17 +8,16 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
 
-    /* ── Fond blanc global ── */
-    *,
-    html,
-    body {
+    html, body {
       background-color: #ffffff;
+      box-sizing: border-box;
+    }
+
+    *, *::before, *::after {
       box-sizing: border-box;
     }
 
@@ -29,26 +28,16 @@
       background-color: #ffffff !important;
     }
 
-    h1,
-    h2,
-    h3 {
+    h1, h2, h3 {
       font-family: 'Arial', sans-serif !important;
       font-weight: bold !important;
     }
 
-    h1 {
-      font-style: italic !important;
-    }
+    h1 { font-style: italic !important; }
 
-    .text-cyan {
-      color: #67DAD5;
-    }
+    .text-cyan { color: #67DAD5; }
+    .text-green { color: #67DAD5; }
 
-    .text-green {
-      color: #67DAD5;
-    }
-
-    /* ══ CARD STANDARD : contour noir + ombre cyan ══ */
     .card {
       background-color: #ffffff !important;
       border: 2px solid #000000;
@@ -56,44 +45,17 @@
       box-shadow: 6px 6px 0px 0px #67DAD5;
     }
 
-    .card * {
-      background-color: transparent !important;
-    }
+    .card * { background-color: transparent !important; }
 
-    /* Exceptions nommées */
-    .card .keep-cyanl {
-      background-color: rgba(103, 218, 213, 0.08) !important;
-    }
+    .card .keep-cyanl { background-color: rgba(103, 218, 213, 0.08) !important; }
+    .card .keep-bar-red { background-color: #ff4444 !important; }
+    .card .keep-bar-green { background-color: #67DAD5 !important; }
+    .card .keep-bar-gray { background-color: #e5e7eb !important; }
+    .card .keep-icon-blk { background-color: #000000 !important; }
+    .card .keep-icon-cyn { background-color: #67DAD5 !important; }
+    .card .keep-icon-grn { background-color: rgba(103, 218, 213, 0.12) !important; }
+    .card .keep-hdr-cyn { background-color: #67DAD5 !important; }
 
-    .card .keep-bar-red {
-      background-color: #ff4444 !important;
-    }
-
-    .card .keep-bar-green {
-      background-color: #67DAD5 !important;
-    }
-
-    .card .keep-bar-gray {
-      background-color: #e5e7eb !important;
-    }
-
-    .card .keep-icon-blk {
-      background-color: #000000 !important;
-    }
-
-    .card .keep-icon-cyn {
-      background-color: #67DAD5 !important;
-    }
-
-    .card .keep-icon-grn {
-      background-color: rgba(103, 218, 213, 0.12) !important;
-    }
-
-    .card .keep-hdr-cyn {
-      background-color: #67DAD5 !important;
-    }
-
-    /* ══ CARD GREEN (CO₂ stat) ══ */
     .card-green {
       background-color: #ffffff !important;
       border: 2px solid #67DAD5;
@@ -101,23 +63,11 @@
       box-shadow: 6px 6px 0px 0px #67DAD5;
     }
 
-    .card-green * {
-      background-color: transparent !important;
-    }
+    .card-green * { background-color: transparent !important; }
+    .card-green .keep-bar-red { background-color: #ff4444 !important; }
+    .card-green .keep-bar-green { background-color: #67DAD5 !important; }
+    .card-green .keep-bar-gray { background-color: #e5e7eb !important; }
 
-    .card-green .keep-bar-red {
-      background-color: #ff4444 !important;
-    }
-
-    .card-green .keep-bar-green {
-      background-color: #67DAD5 !important;
-    }
-
-    .card-green .keep-bar-gray {
-      background-color: #e5e7eb !important;
-    }
-
-    /* ── Badge ── */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -130,7 +80,6 @@
       background-color: #ffffff !important;
     }
 
-    /* ── Citation ── */
     .highlight-box {
       border: 2px solid #000;
       border-left: 4px solid #67DAD5;
@@ -140,11 +89,8 @@
       box-shadow: 6px 6px 0px 0px #67DAD5;
     }
 
-    .highlight-box * {
-      background-color: transparent !important;
-    }
+    .highlight-box * { background-color: transparent !important; }
 
-    /* ── Leaf icon ── */
     .leaf-icon {
       width: 48px;
       height: 48px;
@@ -157,7 +103,6 @@
       border: 2px solid #67DAD5;
     }
 
-    /* ── Divider ── */
     .section-divider {
       display: flex;
       align-items: center;
@@ -173,51 +118,20 @@
       background: #67DAD5;
     }
 
-    /* ── Animations ── */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px)
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0)
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .fade-up {
-      animation: fadeUp 0.6s ease forwards;
-    }
+    .fade-up { animation: fadeUp 0.6s ease forwards; }
+    .delay-1 { animation-delay: 0.15s; opacity: 0; }
+    .delay-2 { animation-delay: 0.30s; opacity: 0; }
+    .delay-3 { animation-delay: 0.45s; opacity: 0; }
 
-    .delay-1 {
-      animation-delay: 0.15s;
-      opacity: 0;
-    }
+    @keyframes growH { from { width: 0; } }
 
-    .delay-2 {
-      animation-delay: 0.30s;
-      opacity: 0;
-    }
-
-    .delay-3 {
-      animation-delay: 0.45s;
-      opacity: 0;
-    }
-
-    @keyframes growH {
-      from {
-        width: 0
-      }
-    }
-
-    .bar-anim {
-      animation: growH 1s ease forwards;
-    }
-
-    .bar-anim-delay {
-      animation: growH 1s ease 0.4s forwards;
-    }
+    .bar-anim { animation: growH 1s ease forwards; }
+    .bar-anim-delay { animation: growH 1s ease 0.4s forwards; }
 
     .bg-deco {
       pointer-events: none;
@@ -231,172 +145,57 @@
       font-size: 56px;
       line-height: 1;
     }
+
+    footer { background-color: #000000 !important; }
   </style>
 </head>
 
 <body class="antialiased">
-  <!-- BEGIN: MainHeader -->
+  <!-- Header -->
   <header class="fixed top-0 left-0 right-0 bg-white z-50 shadow-sm">
-    <nav class="w-full py-2 flex items-center relative"
-      style="justify-content: space-between; padding-left: 0; padding-right: 0;">
-      <!-- Left Container: Logo (flush left) -->
-      <div class="flex items-center flex-shrink-0" data-purpose="logo-container"
-        style="margin-right: auto; padding-left: 0;">
+    <nav class="w-full py-2 flex items-center relative" style="justify-content:space-between;padding-left:0;padding-right:0;">
+      <div class="flex items-center flex-shrink-0" style="margin-right:auto;padding-left:0;">
         <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
           <img src="images/logo.jpg" alt="DFormPro Digital" class="h-16 md:h-24 w-auto object-contain">
         </a>
       </div>
-      <!-- Center Container: Navigation Links (perfectly centered) -->
-      <div
-        class="hidden md:flex items-center justify-center space-x-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
+      <div class="hidden md:flex items-center justify-center space-x-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
         <div class="relative group">
-          <a class="hover:text-cyanBrand transition-colors text-black font-bold flex items-center gap-1 py-4"
-            href="formations.html">
+          <a class="hover:text-cyanBrand transition-colors text-black font-bold flex items-center gap-1 py-4" href="formations.html">
             Nos formations
-            <span
-              class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180">expand_more</span>
+            <span class="material-symbols-outlined text-sm transition-transform group-hover:rotate-180">expand_more</span>
           </a>
-
-          <!-- Mega Menu Dropdown - 3 cols x 2 rows (3x2) -->
-          <div
-            class="absolute top-full left-1/2 -translate-x-1/2 w-[80vw] !bg-white rounded-2xl shadow-xl border border-gray-100 opacity-1 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-[999]">
+          <div class="absolute top-full left-1/2 -translate-x-1/2 w-[80vw] bg-white rounded-2xl shadow-xl border border-gray-100 opacity-1 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-[999]">
             <div class="grid grid-cols-3 gap-5 mb-5">
-
-              <!-- Preview Card 1 -->
-              <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                    <span class="material-symbols-outlined text-3xl">image</span>
-                  </div>
-                  <img src="formations_images/aide_domicile.jpg" alt=""
-                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
-                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
-                    onerror="this.remove()">
-                </div>
-                <div class="p-4">
-                  <h4
-                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
-                    Le métier d'aide à domicile</h4>
-                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Les savoirs de base
-                    essentiels pour bien démarrer.</p>
-                </div>
+              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/aide_domicile.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
+                <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1">Le métier d'aide à domicile</h4><p class="text-sm line-clamp-2" style="color:#74888F;">Les savoirs de base essentiels pour bien démarrer.</p></div>
               </a>
-
-              <!-- Preview Card 2 -->
-              <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                    <span class="material-symbols-outlined text-3xl">image</span>
-                  </div>
-                  <img src="formations_images/prevention_risques.jpg" alt=""
-                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
-                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
-                    onerror="this.remove()">
-                </div>
-                <div class="p-4">
-                  <h4
-                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
-                    Prévention des risques</h4>
-                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Sécuriser les
-                    interventions au quotidien.</p>
-                </div>
+              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/prevention_risques.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
+                <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1">Prévention des risques</h4><p class="text-sm line-clamp-2" style="color:#74888F;">Sécuriser les interventions au quotidien.</p></div>
               </a>
-
-              <!-- Preview Card 3 -->
-              <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                    <span class="material-symbols-outlined text-3xl">image</span>
-                  </div>
-                  <img src="formations_images/bientraitance.jpg" alt=""
-                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
-                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
-                    onerror="this.remove()">
-                </div>
-                <div class="p-4">
-                  <h4
-                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
-                    Bientraitance</h4>
-                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Prévention de la
-                    maltraitance et bonnes pratiques.</p>
-                </div>
+              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/bientraitance.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
+                <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1">Bientraitance</h4><p class="text-sm line-clamp-2" style="color:#74888F;">Prévention de la maltraitance et bonnes pratiques.</p></div>
               </a>
-
-              <!-- Preview Card 4 -->
-              <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                    <span class="material-symbols-outlined text-3xl">image</span>
-                  </div>
-                  <img src="formations_images/cadre_vie.jpg" alt=""
-                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
-                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
-                    onerror="this.remove()">
-                </div>
-                <div class="p-4">
-                  <h4
-                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
-                    Entretien du cadre de vie</h4>
-                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Techniques et protocoles
-                    d'intervention.</p>
-                </div>
+              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/cadre_vie.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
+                <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1">Entretien du cadre de vie</h4><p class="text-sm line-clamp-2" style="color:#74888F;">Techniques et protocoles d'intervention.</p></div>
               </a>
-
-              <!-- Preview Card 5 -->
-              <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                    <span class="material-symbols-outlined text-3xl">image</span>
-                  </div>
-                  <img src="formations_images/entretien_linge.jpg" alt=""
-                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
-                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
-                    onerror="this.remove()">
-                </div>
-                <div class="p-4">
-                  <h4
-                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
-                    Entretien du linge</h4>
-                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Maîtrisez les techniques
-                    d'entretien textile professionnel.</p>
-                </div>
+              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/entretien_linge.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
+                <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1">Entretien du linge</h4><p class="text-sm line-clamp-2" style="color:#74888F;">Maîtrisez les techniques d'entretien textile professionnel.</p></div>
               </a>
-
-              <!-- Preview Card 6 -->
-              <a href="formations.html"
-                class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
-                  <div class="absolute inset-0 flex items-center justify-center text-gray-400">
-                    <span class="material-symbols-outlined text-3xl">image</span>
-                  </div>
-                  <img src="formations_images/repas.jpg" alt=""
-                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
-                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
-                    onerror="this.remove()">
-                </div>
-                <div class="p-4">
-                  <h4
-                    class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
-                    Préparation des repas</h4>
-                  <p class="text-sm text-secondary-gray line-clamp-2" style="color: #74888F;">Nutrition, hygiène et
-                    adaptation aux besoins spécifiques.</p>
-                </div>
+              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/repas.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
+                <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1">Préparation des repas</h4><p class="text-sm line-clamp-2" style="color:#74888F;">Nutrition, hygiène et adaptation aux besoins spécifiques.</p></div>
               </a>
-
             </div>
-
-            <!-- Footer CTA Mega Menu - aligned left -->
             <div class="pt-4 mt-2 border-t border-gray-100 text-left">
-              <a href="formations.html" class="inline-flex items-center text-sm font-bold transition-colors group/link"
-                style="color: #67DAD5;">
+              <a href="formations.html" class="inline-flex items-center text-sm font-bold transition-colors group/link" style="color:#67DAD5;">
                 Voir les 8 formations de notre catalogue
-                <span
-                  class="material-symbols-outlined text-base ml-1 transition-transform group-hover/link:translate-x-1">arrow_forward</span>
+                <span class="material-symbols-outlined text-base ml-1 transition-transform group-hover/link:translate-x-1">arrow_forward</span>
               </a>
             </div>
           </div>
@@ -404,238 +203,100 @@
         <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">À propos</a>
         <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">Contact</a>
       </div>
-      <!-- Right Container: Action Buttons (flush right) -->
-      <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1"
-        style="margin-left: auto; padding-right: 0; margin-right: 10px;">
-        <a class="text-black font-bold text-sm whitespace-nowrap cursor-pointer hover:underline"
-          style="text-decoration: none;" href="inscription.html">
-          Créer un compte
-        </a>
-        <a class="hidden md:block text-black font-bold text-sm whitespace-nowrap bg-transparent border-none cursor-pointer px-4 md:px-6 py-2 rounded-full hover:bg-gray-50 transition-all"
-          style="color: #67DAD5; border: 2px solid #67DAD5; background-color: #fff; text-decoration: none;"
-          href="connexion.html">
-          Se connecter
-        </a>
-        <button onclick="document.getElementById('modal-devis').style.display='flex'"
-          class="px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2 cursor-pointer"
-          style="color: #fff; border-color: #67DAD5; background-color: #67DAD5;">
-          Demande de devis
-        </button>
+      <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1" style="margin-left:auto;padding-right:0;margin-right:10px;">
+        <a class="text-black font-bold text-sm whitespace-nowrap cursor-pointer hover:underline" style="text-decoration:none;" href="inscription.html">Créer un compte</a>
+        <a class="hidden md:block text-black font-bold text-sm whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full hover:bg-gray-50 transition-all" style="color:#67DAD5;border:2px solid #67DAD5;background-color:#fff;text-decoration:none;" href="connexion.html">Se connecter</a>
+        <button onclick="document.getElementById('modal-devis').style.display='flex'" class="px-4 md:px-6 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap border-2 cursor-pointer" style="color:#fff;border-color:#67DAD5;background-color:#67DAD5;">Demande de devis</button>
       </div>
     </nav>
   </header>
 
   <!-- Modal: Créer un compte -->
-  <div id="modal-inscription"
-    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;"
-    onclick="if(event.target===this)this.style.display='none'">
-    <div
-      style="background:#fff; border-radius:20px; padding:40px; max-width:500px; width:90%; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.15);">
-      <button onclick="document.getElementById('modal-inscription').style.display='none'"
-        style="position:absolute; top:16px; right:16px; background:none; border:none; font-size:24px; cursor:pointer; color:#999;">&times;</button>
-      <h2 style="font-family:Arial,sans-serif; font-weight:bold; font-size:24px; margin-bottom:8px; color:#000;">Créer
-        un compte</h2>
-      <p style="color:#74888F; font-size:14px; margin-bottom:24px;">Rejoignez DFormPro Digital et accédez à nos
-        formations.</p>
+  <div id="modal-inscription" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;" onclick="if(event.target===this)this.style.display='none'">
+    <div style="background:#fff;border-radius:20px;padding:40px;max-width:500px;width:90%;position:relative;box-shadow:0 25px 60px rgba(0,0,0,0.15);">
+      <button onclick="document.getElementById('modal-inscription').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#999;">&times;</button>
+      <h2 style="font-family:Arial,sans-serif;font-weight:bold;font-size:24px;margin-bottom:8px;color:#000;">Créer un compte</h2>
+      <p style="color:#74888F;font-size:14px;margin-bottom:24px;">Rejoignez DFormPro Digital et accédez à nos formations.</p>
       <form onsubmit="event.preventDefault();">
-        <div style="margin-bottom:16px;">
-          <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Nom
-            complet</label>
-          <input type="text" placeholder="Votre nom"
-            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
-            onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
-        </div>
-        <div style="margin-bottom:16px;">
-          <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Email</label>
-          <input type="email" placeholder="votre@email.com"
-            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
-            onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
-        </div>
-        <div style="margin-bottom:16px;">
-          <label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Mot de
-            passe</label>
-          <input type="password" placeholder="••••••••"
-            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
-            onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
-        </div>
-        <button type="submit"
-          style="width:100%; padding:14px; background-color:#67DAD5; color:#fff; border:none; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; transition:opacity 0.2s;"
-          onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Créer mon compte</button>
+        <div style="margin-bottom:16px;"><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Nom complet</label><input type="text" placeholder="Votre nom" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'"></div>
+        <div style="margin-bottom:16px;"><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Email</label><input type="email" placeholder="votre@email.com" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'"></div>
+        <div style="margin-bottom:16px;"><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Mot de passe</label><input type="password" placeholder="••••••••" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'"></div>
+        <button type="submit" style="width:100%;padding:14px;background-color:#67DAD5;color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Créer mon compte</button>
       </form>
     </div>
   </div>
 
   <!-- Modal: Demande de devis -->
-  <div id="modal-devis"
-    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center; backdrop-filter: blur(4px);"
-    onclick="if(event.target===this)this.style.display='none'">
-    <div
-      style="background:#fff; border-radius:24px; padding:0; max-width:750px; width:95%; max-height: 90vh; position:relative; box-shadow:0 25px 80px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column;">
-      <!-- Header Fixed -->
-      <div
-        style="padding: 24px 40px; border-bottom: 1px solid #f3f4f6; position: relative; background: #fff; z-index: 10;">
-        <button onclick="document.getElementById('modal-devis').style.display='none'"
-          style="position:absolute; top:20px; right:20px; background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; color:#666; transition: all 0.2s;"
-          onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">&times;</button>
-        <h2 style="font-family:Arial,sans-serif; font-weight:bold; font-size:24px; color:#000; margin: 0;">Demande de
-          devis</h2>
-        <p style="color:#74888F; font-size:14px; margin-top: 4px; margin-bottom: 0;">Recevez votre devis personnalisé
-          sous <span class="font-bold text-cyanBrand">48h</span>.</p>
+  <div id="modal-devis" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(4px);" onclick="if(event.target===this)this.style.display='none'">
+    <div style="background:#fff;border-radius:24px;padding:0;max-width:750px;width:95%;max-height:90vh;position:relative;box-shadow:0 25px 80px rgba(0,0,0,0.3);overflow:hidden;display:flex;flex-direction:column;">
+      <div style="padding:24px 40px;border-bottom:1px solid #f3f4f6;position:relative;background:#fff;z-index:10;">
+        <button onclick="document.getElementById('modal-devis').style.display='none'" style="position:absolute;top:20px;right:20px;background:#f3f4f6;border:none;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;color:#666;" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">&times;</button>
+        <h2 style="font-family:Arial,sans-serif;font-weight:bold;font-size:24px;color:#000;margin:0;">Demande de devis</h2>
+        <p style="color:#74888F;font-size:14px;margin-top:4px;margin-bottom:0;">Recevez votre devis personnalisé sous <span style="font-weight:bold;color:#67DAD5;">48h</span>.</p>
       </div>
-
-      <!-- Scrollable Body -->
-      <div style="padding: 32px 40px; overflow-y: auto; flex-grow: 1; scroll-behavior: smooth;">
+      <div style="padding:32px 40px;overflow-y:auto;flex-grow:1;">
         <form id="quote-form-modal" onsubmit="event.preventDefault(); handleSubmitDevis();">
           <div class="space-y-10">
-            <!-- SECTION 1: Informations de contact -->
             <div>
-              <div class="section-title-modal">
-                <span class="material-symbols-outlined">person</span>
-                Vos coordonnées
-              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:20px;"><span class="material-symbols-outlined">person</span> Vos coordonnées</div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label class="form-label">Nom *</label>
-                  <input type="text" class="form-input" placeholder="Votre nom" required>
-                </div>
-                <div>
-                  <label class="form-label">Prénom *</label>
-                  <input type="text" class="form-input" placeholder="Votre prénom" required>
-                </div>
-                <div class="md:col-span-2">
-                  <label class="form-label">Adresse e-mail *</label>
-                  <input type="email" class="form-input" placeholder="exemple@email.com" required>
-                </div>
-                <div>
-                  <label class="form-label">Téléphone *</label>
-                  <input type="tel" class="form-input" placeholder="06 00 00 00 00" required>
-                </div>
-                <div>
-                  <label class="form-label">Fonction</label>
-                  <input type="text" class="form-input" placeholder="Ex: Directeur">
-                </div>
+                <div><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Nom *</label><input type="text" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;" placeholder="Votre nom" required></div>
+                <div><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Prénom *</label><input type="text" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;" placeholder="Votre prénom" required></div>
+                <div class="md:col-span-2"><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Adresse e-mail *</label><input type="email" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;" placeholder="exemple@email.com" required></div>
+                <div><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Téléphone *</label><input type="tel" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;" placeholder="06 00 00 00 00" required></div>
+                <div><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Fonction</label><input type="text" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;" placeholder="Ex: Directeur"></div>
               </div>
             </div>
-
-            <!-- SECTION 2: Informations sur la structure -->
             <div>
-              <div class="section-title-modal">
-                <span class="material-symbols-outlined">business</span>
-                Votre structure
-              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:20px;"><span class="material-symbols-outlined">business</span> Votre structure</div>
               <div class="space-y-6">
-                <div>
-                  <label class="form-label">Nom de la structure *</label>
-                  <input type="text" class="form-input" placeholder="Nom de l'entreprise / association" required>
-                </div>
+                <div><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Nom de la structure *</label><input type="text" style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;" placeholder="Nom de l'entreprise / association" required></div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label class="form-label">Secteur d'activité *</label>
-                    <select class="form-input" required>
+                  <div><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Secteur d'activité *</label>
+                    <select style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;" required>
                       <option value="" disabled selected>Choisir un secteur</option>
-                      <option value="aide_domicile">Aide à domicile</option>
-                      <option value="ehpad">EHPAD / Résidence seniors</option>
-                      <option value="siad">SSIAD / HAD</option>
-                      <option value="petite_enfance">Petite enfance</option>
-                      <option value="handicap">Handicap / IME</option>
-                      <option value="autre">Autre</option>
+                      <option>Aide à domicile</option><option>EHPAD / Résidence seniors</option><option>SSIAD / HAD</option><option>Petite enfance</option><option>Handicap / IME</option><option>Autre</option>
                     </select>
                   </div>
-                  <div>
-                    <label class="form-label">Nombre d'apprenants *</label>
-                    <select class="form-input" required>
+                  <div><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Nombre d'apprenants *</label>
+                    <select style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;" required>
                       <option value="" disabled selected>Sélectionner</option>
-                      <option value="1-10">1 à 10</option>
-                      <option value="11-25">11 à 25</option>
-                      <option value="26-50">26 à 50</option>
-                      <option value="51-100">51 à 100</option>
-                      <option value="100+">Plus de 100</option>
+                      <option>1 à 10</option><option>11 à 25</option><option>26 à 50</option><option>51 à 100</option><option>Plus de 100</option>
                     </select>
                   </div>
                 </div>
               </div>
             </div>
-
-            <!-- SECTION 3: Besoins en formation -->
             <div>
-              <div class="section-title-modal">
-                <span class="material-symbols-outlined">school</span>
-                Vos besoins
-              </div>
+              <div style="display:flex;align-items:center;gap:8px;font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:20px;"><span class="material-symbols-outlined">school</span> Vos besoins</div>
               <div class="space-y-6">
-                <label class="form-label">Formations souhaitées *</label>
+                <label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Formations souhaitées *</label>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <label class="formation-checkbox">
-                    <input type="checkbox" name="formations-modal" value="bientraitance" class="modal-checkbox">
-                    <span class="text-sm body-rounded font-medium">Bientraitance</span>
-                  </label>
-                  <label class="formation-checkbox">
-                    <input type="checkbox" name="formations-modal" value="alzheimer" class="modal-checkbox">
-                    <span class="text-sm body-rounded font-medium">Maladie d'Alzheimer</span>
-                  </label>
-                  <label class="formation-checkbox">
-                    <input type="checkbox" name="formations-modal" value="gestes_postures" class="modal-checkbox">
-                    <span class="text-sm body-rounded font-medium">Gestes et postures</span>
-                  </label>
-                  <label class="formation-checkbox">
-                    <input type="checkbox" name="formations-modal" value="nutrition" class="modal-checkbox">
-                    <span class="text-sm body-rounded font-medium">Nutrition</span>
-                  </label>
-                  <label class="formation-checkbox">
-                    <input type="checkbox" name="formations-modal" value="communication" class="modal-checkbox">
-                    <span class="text-sm body-rounded font-medium">Communication</span>
-                  </label>
-                  <label class="formation-checkbox">
-                    <input type="checkbox" name="formations-modal" value="secourisme" class="modal-checkbox">
-                    <span class="text-sm body-rounded font-medium">Premiers secours</span>
-                  </label>
+                  <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;"><input type="checkbox" name="formations-modal" value="bientraitance"><span style="font-size:14px;font-weight:500;">Bientraitance</span></label>
+                  <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;"><input type="checkbox" name="formations-modal" value="alzheimer"><span style="font-size:14px;font-weight:500;">Maladie d'Alzheimer</span></label>
+                  <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;"><input type="checkbox" name="formations-modal" value="gestes_postures"><span style="font-size:14px;font-weight:500;">Gestes et postures</span></label>
+                  <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;"><input type="checkbox" name="formations-modal" value="nutrition"><span style="font-size:14px;font-weight:500;">Nutrition</span></label>
+                  <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;"><input type="checkbox" name="formations-modal" value="communication"><span style="font-size:14px;font-weight:500;">Communication</span></label>
+                  <label style="display:flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;cursor:pointer;"><input type="checkbox" name="formations-modal" value="secourisme"><span style="font-size:14px;font-weight:500;">Premiers secours</span></label>
                 </div>
-
-                <div class="pt-4">
-                  <label class="form-label">Message / Précisions</label>
-                  <textarea class="form-input" placeholder="Décrivez vos besoins spécifiques..."></textarea>
-                </div>
+                <div class="pt-4"><label style="display:block;font-size:13px;font-weight:bold;margin-bottom:6px;color:#333;">Message / Précisions</label><textarea style="width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:12px;font-size:14px;outline:none;min-height:100px;" placeholder="Décrivez vos besoins spécifiques..."></textarea></div>
               </div>
             </div>
-
-            <!-- CGU + Submit -->
             <div class="space-y-6 pb-4">
               <div class="flex items-start gap-3">
-                <input type="checkbox" required class="modal-checkbox mt-1">
-                <label class="text-xs body-rounded text-secondary-gray" style="font-weight: 400;">
-                  J'accepte que mes informations soient utilisées pour me recontacter conformément à la <a href="#"
-                    class="font-bold text-cyanBrand hover:underline">politique de confidentialité</a>.
-                </label>
+                <input type="checkbox" required style="margin-top:4px;">
+                <label style="font-size:12px;font-weight:400;color:#74888F;">J'accepte que mes informations soient utilisées pour me recontacter conformément à la <a href="#" style="font-weight:bold;color:#67DAD5;">politique de confidentialité</a>.</label>
               </div>
-
-              <button type="submit"
-                class="w-full py-4 rounded-full text-white font-bold text-lg transition-all duration-300 hover:shadow-lg hover:opacity-90 active:scale-[0.98] body-rounded"
-                style="background-color: #67DAD5;">
-                Envoyer ma demande
-              </button>
-
-              <p class="text-center text-[10px] body-rounded text-secondary-gray" style="font-weight: 400;">
-                * Champs obligatoires — Réponse garantie sous 48h ouvrées.
-              </p>
+              <button type="submit" class="w-full py-4 rounded-full text-white font-bold text-lg" style="background-color:#67DAD5;border:none;cursor:pointer;">Envoyer ma demande</button>
+              <p style="text-align:center;font-size:10px;color:#74888F;">* Champs obligatoires — Réponse garantie sous 48h ouvrées.</p>
             </div>
           </div>
         </form>
-
-        <!-- Success Message -->
         <div id="success-message-modal" class="hidden text-center py-12">
-          <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-cyanBrand/10 mb-6">
-            <span class="material-symbols-outlined text-4xl text-cyanBrand">check_circle</span>
-          </div>
-          <h2 class="text-2xl font-black mb-3 secondary-title">Demande envoyée !</h2>
-          <p class="body-rounded text-secondary-gray mb-8">
-            Votre demande a bien été enregistrée. Notre équipe vous recontactera sous <span
-              class="font-bold text-cyanBrand">48h ouvrées</span>.
-          </p>
-          <button onclick="document.getElementById('modal-devis').style.display='none'"
-            class="inline-block py-3 px-10 rounded-full text-white font-bold transition-all hover:bg-opacity-90 body-rounded"
-            style="background-color: #67DAD5;">
-            Fermer
-          </button>
+          <div style="display:inline-flex;align-items:center;justify-content:center;width:80px;height:80px;border-radius:50%;background:rgba(103,218,213,0.1);margin-bottom:24px;"><span class="material-symbols-outlined" style="font-size:40px;color:#67DAD5;">check_circle</span></div>
+          <h2 style="font-size:24px;font-weight:900;margin-bottom:12px;">Demande envoyée !</h2>
+          <p style="color:#74888F;margin-bottom:32px;">Votre demande a bien été enregistrée. Notre équipe vous recontactera sous <span style="font-weight:bold;color:#67DAD5;">48h ouvrées</span>.</p>
+          <button onclick="document.getElementById('modal-devis').style.display='none'" style="display:inline-block;padding:12px 40px;border-radius:999px;background-color:#67DAD5;color:#fff;font-weight:bold;border:none;cursor:pointer;">Fermer</button>
         </div>
       </div>
     </div>
@@ -644,205 +305,150 @@
   <script>
     function handleSubmitDevis() {
       const formations = document.querySelectorAll('input[name="formations-modal"]:checked');
-      if (formations.length === 0) {
-        alert('Veuillez sélectionner au moins une formation.');
-        return;
-      }
+      if (formations.length === 0) { alert('Veuillez sélectionner au moins une formation.'); return; }
       document.getElementById('quote-form-modal').style.display = 'none';
       document.getElementById('success-message-modal').classList.remove('hidden');
     }
   </script>
-  <main style="background-color:#ffffff !important;">
 
-    <!-- HERO ─────────────────────────────────── -->
-    <section class="relative overflow-hidden py-20" style="background-color:#ffffff !important;">
+  <main>
+
+    <!-- HERO -->
+    <section class="relative overflow-hidden py-20">
       <img src="images/Angle Gauche .png" class="bg-deco" style="top:0;left:0;width:320px;opacity:0.3;" alt="">
       <img src="images/Coté droit.png" class="bg-deco" style="top:0;right:0;width:280px;opacity:0.2;" alt="">
-      <div class="max-w-4xl mx-auto px-6 text-center relative z-10" style="background-color:transparent !important;">
-        <div class="flex justify-center mb-6 fade-up" style="background-color:transparent !important;">
+      <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <div class="flex justify-center mb-6 fade-up">
           <span class="badge" style="border-color:#67DAD5;color:#67DAD5;">
             <span class="material-symbols-outlined" style="font-size:16px;">energy_savings_leaf</span>
             Avantage stratégique n°4
           </span>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 fade-up delay-1"
-          style="background-color:transparent !important; line-height:1.25;">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 fade-up delay-1" style="line-height:1.25;">
           Engagement RSE<br />
           <span class="text-cyan">&amp; décarbonation</span>
         </h1>
-        <p class="text-xl md:text-2xl font-bold fade-up delay-2"
-          style="color:#74888F;font-family:'Arial',sans-serif;font-style:italic;background-color:transparent !important;">
+        <p class="text-xl md:text-2xl font-bold fade-up delay-2" style="color:#74888F;font-family:'Arial',sans-serif;font-style:italic;">
           Former en digital, c'est intégrer la montée en compétences<br />dans une démarche responsable et durable.
         </p>
       </div>
     </section>
 
-    <!-- 4 IMPACTS RSE ────────────────────────── -->
-    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
+    <!-- 4 IMPACTS RSE -->
+    <section class="py-16 relative overflow-hidden">
       <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:280px;opacity:0.15;" alt="">
-      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
-
-        <div class="text-center mb-14" style="background-color:transparent !important;">
-          <h2 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;margin-bottom:8px;">
-            La digitalisation de la formation permet…
-          </h2>
+      <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-14">
+          <h2 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;margin-bottom:8px;">La digitalisation de la formation permet…</h2>
         </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14"
-          style="background-color:transparent !important;">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
 
           <div class="card p-6 text-center fade-up">
             <div class="leaf-icon mx-auto mb-4">
               <span class="material-symbols-outlined" style="font-size:24px;color:#67DAD5;">directions</span>
             </div>
-            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:8px;">
-              Suppression des déplacements inter-sites</h3>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">Chaque intervenant
-              reste sur son secteur.</p>
+            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:8px;">Suppression des déplacements inter-sites</h3>
+            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">Chaque intervenant reste sur son secteur.</p>
           </div>
 
           <div class="card p-6 text-center fade-up delay-1">
             <div class="leaf-icon mx-auto mb-4">
               <span class="material-symbols-outlined" style="font-size:24px;color:#67DAD5;">route</span>
             </div>
-            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:8px;">
-              Réduction des kilomètres parcourus</h3>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">Moins de trajets =
-              moins d'émissions CO₂.</p>
+            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:8px;">Réduction des kilomètres parcourus</h3>
+            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">Moins de trajets = moins d'émissions CO₂.</p>
           </div>
 
           <div class="card p-6 text-center fade-up delay-2">
             <div class="leaf-icon mx-auto mb-4">
               <span class="material-symbols-outlined" style="font-size:24px;color:#67DAD5;">description</span>
             </div>
-            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:8px;">
-              Diminution des impressions papier</h3>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">Supports 100 %
-              numériques, zéro impression.</p>
+            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:8px;">Diminution des impressions papier</h3>
+            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">Supports 100 % numériques, zéro impression.</p>
           </div>
 
           <div class="card p-6 text-center fade-up delay-3">
             <div class="leaf-icon mx-auto mb-4">
               <span class="material-symbols-outlined" style="font-size:24px;color:#67DAD5;">co2</span>
             </div>
-            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:8px;">
-              Baisse de l'empreinte carbone liée à la formation</h3>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">Un indicateur RSE
-              mesurable et valorisable.</p>
+            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:8px;">Baisse de l'empreinte carbone liée à la formation</h3>
+            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">Un indicateur RSE mesurable et valorisable.</p>
           </div>
 
         </div>
 
         <div class="highlight-box max-w-3xl mx-auto fade-up delay-2">
-          <p class="text-lg font-bold"
-            style="font-family:'Arial',sans-serif;color:#000;background-color:transparent !important;">
+          <p class="text-lg font-bold" style="font-family:'Arial',sans-serif;color:#000;">
             Former en digital, c'est intégrer la montée en compétences dans une démarche responsable et durable.
           </p>
         </div>
-
       </div>
     </section>
 
-    <!-- CALCULATEUR CO₂ ─────────────────────── -->
-    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
+    <!-- CALCULATEUR CO₂ -->
+    <section class="py-16 relative overflow-hidden">
       <img src="images/2 traits.png" class="bg-deco" style="top:10%;left:0;width:180px;opacity:0.3;" alt="">
-      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+      <div class="max-w-6xl mx-auto px-6 relative z-10">
 
-        <div class="text-center mb-14" style="background-color:transparent !important;">
-          <div class="flex justify-center mb-4" style="background-color:transparent !important;">
+        <div class="text-center mb-14">
+          <div class="flex justify-center mb-4">
             <span class="badge" style="border-color:#67DAD5;color:#67DAD5;">
               <span class="material-symbols-outlined" style="font-size:16px;">calculate</span>
               Exemple concret — 10 intervenants
             </span>
           </div>
-          <h2 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;">
-            La formation digitale : un levier concret de décarbonation
-          </h2>
+          <h2 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;">La formation digitale : un levier concret de décarbonation</h2>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start"
-          style="background-color:transparent !important;">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
           <!-- Gauche : hypothèses + calcul -->
-          <div style="background-color:transparent !important;">
-            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;margin-bottom:20px;">
-              Prenons un exemple simple :</h3>
-
-            <div class="space-y-3 mb-8" style="background-color:transparent !important;">
+          <div>
+            <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;margin-bottom:20px;">Prenons un exemple simple :</h3>
+            <div class="space-y-3 mb-8">
               <div class="card flex items-center justify-between px-5 py-4" style="border-radius:14px;">
-                <div class="flex items-center gap-3">
-                  <span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">groups</span>
-                  <span
-                    style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;">Intervenants</span>
-                </div>
+                <div class="flex items-center gap-3"><span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">groups</span><span style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;">Intervenants</span></div>
                 <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;">10</span>
               </div>
               <div class="card flex items-center justify-between px-5 py-4" style="border-radius:14px;">
-                <div class="flex items-center gap-3">
-                  <span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">calendar_today</span>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;">Journées
-                    de formation présentielle</span>
-                </div>
+                <div class="flex items-center gap-3"><span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">calendar_today</span><span style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;">Journées de formation présentielle</span></div>
                 <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;">2</span>
               </div>
               <div class="card flex items-center justify-between px-5 py-4" style="border-radius:14px;">
-                <div class="flex items-center gap-3">
-                  <span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">straighten</span>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;">Distance
-                    aller-retour moyenne</span>
-                </div>
+                <div class="flex items-center gap-3"><span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">straighten</span><span style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;">Distance aller-retour moyenne</span></div>
                 <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;">20 km</span>
               </div>
               <div class="card flex items-center justify-between px-5 py-4" style="border-radius:14px;">
-                <div class="flex items-center gap-3">
-                  <span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">cloud</span>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;">Émissions
-                    véhicule thermique</span>
-                </div>
-                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;">120 g
-                  CO₂/km</span>
+                <div class="flex items-center gap-3"><span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">cloud</span><span style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;">Émissions véhicule thermique</span></div>
+                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;">120 g CO₂/km</span>
               </div>
             </div>
 
             <!-- Étapes calcul -->
             <div class="card p-6">
-              <p
-                style="font-family:'Arial',sans-serif;font-weight:bold;font-size:13px;color:#74888F;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;">
-                Calcul</p>
+              <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:13px;color:#74888F;margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;">Calcul</p>
               <div class="space-y-4">
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:24px;height:24px;border-radius:50%;background-color:#000 !important;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;margin-top:1px;">
-                    1</div>
+                  <div class="keep-icon-blk" style="width:24px;height:24px;border-radius:50%;background-color:#000 !important;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;margin-top:1px;">1</div>
                   <div>
-                    <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">10
-                      intervenants × 20 km × 2 journées</p>
-                    <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;">= <span
-                        class="text-cyan">400 km cumulés</span></p>
+                    <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">10 intervenants × 20 km × 2 journées</p>
+                    <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;">= <span class="text-cyan">400 km cumulés</span></p>
                   </div>
                 </div>
-                <div style="height:1px;background-color:#e5e7eb !important;"></div>
+                <div style="height:1px;background-color:#e5e7eb;"></div>
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:24px;height:24px;border-radius:50%;background-color:#000 !important;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;margin-top:1px;">
-                    2</div>
+                  <div class="keep-icon-blk" style="width:24px;height:24px;border-radius:50%;background-color:#000 !important;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;margin-top:1px;">2</div>
                   <div>
-                    <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">400 km ×
-                      120 g CO₂/km</p>
-                    <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;">= <span
-                        class="text-cyan">48 kg de CO₂</span> par journée de formation</p>
+                    <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">400 km × 120 g CO₂/km</p>
+                    <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;">= <span class="text-cyan">48 kg de CO₂</span> par journée de formation</p>
                   </div>
                 </div>
-                <div style="height:1px;background-color:#e5e7eb !important;"></div>
+                <div style="height:1px;background-color:#e5e7eb;"></div>
                 <div class="flex items-start gap-3">
-                  <div
-                    style="width:24px;height:24px;border-radius:50%;background-color:#67DAD5 !important;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;margin-top:1px;">
-                    3</div>
+                  <div style="width:24px;height:24px;border-radius:50%;background-color:#67DAD5 !important;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:bold;flex-shrink:0;margin-top:1px;">3</div>
                   <div>
-                    <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Sur 10
-                      sessions annuelles</p>
-                    <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#67DAD5;">= 480 kg de
-                      CO₂ évités</p>
+                    <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Sur 10 sessions annuelles</p>
+                    <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#67DAD5;">= 480 kg de CO₂ évités</p>
                   </div>
                 </div>
               </div>
@@ -850,91 +456,65 @@
           </div>
 
           <!-- Droite : stat CO₂ + sans compter -->
-          <div style="background-color:transparent !important;">
-
+          <div>
             <div class="card-green p-8 text-center mb-6">
-              <p
-                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;margin-bottom:8px;">
-                CO₂ évité sur 10 sessions annuelles</p>
+              <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;margin-bottom:8px;">CO₂ évité sur 10 sessions annuelles</p>
               <p class="co2-display" style="color:#67DAD5;">480 kg</p>
-              <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-top:4px;">de
-                CO₂ évités</p>
+              <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-top:4px;">de CO₂ évités</p>
               <div class="mt-8 space-y-4 text-left">
                 <div>
                   <div class="flex justify-between mb-2">
-                    <span
-                      style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#74888F;">Formation
-                      présentielle (10 sessions)</span>
-                    <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:12px;color:#ff4444;">480 kg
-                      CO₂</span>
+                    <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#74888F;">Formation présentielle (10 sessions)</span>
+                    <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:12px;color:#ff4444;">480 kg CO₂</span>
                   </div>
-                  <div class="keep-bar-gray"
-                    style="height:12px;border-radius:999px;overflow:hidden;background-color:#e5e7eb !important;">
-                    <div class="keep-bar-red bar-anim"
-                      style="height:12px;width:100%;border-radius:999px;background-color:#ff4444 !important;"></div>
+                  <div class="keep-bar-gray" style="height:12px;border-radius:999px;overflow:hidden;background-color:#e5e7eb !important;">
+                    <div class="keep-bar-red bar-anim" style="height:12px;width:100%;border-radius:999px;background-color:#ff4444 !important;"></div>
                   </div>
                 </div>
                 <div>
                   <div class="flex justify-between mb-2">
-                    <span
-                      style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#74888F;">Formation
-                      digitale DFORMPRO</span>
-                    <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:12px;color:#67DAD5;">≈ 0 kg
-                      CO₂</span>
+                    <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#74888F;">Formation digitale DFORMPRO</span>
+                    <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:12px;color:#67DAD5;">≈ 0 kg CO₂</span>
                   </div>
-                  <div class="keep-bar-gray"
-                    style="height:12px;border-radius:999px;overflow:hidden;background-color:#e5e7eb !important;">
-                    <div class="keep-bar-green bar-anim-delay"
-                      style="height:12px;width:3%;border-radius:999px;background-color:#67DAD5 !important;"></div>
+                  <div class="keep-bar-gray" style="height:12px;border-radius:999px;overflow:hidden;background-color:#e5e7eb !important;">
+                    <div class="keep-bar-green bar-anim-delay" style="height:12px;width:3%;border-radius:999px;background-color:#67DAD5 !important;"></div>
                   </div>
                 </div>
                 <div class="flex items-center gap-2 justify-center pt-2">
                   <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;">trending_down</span>
-                  <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:13px;color:#000;">~100 % de
-                    réduction des émissions de déplacement</span>
+                  <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:13px;color:#000;">~100 % de réduction des émissions de déplacement</span>
                 </div>
               </div>
             </div>
 
             <!-- Et cela sans compter -->
             <div class="card p-6">
-              <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:14px;">
-                Et cela sans compter :</p>
+              <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:15px;color:#000;margin-bottom:14px;">Et cela sans compter :</p>
               <div class="space-y-3">
                 <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:1px solid #e5e7eb;">
-                  <div class="leaf-icon" style="width:36px;height:36px;">
-                    <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;">directions_car</span>
-                  </div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les
-                    déplacements du formateur</span>
+                  <div class="leaf-icon" style="width:36px;height:36px;"><span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;">directions_car</span></div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les déplacements du formateur</span>
                 </div>
                 <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:1px solid #e5e7eb;">
-                  <div class="leaf-icon" style="width:36px;height:36px;">
-                    <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;">description</span>
-                  </div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les
-                    impressions papier</span>
+                  <div class="leaf-icon" style="width:36px;height:36px;"><span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;">description</span></div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les impressions papier</span>
                 </div>
                 <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:1px solid #e5e7eb;">
-                  <div class="leaf-icon" style="width:36px;height:36px;">
-                    <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;">bolt</span>
-                  </div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les
-                    consommations énergétiques liées aux locaux</span>
+                  <div class="leaf-icon" style="width:36px;height:36px;"><span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;">bolt</span></div>
+                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les consommations énergétiques liées aux locaux</span>
                 </div>
               </div>
             </div>
-
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- RSE STRATÉGIQUE ─────────────────────── -->
-    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
-      <div class="max-w-5xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
-
-        <div class="section-divider fade-up" style="background-color:transparent !important;">
+    <!-- RSE STRATÉGIQUE -->
+    <section class="py-16 relative overflow-hidden">
+      <div class="max-w-5xl mx-auto px-6 relative z-10">
+        <div class="section-divider fade-up">
           <span></span>
           <span class="badge" style="border-color:#67DAD5;color:#67DAD5;white-space:nowrap;">
             <span class="material-symbols-outlined" style="font-size:16px;">eco</span>
@@ -942,101 +522,96 @@
           </span>
           <span></span>
         </div>
-
         <div class="card p-8 md:p-12 fade-up delay-1">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
-            style="background-color:transparent !important;">
-            <div style="background-color:transparent !important;">
-              <h2
-                style="font-family:'Arial',sans-serif;font-weight:bold;font-size:24px;color:#000;margin-bottom:16px;line-height:1.3;">
-                Intégrez la formation dans votre démarche RSE
-              </h2>
-              <p
-                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:15px;color:#74888F;margin-bottom:20px;">
-                Avec DFORMPRO DIGITAL, chaque action de formation est un acte responsable que vous pouvez mesurer,
-                valoriser et communiquer.
-              </p>
-              <p
-                style="font-family:'Arial',sans-serif;font-weight:bold;font-style:italic;font-size:16px;color:#67DAD5;">
-                Former devient un investissement<br />à la fois humain et écologique.
-              </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:24px;color:#000;margin-bottom:16px;line-height:1.3;">Intégrez la formation dans votre démarche RSE</h2>
+              <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:15px;color:#74888F;margin-bottom:20px;">Avec DFORMPRO DIGITAL, chaque action de formation est un acte responsable que vous pouvez mesurer, valoriser et communiquer.</p>
+              <p style="font-family:'Arial',sans-serif;font-weight:bold;font-style:italic;font-size:16px;color:#67DAD5;">Former devient un investissement<br />à la fois humain et écologique.</p>
             </div>
-            <div class="space-y-3" style="background-color:transparent !important;">
+            <div class="space-y-3">
               <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
-                <div class="keep-icon-cyn"
-                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#000;font-size:12px;font-weight:bold;">
-                  ✓</div>
-                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Réduction
-                  mesurable de l'empreinte carbone</span>
+                <div class="keep-icon-cyn" style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#000;font-size:12px;font-weight:bold;">✓</div>
+                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Réduction mesurable de l'empreinte carbone</span>
               </div>
               <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
-                <div class="keep-icon-cyn"
-                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#000;font-size:12px;font-weight:bold;">
-                  ✓</div>
-                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Indicateur
-                  valorisable dans vos rapports RSE</span>
+                <div class="keep-icon-cyn" style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#000;font-size:12px;font-weight:bold;">✓</div>
+                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Indicateur valorisable dans vos rapports RSE</span>
               </div>
               <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
-                <div class="keep-icon-cyn"
-                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#000;font-size:12px;font-weight:bold;">
-                  ✓</div>
-                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Engagement
-                  concret pour vos équipes et partenaires</span>
+                <div class="keep-icon-cyn" style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#000;font-size:12px;font-weight:bold;">✓</div>
+                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Engagement concret pour vos équipes et partenaires</span>
               </div>
               <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
-                <div class="keep-icon-cyn"
-                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#000;font-size:12px;font-weight:bold;">
-                  ✓</div>
-                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Aligné avec les
-                  objectifs de décarbonation du secteur</span>
+                <div class="keep-icon-cyn" style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#000;font-size:12px;font-weight:bold;">✓</div>
+                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Aligné avec les objectifs de décarbonation du secteur</span>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- CTA ─────────────────────────────────── -->
-    <section class="px-6 py-16" style="background-color:#ffffff !important;">
+    <!-- CTA -->
+    <section class="px-6 py-16">
       <div class="max-w-5xl mx-auto rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
-        style="background-color:#67DAD5 !important;border:2px solid #000;box-shadow:8px 8px 0px 0px #000;">
-        <div class="absolute top-0 right-0 w-56 h-56 rounded-full translate-x-1/2 -translate-y-1/2"
-          style="background-color:rgba(255,255,255,0.15) !important;"></div>
-        <div class="absolute bottom-0 left-0 w-40 h-40 rounded-full -translate-x-1/3 translate-y-1/3"
-          style="background-color:rgba(255,255,255,0.15) !important;"></div>
-
-        <div class="relative z-10" style="background-color:transparent !important;">
-
-          <h2
-            style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;margin-bottom:16px;background-color:transparent !important;">
-            Engagez-vous pour une formation plus responsable
-          </h2>
-
-          <p
-            style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
-            Demandez votre devis et découvrez comment DFORMPRO DIGITAL contribue à votre stratégie RSE.
-          </p>
-
-          <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
-            <a href="index.html"
-              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all"
-              style="background-color:#000 !important;color:#fff;font-family:'Nunito',sans-serif;">
+        style="background-color:#67DAD5;border:2px solid #000;box-shadow:8px 8px 0px 0px #000;">
+        <div class="absolute top-0 right-0 w-56 h-56 rounded-full translate-x-1/2 -translate-y-1/2" style="background-color:rgba(255,255,255,0.15);"></div>
+        <div class="absolute bottom-0 left-0 w-40 h-40 rounded-full -translate-x-1/3 translate-y-1/3" style="background-color:rgba(255,255,255,0.15);"></div>
+        <div class="relative z-10">
+          <h2 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;margin-bottom:16px;">Engagez-vous pour une formation plus responsable</h2>
+          <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,0.75);margin-bottom:32px;">Demandez votre devis et découvrez comment DFORMPRO DIGITAL contribue à votre stratégie RSE.</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="index.html" class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all" style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;">
               Demander un devis
-              <span class="material-symbols-outlined"
-                style="background-color:transparent !important;">arrow_forward</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
             </a>
-            <a href="index.html"
-              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all"
-              style="background-color:#ffffff !important;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;">
+            <a href="index.html" class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all" style="background-color:#ffffff;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;">
               Voir toutes nos formations
             </a>
           </div>
-
         </div>
       </div>
     </section>
-  </main>
-</body>
 
+  </main>
+
+  <!-- Footer -->
+  <footer style="background-color:#000000;color:#fff;padding:64px 24px;border-top:1px solid rgba(255,255,255,0.1);">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:48px;margin-bottom:64px;">
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <a href="index.html" style="display:inline-block;padding:8px;border:1px solid #e5e7eb;border-radius:12px;width:max-content;background-color:#ffffff;">
+            <img src="images/logo.jpg" alt="DFormPro Digital" style="height:40px;width:auto;object-fit:contain;">
+          </a>
+          <p style="font-size:14px;line-height:1.6;max-width:280px;color:#ffffff;">La plateforme de formation digitale dédiée aux services à la personne. Accélérez la montée en compétences de vos équipes.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <h3 style="font-weight:bold;font-size:20px;text-transform:uppercase;letter-spacing:0.05em;color:#67DAD5;">Contact</h3>
+          <div style="display:flex;flex-direction:column;gap:16px;font-size:14px;">
+            <div style="display:flex;align-items:center;gap:16px;margin-bottom:8px;">
+              <img src="images/avatar.png" alt="Régis DE OLIVEIRA" style="width:64px;height:64px;border-radius:50%;border:2px solid #67DAD5;object-fit:cover;">
+              <div><div style="font-weight:bold;font-size:16px;color:#ffffff;">Régis DE OLIVEIRA</div><div style="font-size:12px;color:#67DAD5;">Directeur</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;"><span class="material-symbols-outlined" style="color:#ffffff;">call</span><span style="color:#ffffff;">06 64 90 33 43</span></div>
+            <div style="display:flex;align-items:center;gap:12px;"><span class="material-symbols-outlined" style="color:#ffffff;">mail</span><a href="mailto:r.deoliveira@dformpro.fr" style="color:#ffffff;text-decoration:none;">r.deoliveira@dformpro.fr</a></div>
+            <div style="display:flex;align-items:flex-start;gap:12px;"><span class="material-symbols-outlined" style="color:#ffffff;">location_on</span><span style="color:#ffffff;">15 rue du Pré la Reine,<br>63100 Clermont-Fd.</span></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <h3 style="font-weight:bold;font-size:20px;text-transform:uppercase;letter-spacing:0.05em;color:#67DAD5;">Informations</h3>
+          <nav style="display:flex;flex-direction:column;gap:12px;font-size:14px;">
+            <a href="#" style="color:#ffffff;text-decoration:none;display:flex;align-items:center;gap:8px;"><span class="material-symbols-outlined" style="font-size:12px;">chevron_right</span>À propos</a>
+            <a href="#" style="color:#ffffff;text-decoration:none;display:flex;align-items:center;gap:8px;"><span class="material-symbols-outlined" style="font-size:12px;">chevron_right</span>CGV</a>
+            <a href="#" style="color:#ffffff;text-decoration:none;display:flex;align-items:center;gap:8px;"><span class="material-symbols-outlined" style="font-size:12px;">chevron_right</span>Mentions légales</a>
+            <a href="#" style="color:#ffffff;text-decoration:none;display:flex;align-items:center;gap:8px;"><span class="material-symbols-outlined" style="font-size:12px;">chevron_right</span>Politique de confidentialité</a>
+          </nav>
+        </div>
+      </div>
+      <div style="height:1px;background-color:rgba(255,255,255,0.1);margin-bottom:32px;"></div>
+      <p style="font-size:12px;color:#ffffff;">© 2026 DFormPro Digital. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+</body>
 </html>
