@@ -57,7 +57,6 @@ main span:not(.material-symbols-outlined):not(.badge) {
   width: 0%;
   transition: width 1.2s ease;
 }
-
 .bar-fill.red { background-color: #ff4444; }
 .bar-fill.cyan { background-color: #67DAD5; }
 
@@ -287,35 +286,24 @@ main span:not(.material-symbols-outlined):not(.badge) {
   </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  // Fade-up observer
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      const w = bar.getAttribute('data-width');
+      bar.style.width = w + '%';
+    });
+  }, 500);
+
+  // Fade-up
   const fadeEls = document.querySelectorAll('.fade-up');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('visible');
-        // Barres de progression
-        if (e.target.classList.contains('bar-fill')) {
-          const w = e.target.getAttribute('data-width');
-          setTimeout(() => {
-            e.target.style.width = w + '%';
-          }, 100);
-        }
       }
     });
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
-
-  // Forcer les barres visibles immédiatement si déjà dans le viewport
-  document.querySelectorAll('.bar-fill').forEach(bar => {
-    const rect = bar.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      const w = bar.getAttribute('data-width');
-      setTimeout(() => {
-        bar.style.width = w + '%';
-      }, 300);
-    }
-  });
 });
 </script>
 </head>
