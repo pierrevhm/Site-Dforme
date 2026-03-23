@@ -348,6 +348,135 @@
       background-color: #ffffff !important;
     }
   </style>
+
+  <!-- ===== RESPONSIVE STYLES ===== -->
+  <style id="responsive-styles">
+    /* ---- MOBILE MENU ---- */
+    #mobile-menu-btn { display: none; }
+    #mobile-nav { display: none; }
+
+    @media (max-width: 767px) {
+      #mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        color: #000;
+        order: 3;
+      }
+      #mobile-menu-btn .bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #000;
+        margin: 4px 0;
+        transition: all 0.3s ease;
+      }
+      #mobile-nav {
+        display: none;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        z-index: 999;
+        padding: 16px 24px 24px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        flex-direction: column;
+        gap: 0;
+      }
+      #mobile-nav.open { display: flex; }
+      #mobile-nav a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #000;
+        border-bottom: 1px solid #f3f4f6;
+        text-decoration: none;
+      }
+      #mobile-nav a:last-child { border-bottom: none; }
+      #mobile-nav .mobile-btn-create {
+        margin-top: 16px;
+        padding: 12px 0;
+        background: none;
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+        text-align: left;
+      }
+      #mobile-nav .mobile-btn-connect {
+        margin-top: 8px;
+        padding: 12px 24px;
+        border: 2px solid #67DAD5;
+        border-radius: 999px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #67DAD5;
+        background: #fff;
+        cursor: pointer;
+        width: 100%;
+      }
+      /* Masquer le bouton "Créer un compte" dans la nav sur mobile (géré dans le menu) */
+      .nav-create-btn-desktop { display: none !important; }
+    }
+
+    /* ---- DÉCORATIONS MOBILES ---- */
+    @media (max-width: 1024px) {
+      /* Masquer les éléments décoratifs débordants sur mobile et tablette */
+      .deco-hide-mobile { display: none !important; }
+    }
+    @media (max-width: 767px) {
+
+      /* Hero section */
+      .hero-section-main { min-height: clamp(350px, 60vh, 620px) !important; }
+
+      /* Section TestimonialVideo : images latérales */
+      .testimonial-side-img { display: none !important; }
+      .testimonial-center {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Section hero blur */
+      .hero-blur-section { min-height: clamp(280px, 50vh, 620px) !important; }
+
+      /* Design bas */
+      .design-bas-img { width: 100% !important; }
+
+      /* CTA section */
+      .cta-section-img { display: none !important; }
+
+      /* Header nav "Créer un compte" text: réduire la taille sur mobile */
+      .nav-right-container { gap: 8px !important; }
+    }
+
+    /* ---- DÉCORATIONS TABLETTE ---- */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .deco-scale-tablet { transform: scale(0.6) !important; transform-origin: center center !important; }
+      .deco-scale-tablet-tl { transform: scale(0.6) !important; transform-origin: top left !important; }
+      .deco-scale-tablet-tr { transform: scale(0.6) !important; transform-origin: top right !important; }
+      .deco-scale-tablet-bl { transform: scale(0.6) !important; transform-origin: bottom left !important; }
+      .deco-scale-tablet-br { transform: scale(0.6) !important; transform-origin: bottom right !important; }
+
+      /* Section TestimonialVideo : réduire les images latérales */
+      .testimonial-side-img { width: 280px !important; }
+
+      /* Hero section */
+      .hero-blur-section { min-height: clamp(400px, 55vh, 620px) !important; }
+    }
+
+    /* ---- GRILLE TABLETTE ---- */
+    @media (max-width: 767px) {
+      /* Stats block: 1 col */
+      .stats-grid-mobile { grid-template-columns: 1fr 1fr !important; }
+    }
+  </style>
 </head>
 
 <body class="antialiased">
@@ -522,10 +651,10 @@
         <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">Contact</a>
       </div>
       <!-- Right Container: Action Buttons (flush right) -->
-      <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1"
+      <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1 nav-right-container"
         style="margin-left: auto; padding-right: 0; margin-right: 10px;">
         <button onclick="document.getElementById('modal-inscription').style.display='flex'"
-          class="text-black font-bold text-lg whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline"
+          class="nav-create-btn-desktop text-black font-bold text-lg whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline"
           style="padding: 0;">
           Créer un compte
         </button>
@@ -534,7 +663,21 @@
           style="color: #67DAD5; border-color: #67DAD5; background-color: #fff;">
           Se connecter
         </button>
+        <!-- Bouton hamburger mobile -->
+        <button id="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open')">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
       </div>
+    </nav>
+    <!-- Menu mobile -->
+    <nav id="mobile-nav" aria-label="Navigation mobile">
+      <a href="formations.html">Nos formations</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+      <button class="mobile-btn-create" onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-inscription').style.display='flex'">Créer un compte</button>
+      <button class="mobile-btn-connect" onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-connexion').style.display='flex'">Se connecter</button>
     </nav>
   </header>
 
@@ -804,8 +947,8 @@
   <main class="pt-24" style="background-color: #F7FBFF; position: relative; overflow: hidden;">
     <!-- BEGIN: HeroSection -->
     <section class="relative relative-section overflow-hidden w-full" style="background-color: #F7FBFF;">
-      <img src="images/image du pptx/bord gauche haut .png" alt="" style="position:absolute; top:0; left:0; width:320px; z-index:2; pointer-events:none; mix-blend-mode:multiply;">
-      <div aria-hidden="true" style="position:absolute; top:-80px; right:-80px; width:280px; height:280px; background-color:#74888F; border-radius:40px; transform:rotate(45deg); opacity:0.85; z-index:1; pointer-events:none;"></div>
+      <img src="images/image du pptx/bord gauche haut .png" alt="" class="deco-hide-mobile deco-scale-tablet-tl" style="position:absolute; top:0; left:0; width:320px; z-index:2; pointer-events:none; mix-blend-mode:multiply;">
+      <div aria-hidden="true" class="deco-hide-mobile" style="position:absolute; top:-80px; right:-80px; width:280px; height:280px; background-color:#74888F; border-radius:40px; transform:rotate(45deg); opacity:0.85; z-index:1; pointer-events:none;"></div>
       <div class="py-20 px-6 text-center max-w-4xl mx-auto relative z-10">
         <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight main-title">
           Former autrement pour<br />mieux accompagner
@@ -819,8 +962,8 @@
     <!-- END: HeroSection -->
     <!-- BEGIN: ProblemSection -->
     <section class="py-20 px-6 relative relative-section" style="background-color: #F7FBFF;">
-      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; top:40px; left:40px; width:200px; z-index:1; pointer-events:none; mix-blend-mode:multiply; opacity:0.65;">
-      <img src="images/image du pptx/element design bleu2.png" alt="" style="position:absolute; bottom:0; right:-150px; width:480px; z-index:1; pointer-events:none; opacity:0.5;">
+      <img src="images/image du pptx/design 2 traits.png" alt="" class="deco-hide-mobile" style="position:absolute; top:40px; left:40px; width:200px; z-index:1; pointer-events:none; mix-blend-mode:multiply; opacity:0.65;">
+      <img src="images/image du pptx/element design bleu2.png" alt="" class="deco-hide-mobile deco-scale-tablet-br" style="position:absolute; bottom:0; right:-150px; width:480px; z-index:1; pointer-events:none; opacity:0.5;">
       <div class="container mx-auto max-w-6xl text-center relative z-10">
         <h2 class="text-3xl md:text-4xl font-black mb-6 secondary-title">Vous gérez plus qu'un planning. Vous portez une
           mission.</h2>
@@ -893,7 +1036,7 @@
     <!-- BEGIN: SolutionSection -->
 
     <!-- HERO : image8 fond flou + titre -->
-    <section class="relative overflow-hidden" style="min-height: 620px; display:flex; align-items:center; justify-content:center;">
+    <section class="relative overflow-hidden hero-blur-section" style="min-height: 620px; display:flex; align-items:center; justify-content:center;">
       <img src="images/image du pptx/image20.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(6px); transform:scale(1); z-index:0;">
       <div style="position:absolute; inset:0; background:rgba(255,255,255,0.55); z-index:1;"></div>
       <div class="relative z-10 py-16 w-full" style="position:relative; display:flex; flex-direction:column; align-items:center; text-align:center;">
@@ -914,7 +1057,7 @@
 
     <!-- Notre expertise : texte gauche | image droite -->
     <section class="py-20 px-6 relative" style="background-color: #ffffff;">
-      <img src="images/image du pptx/image coté droit.png" alt="" style="position:absolute; top:90%; right:0; transform:translateY(-50%); height:160%; width:auto; z-index:1; pointer-events:none; opacity:0.5; mix-blend-mode:multiply;">
+      <img src="images/image du pptx/image coté droit.png" alt="" class="deco-hide-mobile" style="position:absolute; top:90%; right:0; transform:translateY(-50%); height:160%; width:auto; z-index:1; pointer-events:none; opacity:0.5; mix-blend-mode:multiply;">
       <div class="container mx-auto max-w-7xl relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <!-- Gauche -->
@@ -994,8 +1137,9 @@
 
     <!-- END: SolutionSection -->
     <!-- BEGIN: StrategicAdvantagesGrid -->
-    <section class="relative overflow-hidden py-16 relative-section" style="background-color: #F7FBFF;">
-      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; top:40px; left:40px; width:220px; z-index:1; pointer-events:none; mix-blend-mode:multiply; opacity:0.6; transform:scaleY(-1);">
+    <section class="relative py-16 relative-section" style="background-color: #F7FBFF; z-index: 2;">
+      <img src="images/image du pptx/design 2 traits.png" alt="" class="deco-hide-mobile" style="position:absolute; top:40px; left:40px; width:220px; z-index:1; pointer-events:none; mix-blend-mode:multiply; opacity:0.6; transform:scaleY(-1);">
+      <img src="images/image du pptx/element design4.png" alt="" class="deco-hide-mobile" style="position:absolute; bottom:-80px; right:-150px; width:600px; z-index:1; pointer-events:none; filter:invert(1); mix-blend-mode:multiply; opacity:0.3; transform:rotate(20deg);">
       <div class="container mx-auto max-w-6xl relative z-10">
         <div class="text-center mb-16">
           <h2 class="text-4xl font-black mb-4 secondary-title">Des avantages stratégiques concrets</h2>
@@ -1092,8 +1236,7 @@
     </section>
     <!-- END: StrategicAdvantagesGrid -->
     <!-- BEGIN: StepsSection -->
-    <section class="py-32 relative text-center relative-section expertise-section" style="background-color: #F7FBFF;">
-      <img src="images/image du pptx/element design4.png" alt="" style="position:absolute; top:-480px; right:-500px; width:700px; z-index:1; pointer-events:none; filter:invert(1); mix-blend-mode:multiply; opacity:0.3; transform:rotate(20deg);">
+    <section class="py-32 relative text-center relative-section expertise-section" style="background-color: #F7FBFF; z-index: 1;">
       <!-- Title block (centré, contraint) -->
       <div class="container mx-auto px-6 max-w-7xl relative z-10">
         <div class="text-center mb-28 flex flex-col items-center">
@@ -1204,8 +1347,8 @@
     <!-- END: StepsSection -->
     <!-- BEGIN: ExpertiseSection -->
     <section class="py-24 relative relative-section" style="background-color: #F7FBFF;">
-      <img src="images/image du pptx/element design bleu2.png" alt="" style="position:absolute; top:20px; left:-360px; width:750px; transform:rotate(-20deg); z-index:1; pointer-events:none; opacity:0.55;">
-      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; bottom:-20px; right:40px; width:200px; z-index:1; pointer-events:none; mix-blend-mode:multiply; opacity:0.6; transform:rotate(180deg);">
+      <img src="images/image du pptx/element design bleu2.png" alt="" class="deco-hide-mobile" style="position:absolute; top:20px; left:-360px; width:750px; transform:rotate(-20deg); z-index:1; pointer-events:none; opacity:0.55;">
+      <img src="images/image du pptx/design 2 traits.png" alt="" class="deco-hide-mobile" style="position:absolute; bottom:-20px; right:40px; width:200px; z-index:1; pointer-events:none; mix-blend-mode:multiply; opacity:0.6; transform:rotate(180deg);">
       <div class="container mx-auto px-6 relative z-10">
         <!-- Title -->
         <h2 class="text-3xl md:text-4xl font-black text-center text-black mb-16 secondary-title">
@@ -1253,15 +1396,15 @@
     <section class="py-20 relative overflow-hidden" style="background-color: #ffffff;">
 
       <!-- Layout pleine largeur -->
-      <div class="flex items-center justify-between" style="gap: 0;">
+      <div class="flex items-center justify-between" style="gap: 0; flex-wrap: wrap;">
 
         <!-- Image gauche collée au bord -->
-        <div class="flex-shrink-0" style="width: 500px;">
+        <div class="flex-shrink-0 testimonial-side-img" style="width: 500px;">
           <img src="images/image du pptx/image gauche.png" alt="" class="w-full object-contain block">
         </div>
 
         <!-- Centre : moniteur + texte -->
-        <div class="flex-1 flex flex-col items-center px-6">
+        <div class="flex-1 flex flex-col items-center px-6 testimonial-center">
           <h2 class="secondary-title mb-8" style="font-size: 2.5rem !important; color: #111827; margin-top: -60px;">Témoignage</h2>
           <div class="relative inline-block cursor-pointer group w-full max-w-2xl"
             onclick="window.open('https://youtu.be/BRQYfc9qoVg?si=HrwzaYf7uhd3VlaX','_blank')" title="Voir la vidéo sur YouTube">
@@ -1287,7 +1430,7 @@
         </div>
 
         <!-- Image droite collée au bord -->
-        <div class="flex-shrink-0" style="width: 500px;">
+        <div class="flex-shrink-0 testimonial-side-img" style="width: 500px;">
           <img src="images/image du pptx/image droite.png" alt="" class="w-full object-contain block">
         </div>
 
@@ -1629,7 +1772,7 @@
   </main>
   <!-- Giant CTA Section -->
   <section class="px-6 py-12 md:py-20 relative" style="background-color: #F7FBFF;">
-    <img src="images/image du pptx/1 trait.png" alt="" style="position:absolute; top:50%; left:-80px; transform:translateY(-50%) scaleY(-1); width:320px; z-index:1; pointer-events:none; mix-blend-mode:multiply; opacity:0.6;">
+    <img src="images/image du pptx/1 trait.png" alt="" class="deco-hide-mobile" style="position:absolute; top:50%; left:-80px; transform:translateY(-50%) scaleY(-1); width:320px; z-index:1; pointer-events:none; mix-blend-mode:multiply; opacity:0.6;">
     <div class="max-w-5xl mx-auto rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
       style="background-color: #67DAD5;">
       <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full translate-x-1/2 -translate-y-1/2">
@@ -1658,7 +1801,7 @@
 
   <!-- Design bas -->
   <div style="line-height: 0; text-align: right;">
-    <img src="images/image du pptx/desgin bas .png" alt="" style="display: inline-block; width: 55%;">
+    <img src="images/image du pptx/desgin bas .png" alt="" class="design-bas-img" style="display: inline-block; width: 55%;">
   </div>
 
   <!-- Footer -->
