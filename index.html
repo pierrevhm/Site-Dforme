@@ -658,11 +658,15 @@
           style="padding: 0;">
           Créer un compte
         </button>
-        <button onclick="document.getElementById('modal-connexion').style.display='flex'"
-          class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full transition-all border-2"
-          style="color: #67DAD5; border-color: #67DAD5; background-color: #fff;">
-          Se connecter
-        </button>
+<button onclick="document.getElementById('modal-connexion').style.display='flex'"
+  class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
+  style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;"
+  onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(103,218,213,0.4)';"
+  onmouseout="this.style.backgroundColor='#fff'; this.style.color='#67DAD5'; this.style.transform='translateY(0)'; this.style.boxShadow='none';"
+  onmousedown="this.style.transform='translateY(0) scale(0.97)';"
+  onmouseup="this.style.transform='translateY(-2px) scale(1)';">
+  Se connecter
+</button>
         <!-- Bouton hamburger mobile -->
         <button id="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open')">
           <span class="bar"></span>
