@@ -1802,11 +1802,15 @@
           Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <button onclick="document.getElementById('modal-devis').style.display='flex'"
-            class="text-white font-bold py-4 px-10 rounded-[20px] text-lg hover:bg-opacity-90 transition-all body-rounded cursor-pointer"
-            style="background-color: #0B1221;">
-            Demander un devis
-          </button>
+<button onclick="document.getElementById('modal-devis').style.display='flex'"
+  class="text-white font-bold py-4 px-10 rounded-[20px] text-lg body-rounded cursor-pointer"
+  style="background-color: #0B1221; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);"
+  onmouseover="this.style.transform='translateY(-3px) scale(1.04)'; this.style.boxShadow='0 12px 30px rgba(0,0,0,0.35)';"
+  onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)';"
+  onmousedown="this.style.transform='translateY(0) scale(0.97)';"
+  onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
+  Demander un devis
+</button>
         </div>
       </div>
     </div>
