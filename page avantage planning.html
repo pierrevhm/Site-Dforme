@@ -194,6 +194,36 @@
       background-size: 20px;
       padding-right: 44px;
     }
+    /* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .max-w-6xl { max-width: 100% !important; padding-left: 24px !important; padding-right: 24px !important; }
+  .grid.grid-cols-1.lg\\:grid-cols-2 { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 768px) {
+  .grid.grid-cols-1.md\\:grid-cols-2 { grid-template-columns: 1fr !important; }
+  .card { border-radius: 16px !important; }
+  .badge { font-size: 11px !important; }
+  h1 { font-size: clamp(1.8rem, 6vw, 3rem) !important; }
+  h2 { font-size: clamp(1.4rem, 4vw, 2rem) !important; }
+  .py-20 { padding-top: 48px !important; padding-bottom: 48px !important; }
+  .py-16 { padding-top: 40px !important; padding-bottom: 40px !important; }
+  .gap-10 { gap: 32px !important; }
+  .gap-12 { gap: 32px !important; }
+  .p-8 { padding: 20px !important; }
+  .md\\:p-10 { padding: 20px !important; }
+  .md\\:p-12 { padding: 20px !important; }
+  .px-10 { padding-left: 20px !important; padding-right: 20px !important; }
+  .rounded-\\[40px\\] { border-radius: 24px !important; }
+  .text-\\[72px\\], [style*="font-size:72px"] { font-size: 48px !important; }
+  .flex-wrap { flex-direction: column !important; align-items: center !important; }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: clamp(1.5rem, 7vw, 2.2rem) !important; }
+  .card { padding: 16px !important; }
+  .step-dot { width: 30px !important; height: 30px !important; font-size: 13px !important; }
+}
 
     textarea.form-input { border-radius: 20px !important; resize: vertical; min-height: 100px; }
 
@@ -383,7 +413,7 @@
     <section class="relative overflow-hidden py-20" style="background-color:#ffffff !important;">
       <img src="images/Angle Gauche .png" class="bg-deco" style="top:0;left:0;width:320px;opacity:0.3;" alt="">
       <img src="images/Coté droit.png" class="bg-deco" style="top:0;right:0;width:280px;opacity:0.2;" alt="">
-      <div class="max-w-4xl mx-auto px-6 text-center relative z-10" style="background-color:transparent !important;">
+      <div class="max-w-6xl mx-auto px-6 text-center relative z-10" style="background-color:transparent !important;">
         <div class="flex justify-center mb-6 fade-up" style="background-color:transparent !important;">
           <span class="badge" style="border-color:#67DAD5;color:#67DAD5;">
             <span class="material-symbols-outlined" style="font-size:16px;">timer</span>
@@ -550,7 +580,8 @@
 
     <!-- COMPARAISON ──────────────────────────── -->
     <section class="py-20 relative overflow-hidden" style="background-color:#ffffff !important;">
-      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+      <div class="max-w-7xl mx-auto px-6 relative z-10"
+      style="background-color:transparent !important;">
 
         <div class="text-center mb-14" style="background-color:transparent !important;">
           <div class="flex justify-center mb-4" style="background-color:transparent !important;">
@@ -676,7 +707,7 @@
     <!-- IMPACT ORGANISATIONNEL ──────────────── -->
     <section class="py-20 relative overflow-hidden" style="background-color:#ffffff !important;">
       <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:280px;opacity:0.15;" alt="">
-      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+      <div class="max-w-7xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
           style="background-color:transparent !important;">
 
