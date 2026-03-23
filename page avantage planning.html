@@ -1,128 +1,123 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Réduction de l'impact planning – DFormPro Digital</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <!-- Tailwind CSS & Material Icons -->
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    rel="stylesheet" />
-  <!-- Custom Font Configuration -->
-  <style data-purpose="typography">
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Bangers&display=swap');
+/* ===== DESIGN SYSTÈME PAGE PLANNING ===== */
 
-    body {
-      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
-      font-weight: 700;
-      color: #111827;
-      background-color: #ffffff;
-    }
+.bg-deco {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
 
-    /* Section-level headings: Bangers (substitute for Komika Display Bold — not available on CDN) */
-    h1,
-    .main-title {
-      font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
-      font-weight: 400 !important;
-      font-style: normal !important;
-      letter-spacing: 0.03em;
-    }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 2px solid;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+}
 
-    h2,
-    h2.secondary-title {
-      font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
-      font-weight: 400 !important;
-      font-style: normal !important;
-      letter-spacing: 0.03em;
-      font-size: 2rem !important;
-      line-height: 1.25 !important;
-    }
+.card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    /* Blue underline on section titles */
-    h1.main-title::after,
-    h2.secondary-title::after {
-      content: '';
-      display: block;
-      width: 80px;
-      height: 5px;
-      background-color: #67DAD5;
-      border-radius: 3px;
-      margin: 10px auto 0;
-    }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+}
 
-    h3,
-    h4,
-    .secondary-title {
-      font-family: 'Arial', sans-serif !important;
-      font-weight: bold !important;
-      font-style: normal !important;
-    }
+.highlight-box {
+  background: #F7FBFF;
+  border-left: 4px solid #67DAD5;
+  border-radius: 12px;
+  padding: 16px 20px;
+}
 
-    h3 {
-      font-size: 1.25rem !important;
-      line-height: 1.4 !important;
-    }
+.card-cyan {
+  background: #67DAD5;
+  border: 2px solid #000;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(103,218,213,0.25);
+}
 
-    /* Modal headings */
-    #modal-inscription h2,
-    #modal-connexion h2,
-    #modal-devis h2 {
-      font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
-      font-size: 28px !important;
-      letter-spacing: 0.03em !important;
-    }
+.timeline-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
 
-    .text-cyan-brand {
-      color: #67DAD5;
-    }
+.step-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
-    .bg-cyan-brand {
-      background-color: #67DAD5;
-    }
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-    .border-cyan-brand {
-      border-color: #67DAD5;
-    }
+.section-divider span:first-child,
+.section-divider span:last-child {
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+  display: block;
+}
 
-    .text-secondary-gray {
-      color: #111827 !important;
-    }
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s ease forwards;
+}
 
-    .shadow-neo {
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    }
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.30s; }
+.delay-3 { animation-delay: 0.45s; }
 
-    .body-rounded {
-      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
-    }
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    /* White background globally */
-    section,
-    main {
-      background-color: #ffffff !important;
-    }
+.bar-anim {
+  animation: barGrow 1.2s ease forwards;
+  transform-origin: left;
+}
 
-    /* Expertise/testimonials section: subtle gray for visual demarcation */
-    .expertise-section {
-      background-color: #f3f4f6 !important;
-    }
+.bar-anim-delay {
+  animation: barGrow 1.2s ease 0.4s forwards;
+  width: 0% !important;
+}
 
-    /* Sections with explicit bg-gray-50 or bg-white get overridden */
-    section.bg-gray-50,
-    section.py-20.bg-gray-50,
-    .bg-gray-50:not(.testimonial-card):not(.bg-white) {
-      background-color: #ffffff !important;
-    }
+@keyframes barGrow {
+  from { width: 0% !important; }
+  to {}
+}
 
-    section.bg-white,
-    .bg-white:not(.testimonial-card):not(header):not(.modal-content):not([id^="modal"]) {
-      background-color: transparent;
-    }
-  </style>
+/* Fond section légèrement teinté */
+main > section {
+  background-color: #F7FBFF !important;
+}
+
+.text-cyan { color: #67DAD5; }
   <script>
     tailwind.config = {
       theme: {
