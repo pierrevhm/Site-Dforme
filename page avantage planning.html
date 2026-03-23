@@ -348,7 +348,15 @@
       </div>
       <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1" style="margin-left: auto; padding-right: 0; margin-right: 10px;">
         <button onclick="document.getElementById('modal-inscription').style.display='flex'" class="text-black font-bold text-lg whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline" style="padding: 0;">Créer un compte</button>
-        <button onclick="document.getElementById('modal-connexion').style.display='flex'" class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full transition-all border-2" style="color: #67DAD5; border-color: #67DAD5; background-color: #fff;">Se connecter</button>
+       <button onclick="document.getElementById('modal-connexion').style.display='flex'"
+  class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
+  style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;"
+  onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(103,218,213,0.4)';"
+  onmouseout="this.style.backgroundColor='#fff'; this.style.color='#67DAD5'; this.style.transform='translateY(0)'; this.style.boxShadow='none';"
+  onmousedown="this.style.transform='translateY(0) scale(0.97)';"
+  onmouseup="this.style.transform='translateY(-2px) scale(1)';">
+  Se connecter
+</button>
       </div>
     </nav>
   </header>
@@ -812,8 +820,8 @@
 
     <!-- CTA ─────────────────────────────────── -->
     <section class="px-6 py-16" style="background-color:#ffffff !important;">
-      <div class="max-w-5xl mx-auto rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
-        style="background-color:#67DAD5 !important;border:2px solid #000;box-shadow:8px 8px 0px 0px #000;">
+<div class="max-w-5xl mx-auto rounded-[40px] py-20 px-8 md:px-12 text-center relative overflow-hidden"
+  style="background-color:#67DAD5 !important;border:2px solid #000;">
         <div class="absolute top-0 right-0 w-56 h-56 rounded-full translate-x-1/2 -translate-y-1/2"
           style="background-color:rgba(255,255,255,0.15) !important;"></div>
         <div class="absolute bottom-0 left-0 w-40 h-40 rounded-full -translate-x-1/3 translate-y-1/3"
@@ -832,18 +840,24 @@
           </p>
 
           <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
-            <a href="index.html"
-              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all"
-              style="background-color:#000 !important;color:#fff;font-family:'Nunito',sans-serif;">
-              Demander un devis
-              <span class="material-symbols-outlined"
-                style="background-color:transparent !important;">arrow_forward</span>
-            </a>
-            <a href="index.html"
-              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all"
-              style="background-color:#ffffff !important;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;">
-              Voir toutes nos formations
-            </a>
+<a href="index.html"
+  class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full text-lg body-rounded cursor-pointer"
+  style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);"
+  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.35)';"
+  onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)';"
+  onmousedown="this.style.transform='translateY(0) scale(0.97)';"
+  onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
+  Demander un devis →
+</a>
+<a href="formations.html"
+  class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full text-lg body-rounded cursor-pointer"
+  style="background-color:#fff;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);"
+  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.2)';"
+  onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';"
+  onmousedown="this.style.transform='translateY(0) scale(0.97)';"
+  onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
+  Voir toutes nos formations
+</a>
           </div>
 
         </div>
