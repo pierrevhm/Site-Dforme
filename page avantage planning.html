@@ -51,13 +51,15 @@ main span:not(.material-symbols-outlined):not(.badge) {
       border-radius: 3px;
       margin: 10px auto 0;
     }
-    .bar-fill {
+.bar-fill {
+  height: 8px;
+  border-radius: 999px;
   width: 0%;
   transition: width 1.2s ease;
 }
-.bar-fill.visible {
-  width: var(--target-width);
-}
+
+.bar-fill.red { background-color: #ff4444; }
+.bar-fill.cyan { background-color: #67DAD5; }
 
     h3, h4, .secondary-title {
       font-family: 'Arial', sans-serif !important;
@@ -526,45 +528,45 @@ main span:not(.material-symbols-outlined):not(.badge) {
       <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;">Le coût caché de
         la formation présentielle</h3>
     </div>
-    <div class="space-y-6">
-      <div>
-        <div class="flex justify-between items-center mb-2">
-          <span style="font-family:'Nunito',sans-serif;font-size:13px;color:#74888F;font-weight:400;">Heures immobilisées (10 × 14h)</span>
-          <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:22px;color:#000;">140 h</span>
-        </div>
-        <div style="height:8px;border-radius:999px;overflow:hidden;background-color:#e5e7eb;">
-          <div class="bar-fill fade-up" style="height:8px;border-radius:999px;background-color:#ff4444;--target-width:100%;"></div>
-        </div>
-      </div>
-      <div>
-        <div class="flex justify-between items-center mb-2">
-          <span style="font-family:'Nunito',sans-serif;font-size:13px;color:#74888F;font-weight:400;">CA non facturé (140h × 24€)</span>
-          <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:22px;color:#ff4444;">3 360 €</span>
-        </div>
-        <div style="height:8px;border-radius:999px;overflow:hidden;background-color:#e5e7eb;">
-          <div class="bar-fill fade-up" style="height:8px;border-radius:999px;background-color:#ff4444;--target-width:100%;"></div>
-        </div>
-      </div>
-      <div style="height:1px;background-color:#e5e7eb;"></div>
-      <div>
-        <div class="flex justify-between items-center mb-2">
-          <span style="font-family:'Nunito',sans-serif;font-size:13px;color:#74888F;font-weight:400;">Formation digitale (10 × 2h)</span>
-          <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:22px;color:#67DAD5;">20 h</span>
-        </div>
-        <div style="height:8px;border-radius:999px;overflow:hidden;background-color:#e5e7eb;">
-          <div class="bar-fill fade-up" style="height:8px;border-radius:999px;background-color:#67DAD5;--target-width:14%;"></div>
-        </div>
-      </div>
-      <div>
-        <div class="flex justify-between items-center mb-2">
-          <span style="font-family:'Nunito',sans-serif;font-size:13px;color:#74888F;font-weight:400;">Impact potentiel digital (20h × 24€)</span>
-          <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:22px;color:#67DAD5;">480 €</span>
-        </div>
-        <div style="height:8px;border-radius:999px;overflow:hidden;background-color:#e5e7eb;">
-          <div class="bar-fill fade-up" style="height:8px;border-radius:999px;background-color:#67DAD5;--target-width:14%;"></div>
-        </div>
-      </div>
+<div class="space-y-6">
+  <div>
+    <div class="flex justify-between items-center mb-2">
+      <span style="font-family:'Nunito',sans-serif;font-size:13px;color:#74888F;font-weight:400;">Heures immobilisées (10 × 14h)</span>
+      <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:22px;color:#000;">140 h</span>
     </div>
+    <div style="height:8px;border-radius:999px;overflow:hidden;background-color:#e5e7eb;">
+      <div class="bar-fill red fade-up" data-width="100"></div>
+    </div>
+  </div>
+  <div>
+    <div class="flex justify-between items-center mb-2">
+      <span style="font-family:'Nunito',sans-serif;font-size:13px;color:#74888F;font-weight:400;">CA non facturé (140h × 24€)</span>
+      <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:22px;color:#ff4444;">3 360 €</span>
+    </div>
+    <div style="height:8px;border-radius:999px;overflow:hidden;background-color:#e5e7eb;">
+      <div class="bar-fill red fade-up" data-width="100"></div>
+    </div>
+  </div>
+  <div style="height:1px;background-color:#e5e7eb;"></div>
+  <div>
+    <div class="flex justify-between items-center mb-2">
+      <span style="font-family:'Nunito',sans-serif;font-size:13px;color:#74888F;font-weight:400;">Formation digitale (10 × 2h)</span>
+      <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:22px;color:#67DAD5;">20 h</span>
+    </div>
+    <div style="height:8px;border-radius:999px;overflow:hidden;background-color:#e5e7eb;">
+      <div class="bar-fill cyan fade-up" data-width="14"></div>
+    </div>
+  </div>
+  <div>
+    <div class="flex justify-between items-center mb-2">
+      <span style="font-family:'Nunito',sans-serif;font-size:13px;color:#74888F;font-weight:400;">Impact potentiel digital (20h × 24€)</span>
+      <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:22px;color:#67DAD5;">480 €</span>
+    </div>
+    <div style="height:8px;border-radius:999px;overflow:hidden;background-color:#e5e7eb;">
+      <div class="bar-fill cyan fade-up" data-width="14"></div>
+    </div>
+  </div>
+</div>
   </div>
         </div>
       </div>
