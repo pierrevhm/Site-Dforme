@@ -7,33 +7,26 @@
   <title>Sécurisation réglementaire – DFormPro Digital</title>
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <!-- Tailwind CSS & Material Icons -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    rel="stylesheet" />
-  <!-- Custom Font Configuration -->
-  <style data-purpose="typography">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Bangers&display=swap');
 
     body {
       font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
       font-weight: 700;
       color: #111827;
-      background-color: #ffffff;
+      background-color: #F7FBFF;
     }
 
-    /* Section-level headings: Bangers (substitute for Komika Display Bold — not available on CDN) */
-    h1,
-    .main-title {
+    h1, .main-title {
       font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
       font-weight: 400 !important;
       font-style: normal !important;
       letter-spacing: 0.03em;
     }
 
-    h2,
-    h2.secondary-title {
+    h2, h2.secondary-title {
       font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
       font-weight: 400 !important;
       font-style: normal !important;
@@ -42,7 +35,6 @@
       line-height: 1.25 !important;
     }
 
-    /* Blue underline on section titles */
     h1.main-title::after,
     h2.secondary-title::after {
       content: '';
@@ -54,94 +46,141 @@
       margin: 10px auto 0;
     }
 
-    h3,
-    h4,
-    .secondary-title {
+    h3, h4, .secondary-title {
       font-family: 'Arial', sans-serif !important;
       font-weight: bold !important;
       font-style: normal !important;
     }
 
-    h3 {
-      font-size: 1.25rem !important;
-      line-height: 1.4 !important;
-    }
+    h3 { font-size: 1.25rem !important; line-height: 1.4 !important; }
 
-    /* Modal headings */
-    #modal-inscription h2,
-    #modal-connexion h2,
-    #modal-devis h2 {
+    #modal-inscription h2, #modal-connexion h2, #modal-devis h2 {
       font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
       font-size: 28px !important;
       letter-spacing: 0.03em !important;
     }
 
-    .text-cyan-brand {
-      color: #67DAD5;
+    .text-cyan-brand { color: #67DAD5; }
+    .bg-cyan-brand { background-color: #67DAD5; }
+    .border-cyan-brand { border-color: #67DAD5; }
+    .text-secondary-gray { color: #111827 !important; }
+    .body-rounded { font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif; }
+    .text-cyan { color: #67DAD5; }
+
+    /* ===== CLASSES CUSTOM PAGE ===== */
+    .bg-deco {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .bg-cyan-brand {
-      background-color: #67DAD5;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      border-radius: 999px;
+      border: 2px solid;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      cursor: default;
     }
 
-    .border-cyan-brand {
-      border-color: #67DAD5;
+    .card {
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .text-secondary-gray {
-      color: #111827 !important;
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
     }
 
-    .shadow-neo {
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    .highlight-box {
+      background: #F0F9FF;
+      border-radius: 12px;
+      padding: 16px 20px;
+      border: 2px solid #67DAD5;
     }
 
-    .body-rounded {
-      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+    .card-cyan {
+      background: linear-gradient(135deg, #3db8b3 0%, #67DAD5 100%);
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(103,218,213,0.25);
     }
 
-    /* White background globally */
-    section,
-    main {
+    .timeline-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .step-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #9e9e9e;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .section-divider span:first-child,
+    .section-divider span:last-child {
+      flex: 1;
+      height: 1px;
+      background: #e5e7eb;
+      display: block;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: 0.15s; }
+    .delay-2 { transition-delay: 0.30s; }
+    .delay-3 { transition-delay: 0.45s; }
+
+    footer { background-color: #000000 !important; }
+
+    #modal-inscription > div, #modal-devis > div {
       background-color: #ffffff !important;
     }
 
-    /* Expertise/testimonials section: subtle gray for visual demarcation */
-    .expertise-section {
-      background-color: #f3f4f6 !important;
+    main p, main li {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
     }
 
-    /* Sections with explicit bg-gray-50 or bg-white get overridden */
-    section.bg-gray-50,
-    section.py-20.bg-gray-50,
-    .bg-gray-50:not(.testimonial-card):not(.bg-white) {
-      background-color: #ffffff !important;
+    main span:not(.material-symbols-outlined):not(.badge) {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
     }
 
-    section.bg-white,
-    .bg-white:not(.testimonial-card):not(header):not(.modal-content):not([id^="modal"]) {
-      background-color: transparent;
-    }
-  </style>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            cyanBrand: '#67DAD5',
-            darkFooter: '#0B1221',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    .relative-section {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Form styles for Quote Modal */
+    /* Form styles */
     .form-input {
       width: 100%;
       padding: 14px 16px;
@@ -156,16 +195,8 @@
       outline: none !important;
     }
 
-    .form-input:focus {
-      border-color: #67DAD5 !important;
-      box-shadow: 4px 4px 0px 0px #67DAD5 !important;
-    }
-
-    .form-input::placeholder {
-      color: #74888F !important;
-      font-weight: 400 !important;
-      font-family: 'Nunito', sans-serif !important;
-    }
+    .form-input:focus { border-color: #67DAD5 !important; box-shadow: 4px 4px 0px 0px #67DAD5 !important; }
+    .form-input::placeholder { color: #74888F !important; font-weight: 400 !important; }
 
     select.form-input {
       appearance: none;
@@ -176,27 +207,10 @@
       padding-right: 44px;
     }
 
-    textarea.form-input {
-      border-radius: 20px !important;
-      resize: vertical;
-      min-height: 100px;
-    }
+    textarea.form-input { border-radius: 20px !important; resize: vertical; min-height: 100px; }
 
-    .form-label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'Arial', sans-serif;
-      font-weight: bold;
-      font-size: 14px;
-      color: #000;
-      margin-bottom: 8px;
-    }
-
-    .form-label .material-symbols-outlined {
-      font-size: 20px;
-      color: #67DAD5;
-    }
+    .form-label { display: flex; align-items: center; gap: 8px; font-family: 'Arial', sans-serif; font-weight: bold; font-size: 14px; color: #000; margin-bottom: 8px; }
+    .form-label .material-symbols-outlined { font-size: 20px; color: #67DAD5; }
 
     .modal-checkbox {
       border-radius: 50% !important;
@@ -212,92 +226,60 @@
       margin: 0 !important;
     }
 
-    .modal-checkbox:checked {
-      background-color: #67DAD5 !important;
-      border-color: #67DAD5 !important;
-    }
+    .modal-checkbox:checked { background-color: #67DAD5 !important; border-color: #67DAD5 !important; }
+    .modal-checkbox:checked::after { content: '✓'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #fff; font-size: 12px; font-weight: bold; }
 
-    .modal-checkbox:checked::after {
-      content: '✓';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #fff;
-      font-size: 12px;
-      font-weight: bold;
-    }
+    .section-title-modal { font-family: 'Arial', sans-serif; font-weight: bold; font-size: 16px; color: #000; display: flex; align-items: center; gap: 8px; padding-bottom: 8px; margin-bottom: 16px; border-bottom: 2px solid #67DAD5; }
+    .section-title-modal .material-symbols-outlined { font-size: 22px; color: #67DAD5; }
 
-    .section-title-modal {
-      font-family: 'Arial', sans-serif;
-      font-weight: bold;
-      font-size: 16px;
-      color: #000;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding-bottom: 8px;
-      margin-bottom: 16px;
-      border-bottom: 2px solid #67DAD5;
-    }
+    .formation-checkbox { display: flex !important; align-items: center !important; gap: 8px !important; padding: 8px 12px !important; border: 2px solid #E5E7EB !important; border-radius: 12px !important; cursor: pointer !important; transition: all 0.3s ease !important; }
+    .formation-checkbox:hover { border-color: #67DAD5 !important; background-color: rgba(103, 218, 213, 0.05) !important; }
 
-    .section-title-modal .material-symbols-outlined {
-      font-size: 22px;
-      color: #67DAD5;
-    }
+    .modal-submit-btn { background-color: #67DAD5; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; padding: 14px; transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; }
+    .modal-submit-btn:hover { background-color: #4fc8c3; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(103, 218, 213, 0.4); }
+    .modal-submit-btn:active { transform: translateY(0); box-shadow: none; }
 
-    .formation-checkbox {
-      display: flex !important;
-      align-items: center !important;
-      gap: 8px !important;
-      padding: 8px 12px !important;
-      border: 2px solid #E5E7EB !important;
-      border-radius: 12px !important;
-      cursor: pointer !important;
-      transition: all 0.3s ease !important;
-    }
-
-    .formation-checkbox:hover {
-      border-color: #67DAD5 !important;
-      background-color: rgba(103, 218, 213, 0.05) !important;
-    }
-
-    .modal-submit-btn {
-      background-color: #67DAD5;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      width: 100%;
-      padding: 14px;
-      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-    }
-
-    .modal-submit-btn:hover {
-      background-color: #4fc8c3;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(103, 218, 213, 0.4);
-    }
-
-    .modal-submit-btn:active {
-      transform: translateY(0);
-      box-shadow: none;
-    }
-
-    footer {
-      background-color: #000000 !important;
-    }
-
-    #modal-inscription>div,
-    #modal-devis>div {
-      background-color: #ffffff !important;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card { border-radius: 16px !important; }
+      .badge { font-size: 11px !important; }
+      h1 { font-size: clamp(1.8rem, 6vw, 3rem) !important; }
+      .py-20 { padding-top: 48px !important; padding-bottom: 48px !important; }
+      .py-16 { padding-top: 40px !important; padding-bottom: 40px !important; }
+      .gap-12 { gap: 32px !important; }
+      .p-8 { padding: 20px !important; }
+      .rounded-\[40px\] { border-radius: 24px !important; }
     }
   </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyanBrand: '#67DAD5',
+            darkFooter: '#0B1221',
+          }
+        }
+      }
+    }
+  </script>
+
+  <script>
+    window.addEventListener('load', () => {
+      const fadeEls = document.querySelectorAll('.fade-up');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        });
+      }, { threshold: 0.1 });
+      fadeEls.forEach(el => observer.observe(el));
+    });
+  </script>
 </head>
+
 <body class="antialiased">
-<!-- BEGIN: MainHeader -->
+  <!-- BEGIN: MainHeader -->
   <header class="fixed top-0 left-0 right-0 bg-white z-50" style="box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
     <nav class="w-full py-2 flex items-center relative" style="justify-content: space-between; padding-left: 0; padding-right: 0;">
       <div class="flex items-center flex-shrink-0" data-purpose="logo-container" style="margin-right: auto; padding-left: 0;">
@@ -348,7 +330,15 @@
       </div>
       <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1" style="margin-left: auto; padding-right: 0; margin-right: 10px;">
         <button onclick="document.getElementById('modal-inscription').style.display='flex'" class="text-black font-bold text-lg whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline" style="padding: 0;">Créer un compte</button>
-        <button onclick="document.getElementById('modal-connexion').style.display='flex'" class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full transition-all border-2" style="color: #67DAD5; border-color: #67DAD5; background-color: #fff;">Se connecter</button>
+        <button onclick="document.getElementById('modal-connexion').style.display='flex'"
+          class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
+          style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;"
+          onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(103,218,213,0.4)';"
+          onmouseout="this.style.backgroundColor='#fff'; this.style.color='#67DAD5'; this.style.transform='translateY(0)'; this.style.boxShadow='none';"
+          onmousedown="this.style.transform='translateY(0) scale(0.97)';"
+          onmouseup="this.style.transform='translateY(-2px) scale(1)';">
+          Se connecter
+        </button>
       </div>
     </nav>
   </header>
@@ -411,102 +401,91 @@
     </div>
   </div>
   <script>function handleSubmitDevis() { const formations = document.querySelectorAll('input[name="formations-modal"]:checked'); if (formations.length === 0) { alert('Veuillez sélectionner au moins une formation.'); return; } document.getElementById('quote-form-modal').style.display = 'none'; document.getElementById('success-message-modal').classList.remove('hidden'); }</script>
-<!-- END: MainHeader -->
+  <!-- END: MainHeader -->
 
-  <main style="background-color:#ffffff !important;">
+  <main style="background-color:#F7FBFF !important;">
 
-    <!-- HERO ─────────────────────────────────── -->
-    <section class="relative overflow-hidden py-20" style="background-color:#ffffff !important;">
+    <!-- HERO -->
+    <section class="relative overflow-hidden py-20" style="background-color:#F7FBFF !important;">
       <img src="images/Angle Gauche .png" class="bg-deco" style="top:0;left:0;width:320px;opacity:0.3;" alt="">
       <img src="images/Coté droit.png" class="bg-deco" style="top:0;right:0;width:280px;opacity:0.2;" alt="">
-      <div class="max-w-4xl mx-auto px-6 text-center relative z-10" style="background-color:transparent !important;">
-        <div class="flex justify-center mb-6 fade-up" style="background-color:transparent !important;">
-          <span class="badge" style="border-color:#67DAD5;color:#67DAD5;">
+      <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+
+        <!-- Badge au-dessus du titre -->
+        <div class="flex justify-center mb-6 fade-up">
+          <span class="badge"
+            style="border-color:#67DAD5; color:#67DAD5; background-color:rgba(103,218,213,0.08);"
+            onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff';"
+            onmouseout="this.style.backgroundColor='rgba(103,218,213,0.08)'; this.style.color='#67DAD5';">
             <span class="material-symbols-outlined" style="font-size:16px;">verified</span>
             Avantage stratégique n°2
           </span>
         </div>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight fade-up delay-1"
-          style="background-color:transparent !important;">
-          Sécurisation<br />
-          <span class="text-cyan">réglementaire</span>
+
+        <!-- Titre principal -->
+        <h1 class="font-black mb-4 fade-up delay-1 main-title"
+          style="margin-top: 16px; font-size: clamp(2rem, 4.5vw, 3.5rem); line-height: 1.4; max-width: 900px; margin-left: auto; margin-right: auto;">
+          Sécurisation réglementaire
         </h1>
+
         <p class="text-xl md:text-2xl font-bold fade-up delay-2"
-          style="color:#74888F;font-family:'Arial',sans-serif;font-style:italic;background-color:transparent !important;">
+          style="color:#374151; font-family:'Arial',sans-serif; font-style:italic;">
           Former, c'est aussi se protéger.
         </p>
       </div>
     </section>
 
-    <!-- INTRO ────────────────────────────────── -->
-    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
+    <!-- INTRO -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#F7FBFF !important;">
       <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:280px;opacity:0.15;" alt="">
-      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-          style="background-color:transparent !important;">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          <!-- Gauche : texte -->
-          <div style="background-color:transparent !important;">
+          <div>
             <div class="highlight-box mb-8 fade-up">
-              <p class="text-lg font-bold"
-                style="font-family:'Arial',sans-serif;color:#000;background-color:transparent !important;">
-                Dans le secteur des services à la personne, la formation n'est pas uniquement une démarche de montée en
-                compétences.
+              <p class="text-lg font-bold" style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;color:#000;">
+                Dans le secteur des services à la personne, la formation n'est pas uniquement une démarche de montée en compétences.
               </p>
             </div>
-            <p
-              style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:#74888F;margin-bottom:20px;background-color:transparent !important;">
-              Elle constitue un élément central de la conformité réglementaire et de la sécurisation des pratiques
-              professionnelles.
+            <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:16px;color:#374151;margin-bottom:20px;">
+              Elle constitue un élément central de la conformité réglementaire et de la sécurisation des pratiques professionnelles.
             </p>
-            <p
-              style="font-family:'Nunito',sans-serif;font-weight:400;font-size:15px;color:#74888F;background-color:transparent !important;">
-              Les exigences de la HAS, les évaluations externes, les audits qualité et les obligations de formation
-              rendent indispensable une <strong style="color:#000;">traçabilité rigoureuse et structurée.</strong>
+            <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:15px;color:#374151;">
+              Les exigences de la HAS, les évaluations externes, les audits qualité et les obligations de formation rendent indispensable une <strong style="color:#000;">traçabilité rigoureuse et structurée.</strong>
             </p>
           </div>
 
-          <!-- Droite : 3 cards synthèse -->
-          <div class="grid grid-cols-1 gap-4 fade-up delay-1" style="background-color:transparent !important;">
+          <div class="grid grid-cols-1 gap-4 fade-up delay-1">
             <div class="card p-5">
               <div class="flex items-center gap-4">
-                <div class="keep-icon-cyn rounded-xl p-3" style="background-color:#67DAD5 !important;flex-shrink:0;">
+                <div class="rounded-xl p-3" style="background-color:#67DAD5;flex-shrink:0;">
                   <span class="material-symbols-outlined" style="font-size:28px;color:#000;">fact_check</span>
                 </div>
                 <div>
-                  <p
-                    style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">
-                    Exigences HAS</p>
-                  <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Modules
-                    conçus en cohérence avec les attendus du secteur</p>
+                  <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">Exigences HAS</p>
+                  <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;">Modules conçus en cohérence avec les attendus du secteur</p>
                 </div>
               </div>
             </div>
             <div class="card p-5">
               <div class="flex items-center gap-4">
-                <div class="keep-icon-cyn rounded-xl p-3" style="background-color:#67DAD5 !important;flex-shrink:0;">
+                <div class="rounded-xl p-3" style="background-color:#67DAD5;flex-shrink:0;">
                   <span class="material-symbols-outlined" style="font-size:28px;color:#000;">shield</span>
                 </div>
                 <div>
-                  <p
-                    style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">
-                    Audits &amp; Contrôles</p>
-                  <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Preuves
-                    formelles immédiatement mobilisables</p>
+                  <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">Audits &amp; Contrôles</p>
+                  <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;">Preuves formelles immédiatement mobilisables</p>
                 </div>
               </div>
             </div>
             <div class="card p-5">
               <div class="flex items-center gap-4">
-                <div class="keep-icon-cyn rounded-xl p-3" style="background-color:#67DAD5 !important;flex-shrink:0;">
+                <div class="rounded-xl p-3" style="background-color:#67DAD5;flex-shrink:0;">
                   <span class="material-symbols-outlined" style="font-size:28px;color:#000;">monitoring</span>
                 </div>
                 <div>
-                  <p
-                    style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">
-                    Pilotage en temps réel</p>
-                  <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Tableau de
-                    bord direction : équipes, formations, indicateurs</p>
+                  <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#000;margin-bottom:2px;">Pilotage en temps réel</p>
+                  <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;">Tableau de bord direction : équipes, formations, indicateurs</p>
                 </div>
               </div>
             </div>
@@ -516,68 +495,47 @@
       </div>
     </section>
 
-    <!-- TRAÇABILITÉ + JUSTIFICATIFS ─────────── -->
-    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
-      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+    <!-- TRAÇABILITÉ + JUSTIFICATIFS -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#F7FBFF !important;">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
 
-        <div class="text-center mb-14" style="background-color:transparent !important;">
-          <h2 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;">
-            Ce que la plateforme fait pour vous
-          </h2>
+        <div class="text-center mb-14">
+          <h2 class="secondary-title">Ce que la plateforme fait pour vous</h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" style="background-color:transparent !important;">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-          <!-- Traçabilité -->
           <div class="card fade-up" style="overflow:hidden;">
-            <div class="keep-hdr-cyn flex items-center gap-3 px-6 py-5"
-              style="border-bottom:2px solid #000;background-color:#67DAD5 !important;">
+            <div class="flex items-center gap-3 px-6 py-5" style="border-bottom:2px solid #000;background-color:#67DAD5;">
               <span class="material-symbols-outlined" style="font-size:26px;color:#000;">route</span>
-              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:19px;color:#000;">Traçabilité
-                complète des parcours</h3>
+              <h3 style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:19px;color:#000;">Traçabilité complète des parcours</h3>
             </div>
             <div class="p-6 space-y-3">
-              <p
-                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;margin-bottom:16px;">
+              <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:14px;color:#374151;margin-bottom:16px;">
                 Chaque action de formation digitale déployée via DFORMPRO DIGITAL permet :
               </p>
               <div class="space-y-3">
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
-                    ✓</div>
-                  <span
-                    style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'identification
-                    nominative des participants</span>
+                  <div style="width:22px;height:22px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">✓</div>
+                  <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'identification nominative des participants</span>
                 </div>
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
-                    ✓</div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">Le suivi du
-                    temps de connexion</span>
+                  <div style="width:22px;height:22px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">✓</div>
+                  <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">Le suivi du temps de connexion</span>
                 </div>
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
-                    ✓</div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La validation
-                    des acquis par évaluation</span>
+                  <div style="width:22px;height:22px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">✓</div>
+                  <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La validation des acquis par évaluation</span>
                 </div>
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
-                    ✓</div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La génération
-                    automatique de certificats de réalisation</span>
+                  <div style="width:22px;height:22px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">✓</div>
+                  <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La génération automatique de certificats de réalisation</span>
                 </div>
               </div>
-              <div class="keep-cyanl mt-5 rounded-xl p-4"
-                style="border:2px solid #67DAD5;background-color:rgba(103,218,213,0.08) !important;">
+              <div class="mt-5 rounded-xl p-4" style="border:2px solid #67DAD5;background-color:rgba(103,218,213,0.08);">
                 <div class="flex items-start gap-2">
-                  <span class="material-symbols-outlined"
-                    style="font-size:18px;color:#67DAD5;flex-shrink:0;margin-top:2px;">info</span>
-                  <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">
+                  <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;flex-shrink:0;margin-top:2px;">info</span>
+                  <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;">
                     Vous disposez de preuves formelles et immédiatement mobilisables en cas d'audit ou de contrôle.
                   </p>
                 </div>
@@ -585,55 +543,37 @@
             </div>
           </div>
 
-          <!-- Centralisation -->
           <div class="card fade-up delay-1" style="overflow:hidden;">
-            <div class="keep-hdr-cyn flex items-center gap-3 px-6 py-5"
-              style="border-bottom:2px solid #000;background-color:#67DAD5 !important;">
+            <div class="flex items-center gap-3 px-6 py-5" style="border-bottom:2px solid #000;background-color:#67DAD5;">
               <span class="material-symbols-outlined" style="font-size:26px;color:#000;">folder_open</span>
-              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:19px;color:#000;">Centralisation des
-                justificatifs</h3>
+              <h3 style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:19px;color:#000;">Centralisation des justificatifs</h3>
             </div>
             <div class="p-6 space-y-3">
-              <p
-                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:14px;color:#74888F;margin-bottom:16px;">
+              <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:14px;color:#374151;margin-bottom:16px;">
                 La plateforme permet :
               </p>
               <div class="space-y-3">
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
-                    ✓</div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'archivage
-                    sécurisé des certificats</span>
+                  <div style="width:22px;height:22px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">✓</div>
+                  <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'archivage sécurisé des certificats</span>
                 </div>
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
-                    ✓</div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'accès aux
-                    historiques de formation</span>
+                  <div style="width:22px;height:22px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">✓</div>
+                  <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'accès aux historiques de formation</span>
                 </div>
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
-                    ✓</div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'export des
-                    données de suivi</span>
+                  <div style="width:22px;height:22px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">✓</div>
+                  <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">L'export des données de suivi</span>
                 </div>
                 <div class="flex items-start gap-3">
-                  <div class="keep-icon-blk"
-                    style="width:22px;height:22px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">
-                    ✓</div>
-                  <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La
-                    consultation des taux d'achèvement</span>
+                  <div style="width:22px;height:22px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:bold;flex-shrink:0;margin-top:2px;">✓</div>
+                  <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:14px;color:#000;">La consultation des taux d'achèvement</span>
                 </div>
               </div>
-              <div class="keep-cyanl mt-5 rounded-xl p-4"
-                style="border:2px solid #67DAD5;background-color:rgba(103,218,213,0.08) !important;">
+              <div class="mt-5 rounded-xl p-4" style="border:2px solid #67DAD5;background-color:rgba(103,218,213,0.08);">
                 <div class="flex items-start gap-2">
-                  <span class="material-symbols-outlined"
-                    style="font-size:18px;color:#67DAD5;flex-shrink:0;margin-top:2px;">check_circle</span>
-                  <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">
+                  <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;flex-shrink:0;margin-top:2px;">check_circle</span>
+                  <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">
                     Fini les documents dispersés ou les tableaux Excel incomplets.
                   </p>
                 </div>
@@ -645,143 +585,90 @@
       </div>
     </section>
 
-    <!-- ALIGNEMENT HAS — 3 COLONNES ─────────── -->
-    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
-      <img src="images/2 traits.png" class="bg-deco" style="top:10%;left:0;width:180px;opacity:0.3;" alt="">
-      <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" style="background-color:transparent !important;">
+    <!-- ALIGNEMENT HAS — 3 COLONNES -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#F7FBFF !important;">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-          <!-- Col 1 : Alignement HAS -->
           <div class="card p-6 fade-up">
             <div class="flex items-center gap-3 pb-4 mb-5" style="border-bottom:2px solid #67DAD5;">
               <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">gavel</span>
-              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;">Alignement avec les
-                exigences HAS</h3>
+              <h3 style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#000;">Alignement avec les exigences HAS</h3>
             </div>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;margin-bottom:14px;">
+            <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;margin-bottom:14px;">
               Les modules sont conçus en cohérence avec les attendus du secteur :
             </p>
             <div class="space-y-2">
-              <div class="flex items-center gap-2"><span
-                  style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span
-                  style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Prévention des
-                  risques</span></div>
-              <div class="flex items-center gap-2"><span
-                  style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span
-                  style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Bientraitance</span>
-              </div>
-              <div class="flex items-center gap-2"><span
-                  style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span
-                  style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Accompagnement des
-                  personnes vulnérables</span></div>
-              <div class="flex items-center gap-2"><span
-                  style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span
-                  style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Qualité des
-                  interventions au domicile</span></div>
+              <div class="flex items-center gap-2"><span style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Prévention des risques</span></div>
+              <div class="flex items-center gap-2"><span style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Bientraitance</span></div>
+              <div class="flex items-center gap-2"><span style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Accompagnement des personnes vulnérables</span></div>
+              <div class="flex items-center gap-2"><span style="color:#67DAD5;font-size:16px;flex-shrink:0;">–</span><span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Qualité des interventions au domicile</span></div>
             </div>
-            <div class="keep-cyanl mt-5 rounded-xl p-3"
-              style="border:1px solid #67DAD5;background-color:rgba(103,218,213,0.08) !important;">
-              <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:12px;color:#74888F;">
+            <div class="mt-5 rounded-xl p-3" style="border:1px solid #67DAD5;background-color:rgba(103,218,213,0.08);">
+              <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:12px;color:#374151;">
                 La formation devient un outil de démonstration de votre engagement qualité.
               </p>
             </div>
           </div>
 
-          <!-- Col 2 : Sécurisation audit -->
           <div class="card p-6 fade-up delay-1">
             <div class="flex items-center gap-3 pb-4 mb-5" style="border-bottom:2px solid #67DAD5;">
               <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">policy</span>
-              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;">Sécurisation en cas
-                de contrôle ou d'évaluation externe</h3>
+              <h3 style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#000;">Sécurisation en cas de contrôle ou d'évaluation externe</h3>
             </div>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;margin-bottom:14px;">
-              En cas d'audit, vous pouvez démontrer :</p>
+            <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;margin-bottom:14px;">En cas d'audit, vous pouvez démontrer :</p>
             <div class="space-y-2 mb-5">
               <div class="flex items-start gap-2">
-                <div class="keep-icon-blk"
-                  style="width:18px;height:18px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">
-                  ✓</div>
-                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que vos équipes
-                  ont été formées</span>
+                <div style="width:18px;height:18px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">✓</div>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que vos équipes ont été formées</span>
               </div>
               <div class="flex items-start gap-2">
-                <div class="keep-icon-blk"
-                  style="width:18px;height:18px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">
-                  ✓</div>
-                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que les
-                  compétences ont été évaluées</span>
+                <div style="width:18px;height:18px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">✓</div>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que les compétences ont été évaluées</span>
               </div>
               <div class="flex items-start gap-2">
-                <div class="keep-icon-blk"
-                  style="width:18px;height:18px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">
-                  ✓</div>
-                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que les actions
-                  ont été tracées</span>
+                <div style="width:18px;height:18px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">✓</div>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que les actions ont été tracées</span>
               </div>
               <div class="flex items-start gap-2">
-                <div class="keep-icon-blk"
-                  style="width:18px;height:18px;border-radius:50%;background-color:#000 !important;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">
-                  ✓</div>
-                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que la
-                  formation est structurée et planifiée</span>
+                <div style="width:18px;height:18px;border-radius:50%;background-color:#000;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:bold;flex-shrink:0;margin-top:1px;">✓</div>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Que la formation est structurée et planifiée</span>
               </div>
             </div>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;margin-bottom:10px;">
-              La plateforme contribue à réduire les risques liés :</p>
+            <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;margin-bottom:10px;">La plateforme contribue à réduire les risques liés :</p>
             <div class="space-y-1">
-              <div class="flex items-center gap-2"><span
-                  style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span
-                  style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Aux
-                  non-conformités</span></div>
-              <div class="flex items-center gap-2"><span
-                  style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span
-                  style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Aux lacunes de
-                  traçabilité</span></div>
-              <div class="flex items-center gap-2"><span
-                  style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span
-                  style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;">Aux défauts de
-                  preuve</span></div>
+              <div class="flex items-center gap-2"><span style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;">Aux non-conformités</span></div>
+              <div class="flex items-center gap-2"><span style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;">Aux lacunes de traçabilité</span></div>
+              <div class="flex items-center gap-2"><span style="color:#ff4444;font-size:14px;flex-shrink:0;">✗</span><span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;">Aux défauts de preuve</span></div>
             </div>
           </div>
 
-          <!-- Col 3 : Pilotage direction -->
           <div class="card p-6 fade-up delay-2">
             <div class="flex items-center gap-3 pb-4 mb-5" style="border-bottom:2px solid #67DAD5;">
               <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">dashboard</span>
-              <h3 style="font-family:'Arial',sans-serif;font-weight:bold;font-size:16px;color:#000;">Un pilotage clair
-                pour la direction</h3>
+              <h3 style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#000;">Un pilotage clair pour la direction</h3>
             </div>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:13px;color:#74888F;margin-bottom:14px;">
-              Vous visualisez :</p>
+            <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:13px;color:#374151;margin-bottom:14px;">Vous visualisez :</p>
             <div class="space-y-3">
               <div class="flex items-center gap-3 rounded-xl p-3" style="border:1px solid #e5e7eb;">
-                <span class="material-symbols-outlined"
-                  style="font-size:18px;color:#67DAD5;flex-shrink:0;">groups</span>
-                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les équipes
-                  formées</span>
+                <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;flex-shrink:0;">groups</span>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les équipes formées</span>
               </div>
               <div class="flex items-center gap-3 rounded-xl p-3" style="border:1px solid #e5e7eb;">
-                <span class="material-symbols-outlined"
-                  style="font-size:18px;color:#67DAD5;flex-shrink:0;">school</span>
-                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les formations
-                  en cours</span>
+                <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;flex-shrink:0;">school</span>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les formations en cours</span>
               </div>
               <div class="flex items-center gap-3 rounded-xl p-3" style="border:1px solid #e5e7eb;">
-                <span class="material-symbols-outlined"
-                  style="font-size:18px;color:#67DAD5;flex-shrink:0;">autorenew</span>
-                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les modules à
-                  renouveler</span>
+                <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;flex-shrink:0;">autorenew</span>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les modules à renouveler</span>
               </div>
               <div class="flex items-center gap-3 rounded-xl p-3" style="border:1px solid #e5e7eb;">
-                <span class="material-symbols-outlined"
-                  style="font-size:18px;color:#67DAD5;flex-shrink:0;">trending_up</span>
-                <span style="font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les indicateurs
-                  d'avancement</span>
+                <span class="material-symbols-outlined" style="font-size:18px;color:#67DAD5;flex-shrink:0;">trending_up</span>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:13px;color:#000;">Les indicateurs d'avancement</span>
               </div>
             </div>
-            <div class="keep-cyanl mt-5 rounded-xl p-3"
-              style="border:1px solid #67DAD5;background-color:rgba(103,218,213,0.08) !important;">
-              <p style="font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:#000;">
+            <div class="mt-5 rounded-xl p-3" style="border:1px solid #67DAD5;background-color:rgba(103,218,213,0.08);">
+              <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:700;font-size:12px;color:#000;">
                 La formation devient pilotable, mesurable et stratégique.
               </p>
             </div>
@@ -791,11 +678,11 @@
       </div>
     </section>
 
-    <!-- CONCLUSION ───────────────────────────── -->
-    <section class="py-16 relative overflow-hidden" style="background-color:#ffffff !important;">
-      <div class="max-w-5xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
+    <!-- CONCLUSION -->
+    <section class="py-16 relative overflow-hidden" style="background-color:#F7FBFF !important;">
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
 
-        <div class="section-divider fade-up" style="background-color:transparent !important;">
+        <div class="section-divider fade-up">
           <span></span>
           <span class="badge" style="border-color:#67DAD5;color:#67DAD5;white-space:nowrap;">
             <span class="material-symbols-outlined" style="font-size:16px;">reviews</span>
@@ -805,39 +692,27 @@
         </div>
 
         <div class="card p-8 md:p-12 fade-up delay-1">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
-            style="background-color:transparent !important;">
-            <div style="background-color:transparent !important;">
-              <p
-                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:15px;color:#74888F;margin-bottom:16px;">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:15px;color:#374151;margin-bottom:16px;">
                 Avec DFORMPRO DIGITAL, la formation digitale ne se limite pas à transmettre des compétences.
               </p>
-              <p style="font-family:'Arial',sans-serif;font-weight:bold;font-size:18px;color:#000;line-height:1.5;">
-                Elle devient un outil de sécurisation réglementaire, un levier qualité et un élément structurant de
-                votre organisation.
+              <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:18px;color:#000;line-height:1.5;">
+                Elle devient un outil de sécurisation réglementaire, un levier qualité et un élément structurant de votre organisation.
               </p>
             </div>
-            <div class="space-y-3" style="background-color:transparent !important;">
+            <div class="space-y-3">
               <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
-                <div class="keep-icon-cyn"
-                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">
-                  ✓</div>
-                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Outil de
-                  sécurisation réglementaire</span>
+                <div style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">✓</div>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:14px;color:#000;">Outil de sécurisation réglementaire</span>
               </div>
               <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
-                <div class="keep-icon-cyn"
-                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">
-                  ✓</div>
-                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Levier qualité
-                  démontrable</span>
+                <div style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">✓</div>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:14px;color:#000;">Levier qualité démontrable</span>
               </div>
               <div class="flex items-center gap-3 rounded-xl px-4 py-3" style="border:2px solid #67DAD5;">
-                <div class="keep-icon-cyn"
-                  style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5 !important;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">
-                  ✓</div>
-                <span style="font-family:'Arial',sans-serif;font-weight:bold;font-size:14px;color:#000;">Élément
-                  structurant de votre organisation</span>
+                <div style="width:22px;height:22px;border-radius:50%;background-color:#67DAD5;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:bold;flex-shrink:0;">✓</div>
+                <span style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:14px;color:#000;">Élément structurant de votre organisation</span>
               </div>
             </div>
           </div>
@@ -846,42 +721,52 @@
       </div>
     </section>
 
-    <!-- CTA ─────────────────────────────────── -->
-    <section class="px-6 py-16" style="background-color:#ffffff;">
-      <div class="max-w-5xl mx-auto rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
-        style="background-color:#67DAD5 !important;border:2px solid #000;box-shadow:8px 8px 0px 0px #000;">
-        <div class="absolute top-0 right-0 w-56 h-56 rounded-full translate-x-1/2 -translate-y-1/2"
-          style="background-color:rgba(255,255,255,0.15) !important;"></div>
-        <div class="absolute bottom-0 left-0 w-40 h-40 rounded-full -translate-x-1/3 translate-y-1/3"
-          style="background-color:rgba(255,255,255,0.15) !important;"></div>
+    <!-- CTA -->
+    <section class="px-6 py-16" style="background-color:#F7FBFF !important;">
+      <div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
+        style="background-color:#67DAD5; border:2px solid #000; margin-top:40px;">
 
-        <div class="relative z-10" style="background-color:transparent !important;">
+        <!-- Cercles décoratifs -->
+        <div class="absolute" style="top:-60px;right:-60px;width:280px;height:280px;opacity:0.15;">
+          <div style="position:absolute;inset:0;border-radius:50%;border:2px solid #fff;"></div>
+          <div style="position:absolute;inset:30px;border-radius:50%;border:2px solid #fff;"></div>
+          <div style="position:absolute;inset:60px;border-radius:50%;border:2px solid #fff;"></div>
+          <div style="position:absolute;inset:90px;border-radius:50%;border:2px solid #fff;"></div>
+          <div style="position:absolute;inset:120px;border-radius:50%;border:2px solid #fff;"></div>
+        </div>
+        <div class="absolute" style="bottom:-60px;left:-60px;width:240px;height:240px;opacity:0.15;">
+          <div style="position:absolute;inset:0;border-radius:50%;border:2px solid #fff;"></div>
+          <div style="position:absolute;inset:30px;border-radius:50%;border:2px solid #fff;"></div>
+          <div style="position:absolute;inset:60px;border-radius:50%;border:2px solid #fff;"></div>
+          <div style="position:absolute;inset:90px;border-radius:50%;border:2px solid #fff;"></div>
+          <div style="position:absolute;inset:120px;border-radius:50%;border:2px solid #fff;"></div>
+        </div>
 
-          <h2
-            style="font-family:'Arial',sans-serif;font-weight:bold;font-size:32px;color:#000;margin-bottom:16px;background-color:transparent !important;">
-            Sécurisez votre conformité dès maintenant
-          </h2>
-
-          <p
-            style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
+        <div class="relative z-10">
+          <h2 class="secondary-title text-[#0B1221] mb-4">Sécurisez votre conformité dès maintenant</h2>
+          <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,0.75);margin-bottom:32px;">
             Demandez votre devis personnalisé et découvrez comment DFORMPRO DIGITAL vous protège à chaque audit.
           </p>
-
-          <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
+          <div class="flex flex-wrap justify-center gap-4">
             <a href="index.html"
-              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all"
-              style="background-color:#000 !important;color:#fff;font-family:'Nunito',sans-serif;">
-              Demander un devis
-              <span class="material-symbols-outlined"
-                style="background-color:transparent !important;">arrow_forward</span>
+              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full text-lg body-rounded cursor-pointer"
+              style="background-color:#000;color:#fff;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);"
+              onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.35)';"
+              onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)';"
+              onmousedown="this.style.transform='translateY(0) scale(0.97)';"
+              onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
+              Demander un devis →
             </a>
-            <a href="index.html"
-              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-[20px] text-lg transition-all"
-              style="background-color:#ffffff !important;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;">
+            <a href="formations.html"
+              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full text-lg body-rounded cursor-pointer"
+              style="background-color:#fff;color:#000;border:2px solid #000;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);"
+              onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.2)';"
+              onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';"
+              onmousedown="this.style.transform='translateY(0) scale(0.97)';"
+              onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
               Voir toutes nos formations
             </a>
           </div>
-
         </div>
       </div>
     </section>
@@ -928,5 +813,4 @@
 
   </main>
 </body>
-
 </html>
