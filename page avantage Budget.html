@@ -88,17 +88,12 @@
       cursor: default;
     }
 
-    .card {
-      background: #ffffff;
-      border: 2px solid #e5e7eb;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+.card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 20px;
+  box-shadow: none;        /* ← plus d'ombre */
+}-shadow: 0 8px 30px rgba(0,0,0,0.10);
     }
 
     .highlight-box {
@@ -300,9 +295,7 @@
         <button onclick="document.getElementById('modal-inscription').style.display='flex'" class="text-black font-bold text-lg whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline" style="padding: 0;">Créer un compte</button>
         <button onclick="document.getElementById('modal-connexion').style.display='flex'"
           class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
-          style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;"
-          onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff';"
-          onmouseout="this.style.backgroundColor='#fff'; this.style.color='#67DAD5';">
+          style="color: #67DAD5; border-color: #67DAD5; background-color: #fff;"
           Se connecter
         </button>
       </div>
@@ -323,9 +316,9 @@
       <form onsubmit="event.preventDefault();">
         <div style="margin-bottom:16px;"><label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Adresse e-mail</label><input type="email" placeholder="votre@email.com" style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;" onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'"></div>
         <div style="margin-bottom:8px;"><label style="display:block; font-size:13px; font-weight:bold; margin-bottom:6px; color:#333;">Mot de passe</label><input type="password" placeholder="••••••••" style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; font-size:14px; outline:none; box-sizing:border-box; transition:border-color 0.2s;" onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'"></div>
-        <div style="text-align:right; margin-bottom:20px;"><a href="#" style="font-size:13px; color:#67DAD5; font-weight:bold; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Mot de passe oublié ?</a></div>
+        <div style="text-align:right; margin-bottom:20px;"><a href="#" style="font-size:13px; color:#67DAD5; font-weight:bold; text-decoration:none;">Mot de passe oublié ?</a></div>
         <button type="submit" class="modal-submit-btn">Se connecter</button>
-        <p style="text-align:center; margin-top:16px; font-size:13px; color:#6b7280;">Pas encore de compte ? <button type="button" onclick="document.getElementById('modal-connexion').style.display='none'; document.getElementById('modal-inscription').style.display='flex';" style="background:none; border:none; color:#67DAD5; font-weight:bold; cursor:pointer; font-size:13px; padding:0;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Créer un compte</button></p>
+        <p style="text-align:center; margin-top:16px; font-size:13px; color:#6b7280;">Pas encore de compte ? <button type="button" onclick="document.getElementById('modal-connexion').style.display='none'; document.getElementById('modal-inscription').style.display='flex';" style="background:none; border:none; color:#67DAD5; font-weight:bold; cursor:pointer; font-size:13px; padding:0;">Créer un compte</button></p>
       </form>
     </div>
   </div>
@@ -334,7 +327,7 @@
   <div id="modal-devis" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center; backdrop-filter: blur(4px);" onclick="if(event.target===this)this.style.display='none'">
     <div style="background:#fff; border-radius:24px; padding:0; max-width:750px; width:95%; max-height: 90vh; position:relative; box-shadow:0 25px 80px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column;">
       <div style="padding: 24px 40px; border-bottom: 1px solid #f3f4f6; position: relative; background: #fff; z-index: 10;">
-        <button onclick="document.getElementById('modal-devis').style.display='none'" style="position:absolute; top:20px; right:20px; background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; color:#666; transition: all 0.2s;" onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">&times;</button>
+        <button onclick="document.getElementById('modal-devis').style.display='none'" style="position:absolute; top:20px; right:20px; background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px; cursor:pointer; color:#666; transition: all 0.2s;"</button>
         <h2 style="font-family:Arial,sans-serif; font-weight:bold; font-size:24px; color:#000; margin: 0;">Demande de devis</h2>
         <p style="color:#111827; font-size:14px; margin-top: 4px; margin-bottom: 0;">Recevez votre devis personnalisé sous <span class="font-bold text-cyanBrand">48h</span>.</p>
       </div>
@@ -376,8 +369,6 @@
     <div class="flex justify-center mb-6 fade-up delay-1">
       <span class="badge"
         style="border-color:#67DAD5; color:#67DAD5; background-color:rgba(103,218,213,0.08);"
-        onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff';"
-        onmouseout="this.style.backgroundColor='rgba(103,218,213,0.08)'; this.style.color='#67DAD5';">
         <span class="material-symbols-outlined" style="font-size:16px;">savings</span>
         Avantage stratégique n°3
       </span>
@@ -594,8 +585,6 @@
         <div class="section-divider fade-up">
           <span></span>
           <span class="badge" style="border-color:#67DAD5;color:#67DAD5;white-space:nowrap;"
-            onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.color='#67DAD5';">
             <span class="material-symbols-outlined" style="font-size:16px;">lightbulb</span>
             En résumé
           </span>
