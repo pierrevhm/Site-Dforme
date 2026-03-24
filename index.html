@@ -1603,124 +1603,116 @@
       </div>
     </section>
 
-    <script>
-      (function () {
-        const track = document.getElementById('carousel-track');
-        const wrapper = document.getElementById('carousel-track-wrapper');
-        const CARD_W = 320;
-        const GAP = 24;
-        const STEP = CARD_W + GAP;
-        let isPaused = false;
-        let current = 0;
+   <script>
+(function () {
+  const track = document.getElementById('carousel-track');
+  const CARD_W = 320;
+  const GAP = 24;
+  const STEP = CARD_W + GAP;
+  let current = 0;
 
-        // Clone all cards for infinite loop
-        const originals = Array.from(track.querySelectorAll('.testimonial-carousel-card'));
-        const total = originals.length;
-        originals.forEach(c => track.appendChild(c.cloneNode(true)));
+  const originals = Array.from(track.querySelectorAll('.testimonial-carousel-card'));
+  const total = originals.length;
+  originals.forEach(c => track.appendChild(c.cloneNode(true)));
 
-        function translate(x, animated) {
-          track.style.transition = animated ? 'transform 0.5s ease' : 'none';
-          track.style.transform = `translateX(${x}px)`;
-        }
+  function translate(x, animated) {
+    track.style.transition = animated ? 'transform 0.5s ease' : 'none';
+    track.style.transform = `translateX(${x}px)`;
+  }
 
-        function updateActive() {
-          track.querySelectorAll('.testimonial-carousel-card').forEach((c, i) => {
-            c.style.background = (i % total === current % total) ? '#f5f5f5' : '#ffffff';
-          });
-        }
+  function updateActive() {
+    track.querySelectorAll('.testimonial-carousel-card').forEach((c, i) => {
+      c.style.background = (i % total === current % total) ? '#f5f5f5' : '#ffffff';
+    });
+  }
 
-        function goTo(i, animated = true) {
-          current = i;
-          translate(-current * STEP, animated);
-          updateActive();
-        }
+  function goTo(i, animated = true) {
+    current = i;
+    translate(-current * STEP, animated);
+    updateActive();
+  }
 
-        // Seamless infinite: when reaching clones, jump back silently
-        track.addEventListener('transitionend', () => {
-          if (current >= total) {
-            current -= total;
-            translate(-current * STEP, false);
-            updateActive();
-          }
-        });
+  track.addEventListener('transitionend', () => {
+    if (current >= total) {
+      current -= total;
+      translate(-current * STEP, false);
+      updateActive();
+    } else if (current < 0) {
+      current += total;
+      translate(-current * STEP, false);
+      updateActive();
+    }
+  });
 
-        function next() { goTo(current + 1); }
-        function prev() {
-          if (current <= 0) {
-            current = total;
-            translate(-current * STEP, false);
-            track.getBoundingClientRect(); // force reflow
-          }
-          goTo(current - 1);
-        }
+  function next() { goTo(current + 1); }
+  function prev() {
+    if (current <= 0) {
+      current = total;
+      translate(-current * STEP, false);
+      track.getBoundingClientRect();
+    }
+    goTo(current - 1);
+  }
 
+  document.getElementById('carousel-next').addEventListener('click', next);
+  document.getElementById('carousel-prev').addEventListener('click', prev);
 
-        // Nav buttons
-        document.getElementById('carousel-next').addEventListener('click', next);
-        document.getElementById('carousel-prev').addEventListener('click', prev);
+  // Drag souris — calcule le nombre de cards à sauter selon la distance
+  let dragStartX = 0;
+  let dragging = false;
 
-        // Pause on hover
-        wrapper.addEventListener('mouseenter', () => isPaused = true);
-        wrapper.addEventListener('mouseleave', () => isPaused = false);
+  track.addEventListener('mousedown', e => {
+    dragging = true;
+    dragStartX = e.clientX;
+    track.style.transition = 'none';
+    track.style.cursor = 'grabbing';
+  });
 
-        // Hover card highlight (event delegation — works on clones too)
-        track.addEventListener('mouseover', e => {
-          const card = e.target.closest('.testimonial-carousel-card');
-          if (card) card.style.background = '#f5f5f5';
-        });
-        track.addEventListener('mouseout', e => {
-          const card = e.target.closest('.testimonial-carousel-card');
-          if (card) {
-            const idx = Array.from(track.querySelectorAll('.testimonial-carousel-card')).indexOf(card);
-            if (idx % total !== current % total) card.style.background = '#ffffff';
-          }
-        });
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const delta = e.clientX - dragStartX;
+    track.style.transform = `translateX(${-current * STEP + delta}px)`;
+  });
 
-        // Mouse drag
-        let dragStartX = 0, dragging = false, dragBase = 0;
-        track.addEventListener('mousedown', e => {
-          dragging = true; isPaused = true;
-          dragStartX = e.clientX;
-          dragBase = -current * STEP;
-          track.style.transition = 'none';
-          track.style.cursor = 'grabbing';
-        });
-        window.addEventListener('mousemove', e => {
-          if (!dragging) return;
-          track.style.transform = `translateX(${dragBase + e.clientX - dragStartX}px)`;
-        });
-        window.addEventListener('mouseup', e => {
-          if (!dragging) return;
-          dragging = false; isPaused = false;
-          track.style.cursor = '';
-          const delta = e.clientX - dragStartX;
-          if (delta < -50) next();
-          else if (delta > 50) prev();
-          else goTo(current);
-        });
+  window.addEventListener('mouseup', e => {
+    if (!dragging) return;
+    dragging = false;
+    track.style.cursor = '';
+    const delta = e.clientX - dragStartX;
+    // Calcule combien de cards sauter selon la distance parcourue
+    const steps = Math.round(-delta / STEP);
+    if (steps !== 0) {
+      goTo(current + steps);
+    } else {
+      goTo(current);
+    }
+  });
 
-        // Touch drag
-        let touchStartX = 0, touchBase = 0;
-        track.addEventListener('touchstart', e => {
-          isPaused = true;
-          touchStartX = e.touches[0].clientX;
-          touchBase = -current * STEP;
-          track.style.transition = 'none';
-        }, { passive: true });
-        track.addEventListener('touchmove', e => {
-          track.style.transform = `translateX(${touchBase + e.touches[0].clientX - touchStartX}px)`;
-        }, { passive: true });
-        track.addEventListener('touchend', e => {
-          isPaused = false;
-          const delta = e.changedTouches[0].clientX - touchStartX;
-          if (delta < -50) next();
-          else if (delta > 50) prev();
-          else goTo(current);
-        });
+  // Touch
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+    track.style.transition = 'none';
+  }, { passive: true });
 
-        updateActive();
-      })();
-    </script>
+  track.addEventListener('touchmove', e => {
+    const delta = e.touches[0].clientX - touchStartX;
+    track.style.transform = `translateX(${-current * STEP + delta}px)`;
+  }, { passive: true });
+
+  track.addEventListener('touchend', e => {
+    const delta = e.changedTouches[0].clientX - touchStartX;
+    const steps = Math.round(-delta / STEP);
+    if (steps !== 0) {
+      goTo(current + steps);
+    } else {
+      goTo(current);
+    }
+  });
+
+  updateActive();
+})();
+</script>
     <!-- END: TestimonialsCarousel -->
   </main>
   <!-- Giant CTA Section -->
