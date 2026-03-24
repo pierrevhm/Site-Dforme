@@ -45,7 +45,7 @@
     h2.secondary-title::after {
       content: '';
       display: block;
-      width: 80px;
+      width: 160px;
       height: 5px;
       background-color: #67DAD5;
       border-radius: 3px;
@@ -293,6 +293,87 @@
       background-color: #ffffff !important;
     }
   </style>
+
+  <!-- ===== RESPONSIVE STYLES ===== -->
+  <style id="responsive-styles">
+    /* ---- MOBILE MENU ---- */
+    #mobile-menu-btn { display: none; }
+
+    @media (max-width: 767px) {
+      #mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        color: #000;
+      }
+      #mobile-menu-btn .bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #000;
+        margin: 4px 0;
+        transition: all 0.3s ease;
+      }
+      #mobile-nav {
+        display: none;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        z-index: 999;
+        padding: 16px 24px 24px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        flex-direction: column;
+        gap: 0;
+      }
+      #mobile-nav.open { display: flex; }
+      #mobile-nav a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #000;
+        border-bottom: 1px solid #f3f4f6;
+        text-decoration: none;
+      }
+      #mobile-nav a:last-of-type { border-bottom: none; }
+      #mobile-nav .mobile-btn-create {
+        margin-top: 16px;
+        padding: 12px 0;
+        background: none;
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+        text-align: left;
+      }
+      #mobile-nav .mobile-btn-connect {
+        margin-top: 8px;
+        padding: 12px 24px;
+        border: 2px solid #67DAD5;
+        border-radius: 999px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #67DAD5;
+        background: #fff;
+        cursor: pointer;
+        width: 100%;
+      }
+      .nav-create-btn-desktop { display: none !important; }
+
+      /* Background deco overflow */
+      .bg-decorations { display: none !important; }
+
+      /* Design bas */
+      .design-bas-img { width: 100% !important; }
+    }
+  </style>
 </head>
 <body class="antialiased">
 <!-- BEGIN: MainHeader -->
@@ -378,7 +459,7 @@
       <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1"
         style="margin-left: auto; padding-right: 0; margin-right: 10px;">
         <button onclick="document.getElementById('modal-inscription').style.display='flex'"
-          class="text-black font-bold text-lg whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline"
+          class="nav-create-btn-desktop text-black font-bold text-lg whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline"
           style="padding: 0;">
           Créer un compte
         </button>
@@ -387,7 +468,21 @@
           style="color: #67DAD5; border-color: #67DAD5; background-color: #fff;">
           Se connecter
         </button>
+        <!-- Bouton hamburger mobile -->
+        <button id="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open')">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
       </div>
+    </nav>
+    <!-- Menu mobile -->
+    <nav id="mobile-nav" aria-label="Navigation mobile">
+      <a href="formations.html">Nos formations</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+      <button class="mobile-btn-create" onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-inscription').style.display='flex'">Créer un compte</button>
+      <button class="mobile-btn-connect" onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-connexion').style.display='flex'">Se connecter</button>
     </nav>
   </header>
 
@@ -744,7 +839,7 @@
 
   <!-- Design bas -->
   <div style="line-height: 0; text-align: right;">
-    <img src="images/image du pptx/desgin bas .png" alt="" style="display: inline-block; width: 55%;">
+    <img src="images/image du pptx/desgin bas .png" alt="" class="design-bas-img" style="display: inline-block; width: 55%;">
   </div>
 
   <!-- Footer -->
