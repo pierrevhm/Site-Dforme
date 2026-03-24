@@ -222,9 +222,8 @@
     .formation-checkbox { display: flex !important; align-items: center !important; gap: 8px !important; padding: 8px 12px !important; border: 2px solid #E5E7EB !important; border-radius: 12px !important; cursor: pointer !important; transition: all 0.3s ease !important; }
     .formation-checkbox:hover { border-color: #67DAD5 !important; background-color: rgba(103, 218, 213, 0.05) !important; }
 
-    .modal-submit-btn { background-color: #67DAD5; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; padding: 14px; transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; }
-    .modal-submit-btn:hover { background-color: #4fc8c3; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(103, 218, 213, 0.4); }
-    .modal-submit-btn:active { transform: translateY(0); box-shadow: none; }
+    .modal-submit-btn { background-color: #67DAD5; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; padding: 14px; transition: background-color 0.2s ease; }
+    .modal-submit-btn:hover { background-color: #4fc8c3; }
 
     @media (max-width: 768px) {
       .card { border-radius: 16px !important; }
@@ -261,7 +260,7 @@
       fadeEls.forEach(el => observer.observe(el));
     });
   </script>
-  <script>
+  <style>
   /* Styles pour le tunnel d'inscription en modal */
     .step { display: none; }
     .step.active { display: block; }
@@ -280,7 +279,6 @@
     .option-card:hover {
       border-color: #67DAD5;
       background: rgba(103,218,213,0.05);
-      transform: translateY(-1px);
     }
     .option-card.selected {
       border-color: #67DAD5;
@@ -299,8 +297,7 @@
       transition: all 0.3s ease; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
     }
     .btn-primary:hover {
-      background-color: #4fc8c3; transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(103,218,213,0.4);
+       background-color: #4fc8c3;
     }
 
     .btn-secondary {
@@ -356,6 +353,7 @@
     }
     .conditional { display: none; }
     .conditional.show { display: block; }
+     </style>
 </head>
 
 <body class="antialiased">
@@ -375,7 +373,7 @@
           </a>
           <div class="absolute top-full left-1/2 -translate-x-1/2 w-[80vw] !bg-white rounded-2xl shadow-xl border border-gray-100 opacity-1 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-[999]">
             <div class="grid grid-cols-3 gap-5 mb-5">
-              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+              <a href="formations.html" class="block group/card bg-gray-100 rounded-xl overflow-hidden hover:bg-gray-200 transition-colors">
                 <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/aide_domicile.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
                 <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Le métier d'aide à domicile</h4><p class="text-sm text-secondary-gray line-clamp-2" style="color: #111827;">Les savoirs de base essentiels pour bien démarrer.</p></div>
               </a>
@@ -383,19 +381,19 @@
                 <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/prevention_risques.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
                 <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Prévention des risques</h4><p class="text-sm text-secondary-gray line-clamp-2" style="color: #111827;">Sécuriser les interventions au quotidien.</p></div>
               </a>
-              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+              <a href="formations.html" class="block group/card bg-gray-100 rounded-xl overflow-hidden hover:bg-gray-200 transition-colors">
                 <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/bientraitance.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
                 <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Bientraitance</h4><p class="text-sm text-secondary-gray line-clamp-2" style="color: #111827;">Prévention de la maltraitance et bonnes pratiques.</p></div>
               </a>
-              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+             <a href="formations.html" class="block group/card bg-gray-100 rounded-xl overflow-hidden hover:bg-gray-200 transition-colors">
                 <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/cadre_vie.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
                 <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Entretien du cadre de vie</h4><p class="text-sm text-secondary-gray line-clamp-2" style="color: #111827;">Techniques et protocoles d'intervention.</p></div>
               </a>
-              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+              <a href="formations.html" class="block group/card bg-gray-100 rounded-xl overflow-hidden hover:bg-gray-200 transition-colors">
                 <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/entretien_linge.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
                 <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Entretien du linge</h4><p class="text-sm text-secondary-gray line-clamp-2" style="color: #111827;">Maîtrisez les techniques d'entretien textile professionnel.</p></div>
               </a>
-              <a href="formations.html" class="block group/card bg-gray-50 rounded-xl overflow-hidden hover:bg-gray-100 transition-colors">
+               <a href="formations.html" class="block group/card bg-gray-100 rounded-xl overflow-hidden hover:bg-gray-200 transition-colors">
                 <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined text-3xl">image</span></div><img src="formations_images/repas.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
                 <div class="p-4"><h4 class="font-bold text-base text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Préparation des repas</h4><p class="text-sm text-secondary-gray line-clamp-2" style="color: #111827;">Nutrition, hygiène et adaptation aux besoins spécifiques.</p></div>
               </a>
@@ -413,10 +411,8 @@
         <button onclick="document.getElementById('modal-connexion').style.display='flex'"
           class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
           style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;"
-          onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(103,218,213,0.4)';"
-          onmouseout="this.style.backgroundColor='#fff'; this.style.color='#67DAD5'; this.style.transform='translateY(0)'; this.style.boxShadow='none';"
-          onmousedown="this.style.transform='translateY(0) scale(0.97)';"
-          onmouseup="this.style.transform='translateY(-2px) scale(1)';">
+          onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff';"
+          onmouseout="this.style.backgroundColor='#fff'; this.style.color='#67DAD5';">
           Se connecter
         </button>
       </div>
@@ -786,19 +782,14 @@
             <a href="index.html"
               class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full text-lg body-rounded cursor-pointer"
               style="background-color:#000;color:#fff;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);"
-              onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.35)';"
-              onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)';"
-              onmousedown="this.style.transform='translateY(0) scale(0.97)';"
-              onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
+              style="background-color:#000;color:#fff;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
               Demander un devis →
             </a>
             <a href="formations.html"
               class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full text-lg body-rounded cursor-pointer"
               style="background-color:#fff;color:#000;border:2px solid #000;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);"
-              onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.2)';"
-              onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';"
-              onmousedown="this.style.transform='translateY(0) scale(0.97)';"
-              onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
+              
+              style="background-color:#fff;color:#000;border:2px solid #000;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
               Voir toutes nos formations
             </a>
           </div>
