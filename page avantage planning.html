@@ -267,9 +267,8 @@ main span:not(.material-symbols-outlined):not(.badge) {
     .formation-checkbox { display: flex !important; align-items: center !important; gap: 8px !important; padding: 8px 12px !important; border: 2px solid #E5E7EB !important; border-radius: 12px !important; cursor: pointer !important; transition: all 0.3s ease !important; }
     .formation-checkbox:hover { border-color: #67DAD5 !important; background-color: rgba(103, 218, 213, 0.05) !important; }
 
-    .modal-submit-btn { background-color: #67DAD5; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; padding: 14px; transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; }
-    .modal-submit-btn:hover { background-color: #4fc8c3; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(103, 218, 213, 0.4); }
-    .modal-submit-btn:active { transform: translateY(0); box-shadow: none; }
+    .modal-submit-btn { background-color: #67DAD5; color: #fff; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; padding: 14px; transition: background-color 0.2s ease; }
+    .modal-submit-btn:hover { background-color: #4fc8c3; }
   </style>
 
   <script>
@@ -362,10 +361,8 @@ window.addEventListener('load', () => {
        <button onclick="document.getElementById('modal-connexion').style.display='flex'"
   class="hidden md:flex text-lg font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
   style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;"
-  onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(103,218,213,0.4)';"
-  onmouseout="this.style.backgroundColor='#fff'; this.style.color='#67DAD5'; this.style.transform='translateY(0)'; this.style.boxShadow='none';"
-  onmousedown="this.style.transform='translateY(0) scale(0.97)';"
-  onmouseup="this.style.transform='translateY(-2px) scale(1)';">
+  onmouseover="this.style.backgroundColor='#67DAD5'; this.style.color='#fff';"
+  onmouseout="this.style.backgroundColor='#fff'; this.style.color='#67DAD5';">
   Se connecter
 </button>
       </div>
@@ -828,19 +825,13 @@ window.addEventListener('load', () => {
 <a href="index.html"
   class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full text-lg body-rounded cursor-pointer"
   style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);"
-  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.35)';"
-  onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.2)';"
-  onmousedown="this.style.transform='translateY(0) scale(0.97)';"
-  onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
+  style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
   Demander un devis →
 </a>
 <a href="formations.html"
   class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full text-lg body-rounded cursor-pointer"
   style="background-color:#fff;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);"
-  onmouseover="this.style.transform='translateY(-3px) scale(1.04)';this.style.boxShadow='0 12px 30px rgba(0,0,0,0.2)';"
-  onmouseout="this.style.transform='translateY(0) scale(1)';this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';"
-  onmousedown="this.style.transform='translateY(0) scale(0.97)';"
-  onmouseup="this.style.transform='translateY(-3px) scale(1.04)';">
+  style="background-color:#fff;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
   Voir toutes nos formations
 </a>
           </div>
