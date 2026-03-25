@@ -1151,18 +1151,29 @@
  .cr-anim-list li {
     display: flex; align-items: center; gap: 11px;
     font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
-    font-size: 1.25rem; color: #111; font-weight: 700;
+    font-size: 1.25rem; color: #111; 
+    font-weight: normal; /* <-- MODIFIÉ ICI : enlève l'effet gras */
     opacity: 1; transform: none;
-  }
-  .cr-arrow {
-    color: #67DAD5; font-size: 1.3rem; flex-shrink: 0;
-    opacity: 0; transform: translateY(20px);
+}
+
+.cr-arrow {
+    color: #67DAD5; flex-shrink: 0;
+    opacity: 0; 
+    transform: translateX(-30px); /* <-- MODIFIÉ ICI : décale vers la gauche au lieu du bas */
     display: inline-block;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  }
-  .cr-anim-list li.show .cr-arrow { opacity: 1; transform: translateY(0); }
-  .cr-anim-list li.show { opacity: 1; transform: translateX(0); }
-  .cr-arrow { color: #67DAD5; font-size: 1.5rem; flex-shrink: 0; }
+    font-size: 1.5rem; /* J'ai fusionné la ligne 1165 ici pour faire plus propre */
+}
+
+.cr-anim-list li.show .cr-arrow { 
+    opacity: 1; 
+    transform: translateX(0); /* <-- MODIFIÉ ICI : revient à sa place depuis la gauche */ 
+}
+
+.cr-anim-list li.show { 
+    opacity: 1; 
+    transform: translateX(0); 
+}
 
   #cr-wc-right {
     display: flex; align-items: center; justify-content: center;
