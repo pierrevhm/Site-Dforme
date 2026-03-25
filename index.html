@@ -1201,8 +1201,26 @@
 
   </div>
   <div class="cr-spacer"></div>
+  <!-- Rangée 2 : sticky à l'intérieur du container → section 1 reste figée pendant le slide -->
+  <section id="teachable-row-2" style="background:#fff; position:sticky; top:0; z-index:10; min-height:100vh; transform:translateY(100vh); display:flex; align-items:center;">
+    <div style="width: 80%; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0; gap: 80px; box-sizing: border-box;">
+    <div style="aspect-ratio:4/3; overflow:hidden; border-radius:20px;">
+      <img src="images/image du pptx/image45.jpg" alt="Nos formations digitales" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+    <div style="display:flex; flex-direction:column; justify-content:center;">
+      <h2 style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">Nos formations digitales sont :</h2>
+      <ul class="flex flex-col gap-4 animate-list-container">
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Conformes aux exigences HAS</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Accessibles sur smartphone, 24h/24 et 7j/7</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Basées sur des situations réelles</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Immédiatement applicables au domicile</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Déployables sans perturber l'organisation terrain</span></li>
+          </ul>
+    </div>
+    </div>
+  </section>
+  <div id="cr-spacer-2" style="height:100vh;"></div>
 </div>
-<div id="cr-sticky-placeholder" style="height:0;display:block;"></div>
 
 <script>
 (function () {
@@ -1272,7 +1290,7 @@ b3:         [0.22, 0.45],
   let listDone = false;
 
   function tick() {
-    const scrollable = container.offsetHeight - window.innerHeight;
+    const scrollable = 4 * window.innerHeight; /* fixé à 400 vh — indépendant de la hauteur du container */
     const scrolled   = -container.getBoundingClientRect().top;
     const p          = clamp(scrolled / scrollable, 0, 1);
 
@@ -1344,63 +1362,45 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
 </script>
 <!-- ══ FIN CIRCULAR REVEAL ══ -->
 
-    <!-- Rangée 2 : image gauche | texte droite -->
-    <section id="teachable-row-2" style="background:#fff; position:relative; z-index:10;">
-      <div style="width: 80%; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0; gap: 80px; box-sizing: border-box;">
-      <div style="aspect-ratio:4/3; overflow:hidden; border-radius:20px;">
-        <img src="images/image du pptx/image45.jpg" alt="Nos formations digitales" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div style="display:flex; flex-direction:column; justify-content:center;">
-        <h2 style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">Nos formations digitales sont :</h2>
-        <ul class="flex flex-col gap-4 animate-list-container">
-              <li class="flex items-center gap-3 body-rounded text-black fs-20">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
-                <span>Conformes aux exigences HAS</span>
-              </li>
-              <li class="flex items-center gap-3 body-rounded text-black fs-20">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
-                <span>Accessibles sur smartphone, 24h/24 et 7j/7</span>
-              </li>
-              <li class="flex items-center gap-3 body-rounded text-black fs-20">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
-                <span>Basées sur des situations réelles</span>
-              </li>
-              <li class="flex items-center gap-3 body-rounded text-black fs-20">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
-                <span>Immédiatement applicables au domicile</span>
-              </li>
-              <li class="flex items-center gap-3 body-rounded text-black fs-20">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
-                <span>Déployables sans perturber l'organisation terrain</span>
-              </li>
-            </ul>
-      </div>
-      </div>
-    </section>
     <script>
     (function() {
       function clamp(v,a,b){ return v<a?a:v>b?b:v; }
 
-      /* ── Image 1 : scroll-linked depuis la droite ── */
-      const crContainer = document.getElementById('cr-scroll-container');
-      const img1        = document.querySelector('.teachable-img');
-      if (crContainer && img1) {
-        function updateImg1() {
-          var rect  = crContainer.getBoundingClientRect();
-          var total = crContainer.offsetHeight - window.innerHeight;
-          var p     = clamp(-rect.top / total, 0, 1);
-          var t = clamp((p - 0.70) / 0.26, 0, 1);
-          // Déballage : clip-path s'ouvre de gauche à droite + léger slide
-          var clipRight = (1 - t) * 100;
-          var tx        = (1 - t) * 60;
-          img1.style.transform = 'translateX(' + tx + 'px)';
-          img1.style.clipPath  = 'inset(0 ' + clipRight + '% 0 0 round 20px)';
+      var crContainer = document.getElementById('cr-scroll-container');
+      var img1        = document.querySelector('.teachable-img');
+      var row2        = document.getElementById('teachable-row-2');
+
+      /* ── Thresholds en pixels absolus (400 vh de base, indépendant de la taille du container) ── */
+      function getBase() { return 4 * window.innerHeight; } // 400 vh
+
+      function update() {
+        if (!crContainer) return;
+        var scrolled = -crContainer.getBoundingClientRect().top;
+        var base     = getBase(); // 400 vh
+
+        /* Image 1 : déballage clip-path + translateX (p=0.70→0.96 → pixels 280→384 vh) */
+        if (img1) {
+          var imgStart = 0.70 * base;
+          var imgRange = 0.26 * base;
+          var t1 = clamp((scrolled - imgStart) / imgRange, 0, 1);
+          img1.style.transform = 'translateX(' + ((1 - t1) * 60) + 'px)';
+          img1.style.clipPath  = 'inset(0 ' + ((1 - t1) * 100) + '% 0 0 round 20px)';
         }
-        window.addEventListener('scroll', updateImg1, { passive: true });
-        updateImg1();
+
+        /* Section 2 : slide depuis le bas (400 vh → 500 vh) */
+        if (row2) {
+          var r2Start = base;            // 400 vh
+          var r2Range = window.innerHeight; // 100 vh
+          var t2 = clamp((scrolled - r2Start) / r2Range, 0, 1);
+          row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
+        }
       }
 
-      /* ── Texte 1 : fade-up quand #cr-white devient live ── */
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+
+      /* ── Texte 1 : slide sans fondu quand #cr-white devient live ── */
       var crWhite   = document.getElementById('cr-white');
       var textBlock = document.querySelector('.teachable-text');
       if (crWhite && textBlock) {
@@ -1411,47 +1411,6 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
           }
         }).observe(crWhite, { attributes: true, attributeFilter: ['class'] });
       }
-
-      /* ── Freeze : premier bloc gelé, section 2 monte par-dessus ── */
-      var crStickyEl  = document.getElementById('cr-sticky');
-      var placeholder = document.getElementById('cr-sticky-placeholder');
-      var row2        = document.getElementById('teachable-row-2');
-      var isFrozen    = false;
-
-      function freezeFirst() {
-        isFrozen = true;
-        crStickyEl.style.position = 'fixed';
-        crStickyEl.style.top      = '0';
-        crStickyEl.style.left     = '0';
-        crStickyEl.style.right    = '0';
-        crStickyEl.style.zIndex   = '5';
-        placeholder.style.height  = window.innerHeight + 'px';
-      }
-      function unfreezeFirst() {
-        isFrozen = false;
-        crStickyEl.style.position = '';
-        crStickyEl.style.top      = '';
-        crStickyEl.style.left     = '';
-        crStickyEl.style.right    = '';
-        crStickyEl.style.zIndex   = '';
-        placeholder.style.height  = '0';
-      }
-
-      function updateFreeze() {
-        var contRect = crContainer.getBoundingClientRect();
-        var wh = window.innerHeight;
-        if (!isFrozen && contRect.bottom <= wh + 1) {
-          freezeFirst();
-        } else if (isFrozen) {
-          if (row2 && row2.getBoundingClientRect().top <= 0) {
-            unfreezeFirst();
-          } else if (contRect.bottom > wh + 5) {
-            unfreezeFirst();
-          }
-        }
-      }
-      window.addEventListener('scroll', updateFreeze, { passive: true });
-      updateFreeze();
     })();
     </script>
 
