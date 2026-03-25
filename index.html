@@ -1994,6 +1994,48 @@
   updateActive();
 })();
 </script>
+    <style>
+  .arrow-animate {
+    opacity: 0 !important;
+    transform: translateY(20px) !important;
+    display: inline-block !important;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out !important;
+  }
+  .arrow-animate.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+</style>
+
+<script>
+(function() {
+  const init = () => {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const arrows = entry.target.querySelectorAll('.arrow-animate');
+          arrows.forEach((arrow, index) => {
+            setTimeout(() => {
+              arrow.classList.add('is-visible');
+            }, index * 350);
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-list-container').forEach(el => {
+      observer.observe(el);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
     <!-- END: TestimonialsCarousel -->
   </main>
   <!-- Giant CTA Section -->
