@@ -142,15 +142,6 @@
       transition: width 0.4s ease;
     }
 
-    .step-indicator {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: #374151;
-      font-weight: bold;
-    }
-
     .checkbox-custom {
       -webkit-appearance: none;
       appearance: none;
@@ -259,11 +250,11 @@
 
       <div style="background:linear-gradient(135deg,#67DAD5,#4fc8c3);padding:24px 32px;">
         <div class="flex items-center justify-between mb-4">
-          <span id="step-label" style="font-size:13px;font-weight:bold;color:rgba(255,255,255,0.85);">Étape 1 sur 5</span>
+          <span id="step-label" style="font-size:13px;font-weight:bold;color:rgba(255,255,255,0.85);">Étape 1 sur 6</span>
           <span id="step-title" style="font-size:15px;font-weight:bold;color:#fff;">Identité & RGPD</span>
         </div>
         <div class="progress-bar">
-          <div class="progress-fill" id="progress-fill" style="width:20%;"></div>
+          <div class="progress-fill" id="progress-fill" style="width:16.66%;"></div>
         </div>
       </div>
 
@@ -321,7 +312,6 @@
               <span class="material-symbols-outlined" style="font-size:16px;color:#67DAD5;flex-shrink:0;">shield</span>
               Vos données sont utilisées uniquement dans le cadre de votre accompagnement formation et ne sont jamais revendues.
             </div>
-            <a href="#" style="font-size:12px;color:#67DAD5;font-weight:bold;display:block;margin-top:10px;">Voir notre politique de confidentialité →</a>
           </div>
 
           <div class="flex justify-end mt-6">
@@ -334,47 +324,34 @@
           <p style="font-size:13px;color:#6b7280;margin-bottom:24px;">Vous êtes :</p>
 
           <div class="space-y-3" id="profil-options">
-
             <div class="option-card" onclick="selectProfil('responsable', this)">
-              <div class="icon">
-                <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">manage_accounts</span>
-              </div>
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">manage_accounts</span></div>
               <div>
                 <p style="font-weight:bold;font-size:15px;color:#111827;">Responsable / Encadrant d'une structure</p>
                 <p style="font-size:12px;color:#6b7280;font-weight:400;">Directeur, RH, coordinateur…</p>
               </div>
             </div>
-
             <div class="option-card" onclick="selectProfil('intervenant', this)">
-              <div class="icon">
-                <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">person</span>
-              </div>
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">person</span></div>
               <div>
                 <p style="font-weight:bold;font-size:15px;color:#111827;">Professionnel de terrain</p>
                 <p style="font-size:12px;color:#6b7280;font-weight:400;">Aide à domicile, auxiliaire de vie…</p>
               </div>
             </div>
-
             <div class="option-card" onclick="selectProfil('aidant', this)">
-              <div class="icon">
-                <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">favorite</span>
-              </div>
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">favorite</span></div>
               <div>
                 <p style="font-weight:bold;font-size:15px;color:#111827;">Aidant / Particulier</p>
                 <p style="font-size:12px;color:#6b7280;font-weight:400;">Aidant familial, proche aidant…</p>
               </div>
             </div>
-
             <div class="option-card" onclick="selectProfil('prospect', this)">
-              <div class="icon">
-                <span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">search</span>
-              </div>
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">search</span></div>
               <div>
                 <p style="font-weight:bold;font-size:15px;color:#111827;">En découverte (prospect)</p>
                 <p style="font-size:12px;color:#6b7280;font-weight:400;">Je découvre la plateforme…</p>
               </div>
             </div>
-
           </div>
 
           <div class="flex justify-between mt-6">
@@ -388,14 +365,8 @@
           <p style="font-size:13px;color:#6b7280;margin-bottom:24px;" id="step3-subtitle">Dites-nous en plus sur votre organisation.</p>
 
           <div id="section-responsable" class="conditional space-y-4">
-            <div>
-              <label class="form-label">Nom de la structure *</label>
-              <input type="text" class="form-input" placeholder="Ex : ADMR de la Loire">
-            </div>
-            <div>
-              <label class="form-label">Code postal *</label>
-              <input type="text" class="form-input" placeholder="Ex : 63000">
-            </div>
+            <div><label class="form-label">Nom de la structure *</label><input type="text" class="form-input" placeholder="Ex : ADMR de la Loire"></div>
+            <div><label class="form-label">Code postal *</label><input type="text" class="form-input" placeholder="Ex : 63000"></div>
             <div>
               <label class="form-label">Type de structure</label>
               <div class="space-y-2 mt-2">
@@ -436,14 +407,8 @@
           </div>
 
           <div id="section-intervenant" class="conditional space-y-4">
-            <div>
-              <label class="form-label">Nom de votre structure *</label>
-              <input type="text" class="form-input" placeholder="Ex : ADMR de la Loire">
-            </div>
-            <div>
-              <label class="form-label">Code postal *</label>
-              <input type="text" class="form-input" placeholder="Ex : 63000">
-            </div>
+            <div><label class="form-label">Nom de votre structure *</label><input type="text" class="form-input" placeholder="Ex : ADMR de la Loire"></div>
+            <div><label class="form-label">Code postal *</label><input type="text" class="form-input" placeholder="Ex : 63000"></div>
             <div>
               <label class="form-label">Type de structure</label>
               <div class="space-y-2 mt-2">
@@ -481,14 +446,8 @@
           </div>
 
           <div id="section-prospect" class="conditional space-y-4">
-            <div>
-              <label class="form-label">Votre structure (optionnel)</label>
-              <input type="text" class="form-input" placeholder="Nom de la structure">
-            </div>
-            <div>
-              <label class="form-label">Code postal</label>
-              <input type="text" class="form-input" placeholder="Ex : 63000">
-            </div>
+            <div><label class="form-label">Votre structure (optionnel)</label><input type="text" class="form-input" placeholder="Nom de la structure"></div>
+            <div><label class="form-label">Code postal</label><input type="text" class="form-input" placeholder="Ex : 63000"></div>
             <div>
               <label class="form-label">Type de structure</label>
               <div class="space-y-2 mt-2">
@@ -528,10 +487,7 @@
 
           <div id="objectifs-responsable" class="conditional space-y-4">
             <div class="card-section">
-              <div class="section-title">
-                <span class="material-symbols-outlined" style="font-size:18px;">target</span>
-                Vos priorités
-              </div>
+              <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">target</span>Vos priorités</div>
               <div class="space-y-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Former mes équipes</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Répondre aux exigences HAS</span></label>
@@ -541,10 +497,7 @@
               </div>
             </div>
             <div class="card-section">
-              <div class="section-title">
-                <span class="material-symbols-outlined" style="font-size:18px;">groups</span>
-                Combien de salariés souhaitez-vous former ?
-              </div>
+              <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">groups</span>Combien de salariés souhaitez-vous former ?</div>
               <div class="space-y-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="nb-salaries" class="radio-custom"><span style="font-size:14px;color:#374151;">Tous</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="nb-salaries" class="radio-custom"><span style="font-size:14px;color:#374151;">Une partie</span></label>
@@ -555,10 +508,7 @@
 
           <div id="objectifs-intervenant" class="conditional space-y-4">
             <div class="card-section">
-              <div class="section-title">
-                <span class="material-symbols-outlined" style="font-size:18px;">target</span>
-                Vos besoins
-              </div>
+              <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">target</span>Vos besoins</div>
               <div class="space-y-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Monter en compétences</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Être plus à l'aise dans mon quotidien</span></label>
@@ -570,10 +520,7 @@
 
           <div id="objectifs-aidant" class="conditional space-y-4">
             <div class="card-section">
-              <div class="section-title">
-                <span class="material-symbols-outlined" style="font-size:18px;">favorite</span>
-                Ce que vous recherchez
-              </div>
+              <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">favorite</span>Ce que vous recherchez</div>
               <div class="space-y-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Mieux comprendre la situation de mon proche</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Apprendre les bons gestes</span></label>
@@ -585,10 +532,7 @@
 
           <div id="objectifs-prospect" class="conditional space-y-4">
             <div class="card-section">
-              <div class="section-title">
-                <span class="material-symbols-outlined" style="font-size:18px;">search</span>
-                Votre intérêt principal
-              </div>
+              <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">search</span>Votre intérêt principal</div>
               <div class="space-y-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Découvrir la plateforme</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Voir le catalogue de formations</span></label>
@@ -605,48 +549,77 @@
         </div>
 
         <div class="step" id="step-5">
-          <h2 style="font-size:1.6rem;margin-bottom:4px;color:#111827;">Créez votre devis</h2>
-          <p style="font-size:13px;color:#6b7280;margin-bottom:24px;">Sélectionnez les formations qui vous intéressent pour recevoir une estimation (optionnel).</p>
+          <h2 style="font-size:1.6rem;margin-bottom:4px;color:#111827;">Souhaitez-vous un devis ?</h2>
+          <p style="font-size:13px;color:#6b7280;margin-bottom:24px;">Nous pouvons préparer une proposition tarifaire personnalisée pour vos formations.</p>
 
-          <div class="card-section">
-            <div class="section-title">
-              <span class="material-symbols-outlined" style="font-size:18px;">list_alt</span>
-              Formations disponibles
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="option-card" onclick="toggleDevis(true)" id="opt-devis-oui">
+              <div class="icon"><span class="material-symbols-outlined" style="color:#67DAD5;">description</span></div>
+              <div style="flex:1; text-align:left;">
+                <div style="font-weight:bold;font-size:15px;color:#111827;">Oui, je souhaite un devis</div>
+                <div style="font-size:12px;color:#6b7280;">Sélectionnez vos formations.</div>
+              </div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                <input type="checkbox" class="checkbox-custom mr-3">
-                <span style="font-size:13px;color:#374151;font-weight:bold;">Accompagnement à la toilette</span>
-              </label>
-              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                <input type="checkbox" class="checkbox-custom mr-3">
-                <span style="font-size:13px;color:#374151;font-weight:bold;">Aide aux repas</span>
-              </label>
-              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                <input type="checkbox" class="checkbox-custom mr-3">
-                <span style="font-size:13px;color:#374151;font-weight:bold;">Bientraitance et maltraitance</span>
-              </label>
-              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                <input type="checkbox" class="checkbox-custom mr-3">
-                <span style="font-size:13px;color:#374151;font-weight:bold;">Prévention des risques à domicile</span>
-              </label>
-              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                <input type="checkbox" class="checkbox-custom mr-3">
-                <span style="font-size:13px;color:#374151;font-weight:bold;">Entretien du cadre de vie</span>
-              </label>
-              <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                <input type="checkbox" class="checkbox-custom mr-3">
-                <span style="font-size:13px;color:#374151;font-weight:bold;">Accompagnement fin de vie</span>
-              </label>
+            
+            <div class="option-card" onclick="toggleDevis(false)" id="opt-devis-non">
+              <div class="icon"><span class="material-symbols-outlined" style="color:#67DAD5;">close</span></div>
+              <div style="flex:1; text-align:left;">
+                <div style="font-weight:bold;font-size:15px;color:#111827;">Non, pas pour l'instant</div>
+                <div style="font-size:12px;color:#6b7280;">Passer directement à la suite.</div>
+              </div>
             </div>
           </div>
 
-          <div class="flex flex-col sm:flex-row justify-between items-center mt-6 gap-3 sm:gap-0">
-            <button class="btn-secondary w-full sm:w-auto" onclick="prevStep(5)">← Retour</button>
-            <div class="flex gap-2 w-full sm:w-auto">
-                <button class="btn-secondary flex-1 sm:flex-none" style="border-color:transparent;background:#f3f4f6;" onclick="nextStep(5)">Passer</button>
-                <button class="btn-primary flex-1 sm:flex-none" onclick="nextStep(5)">Valider →</button>
+          <div id="devis-details" class="space-y-6" style="border-top:1px solid #e5e7eb; padding-top:24px; margin-top:24px; display:none;">
+            <div class="card-section">
+              <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">list_alt</span>Formations disponibles</div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
+                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Accompagnement à la toilette</span>
+                </label>
+                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
+                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Aide aux repas</span>
+                </label>
+                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
+                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Bientraitance et maltraitance</span>
+                </label>
+                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
+                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Prévention des risques à domicile</span>
+                </label>
+                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
+                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Entretien du cadre de vie</span>
+                </label>
+                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
+                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Accompagnement fin de vie</span>
+                </label>
+              </div>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div><label class="form-label">Numéro SIRET *</label><input type="text" class="form-input" placeholder="Ex : 123 456 789 00012"></div>
+              <div><label class="form-label">Adresse de facturation *</label><input type="text" class="form-input" placeholder="Ex : 12 rue de la Paix, Paris"></div>
+              <div><label class="form-label">Numéro de téléphone *</label><input type="tel" class="form-input" placeholder="Ex : 06 12 34 56 78"></div>
+              <div>
+                <label class="form-label">Type de financement prévu</label>
+                <select class="form-input">
+                  <option value="">Sélectionnez...</option>
+                  <option value="opco">OPCO</option>
+                  <option value="employeur">Financement employeur / Structure</option>
+                  <option value="perso">Financement personnel</option>
+                </select>
+              </div>
+              <div><label class="form-label">Nombre de participants</label><input type="number" class="form-input" placeholder="Ex : 5"></div>
+              <div><label class="form-label">Date souhaitée</label><input type="date" class="form-input"></div>
+            </div>
+            <div>
+              <label class="form-label">Commentaires ou besoins spécifiques</label>
+              <textarea class="form-input" rows="3" placeholder="Précisez votre demande..."></textarea>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row justify-between items-center mt-8 gap-3 sm:gap-0">
+            <button class="btn-secondary w-full sm:w-auto" onclick="prevStep(5)">← Retour</button>
+            <button class="btn-primary w-full sm:w-auto" onclick="nextStep(5)">Continuer →</button>
           </div>
         </div>
 
@@ -660,27 +633,56 @@
 
             <div class="card-section text-left mb-6">
               <div class="section-title">
-                <span class="material-symbols-outlined" style="font-size:18px;">rocket_launch</span>
-                Prochaines étapes
+                <span class="material-symbols-outlined" style="font-size:18px;">summarize</span>
+                Récapitulatif de votre inscription
               </div>
+              
+              <div class="mb-4">
+                <h3 style="font-size:14px; font-weight:bold; color:#111827; margin-bottom:8px;">Votre compte :</h3>
+                <ul style="font-size:13px; color:#374151; line-height:1.8;">
+                  <li><strong>Nom complet :</strong> <span id="recap-nom"></span></li>
+                  <li><strong>Email :</strong> <span id="recap-email"></span></li>
+                  <li><strong>Type de profil :</strong> <span id="recap-profil"></span></li>
+                </ul>
+              </div>
+
+              <div id="recap-devis" style="display:none; border-top:1px solid #e5e7eb; padding-top:16px;">
+                <h3 style="font-size:14px; font-weight:bold; color:#111827; margin-bottom:8px;">Votre demande de devis :</h3>
+                <div style="background:#f0fdfa; border:1px solid #14b8a6; border-radius:8px; padding:12px; font-size:13px; color:#0f766e; display:flex; gap:8px;">
+                  <span class="material-symbols-outlined" style="font-size:18px; flex-shrink:0;">check_circle</span>
+                  <div>
+                    <strong>Demande envoyée avec succès !</strong><br>
+                    Nous avons bien enregistré vos choix de formations et vos informations. Un conseiller va préparer votre devis et vous contacter rapidement.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-section text-left mb-6">
+              <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">rocket_launch</span>Prochaines étapes</div>
+              
               <div class="space-y-3" id="prochaines-etapes-responsable" style="display:none;">
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">1</div><span style="font-size:14px;color:#374151;">Accédez à votre tableau de bord</span></div>
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">2</div><span style="font-size:14px;color:#374151;">Inscrivez vos équipes aux formations</span></div>
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">3</div><span style="font-size:14px;color:#374151;">Suivez les résultats en temps réel</span></div>
               </div>
+              
               <div class="space-y-3" id="prochaines-etapes-intervenant" style="display:none;">
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">1</div><span style="font-size:14px;color:#374151;">Découvrez votre parcours personnalisé</span></div>
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">2</div><span style="font-size:14px;color:#374151;">Commencez votre première formation</span></div>
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">3</div><span style="font-size:14px;color:#374151;">Téléchargez votre certificat à la fin</span></div>
               </div>
+              
               <div class="space-y-3" id="prochaines-etapes-aidant" style="display:none;">
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">1</div><span style="font-size:14px;color:#374151;">Explorez les ressources pour aidants</span></div>
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">2</div><span style="font-size:14px;color:#374151;">Accédez aux modules adaptés à votre situation</span></div>
               </div>
+              
               <div class="space-y-3" id="prochaines-etapes-prospect" style="display:none;">
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">1</div><span style="font-size:14px;color:#374151;">Découvrez le catalogue de formations</span></div>
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">2</div><span style="font-size:14px;color:#374151;">Demandez une démonstration</span></div>
               </div>
+
             </div>
 
             <button class="btn-primary w-full" style="width:100%;" onclick="window.location.href='index.html'">
@@ -690,16 +692,20 @@
         </div>
 
       </div>
-    </div></div><script>
+    </div>
+  </div>
+
+  <script>
     let currentStep = 1;
     let selectedProfil = null;
 
+    // Titres et pourcentages jusqu'à 6 étapes
     const stepTitles = {
-      1: { label: 'Étape 1 sur 5', title: 'Identité & RGPD', progress: '20%' },
-      2: { label: 'Étape 2 sur 5', title: 'Votre profil', progress: '40%' },
-      3: { label: 'Étape 3 sur 5', title: 'Votre structure', progress: '60%' },
-      4: { label: 'Étape 4 sur 5', title: 'Vos objectifs', progress: '80%' },
-      5: { label: 'Étape 5 sur 5', title: 'Création de devis', progress: '95%' },
+      1: { label: 'Étape 1 sur 6', title: 'Identité & RGPD', progress: '16.6%' },
+      2: { label: 'Étape 2 sur 6', title: 'Votre profil', progress: '33.2%' },
+      3: { label: 'Étape 3 sur 6', title: 'Votre structure', progress: '49.8%' },
+      4: { label: 'Étape 4 sur 6', title: 'Vos objectifs', progress: '66.4%' },
+      5: { label: 'Étape 5 sur 6', title: 'Création de devis', progress: '83%' },
       6: { label: 'Terminé !', title: 'Confirmation', progress: '100%' },
     };
 
@@ -712,13 +718,33 @@
 
     function showStep(n) {
       document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-      document.getElementById('step-' + n).classList.add('active');
-      updateHeader(n);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const stepElement = document.getElementById('step-' + n);
+      if (stepElement) {
+        stepElement.classList.add('active');
+        updateHeader(n);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Gestion de l'affichage du devis (sans option cochée par défaut)
+    function toggleDevis(show) {
+      const details = document.getElementById('devis-details');
+      const optOui = document.getElementById('opt-devis-oui');
+      const optNon = document.getElementById('opt-devis-non');
+
+      if (show) {
+        details.style.display = 'block';
+        optOui.classList.add('selected');
+        optNon.classList.remove('selected');
+      } else {
+        details.style.display = 'none';
+        optNon.classList.add('selected');
+        optOui.classList.remove('selected');
+      }
     }
 
     function nextStep(from) {
-      // Validation étape 1
+      // Validation simple sur la première étape
       if (from === 1) {
         const nom = document.getElementById('input-nom').value;
         const email = document.getElementById('input-email').value;
@@ -731,10 +757,32 @@
         if (!cgu || !data) { alert('Veuillez accepter les conditions obligatoires.'); return; }
       }
 
-      // Validation étape 2
       if (from === 2) {
         if (!selectedProfil) { alert('Veuillez sélectionner votre profil.'); return; }
         applyProfil();
+      }
+
+      // Remplissage du récapitulatif quand on valide l'étape 5
+      if (from === 5) {
+        const prenom = document.getElementById('input-prenom').value;
+        const nom = document.getElementById('input-nom').value;
+        document.getElementById('recap-nom').textContent = prenom + ' ' + nom;
+        document.getElementById('recap-email').textContent = document.getElementById('input-email').value;
+        
+        const labelsProfils = {
+          'responsable': 'Responsable de structure',
+          'intervenant': 'Professionnel de terrain',
+          'aidant': 'Aidant / Particulier',
+          'prospect': 'En découverte (Prospect)'
+        };
+        document.getElementById('recap-profil').textContent = labelsProfils[selectedProfil] || selectedProfil;
+
+        const devisOui = document.getElementById('opt-devis-oui').classList.contains('selected');
+        if (devisOui) {
+          document.getElementById('recap-devis').style.display = 'block';
+        } else {
+          document.getElementById('recap-devis').style.display = 'none';
+        }
       }
 
       currentStep = from + 1;
@@ -753,11 +801,9 @@
     }
 
     function applyProfil() {
-      // Étape 3 : afficher la bonne section
       document.querySelectorAll('#step-3 .conditional').forEach(el => el.classList.remove('show'));
       document.getElementById('section-' + selectedProfil)?.classList.add('show');
 
-      // Étape 3 : adapter le titre
       const titles = {
         responsable: { title: 'Votre structure', subtitle: 'Dites-nous en plus sur votre organisation.' },
         intervenant: { title: 'Votre structure', subtitle: 'Dans quelle structure travaillez-vous ?' },
@@ -767,11 +813,9 @@
       document.getElementById('step3-title').textContent = titles[selectedProfil].title;
       document.getElementById('step3-subtitle').textContent = titles[selectedProfil].subtitle;
 
-      // Étape 4 : afficher les bons objectifs
       document.querySelectorAll('#step-4 .conditional').forEach(el => el.classList.remove('show'));
       document.getElementById('objectifs-' + selectedProfil)?.classList.add('show');
 
-      // Étape 4 : adapter le bouton pour aller vers le devis (étape 5)
       const btnLabels = {
         responsable: 'Continuer →',
         intervenant: 'Continuer →',
@@ -780,13 +824,12 @@
       };
       document.getElementById('btn-step4').textContent = btnLabels[selectedProfil];
 
-      // Étape 6 : afficher les bonnes prochaines étapes (anciennement étape 5)
       document.querySelectorAll('[id^="prochaines-etapes-"]').forEach(el => el.style.display = 'none');
       const el = document.getElementById('prochaines-etapes-' + selectedProfil);
       if (el) el.style.display = 'block';
     }
 
-    // Init
+    // Lancement de l'affichage initial
     updateHeader(1);
   </script>
 
