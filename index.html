@@ -1063,21 +1063,21 @@
             <h3 class="font-black mb-6 secondary-title text-[#0B1221]" style="font-size: 1.6rem !important;">
               Notre expertise repose sur une compréhension fine des enjeux :
             </h3>
-            <ul class="flex flex-col gap-3 animate-list-container">
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> Qualité de service
+            <ul class="flex flex-col gap-4 animate-list-container">
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> Qualité de service
               </li>
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> Exigences réglementaires
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> Exigences réglementaires
               </li>
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> Contraintes de planning
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> Contraintes de planning
               </li>
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> Engagement RSE
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> Engagement RSE
               </li>
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> Professionnalisation des équipes
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> Professionnalisation des équipes
               </li>
             </ul>
           </div>
@@ -1098,26 +1098,26 @@
             <h3 class="font-black mb-6 secondary-title text-[#0B1221]" style="font-size: 1.6rem !important;">
               Nos formations digitales sont :
             </h3>
-            <ul class="flex flex-col gap-3 animate-list-container">
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> 
-                <span><strong style="color: #67DAD5;">Conformes</strong> aux exigences HAS</span>
+            <ul class="flex flex-col gap-4 animate-list-container">
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span>Conformes aux exigences HAS</span>
               </li>
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> 
-                <span><strong style="color: #67DAD5;">Accessibles</strong> sur smartphone, 24h/24 et 7j/7</span>
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span>Accessibles sur smartphone, 24h/24 et 7j/7</span>
               </li>
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> 
-                <span>Basées sur des <strong style="color: #67DAD5;">situations réelles</strong></span>
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span>Basées sur des situations réelles</span>
               </li>
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> 
-                <span>Immédiatement <strong style="color: #67DAD5;">applicables</strong> au domicile</span>
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span>Immédiatement applicables au domicile</span>
               </li>
-              <li class="flex items-center gap-3 body-rounded" style="color: #374151;">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.2rem;">→</span> 
-                <span><strong style="color: #67DAD5;">Déployables</strong> sans perturber l'organisation terrain</span>
+              <li class="flex items-center gap-3 body-rounded text-black text-lg">
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span>>Déployables sans perturber l'organisation terrain</span>
               </li>
             </ul>
           </div>
@@ -1138,38 +1138,51 @@
   }
 </style>
 
-    <script>
+<script>
   (function() {
-    // Fonction qui contient toute la logique de l'animation
     const initArrowAnimation = () => {
-      // On configure l'observateur (threshold 0.1 = se déclenche dès que 10% de la liste est visible)
+      // Ce délai va s'accumuler si plusieurs listes apparaissent en même temps
+      let globalDelay = 0;
+      let resetTimeout;
+
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // On cible les flèches
             const arrows = entry.target.querySelectorAll('.arrow-animate');
             
-            // On les fait apparaître une par une avec 200ms de décalage
+            // On fait apparaître les flèches avec le délai global + leur propre délai
             arrows.forEach((arrow, index) => {
               setTimeout(() => {
                 arrow.classList.add('is-visible');
-              }, index * 200); 
+              }, globalDelay + (index * 200)); 
             });
             
-            // On arrête d'observer pour que l'animation ne se joue qu'une fois
+            // On ajoute le temps total de cette liste au délai global
+            // Ainsi, la liste suivante (celle de droite) attendra que celle-ci finisse
+            globalDelay += arrows.length * 200;
+            
+            // On arrête d'observer cette liste
             obs.unobserve(entry.target);
           }
         });
+
+        // On réinitialise le délai global juste après
+        // (Comme ça, si l'utilisateur scrolle plus tard vers la 2ème section au lieu de tout voir d'un coup, elle démarrera tout de suite)
+        clearTimeout(resetTimeout);
+        resetTimeout = setTimeout(() => {
+          globalDelay = 0;
+        }, 100);
+
       }, { threshold: 0.1 });
 
-      // On applique l'observateur à toutes les listes
+      // On applique l'observateur aux deux listes
       const lists = document.querySelectorAll('.animate-list-container');
       lists.forEach(container => {
         observer.observe(container);
       });
     };
 
-    // Sécurité : on vérifie si la page est déjà chargée ou non
+    // Sécurité au chargement
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initArrowAnimation);
     } else {
