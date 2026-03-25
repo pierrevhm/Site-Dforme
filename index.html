@@ -1028,62 +1028,81 @@
 <!-- ══ CIRCULAR REVEAL ══ -->
 <style>
   #cr-scroll-container { position: relative; }
-  #cr-scroll-container .cr-spacer { height: 500vh; }
+  #cr-scroll-container .cr-spacer { height: 400vh; }
+
+  /* L'image est dans le flux normal — sticky démarre après */
   #cr-sticky {
-    position: sticky; top: 0; height: 100vh; overflow: hidden;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
     background-color: #0B1221 !important;
   }
+
+  /* BG fixe dès le départ — pas de translateY */
   #cr-bg {
     position: absolute; inset: 0; z-index: 0;
     background:
       linear-gradient(to bottom, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.68) 100%),
       url('images/ee88375f-41bd-4ea6-b6a2-30c46f9e2763.png') center/cover no-repeat;
-    transform: translateY(100%);
-    will-change: transform;
   }
+
   #cr-dark {
     position: absolute; inset: 0; z-index: 1;
     display: flex; flex-direction: column; justify-content: center;
     padding: 0 6vw;
-    transform: translateY(100%);
-    will-change: transform;
   }
+
+  /* Reprend EXACTEMENT les styles de ta section d'origine */
   #cr-dark-title {
-    font-family: 'Bangers', 'Arial Black', Impact, sans-serif;
-    font-weight: 400; letter-spacing: 0.03em;
-    font-size: clamp(2.8rem, 5vw, 5.5rem);
-    color: #fff; line-height: 1.1; max-width: 800px; margin-bottom: 2rem;
+    font-family: 'Bangers', 'Arial Black', Impact, sans-serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.03em;
+    font-size: clamp(2.8rem, 5vw, 5.5rem) !important;
+    color: #fff !important;
+    line-height: 1.1 !important;
+    margin-bottom: 2rem !important;
+    text-decoration: none !important;
     will-change: transform, opacity;
   }
-  #cr-dark-title::after, #cr-wc-title::after { display: none !important; }
+  #cr-dark-title::after { display: none !important; }
+
   #cr-dark-sub {
-    color: rgba(255,255,255,0.80); font-size: 1.15rem;
-    font-family: 'Nunito', sans-serif; font-weight: 400;
-    max-width: 600px; margin-bottom: 3.5rem;
+    color: #ffffff;
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin-bottom: 3.5rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
     will-change: transform, opacity;
   }
+
   #cr-bullets {
-    display: grid; grid-template-columns: repeat(4, max-content);
-    justify-content: space-between; width: 100%; max-width: 860px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.8rem;
+    width: 100%;
   }
-  .cr-bullet {
-    padding-right: 24px;
-    border-right: 1px solid rgba(255,255,255,0.18);
-    will-change: transform, opacity;
-  }
-  .cr-bullet:first-child { padding-left: 0; }
-  .cr-bullet:last-child  { border-right: none; padding-right: 0; }
-  .cr-bullet.is-anchor   { visibility: hidden; }
   .cr-bullet p {
-    color: #fff; font-family: 'Nunito', sans-serif; font-weight: 700;
-    font-size: clamp(1.2rem, 2vw, 2rem); font-style: italic; line-height: 1.3; margin: 0;
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-style: italic;
+    line-height: 1.3;
+    margin: 0;
   }
+  .cr-bullet.is-anchor { visibility: hidden; }
+  #cr-b1, #cr-b2, #cr-b3 { will-change: transform, opacity; }
+
   #cr-circle {
     position: absolute; inset: 0; z-index: 2;
-    background: #fff; clip-path: circle(0% at 10% 82%);
+    background: #fff;
+    clip-path: circle(0% at 10% 82%);
     will-change: clip-path;
   }
-  /* Contenu blanc final */
+
   #cr-white {
     position: absolute; inset: 0; z-index: 3;
     display: grid; grid-template-columns: 1fr 1fr;
@@ -1092,50 +1111,58 @@
     will-change: opacity;
   }
   #cr-white.live { pointer-events: auto; }
+
   #cr-wc-left {
     display: flex; flex-direction: column; justify-content: center;
     padding: 60px 48px 60px 6vw;
   }
-  /* Titre final — même style que le h3 existant dans ta page */
+
+  /* Titre final — EXACTEMENT comme ton h3 d'origine */
   #cr-wc-title {
     font-family: 'Arial', sans-serif !important;
     font-weight: bold !important;
     font-size: 1.6rem !important;
-    color: #0B1221; line-height: 1.4; margin-bottom: 1.5rem;
+    line-height: 1.4 !important;
+    color: #0B1221;
+    margin-bottom: 1.5rem;
     visibility: hidden;
   }
-  .cr-wc-body-text {
-    font-size: 1rem; color: #444; line-height: 1.75;
-    font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
-    font-weight: 400; max-width: 420px; margin-bottom: 2rem;
-    opacity: 0; will-change: opacity;
+  #cr-wc-title::after { display: none !important; }
+
+  .cr-anim-list {
+    display: flex; flex-direction: column; gap: 1rem;
+    list-style: none; padding: 0; margin: 0;
   }
-  .cr-anim-list { display: flex; flex-direction: column; gap: 13px; list-style: none; padding: 0; margin: 0; }
   .cr-anim-list li {
-    display: flex; align-items: center; gap: 11px;
+    display: flex; align-items: center; gap: 0.75rem;
     font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
-    font-size: 1.05rem; color: #111; font-weight: 700;
+    font-size: 1.125rem; color: #000; font-weight: 700;
     opacity: 0; transform: translateX(-14px);
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
   .cr-anim-list li.show { opacity: 1; transform: translateX(0); }
-  .cr-arrow { color: #67DAD5; font-size: 1.3rem; flex-shrink: 0; }
+  .cr-arrow { color: #67DAD5; font-size: 1.5rem; flex-shrink: 0; }
+
   #cr-wc-right {
     display: flex; align-items: center; justify-content: center;
     padding: 60px 6vw 60px 36px;
   }
   #cr-wc-right img {
-    width: 100%; max-width: 520px; border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.10); object-fit: cover;
+    width: 100%; max-width: 520px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.10);
   }
-  /* L'ancre — LE seul texte "Compréhension des enjeux" */
+
+  /* L'ancre */
   #cr-anchor {
     position: absolute; z-index: 20; pointer-events: none;
-    line-height: 1.3; color: #ffffff;
-    font-family: 'Nunito', sans-serif; font-weight: 700; font-style: italic;
+    color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700; font-style: italic;
     font-size: clamp(1.2rem, 2vw, 2rem);
+    line-height: 1.3;
     left: 6vw; top: 82%;
-    will-change: left, top, font-size, color;
+    will-change: left, top, color;
   }
 </style>
 
@@ -1159,8 +1186,7 @@
 
     <div id="cr-white">
       <div id="cr-wc-left">
-        <!-- Titre final — identique au h3 de ta section d'origine -->
-        <h3 id="cr-wc-title" class="font-black secondary-title text-[#0B1221]">
+        <h3 id="cr-wc-title" class="font-black secondary-title text-[#0B1221]" style="font-size: 1.6rem !important;">
           Notre expertise repose sur une compréhension fine des enjeux :
         </h3>
         <ul class="cr-anim-list" id="cr-anim-list">
@@ -1176,7 +1202,6 @@
       </div>
     </div>
 
-    <!-- L'ancre : seul élément "Compréhension des enjeux" -->
     <div id="cr-anchor">Compréhension<br>des enjeux</div>
 
   </div>
@@ -1209,37 +1234,35 @@
   const ein   = t => t*t*t;
 
   const CX = 10, CY = 82;
+  // Rayon initial du cercle — assez grand pour bien entourer "Compréhension des enjeux"
+  const R0 = 14;
 
   /*
-    Phases :
-    0.00→0.22  image monte en plein écran
-    0.22→0.28  PAUSE — cercle apparaît autour du texte (0%→14%)
-    0.28→0.72  cercle grandit 14%→155%
-    0.30→0.62  titre glisse droite
-    0.28→0.40  b1 slide gauche
-    0.33→0.45  b2 slide gauche
-    0.38→0.50  b3 slide gauche
-    0.28→0.68  ancre monte + grossit
-    0.28→0.46  ancre blanc→noir
-    0.65→0.80  contenu blanc fade in
-    0.72→0.82  ancre disparaît → wc-title visible
+    Phases sur progress 0→1 (400vh) :
+    0.00→0.15  PAUSE : image déjà visible, on attend avant de lancer l'anim
+    0.15→0.22  cercle apparaît 0%→R0% autour du texte
+    0.22→0.72  cercle grandit R0%→155%
+    0.24→0.65  titre + sub glissent à droite
+    0.22→0.35  b1 slide gauche
+    0.28→0.41  b2 slide gauche
+    0.34→0.47  b3 slide gauche
+    0.22→0.68  ancre reste en place (cercle grossit autour)
+    0.15→0.30  ancre blanc→noir
+    0.60→0.78  contenu blanc fade in
+    0.68→0.80  ancre disparaît → wc-title visible
   */
   const P = {
-    imgIn:      [0.00, 0.22],
-    circleIn:   [0.22, 0.28],
-    pause:       0.28,
-    circle:     [0.28, 0.72],
-    slide:      [0.30, 0.62],
-    b1:         [0.28, 0.40],
-    b2:         [0.33, 0.45],
-    b3:         [0.38, 0.50],
-    anchorMove: [0.28, 0.68],
-    content:    [0.65, 0.80],
-    anchorOut:  [0.72, 0.82],
+    circleIn:   [0.15, 0.22],
+    circle:     [0.22, 0.72],
+    pause:       0.22,
+    slide:      [0.24, 0.65],
+    b1:         [0.22, 0.35],
+    b2:         [0.28, 0.41],
+    b3:         [0.34, 0.47],
+    anchorColor:[0.15, 0.30],
+    content:    [0.60, 0.78],
+    anchorOut:  [0.68, 0.80],
   };
-
-  // Taille initiale du cercle : assez grand pour entourer le texte
-  const CIRCLE_INIT_RADIUS = 14; // % — encercle bien "Compréhension des enjeux"
 
   function getStartRect() {
     const bR = b0.getBoundingClientRect(), sR = sticky.getBoundingClientRect();
@@ -1257,59 +1280,54 @@
     const scrolled   = -container.getBoundingClientRect().top;
     const p          = clamp(scrolled / scrollable, 0, 1);
 
-    // Phase 1 : image monte
-    const imgT = eio(norm(p, ...P.imgIn));
-    bgLayer.style.transform   = `translateY(${(1-imgT)*100}%)`;
-    darkLayer.style.transform = `translateY(${(1-imgT)*100}%)`;
-
-    // Cercle : 0 → CIRCLE_INIT_RADIUS pendant la pause, puis → 155%
+    // ── Cercle : apparaît petit autour du texte, puis grandit ──
     const inP2    = p >= P.pause;
     const circInT = eout(norm(p, ...P.circleIn));
     const circT   = inP2 ? eio(norm(p, ...P.circle)) : 0;
     const radius  = circInT < 1
-      ? circInT * CIRCLE_INIT_RADIUS
-      : CIRCLE_INIT_RADIUS + circT * (155 - CIRCLE_INIT_RADIUS);
+      ? circInT * R0
+      : R0 + circT * (155 - R0);
     circleLayer.style.clipPath = `circle(${radius}% at ${CX}% ${CY}%)`;
 
-    // Titre glisse droite
+    // ── Titre + sous-titre glissent droite ──
     const slideT = ein(norm(p, ...P.slide));
     darkTitle.style.transform = `translateX(${slideT * 42}vw)`;
     darkTitle.style.opacity   = String(1 - slideT * 0.96);
     darkSub.style.transform   = `translateX(${slideT * 28}vw)`;
     darkSub.style.opacity     = String(1 - slideT * 0.96);
 
-    // Bullets slide gauche
-    const b1T = eout(norm(p,...P.b1)), b2T = eout(norm(p,...P.b2)), b3T = eout(norm(p,...P.b3));
+    // ── Bullets slide gauche ──
+    const b1T = eout(norm(p,...P.b1));
+    const b2T = eout(norm(p,...P.b2));
+    const b3T = eout(norm(p,...P.b3));
     b1.style.transform=`translateX(${-b1T*60}px)`; b1.style.opacity=String(1-b1T);
     b2.style.transform=`translateX(${-b2T*80}px)`; b2.style.opacity=String(1-b2T);
     b3.style.transform=`translateX(${-b3T*100}px)`; b3.style.opacity=String(1-b3T);
 
-    // Ancre
-    const moveT = inP2 ? eio(norm(p, ...P.anchorMove)) : 0;
-    anchorEl.style.fontSize     = `clamp(1.2rem, ${lerp(2, 2, moveT)}vw, 2rem)`; // taille fixe bullet
-    anchorEl.style.fontFamily   = "'Nunito', sans-serif";
-    anchorEl.style.fontStyle    = "italic";
-    anchorEl.style.fontWeight   = "700";
-
-    // Couleur blanc → noir synchronisée avec circleIn
-    const colorT = circInT;
+    // ── Ancre : reste à sa position bullet, change de couleur ──
+    // (ne se déplace PAS pendant la phase cercle — elle est déjà dedans)
+    const colorT = eout(norm(p, ...P.anchorColor));
     anchorEl.style.color = `rgb(${Math.round(lerp(255,11,colorT))},${Math.round(lerp(255,18,colorT))},${Math.round(lerp(255,33,colorT))})`;
 
-    const start = getStartRect(), end = getEndRect();
+    // Position : reste sur b0 jusqu'à ce que le contenu blanc arrive
+    const start = getStartRect();
+    const end   = getEndRect();
+    // Commence à se déplacer seulement quand le cercle est bien grand
+    const moveT = eio(norm(p, 0.45, 0.68));
     anchorEl.style.left = `${lerp(start.x, end.x, moveT)}px`;
     anchorEl.style.top  = `${lerp(start.y, end.y, moveT)}px`;
 
-    // Ancre disparaît → wc-title visible
+    // ── Ancre disparaît → wc-title visible ──
     const outT = eout(norm(p, ...P.anchorOut));
     anchorEl.style.opacity   = String(1 - outT);
     wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
 
-    // Contenu blanc
+    // ── Contenu blanc fade in ──
     const contentT = eout(norm(p, ...P.content));
     whiteContent.style.opacity = String(contentT);
     whiteContent.classList.toggle('live', contentT > 0.05);
 
-    // Liste
+    // ── Liste animée ──
     if (p >= P.content[0] + 0.05 && !listDone) {
       listDone = true;
       animList.querySelectorAll('li').forEach((li,i) =>
