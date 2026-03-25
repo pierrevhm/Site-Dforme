@@ -1325,8 +1325,11 @@
 
     // ── Ancre disparaît → wc-title visible ──
     const outT = eout(norm(p, ...P.anchorOut));
-    anchorEl.style.opacity   = String(1 - outT);
-    wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
+// Glisse vers la droite ET fade pour rejoindre le titre
+const end2 = getEndRect();
+anchorEl.style.opacity   = String(1 - outT);
+anchorEl.style.left      = `${parseFloat(anchorEl.style.left || end2.x) + outT * 400}px`;
+wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
 
     // ── Contenu blanc fade in ──
     const contentT = eout(norm(p, ...P.content));
