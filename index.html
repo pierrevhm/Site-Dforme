@@ -1272,14 +1272,14 @@
     0.60→0.78  contenu blanc fade in
     0.68→0.80  ancre disparaît → wc-title visible
   */
-  const P = {
+const P = {
     circleIn:   [0.15, 0.22],
     circle:     [0.22, 0.72],
     pause:       0.22,
-    slide:      [0.24, 0.65],
-    b1:         [0.22, 0.35],
-    b2:         [0.28, 0.41],
-    b3:         [0.34, 0.47],
+   slide:      [0.22, 0.65],
+b1:         [0.22, 0.45],  // bullets finissent leur course complètement
+b2:         [0.22, 0.45],
+b3:         [0.22, 0.45],
     anchorColor:[0.15, 0.30],
     content:    [0.60, 0.78],
     anchorOut:  [0.68, 0.80],
@@ -1311,19 +1311,25 @@
     circleLayer.style.clipPath = `circle(${radius}% at ${CX}% ${CY}%)`;
 
     // ── Titre + sous-titre glissent droite ──
-    const slideT = ein(norm(p, ...P.slide));
-    darkTitle.style.transform = `translateX(${slideT * 42}vw)`;
-    darkTitle.style.opacity   = String(1 - slideT * 0.96);
-    darkSub.style.transform   = `translateX(${slideT * 28}vw)`;
-    darkSub.style.opacity     = String(1 - slideT * 0.96);
+// Le titre est poussé par le bord droit du cercle
+// radius est en % du viewport, on le convertit en vw pour pousser le titre
+const pushX = Math.max(0, radius - 8); // commence à pousser dès que le cercle dépasse sa taille initiale
+darkTitle.style.transform = `translateX(${pushX * 1.2}vw)`;
+darkTitle.style.opacity   = '1';
+darkSub.style.transform   = `translateX(${pushX * 0.9}vw)`;
+darkSub.style.opacity     = '1';
 
     // ── Bullets slide gauche ──
     const b1T = eout(norm(p,...P.b1));
     const b2T = eout(norm(p,...P.b2));
     const b3T = eout(norm(p,...P.b3));
-    b1.style.transform=`translateX(${-b1T*60}px)`; b1.style.opacity=String(1-b1T);
-    b2.style.transform=`translateX(${-b2T*80}px)`; b2.style.opacity=String(1-b2T);
-    b3.style.transform=`translateX(${-b3T*100}px)`; b3.style.opacity=String(1-b3T);
+    // Les bullets glissent vers la gauche — attirés par le rond
+// Bullets absorbés vers la gauche sans fondu
+// Les bullets sont mangés par le rond — liés directement au rayon
+const eatX = Math.max(0, radius - 8);
+b1.style.transform=`translateX(${-eatX * 1.2}vw)`; b1.style.opacity='1';
+b2.style.transform=`translateX(${-eatX * 1.5}vw)`; b2.style.opacity='1';
+b3.style.transform=`translateX(${-eatX * 1.8}vw)`; b3.style.opacity='1';
 
     // ── Ancre : reste à sa position bullet, change de couleur ──
     // (ne se déplace PAS pendant la phase cercle — elle est déjà dedans)
@@ -1339,11 +1345,8 @@
     anchorEl.style.top  = `${lerp(start.y, end.y, moveT)}px`;
 
     // ── Ancre disparaît → wc-title visible ──
-    const outT = eout(norm(p, ...P.anchorOut));
-// Glisse vers la droite ET fade pour rejoindre le titre
-const end2 = getEndRect();
+const outT = eout(norm(p, ...P.anchorOut));
 anchorEl.style.opacity   = String(1 - outT);
-anchorEl.style.left      = `${parseFloat(anchorEl.style.left || end2.x) + outT * 400}px`;
 wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
 
     // ── Contenu blanc fade in ──
@@ -1378,23 +1381,23 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
   </h3>
             <ul class="flex flex-col gap-4 animate-list-container">
               <li class="flex items-center gap-3 body-rounded text-black text-xl">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
                 <span>Conformes aux exigences HAS</span>
               </li>
               <li class="flex items-center gap-3 body-rounded text-black text-xl">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
                 <span>Accessibles sur smartphone, 24h/24 et 7j/7</span>
               </li>
               <li class="flex items-center gap-3 body-rounded text-black text-xl">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
                 <span>Basées sur des situations réelles</span>
               </li>
               <li class="flex items-center gap-3 body-rounded text-black text-xl">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
                 <span>Immédiatement applicables au domicile</span>
               </li>
               <li class="flex items-center gap-3 body-rounded text-black text-xl">
-                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">➜</span> 
+                <span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> 
                 <span>Déployables sans perturber l'organisation terrain</span>
               </li>
             </ul>
@@ -1714,7 +1717,7 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
 <section class="pt-16 pb-16 bg-white overflow-hidden">
   <div class="text-center mb-12">
     <h2 class="secondary-title">Nos témoignages clients</h2>
-    <p class="section-subtitle body-rounded mt-4" style="color:#374151;">Ils ont transformé leur approche de la formation — découvrez ce qu'ils en disent.</p>
+    <p class="section-subtitle body-rounded mt-4" style="color:#374151;">Des résultats concrets : lisez comment ils ont fait évoluer leur apprentissage.</p>
   </div>
 
       <!-- Carousel wrapper — full width -->
@@ -2020,13 +2023,13 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
     <style>
   .arrow-animate {
     opacity: 0 !important;
-    transform: translateY(20px) !important;
+    transform: translateX(-20px) !important;
     display: inline-block !important;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out !important;
   }
   .arrow-animate.is-visible {
     opacity: 1 !important;
-    transform: translateY(0) !important;
+    transform: translateX(0) !important;
   }
 </style>
 
