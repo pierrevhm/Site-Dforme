@@ -1091,28 +1091,6 @@
 }
   #cr-white.live { pointer-events: auto; }
 
-  /* ── Colonne gauche : texte ── */
-  #cr-wc-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* On supprime les vieux paddings (5% 6%...) qui décalaient le texte vers la droite */
-  padding: 0; 
-  height: 100%;
-  box-sizing: border-box;
-}
-
-  #cr-wc-title {
-  font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
-  font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
-  color: #0B1221;
-  margin-bottom: 1.5rem;
-  line-height: 1.2 !important;
-  letter-spacing: normal;
-  /* SUPPRIMEZ la ligne visibility: hidden; */
-}
-  #cr-wc-title::after { display: none !important; }
-
   .cr-anim-list {
   display: flex;
   flex-direction: column;
@@ -1121,7 +1099,42 @@
   padding: 0;
   margin: 0;
 }
-  .cr-anim-list li {
+  /* --- 1. Colonne gauche (sans overflow hidden pour éviter le bug de coupe) --- */
+#cr-wc-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* --- Global : Master Style Texte (Basé sur la Section 1) --- */
+
+/* Titres pour les deux sections */
+#cr-wc-title,
+.teachable-row-2-title { /* On applique le même style à l'ID et à la classe de la section 2 */
+  font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+  font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
+  color: #0B1221;
+  margin-bottom: 1.5rem;
+  line-height: 1.2 !important;
+  letter-spacing: normal;
+  /* (Section 1 spécifique) La visibilité est gérée par JS pour l'animation */
+}
+
+/* Liste pour les deux sections */
+.cr-anim-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Lignes de liste pour les deux sections */
+.cr-anim-list li {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1129,11 +1142,25 @@
   font-size: 20px !important;
   color: #000;
   font-weight: normal;
+  /* (Section 1 spécifique) La transition est gérée par JS pour l'animation */
+}
 
-  /* On prépare l'animation du bas vers le haut */
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+/* Flèches pour les deux sections */
+.cr-arrow {
+  color: #67DAD5;
+  flex-shrink: 0;
+  opacity: 1 !important;
+  transform: none !important;
+  font-size: 1.5rem !important;
+  font-weight: bold;
+}
+
+/* --- 4. Sécurité globale : on désactive les vieux effets de fondu --- */
+.teachable-text, .teachable-text.anim-fade-up {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  visibility: visible !important;
 }
 
   /* Flèche : apparaît depuis la gauche — identique à Teachable */
@@ -1190,18 +1217,18 @@
       grid-template-columns: 1fr;
       overflow-y: auto;
     }
-    #cr-wc-left { padding: 36px 24px 20px; order: 2; }
     #cr-wc-right { height: 220px; order: 1; }
   }
   /* --- 1. Gestion de la taille de l'image --- */
- #cr-wc-right img {
+ /* --- Section 1 Image : Restauration des bords arrondis --- */
+#cr-wc-right img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
   object-fit: cover;
   display: block;
-  
-  /* On garde l'animation JS (glissement de droite à gauche) */
-  clip-path: inset(0 0 0 100%); 
+  border-radius: 20px; /* C'est cette ligne qui fait les coins arrondis ! */
+  clip-path: inset(0 0 0 100%);
   transform: translateX(150px);
   will-change: clip-path, transform;
 }
