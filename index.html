@@ -1411,10 +1411,26 @@ anchorEl.style.opacity   = String(1 - outT);
 
     // ── Image droite : slide depuis la droite (clip-path + translateX) — exactement comme Teachable ──
     // ── Image droite : slide depuis la droite (clip-path + translateX) ──
-if (wcImg) {
-  const imgT = eout(norm(p, ...P.imgReveal));
-  const remainingClip = (1 - imgT) * 100;
-  const translateOffset = (1 - imgT) * 150; // J'ai monté à 150px pour un effet de glissement plus prononcé
+// ── Texte et Liste : Glissement brut lié au scroll ──
+// On synchronise le texte avec le moment où l'image apparaît [0.65, 0.92]
+if (wcTitle && animList) {
+  const textProgress = norm(p, ...P.imgReveal);
+  
+  // 1. Le titre glisse du bas (150px) vers le haut (0px)
+  const titleY = (1 - eout(textProgress)) * 150; 
+  wcTitle.style.transform = `translateY(${titleY}px)`;
+  
+  // 2. Les éléments de la liste suivent, avec un très léger effet d'escalier
+  animList.querySelectorAll('li').forEach((li, i) => {
+    // Chaque ligne commence à glisser une fraction de seconde plus tard
+    const startP = P.imgReveal[0] + (i * 0.02);
+    const endP = Math.min(1, P.imgReveal[1] + (i * 0.02));
+    const itemProgress = norm(p, startP, endP);
+    
+    const liY = (1 - eout(itemProgress)) * 150;
+    li.style.transform = `translateY(${liY}px)`;
+  });
+}
   
   // CORRECTION : on anime le masque par la gauche pour révéler de droite à gauche
   wcImg.style.clipPath  = `inset(0 0 0 ${remainingClip}%)`; 
