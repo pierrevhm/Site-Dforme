@@ -1102,12 +1102,15 @@
 }
 
   #cr-wc-title {
+  /* Vos réglages exacts copiés depuis la section 2 */
   font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
-  font-weight: bold !important;
-  font-size: clamp(1.8rem, 3vw, 2.8rem) !important; /* Même taille dynamique que l'autre section */
-  line-height: 1.2 !important;
+  font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
   color: #0B1221;
   margin-bottom: 1.5rem;
+  line-height: 1.2 !important;
+  letter-spacing: normal;
+  
+  /* On garde juste ceci pour que votre animation d'apparition fonctionne */
   visibility: hidden;
 }
   #cr-wc-title::after { display: none !important; }
@@ -1245,7 +1248,7 @@ body {
     <div id="cr-white">
 
       <!-- Colonne gauche : texte + liste animée -->
-      <div id="cr-wc-left">
+      <div id="cr-wc-title">
         <div class="teachable-text anim-fade-up">
           <h2 style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">Notre expertise repose sur une compréhension fine des enjeux :</h2>
           <ul class="cr-anim-list" id="cr-anim-list">
