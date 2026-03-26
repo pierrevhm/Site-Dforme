@@ -1155,21 +1155,10 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+  font-family: 'Arial', 'Nunito', sans-serif !important; /* On retire la police Bold */
   font-size: 20px !important;
   color: #000;
-  font-weight: normal;
-  /* (Section 1 spécifique) La transition est gérée par JS pour l'animation */
-}
-
-/* Flèches pour les deux sections */
-.cr-arrow {
-  color: #67DAD5;
-  flex-shrink: 0;
-  opacity: 1 !important;
-  transform: none !important;
-  font-size: 1.5rem !important;
-  font-weight: bold;
+  font-weight: normal !important; /* On force une épaisseur normale */
 }
 
 /* --- 4. Sécurité globale : on désactive les vieux effets de fondu --- */
@@ -1189,7 +1178,7 @@
     display: inline-block;
     transition: opacity 0.45s ease-out, transform 0.45s ease-out;
     font-size: 1.4rem;
-    font-weight: bold;
+    font-weight: normal; /* On enlève le bold */
   }
   .cr-anim-list li.show .cr-arrow {
     opacity: 1;
@@ -1289,11 +1278,11 @@ body {
         <div class="teachable-text anim-fade-up">
           <h2 style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">Notre expertise repose sur une compréhension fine des enjeux :</h2>
           <ul class="cr-anim-list" id="cr-anim-list">
-            <li><span class="cr-arrow" font-size: 1.5rem;>➔</span> Qualité de service</li>
-            <li><span class="cr-arrow" font-size: 1.5rem;>➔</span> Exigences réglementaires</li>
-            <li><span class="cr-arrow" font-size: 1.5rem;>➔</span> Contraintes de planning</li>
-            <li><span class="cr-arrow"font-size: 1.5rem;>➔</span> Engagement RSE</li>
-            <li><span class="cr-arrow" font-size: 1.5rem;>➔</span> Professionnalisation des équipes</li>
+            <li><span class="cr-arrow">→</span> Qualité de service</li>
+            <li><span class="cr-arrow">→</span> Exigences réglementaires</li>
+            <li><span class="cr-arrow">→</span> Contraintes de planning</li>
+            <li><span class="cr-arrow">→</span> Engagement RSE</li>
+            <li><span class="cr-arrow">→</span> Professionnalisation des équipes</li>
           </ul>
         </div>
       </div>
