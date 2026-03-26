@@ -327,7 +327,11 @@
             <div class="space-y-3">
               <label class="flex items-start gap-3 cursor-pointer">
                 <input type="checkbox" class="checkbox-custom mt-0.5" id="rgpd-cgu" required>
-                <span style="font-size:13px;color:#374151;font-weight:400;">J'accepte les <a href="#" style="color:#67DAD5;font-weight:bold;">Conditions Générales d'Utilisation</a> (CGU) *</span>
+                <span style="font-size:13px;color:#374151;font-weight:400;">J'accepte les <a href="/cgu" style="color:#67DAD5;font-weight:bold;text-decoration:underline;">Conditions Générales d'Utilisation (CGU)</a> *</span>
+              </label>
+              <label class="flex items-start gap-3 cursor-pointer">
+                <input type="checkbox" class="checkbox-custom mt-0.5" id="rgpd-rgpd" required>
+                <span style="font-size:13px;color:#374151;font-weight:400;">Je confirme avoir pris connaissance de la <a href="/rgpd" style="color:#67DAD5;font-weight:bold;text-decoration:underline;">politique RGPD</a> sur la protection de mes données *</span>
               </label>
               <label class="flex items-start gap-3 cursor-pointer">
                 <input type="checkbox" class="checkbox-custom mt-0.5" id="rgpd-data" required>
@@ -341,6 +345,13 @@
             <div style="background:rgba(103,218,213,0.08);border:1px solid #67DAD5;border-radius:10px;padding:10px 14px;margin-top:14px;font-size:12px;color:#374151;display:flex;align-items:center;gap:8px;">
               <span class="material-symbols-outlined" style="font-size:16px;color:#67DAD5;flex-shrink:0;">shield</span>
               Vos données sont utilisées uniquement dans le cadre de votre accompagnement formation et ne sont jamais revendues.
+            </div>
+            
+            <div class="mt-4 text-center">
+              <a href="/politiques-confidentialite" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-[12px] font-bold text-gray-600 hover:bg-gray-100 transition">
+                <span class="material-symbols-outlined text-[16px]">policy</span>
+                Voir nos politiques de confidentialité
+              </a>
             </div>
           </div>
 
@@ -357,7 +368,7 @@
             <div class="option-card" onclick="selectProfil('responsable', this)">
               <div class="icon"><span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">manage_accounts</span></div>
               <div>
-                <p style="font-weight:bold;font-size:15px;color:#111827;">Responsable / Encadrant d'une structure</p>
+                <p style="font-weight:bold;font-size:15px;color:#111827;">Responsable / Encadrant d'un environnement</p>
                 <p style="font-size:12px;color:#6b7280;font-weight:400;">Directeur, RH, coordinateur…</p>
               </div>
             </div>
@@ -371,8 +382,15 @@
             <div class="option-card" onclick="selectProfil('aidant', this)">
               <div class="icon"><span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">favorite</span></div>
               <div>
-                <p style="font-weight:bold;font-size:15px;color:#111827;">Aidant / Particulier</p>
+                <p style="font-weight:bold;font-size:15px;color:#111827;">Aidant</p>
                 <p style="font-size:12px;color:#6b7280;font-weight:400;">Aidant familial, proche aidant…</p>
+              </div>
+            </div>
+            <div class="option-card" onclick="selectProfil('particulier', this)">
+              <div class="icon"><span class="material-symbols-outlined" style="font-size:22px;color:#67DAD5;">person_outline</span></div>
+              <div>
+                <p style="font-weight:bold;font-size:15px;color:#111827;">Particulier</p>
+                <p style="font-size:12px;color:#6b7280;font-weight:400;">Besoin d'accompagnement personnel…</p>
               </div>
             </div>
             <div class="option-card" onclick="selectProfil('prospect', this)">
@@ -391,17 +409,18 @@
         </div>
 
         <div class="step" id="step-3">
-          <h2 style="font-size:1.6rem;margin-bottom:4px;color:#111827;" id="step3-title">Votre structure</h2>
-          <p style="font-size:13px;color:#6b7280;margin-bottom:24px;" id="step3-subtitle">Dites-nous en plus sur votre organisation.</p>
+          <h2 style="font-size:1.6rem;margin-bottom:4px;color:#111827;" id="step3-title">Votre Environnement</h2>
+          <p style="font-size:13px;color:#6b7280;margin-bottom:24px;" id="step3-subtitle">Dites-nous en plus sur votre environnement.</p>
 
           <div id="section-responsable" class="conditional space-y-4">
-            <div><label class="form-label">Nom de la structure *</label><input type="text" class="form-input" placeholder="Ex : ADMR de la Loire"></div>
+            <div><label class="form-label">Nom de l'environnement *</label><input type="text" class="form-input" placeholder="Ex : ADMR de la Loire"></div>
             <div><label class="form-label">Code postal *</label><input type="text" class="form-input" placeholder="Ex : 63000"></div>
             <div>
-              <label class="form-label">Type de structure</label>
+              <label class="form-label">Type d'environnement</label>
               <div class="space-y-2 mt-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-structure-resp" class="radio-custom"><span style="font-size:14px;color:#374151;">Associative</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-structure-resp" class="radio-custom"><span style="font-size:14px;color:#374151;">Privée</span></label>
+                <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-structure-resp" class="radio-custom"><span style="font-size:14px;color:#374151;">CCAS / CIAS</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-structure-resp" class="radio-custom"><span style="font-size:14px;color:#374151;">Autre</span></label>
               </div>
             </div>
@@ -420,7 +439,7 @@
             <div>
               <label class="form-label">
                 <span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;color:#67DAD5;">groups</span>
-                Taille de votre structure
+                Taille de votre environnement
               </label>
               <div class="space-y-2 mt-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="taille-resp" class="radio-custom"><span style="font-size:14px;color:#374151;">1 à 10 salariés</span></label>
@@ -437,13 +456,14 @@
           </div>
 
           <div id="section-intervenant" class="conditional space-y-4">
-            <div><label class="form-label">Nom de votre structure *</label><input type="text" class="form-input" placeholder="Ex : ADMR de la Loire"></div>
+            <div><label class="form-label">Nom de votre environnement *</label><input type="text" class="form-input" placeholder="Ex : ADMR de la Loire"></div>
             <div><label class="form-label">Code postal *</label><input type="text" class="form-input" placeholder="Ex : 63000"></div>
             <div>
-              <label class="form-label">Type de structure</label>
+              <label class="form-label">Type d'environnement</label>
               <div class="space-y-2 mt-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-structure-interv" class="radio-custom"><span style="font-size:14px;color:#374151;">Associative</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-structure-interv" class="radio-custom"><span style="font-size:14px;color:#374151;">Privée</span></label>
+                <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-structure-interv" class="radio-custom"><span style="font-size:14px;color:#374151;">CCAS / CIAS</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-structure-interv" class="radio-custom"><span style="font-size:14px;color:#374151;">Autre</span></label>
               </div>
             </div>
@@ -475,14 +495,20 @@
             </div>
           </div>
 
+          <div id="section-particulier" class="conditional space-y-4">
+            <div><label class="form-label">Votre besoin principal</label><input type="text" class="form-input" placeholder="Décrivez votre besoin d'accompagnement"></div>
+            <div><label class="form-label">Code postal</label><input type="text" class="form-input" placeholder="Ex : 63000"></div>
+          </div>
+
           <div id="section-prospect" class="conditional space-y-4">
-            <div><label class="form-label">Votre structure (optionnel)</label><input type="text" class="form-input" placeholder="Nom de la structure"></div>
+            <div><label class="form-label">Votre environnement (optionnel)</label><input type="text" class="form-input" placeholder="Nom de l'environnement"></div>
             <div><label class="form-label">Code postal</label><input type="text" class="form-input" placeholder="Ex : 63000"></div>
             <div>
-              <label class="form-label">Type de structure</label>
+              <label class="form-label">Type d'environnement</label>
               <div class="space-y-2 mt-2">
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-prospect" class="radio-custom"><span style="font-size:14px;color:#374151;">Associative</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-prospect" class="radio-custom"><span style="font-size:14px;color:#374151;">Privée</span></label>
+                <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-prospect" class="radio-custom"><span style="font-size:14px;color:#374151;">CCAS / CIAS</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="type-prospect" class="radio-custom"><span style="font-size:14px;color:#374151;">Autre</span></label>
               </div>
             </div>
@@ -556,6 +582,17 @@
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Apprendre les bons gestes</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Prendre soin de moi aussi</span></label>
                 <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Trouver des ressources et du soutien</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div id="objectifs-particulier" class="conditional space-y-4">
+            <div class="card-section">
+              <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">person</span>Ce que vous recherchez</div>
+              <div class="space-y-2">
+                <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Me former à titre personnel</span></label>
+                <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Développer de nouvelles compétences</span></label>
+                <label class="flex items-center gap-3 cursor-pointer"><input type="checkbox" class="checkbox-custom"><span style="font-size:14px;color:#374151;">Trouver un accompagnement</span></label>
               </div>
             </div>
           </div>
@@ -634,7 +671,7 @@
                 <select class="form-input">
                   <option value="">Sélectionnez...</option>
                   <option value="opco">OPCO</option>
-                  <option value="employeur">Financement employeur / Structure</option>
+                  <option value="employeur">Financement employeur / Environnement</option>
                   <option value="perso">Financement personnel</option>
                 </select>
               </div>
@@ -707,6 +744,11 @@
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">1</div><span style="font-size:14px;color:#374151;">Explorez les ressources pour aidants</span></div>
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">2</div><span style="font-size:14px;color:#374151;">Accédez aux modules adaptés à votre situation</span></div>
               </div>
+
+              <div class="space-y-3" id="prochaines-etapes-particulier" style="display:none;">
+                <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">1</div><span style="font-size:14px;color:#374151;">Personnalisez votre parcours d'accompagnement</span></div>
+                <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">2</div><span style="font-size:14px;color:#374151;">Accédez aux premières ressources utiles</span></div>
+              </div>
               
               <div class="space-y-3" id="prochaines-etapes-prospect" style="display:none;">
                 <div class="flex items-center gap-3"><div style="width:28px;height:28px;border-radius:50%;background:#67DAD5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:bold;flex-shrink:0;">1</div><span style="font-size:14px;color:#374151;">Découvrez le catalogue de formations</span></div>
@@ -733,7 +775,7 @@
     const stepTitles = {
       1: { label: 'Étape 1 sur 6', title: 'Identité & RGPD', progress: '16.6%' },
       2: { label: 'Étape 2 sur 6', title: 'Votre profil', progress: '33.2%' },
-      3: { label: 'Étape 3 sur 6', title: 'Votre structure', progress: '49.8%' },
+      3: { label: 'Étape 3 sur 6', title: 'Votre Environnement', progress: '49.8%' },
       4: { label: 'Étape 4 sur 6', title: 'Vos objectifs', progress: '66.4%' },
       5: { label: 'Étape 5 sur 6', title: 'Création de devis', progress: '83%' },
       6: { label: 'Terminé !', title: 'Confirmation', progress: '100%' },
@@ -774,7 +816,7 @@
     }
 
     function nextStep(from) {
-      // Validation simple sur la première étape
+      // Validation sur la première étape
       if (from === 1) {
         const nom = document.getElementById('input-nom').value;
         const email = document.getElementById('input-email').value;
@@ -782,9 +824,10 @@
         const pwd2 = document.getElementById('input-password2').value;
         const cgu = document.getElementById('rgpd-cgu').checked;
         const data = document.getElementById('rgpd-data').checked;
+        const rgpd = document.getElementById('rgpd-rgpd').checked;
         if (!nom || !email || !pwd || !pwd2) { alert('Veuillez remplir tous les champs obligatoires.'); return; }
         if (pwd !== pwd2) { alert('Les mots de passe ne correspondent pas.'); return; }
-        if (!cgu || !data) { alert('Veuillez accepter les conditions obligatoires.'); return; }
+        if (!cgu || !data || !rgpd) { alert('Veuillez accepter toutes les conditions obligatoires (CGU, RGPD et gestion des données).'); return; }
       }
 
       if (from === 2) {
@@ -800,9 +843,10 @@
         document.getElementById('recap-email').textContent = document.getElementById('input-email').value;
         
         const labelsProfils = {
-          'responsable': 'Responsable de structure',
+          'responsable': 'Responsable d\'environnement',
           'intervenant': 'Professionnel de terrain',
-          'aidant': 'Aidant / Particulier',
+          'aidant': 'Aidant',
+          'particulier': 'Particulier',
           'prospect': 'En découverte (Prospect)'
         };
         document.getElementById('recap-profil').textContent = labelsProfils[selectedProfil] || selectedProfil;
@@ -835,10 +879,11 @@
       document.getElementById('section-' + selectedProfil)?.classList.add('show');
 
       const titles = {
-        responsable: { title: 'Votre structure', subtitle: 'Dites-nous en plus sur votre organisation.' },
-        intervenant: { title: 'Votre structure', subtitle: 'Dans quelle structure travaillez-vous ?' },
+        responsable: { title: 'Votre Environnement', subtitle: 'Dites-nous en plus sur votre organisation.' },
+        intervenant: { title: 'Votre Environnement', subtitle: 'Dans quel environnement travaillez-vous ?' },
         aidant: { title: 'Votre situation', subtitle: 'Pour mieux vous accompagner.' },
-        prospect: { title: 'Votre structure (optionnel)', subtitle: 'Pour vous proposer une solution adaptée.' },
+        particulier: { title: 'Votre situation', subtitle: 'Pour cibler au mieux votre besoin.' },
+        prospect: { title: 'Votre Environnement (optionnel)', subtitle: 'Pour vous proposer une solution adaptée.' },
       };
       document.getElementById('step3-title').textContent = titles[selectedProfil].title;
       document.getElementById('step3-subtitle').textContent = titles[selectedProfil].subtitle;
@@ -850,6 +895,7 @@
         responsable: 'Continuer →',
         intervenant: 'Continuer →',
         aidant: 'Continuer →',
+        particulier: 'Continuer →',
         prospect: 'Continuer →',
       };
       document.getElementById('btn-step4').textContent = btnLabels[selectedProfil];
