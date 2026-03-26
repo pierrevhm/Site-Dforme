@@ -999,7 +999,6 @@
   #cr-scroll-container { position: relative; }
   #cr-scroll-container .cr-spacer { height: 400vh; }
 
-  /* L'image est dans le flux normal — sticky démarre après */
   #cr-sticky {
     position: sticky;
     top: 0;
@@ -1008,7 +1007,6 @@
     background-color: #0B1221 !important;
   }
 
-  /* BG fixe dès le départ — pas de translateY */
   #cr-bg {
     position: absolute; inset: 0; z-index: 0;
     background:
@@ -1022,7 +1020,6 @@
     padding: 0 6vw;
   }
 
-  /* Reprend EXACTEMENT les styles de ta section d'origine */
   #cr-dark-title {
     font-family: 'Bangers', 'Arial Black', Impact, sans-serif !important;
     font-weight: 400 !important;
@@ -1072,76 +1069,100 @@
     will-change: clip-path;
   }
 
+  /* ══ Zone blanche — LAYOUT TEACHABLE 50/50 symétrique ══ */
   #cr-white {
-  position: absolute; 
-  inset: 20px; /* Ajoute un espace de 20px sur les 4 côtés */
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 5vh;
-  opacity: 0; pointer-events: none;
-  background-color: #fff !important;
-  will-change: opacity;
-}
+    position: absolute;
+    inset: 20px;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    background-color: #fff !important;
+    will-change: opacity;
+    /* GRID 2 colonnes parfaitement symétriques — exactement comme Teachable */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+  }
   #cr-white.live { pointer-events: auto; }
 
+  /* ── Colonne gauche : texte ── */
   #cr-wc-left {
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 60px 48px 60px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5% 6% 5% 8%;
+    height: 100%;
+    box-sizing: border-box;
   }
 
-  /* Titre final — EXACTEMENT comme ton h3 d'origine */
   #cr-wc-title {
     font-family: 'Arial', sans-serif !important;
     font-weight: bold !important;
-    font-size: 1.6rem !important;
-    line-height: 1.4 !important;
+    font-size: clamp(1.4rem, 2.2vw, 2.2rem) !important;
+    line-height: 1.3 !important;
     color: #0B1221;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     visibility: hidden;
   }
   #cr-wc-title::after { display: none !important; }
 
   .cr-anim-list {
-    display: flex; flex-direction: column; gap: 1rem;
-    list-style: none; padding: 0; margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
- .cr-anim-list li {
-    display: flex; align-items: center; gap: 11px;
+  .cr-anim-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
     font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
-    font-size: 1.25rem; color: #111; 
-    font-weight: normal; /* <-- MODIFIÉ ICI : enlève l'effet gras */
-    opacity: 1; transform: none;
-}
+    font-size: 1.15rem;
+    color: #111;
+    font-weight: normal;
+    opacity: 1;
+    transform: none;
+  }
 
-.cr-arrow {
-    color: #67DAD5; flex-shrink: 0;
-    opacity: 0; 
-    transform: translateX(-30px); /* <-- MODIFIÉ ICI : décale vers la gauche au lieu du bas */
+  /* Flèche : apparaît depuis la gauche — identique à Teachable */
+  .cr-arrow {
+    color: #67DAD5;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-30px);
     display: inline-block;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-    font-size: 1.5rem; /* J'ai fusionné la ligne 1165 ici pour faire plus propre */
-}
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  .cr-anim-list li.show .cr-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .cr-anim-list li.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
-.cr-anim-list li.show .cr-arrow { 
-    opacity: 1; 
-    transform: translateX(0); /* <-- MODIFIÉ ICI : revient à sa place depuis la gauche */ 
-}
-
-.cr-anim-list li.show { 
-    opacity: 1; 
-    transform: translateX(0); 
-}
-
+  /* ── Colonne droite : image — exactement comme Teachable ── */
   #cr-wc-right {
-    display: flex; align-items: center; justify-content: center;
-    padding: 60px 8% 60px 48px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
   }
   #cr-wc-right img {
-    width: 100%; max-width: 520px;
-    border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Démarre cachée à droite — animée par scroll JS */
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(60px);
+    will-change: clip-path, transform;
   }
 
   /* L'ancre */
@@ -1154,6 +1175,16 @@
     line-height: 1.3;
     left: 6vw; top: 82%;
     will-change: left, top, color;
+  }
+
+  /* ── Responsive mobile ── */
+  @media (max-width: 768px) {
+    #cr-white {
+      grid-template-columns: 1fr;
+      overflow-y: auto;
+    }
+    #cr-wc-left { padding: 36px 24px 20px; order: 2; }
+    #cr-wc-right { height: 220px; order: 1; }
   }
 </style>
 
@@ -1175,17 +1206,14 @@
 
     <div id="cr-circle"></div>
 
-    <!-- Image hors de #cr-white → pas affectée par son opacity -->
-    <div class="teachable-img" style="position:absolute; right:8%; bottom:5vh; width:38%; transform:translateX(60px); clip-path:inset(0 100% 0 0 round 20px); border-radius:20px; overflow:hidden; aspect-ratio:4/3; z-index:4; will-change:transform,clip-path;">
-      <img src="images/image du pptx/image2.jpg" alt="Notre expertise" style="width:100%; height:100%; object-fit:cover; display:block;">
-    </div>
-
+    <!-- Zone blanche — GRID 50/50 symétrique comme Teachable -->
     <div id="cr-white">
 
-      <div style="width:45%; margin-left:8%; padding:0 0 40px 0; box-sizing:border-box;">
-        <div style="display:flex; flex-direction:column; justify-content:center;" class="teachable-text anim-fade-up">
-          <h2 id="cr-wc-title" style="font-size:clamp(1.6rem, 2.5vw, 2.4rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.3; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">Notre expertise repose sur une compréhension fine des enjeux :</h2>
-          <ul class="cr-anim-list flex flex-col gap-4" id="cr-anim-list">
+      <!-- Colonne gauche : texte + liste animée -->
+      <div id="cr-wc-left">
+        <div class="teachable-text anim-fade-up">
+          <h2 id="cr-wc-title">Notre expertise repose sur une compréhension fine des enjeux :</h2>
+          <ul class="cr-anim-list" id="cr-anim-list">
             <li><span class="cr-arrow">➔</span> Qualité de service</li>
             <li><span class="cr-arrow">➔</span> Exigences réglementaires</li>
             <li><span class="cr-arrow">➔</span> Contraintes de planning</li>
@@ -1193,6 +1221,11 @@
             <li><span class="cr-arrow">➔</span> Professionnalisation des équipes</li>
           </ul>
         </div>
+      </div>
+
+      <!-- Colonne droite : image qui slide depuis la droite (identique à Teachable) -->
+      <div id="cr-wc-right">
+        <img id="cr-wc-img" src="images/image du pptx/image2.jpg" alt="Notre expertise">
       </div>
 
     </div>
@@ -1240,6 +1273,8 @@
   const wcTitle     = document.getElementById('cr-wc-title');
   const animList    = document.getElementById('cr-anim-list');
   const anchorEl    = document.getElementById('cr-anchor');
+  // Image dans la colonne droite (maintenant DANS #cr-white)
+  const wcImg       = document.getElementById('cr-wc-img');
 
   const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
   const norm  = (v,a,b) => clamp((v-a)/(b-a), 0, 1);
@@ -1249,34 +1284,31 @@
   const ein   = t => t*t*t;
 
   const CX = 10, CY = 66;
-  // Rayon initial du cercle — assez grand pour bien entourer "Compréhension des enjeux"
   const R0 = 14;
 
   /*
     Phases sur progress 0→1 (400vh) :
-    0.00→0.15  PAUSE : image déjà visible, on attend avant de lancer l'anim
-    0.15→0.22  cercle apparaît 0%→R0% autour du texte
+    0.15→0.22  cercle apparaît 0%→R0%
     0.22→0.72  cercle grandit R0%→155%
     0.24→0.65  titre + sub glissent à droite
-    0.22→0.35  b1 slide gauche
-    0.28→0.41  b2 slide gauche
-    0.34→0.47  b3 slide gauche
-    0.22→0.68  ancre reste en place (cercle grossit autour)
+    0.22→0.45  bullets mangés par le cercle
     0.15→0.30  ancre blanc→noir
     0.60→0.78  contenu blanc fade in
     0.68→0.80  ancre disparaît → wc-title visible
+    0.65→0.92  image slide depuis droite (simultané avec révélation blanche)
   */
-const P = {
+  const P = {
     circleIn:   [0.15, 0.22],
     circle:     [0.22, 0.72],
     pause:       0.22,
-   slide:      [0.22, 0.65],
-b1:         [0.22, 0.45],  // bullets finissent leur course complètement
-b2:         [0.22, 0.45],
-b3:         [0.22, 0.45],
+    slide:      [0.22, 0.65],
+    b1:         [0.22, 0.45],
+    b2:         [0.22, 0.45],
+    b3:         [0.22, 0.45],
     anchorColor:[0.15, 0.30],
     content:    [0.60, 0.78],
     anchorOut:  [0.68, 0.80],
+    imgReveal:  [0.65, 0.92],
   };
 
   function getStartRect() {
@@ -1291,11 +1323,11 @@ b3:         [0.22, 0.45],
   let listDone = false;
 
   function tick() {
-    const scrollable = 4 * window.innerHeight; /* fixé à 400 vh — indépendant de la hauteur du container */
+    const scrollable = 4 * window.innerHeight;
     const scrolled   = -container.getBoundingClientRect().top;
     const p          = clamp(scrolled / scrollable, 0, 1);
 
-    // ── Cercle : apparaît petit autour du texte, puis grandit ──
+    // ── Cercle ──
     const inP2    = p >= P.pause;
     const circInT = eout(norm(p, ...P.circleIn));
     const circT   = inP2 ? eio(norm(p, ...P.circle)) : 0;
@@ -1305,54 +1337,52 @@ b3:         [0.22, 0.45],
     circleLayer.style.clipPath = `circle(${radius}% at ${CX}% ${CY}%)`;
 
     // ── Titre + sous-titre glissent droite ──
-// Le titre est poussé par le bord droit du cercle
-// radius est en % du viewport, on le convertit en vw pour pousser le titre
-const pushX = Math.max(0, radius - 8); // commence à pousser dès que le cercle dépasse sa taille initiale
-darkTitle.style.transform = `translateX(${pushX * 1.2}vw)`;
-darkTitle.style.opacity   = '1';
-darkSub.style.transform   = `translateX(${pushX * 0.9}vw)`;
-darkSub.style.opacity     = '1';
+    const pushX = Math.max(0, radius - 8);
+    darkTitle.style.transform = `translateX(${pushX * 1.2}vw)`;
+    darkTitle.style.opacity   = '1';
+    darkSub.style.transform   = `translateX(${pushX * 0.9}vw)`;
+    darkSub.style.opacity     = '1';
 
-    // ── Bullets slide gauche ──
-    const b1T = eout(norm(p,...P.b1));
-    const b2T = eout(norm(p,...P.b2));
-    const b3T = eout(norm(p,...P.b3));
-    // Les bullets glissent vers la gauche — attirés par le rond
-// Bullets absorbés vers la gauche sans fondu
-// Les bullets sont mangés par le rond — liés directement au rayon
-const eatX = Math.max(0, radius - 8);
-b1.style.transform=`translateX(${-eatX * 1.2}vw)`; b1.style.opacity='1';
-b2.style.transform=`translateX(${-eatX * 1.5}vw)`; b2.style.opacity='1';
-b3.style.transform=`translateX(${-eatX * 1.8}vw)`; b3.style.opacity='1';
+    // ── Bullets mangés par le cercle ──
+    const eatX = Math.max(0, radius - 8);
+    b1.style.transform=`translateX(${-eatX * 1.2}vw)`; b1.style.opacity='1';
+    b2.style.transform=`translateX(${-eatX * 1.5}vw)`; b2.style.opacity='1';
+    b3.style.transform=`translateX(${-eatX * 1.8}vw)`; b3.style.opacity='1';
 
     // ── Ancre : reste à sa position bullet, change de couleur ──
-    // (ne se déplace PAS pendant la phase cercle — elle est déjà dedans)
     const colorT = eout(norm(p, ...P.anchorColor));
     anchorEl.style.color = colorT > 0.05 ? 'rgb(11,18,33)' : '#ffffff';
 
-    // Position : reste sur b0 jusqu'à ce que le contenu blanc arrive
     const start = getStartRect();
     const end   = getEndRect();
-    // Commence à se déplacer seulement quand le cercle est bien grand
     const moveT = eio(norm(p, 0.45, 0.68));
     anchorEl.style.left = `${lerp(start.x, end.x, moveT)}px`;
     anchorEl.style.top  = `${lerp(start.y, end.y, moveT)}px`;
 
     // ── Ancre disparaît → wc-title visible ──
-const outT = eout(norm(p, ...P.anchorOut));
-anchorEl.style.opacity   = String(1 - outT);
-wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
+    const outT = eout(norm(p, ...P.anchorOut));
+    anchorEl.style.opacity   = String(1 - outT);
+    wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
 
     // ── Contenu blanc fade in ──
     const contentT = eout(norm(p, ...P.content));
     whiteContent.style.opacity = String(contentT);
     whiteContent.classList.toggle('live', contentT > 0.05);
 
+    // ── Image droite : slide depuis la droite (clip-path + translateX) — exactement comme Teachable ──
+    if (wcImg) {
+      const imgT = eout(norm(p, ...P.imgReveal));
+      const remainingClip = (1 - imgT) * 100;
+      const translateOffset = (1 - imgT) * 60;
+      wcImg.style.clipPath  = `inset(0 ${remainingClip}% 0 0)`;
+      wcImg.style.transform = `translateX(${translateOffset}px)`;
+    }
+
     // ── Liste animée ──
     if (p >= P.content[0] + 0.05 && !listDone) {
       listDone = true;
       animList.querySelectorAll('li').forEach((li,i) =>
-        setTimeout(() => li.classList.add('show'), i*150));
+        setTimeout(() => li.classList.add('show'), i * 160));
     }
   }
 
@@ -1368,30 +1398,19 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
       function clamp(v,a,b){ return v<a?a:v>b?b:v; }
 
       var crContainer = document.getElementById('cr-scroll-container');
-      var img1        = document.querySelector('.teachable-img');
       var row2        = document.getElementById('teachable-row-2');
 
-      /* ── Thresholds en pixels absolus (400 vh de base, indépendant de la taille du container) ── */
-      function getBase() { return 4 * window.innerHeight; } // 400 vh
+      function getBase() { return 4 * window.innerHeight; }
 
       function update() {
         if (!crContainer) return;
         var scrolled = -crContainer.getBoundingClientRect().top;
-        var base     = getBase(); // 400 vh
-
-        /* Image 1 : déballage clip-path + translateX (p=0.70→0.96 → pixels 280→384 vh) */
-        if (img1) {
-          var imgStart = 0.70 * base;
-          var imgRange = 0.26 * base;
-          var t1 = clamp((scrolled - imgStart) / imgRange, 0, 1);
-          img1.style.transform = 'translateX(' + ((1 - t1) * 60) + 'px)';
-          img1.style.clipPath  = 'inset(0 ' + ((1 - t1) * 100) + '% 0 0 round 20px)';
-        }
+        var base     = getBase();
 
         /* Section 2 : slide depuis le bas (400 vh → 500 vh) */
         if (row2) {
-          var r2Start = base;            // 400 vh
-          var r2Range = window.innerHeight; // 100 vh
+          var r2Start = base;
+          var r2Range = window.innerHeight;
           var t2 = clamp((scrolled - r2Start) / r2Range, 0, 1);
           row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
         }
@@ -1401,7 +1420,7 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
       window.addEventListener('resize', update);
       update();
 
-      /* ── Texte 1 : slide sans fondu quand #cr-white devient live ── */
+      /* Texte 1 : slide sans fondu quand #cr-white devient live */
       var crWhite   = document.getElementById('cr-white');
       var textBlock = document.querySelector('.teachable-text');
       if (crWhite && textBlock) {
@@ -2122,7 +2141,7 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
             </div>
             <div class="flex items-center gap-3">
               <span class="material-symbols-outlined fs-16" style="color: #67DAD5;">mail</span>
-              <a href="mailto:r.deoliveira@dformpro.fr" class="hover:underline" style="color: #FFFFFF;">r.deoliveira@dformpro.fr</a>
+              <a href="/cdn-cgi/l/email-protection#86f4a8e2e3e9eaeff0e3eff4e7c6e2e0e9f4ebf6f4e9a8e0f4" class="hover:underline" style="color: #FFFFFF;"><span class="__cf_email__" data-cfemail="bcce92d8d9d3d0d5cad9d5ceddfcd8dad3ced1ccced392dace">[email&#160;protected]</span></a>
             </div>
             <div class="flex items-start gap-3">
               <span class="material-symbols-outlined fs-16 mt-0.5" style="color: #67DAD5;">location_on</span>
@@ -2166,7 +2185,7 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (function () {
       const mon = document.getElementById('monitor-svg');
       if (mon) {
@@ -2188,16 +2207,4 @@ wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
         const rect = section.getBoundingClientRect();
         const windowH = window.innerHeight;
         // Progress: 0 when section top enters viewport, 1 when section bottom exits
-        const raw = Math.max(0, (windowH - rect.top) / (rect.height + windowH));
-        const progress = Math.min(1, raw * 2.5);
-        bar.style.width = (progress * 100) + '%';
-      }
-
-      window.addEventListener('scroll', updateBar, { passive: true });
-      updateBar();
-    })();
-  </script>
-
-</body>
-
-</html>
+        const raw = Math.max(0, (windowH - rect.top) / (rect.heigh
