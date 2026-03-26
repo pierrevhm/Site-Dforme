@@ -1043,24 +1043,42 @@
     will-change: transform, opacity;
   }
 
-  #cr-bullets {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 5rem;
-    width: 100%;
-  }
-  .cr-bullet p {
-    color: #ffffff;
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.2rem, 2vw, 2rem);
-    font-style: italic;
-    line-height: 1.3;
-    margin: 0;
-  }
-  .cr-bullet.is-anchor { visibility: hidden; }
-  #cr-b1, #cr-b2, #cr-b3 { will-change: transform, opacity; }
+  /* --- Conteneur global des bulles --- */
+#cr-bullets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 5rem;
+  width: 100%;
+}
+
+/* --- Style de base pour les 4 bulles (Les 3 inactives seront comme ça) --- */
+.cr-bullet {
+  opacity: 0.4; /* Légèrement transparentes pour montrer qu'elles sont "en attente" */
+  transition: opacity 0.3s ease;
+}
+
+.cr-bullet p {
+  color: #ffffff; /* On retire le !important pour autoriser le changement de couleur */
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  font-style: italic;
+  line-height: 1.3;
+  margin: 0;
+  transition: color 0.4s ease; /* Rend le passage du blanc au noir très fluide */
+}
+
+/* --- La nouvelle classe qui forcera le texte en sombre --- */
+#cr-b0.is-dark p {
+  color: #0B1221 !important; /* Couleur sombre qui s'activera au scroll */
+}
+
+/* --- La bulle active (L'ancre "Compréhension des enjeux") --- */
+.cr-bullet.is-anchor {
+  opacity: 1 !important; /* 100% visible, sans transparence */
+  visibility: visible !important;
+}
 
   #cr-circle {
     position: absolute; inset: 0; z-index: 2;
@@ -1417,8 +1435,13 @@ body {
     b3.style.transform=`translateX(${-eatX * 1.8}vw)`; b3.style.opacity='1';
 
     // ── Ancre : reste à sa position bullet, change de couleur ──
-    const colorT = eout(norm(p, ...P.anchorColor));
-    anchorEl.style.color = colorT > 0.05 ? 'rgb(11,18,33)' : '#ffffff';
+const colorT = eout(norm(p, ...P.anchorColor));
+
+// CORRECTION : On cible spécifiquement la balise <p> à l'intérieur de l'ancre
+const anchorText = anchorEl.querySelector('p');
+if (anchorText) {
+    anchorText.style.color = colorT > 0.05 ? 'rgb(11,18,33)' : '#ffffff';
+}
 
     const start = getStartRect();
     const end   = getEndRect();
