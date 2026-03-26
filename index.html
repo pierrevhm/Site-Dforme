@@ -1471,6 +1471,17 @@ if (wcImg) {
       wcTextContainer.style.clipPath = `inset(${clipTop}% 0 0 0)`; 
       wcTextContainer.style.transform = `translateY(${translateOffsetY}px)`;
     }
+    // ── Texte gauche : slide depuis le bas sans fondu (lié au scroll) ──
+    const wcTextContainer = document.getElementById('cr-wc-title');
+    if (wcTextContainer) {
+      const textT = eout(norm(p, ...P.imgReveal)); // On utilise la même synchronisation que l'image
+      const translateOffsetY = (1 - textT) * 120;  // Le texte démarre 120px plus bas
+      const clipTop = (1 - textT) * 100;           // Le masque se lève de haut en bas
+      
+      // On applique le masque et le glissement
+      wcTextContainer.style.clipPath = `inset(${clipTop}% 0 0 0)`; 
+      wcTextContainer.style.transform = `translateY(${translateOffsetY}px)`;
+    }
 
     // ── Liste animée ──
     if (p >= P.content[0] + 0.05 && !listDone) {
