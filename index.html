@@ -182,14 +182,15 @@
     }
     /* Texte section 1 : slide sans fondu */
     .teachable-text.anim-fade-up {
-      opacity: 1;
-      transform: translateY(50px);
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .teachable-text.anim-fade-up.is-visible {
-      opacity: 1;
-      transform: none;
-    }
+  opacity: 0;
+  transform: translateY(60px); /* Le texte commence 60px plus bas */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.teachable-text.anim-fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0); /* Il remonte à sa position normale */
+}
     .anim-fade-right {
       opacity: 0;
       transform: translateX(80px);
@@ -1102,16 +1103,13 @@
 }
 
   #cr-wc-title {
-  /* Vos réglages exacts copiés depuis la section 2 */
   font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
   font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
   color: #0B1221;
   margin-bottom: 1.5rem;
   line-height: 1.2 !important;
   letter-spacing: normal;
-  
-  /* On garde juste ceci pour que votre animation d'apparition fonctionne */
-  visibility: hidden;
+  /* SUPPRIMEZ la ligne visibility: hidden; */
 }
   #cr-wc-title::after { display: none !important; }
 
@@ -1128,11 +1126,14 @@
   align-items: center;
   gap: 12px;
   font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
-  font-size: 20px !important; /* Correspond au fs-20 de l'autre section */
+  font-size: 20px !important;
   color: #000;
   font-weight: normal;
-  opacity: 1;
-  transform: none;
+
+  /* On prépare l'animation du bas vers le haut */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
   /* Flèche : apparaît depuis la gauche — identique à Teachable */
@@ -1150,10 +1151,11 @@
     opacity: 1;
     transform: translateX(0);
   }
-  .cr-anim-list li.show {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  /* L'état final quand le JavaScript déclenche l'apparition */
+.cr-anim-list li.show {
+  opacity: 1;
+  transform: translateY(0);
+}}
 
 
   #cr-wc-right {
@@ -1397,10 +1399,9 @@ body {
     anchorEl.style.left = `${lerp(start.x, end.x, moveT)}px`;
     anchorEl.style.top  = `${lerp(start.y, end.y, moveT)}px`;
 
-    // ── Ancre disparaît → wc-title visible ──
-    const outT = eout(norm(p, ...P.anchorOut));
-    anchorEl.style.opacity   = String(1 - outT);
-    wcTitle.style.visibility = outT > 0.5 ? 'visible' : 'hidden';
+    // ── Ancre disparaît ──
+const outT = eout(norm(p, ...P.anchorOut));
+anchorEl.style.opacity   = String(1 - outT);
 
     // ── Contenu blanc fade in ──
     const contentT = eout(norm(p, ...P.content));
