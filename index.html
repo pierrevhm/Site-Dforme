@@ -1077,8 +1077,7 @@
 
 /* --- La bulle active (L'ancre "Compréhension des enjeux") --- */
 .cr-bullet.is-anchor {
-  opacity: 1 !important; /* 100% visible, sans transparence */
-  visibility: visible !important;
+  visibility: hidden !important; /* On la cache car c'est le texte flottant #cr-anchor qui prend le relais ! */
 }
 
   #cr-circle {
@@ -1434,16 +1433,9 @@ body {
     b2.style.transform=`translateX(${-eatX * 1.5}vw)`; b2.style.opacity='1';
     b3.style.transform=`translateX(${-eatX * 1.8}vw)`; b3.style.opacity='1';
 
-// ── Ancre : reste à sa position bullet, change de couleur ──
-    // (ne se déplace PAS pendant la phase cercle — elle est déjà dedans)
+// ── Ancre : reste à sa position bullet, change de couleur au fur et à mesure ──
     const colorT = eout(norm(p, ...P.anchorColor));
     anchorEl.style.color = `rgb(${Math.round(lerp(255,11,colorT))},${Math.round(lerp(255,18,colorT))},${Math.round(lerp(255,33,colorT))})`;
-
-    // CORRECTION : On cible VRAIMENT le texte <p> à l'intérieur de la bulle
-    const anchorText = anchorEl.querySelector('p');
-    if (anchorText) {
-        anchorText.style.color = colorT > 0.05 ? 'rgb(11,18,33)' : '#ffffff';
-    }
 
     const start = getStartRect();
     const end   = getEndRect();
