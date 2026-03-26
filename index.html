@@ -182,9 +182,9 @@
     }
     /* Texte section 1 : slide sans fondu */
     .teachable-text.anim-fade-up {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
+  opacity: 0;
+  transform: translateY(60px); /* Le texte commence 60px plus bas */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .teachable-text.anim-fade-up.is-visible {
@@ -1096,25 +1096,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* On supprime les vieux paddings (5% 6%...) qui décalaient le texte vers la droite */
   padding: 0; 
   height: 100%;
   box-sizing: border-box;
-  overflow: hidden; /* MAGIQUE : Cache le texte avant qu'il ne remonte ! */
 }
 
- #cr-wc-title {
+  #cr-wc-title {
   font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
   font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
   color: #0B1221;
   margin-bottom: 1.5rem;
   line-height: 1.2 !important;
   letter-spacing: normal;
-  
-  visibility: visible !important; /* Toujours visible... */
-  opacity: 1 !important;          /* ...sans aucun fondu... */
-  transform: translateY(150px);   /* ...mais caché tout en bas au départ */
-  will-change: transform;
+  /* SUPPRIMEZ la ligne visibility: hidden; */
 }
+  #cr-wc-title::after { display: none !important; }
 
   .cr-anim-list {
   display: flex;
@@ -1132,22 +1129,24 @@
   font-size: 20px !important;
   color: #000;
   font-weight: normal;
-  
-  opacity: 1 !important;          /* Pas de fondu */
-  transform: translateY(150px);   /* Décalé en bas */
-  transition: none !important;    /* On désactive les transitions automatiques */
-  will-change: transform;
+
+  /* On prépare l'animation du bas vers le haut */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
   /* Flèche : apparaît depuis la gauche — identique à Teachable */
   .cr-arrow {
-  color: #67DAD5;
-  flex-shrink: 0;
-  opacity: 1 !important;
-  transform: translateX(0) !important;
-  font-size: 1.5rem !important;
-  font-weight: bold;
-}
+    color: #67DAD5;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-30px);
+    display: inline-block;
+    transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
   .cr-anim-list li.show .cr-arrow {
     opacity: 1;
     transform: translateX(0);
@@ -1411,26 +1410,10 @@ anchorEl.style.opacity   = String(1 - outT);
 
     // ── Image droite : slide depuis la droite (clip-path + translateX) — exactement comme Teachable ──
     // ── Image droite : slide depuis la droite (clip-path + translateX) ──
-// ── Texte et Liste : Glissement brut lié au scroll ──
-// On synchronise le texte avec le moment où l'image apparaît [0.65, 0.92]
-if (wcTitle && animList) {
-  const textProgress = norm(p, ...P.imgReveal);
-  
-  // 1. Le titre glisse du bas (150px) vers le haut (0px)
-  const titleY = (1 - eout(textProgress)) * 150; 
-  wcTitle.style.transform = `translateY(${titleY}px)`;
-  
-  // 2. Les éléments de la liste suivent, avec un très léger effet d'escalier
-  animList.querySelectorAll('li').forEach((li, i) => {
-    // Chaque ligne commence à glisser une fraction de seconde plus tard
-    const startP = P.imgReveal[0] + (i * 0.02);
-    const endP = Math.min(1, P.imgReveal[1] + (i * 0.02));
-    const itemProgress = norm(p, startP, endP);
-    
-    const liY = (1 - eout(itemProgress)) * 150;
-    li.style.transform = `translateY(${liY}px)`;
-  });
-}
+if (wcImg) {
+  const imgT = eout(norm(p, ...P.imgReveal));
+  const remainingClip = (1 - imgT) * 100;
+  const translateOffset = (1 - imgT) * 150; // J'ai monté à 150px pour un effet de glissement plus prononcé
   
   // CORRECTION : on anime le masque par la gauche pour révéler de droite à gauche
   wcImg.style.clipPath  = `inset(0 0 0 ${remainingClip}%)`; 
@@ -1438,11 +1421,11 @@ if (wcTitle && animList) {
 }
 
     // ── Liste animée ──
-if (p >= P.content[0] + 0.05 && !listDone) {
-  listDone = true;
-  animList.querySelectorAll('li').forEach((li,i) =>
-    setTimeout(() => li.classList.add('show'), i * 160));
-}
+    if (p >= P.content[0] + 0.05 && !listDone) {
+      listDone = true;
+      animList.querySelectorAll('li').forEach((li,i) =>
+        setTimeout(() => li.classList.add('show'), i * 160));
+    }
   }
 
   window.addEventListener('scroll', tick, { passive: true });
