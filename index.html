@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <html lang="fr">
-
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -1148,22 +1147,18 @@
     transform: translateX(0);
   }
 
-  /* ── Colonne droite : image — exactement comme Teachable ── */
-  #cr-wc-right {
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-  }
+
   #cr-wc-right img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    /* Démarre cachée à droite — animée par scroll JS */
-    clip-path: inset(0 100% 0 0);
-    transform: translateX(60px);
-    will-change: clip-path, transform;
-  }
+  width: 100%;
+  max-width: 902px; /* On bloque la taille de votre inspiration */
+  height: auto;
+  object-fit: cover;
+  display: block;
+  /* Le 100% est placé à la fin (inset: haut droite bas GAUCHE) */
+  clip-path: inset(0 0 0 100%); 
+  transform: translateX(150px);
+  will-change: clip-path, transform;
+}
 
   /* L'ancre */
   #cr-anchor {
@@ -1187,11 +1182,6 @@
     #cr-wc-right { height: 220px; order: 1; }
   }
   /* --- 1. Gestion de la taille de l'image --- */
-#cr-wc-img {
-  width: 100%;          /* S'adapte à l'écran sur mobile */
-  max-width: 902px;     /* Bloque la taille maximum pour correspondre à votre inspiration */
-  height: auto;         /* Garde les bonnes proportions de votre image */
-  display: block;
   
   /* --- 2. Application de l'animation --- */
   /* L'animation dure 1 seconde, ralentit à la fin (ease-out) et reste dans son état final (forwards) */
@@ -1398,13 +1388,16 @@ body {
     whiteContent.classList.toggle('live', contentT > 0.05);
 
     // ── Image droite : slide depuis la droite (clip-path + translateX) — exactement comme Teachable ──
-    if (wcImg) {
-      const imgT = eout(norm(p, ...P.imgReveal));
-      const remainingClip = (1 - imgT) * 100;
-      const translateOffset = (1 - imgT) * 60;
-      wcImg.style.clipPath  = `inset(0 ${remainingClip}% 0 0)`;
-      wcImg.style.transform = `translateX(${translateOffset}px)`;
-    }
+    // ── Image droite : slide depuis la droite (clip-path + translateX) ──
+if (wcImg) {
+  const imgT = eout(norm(p, ...P.imgReveal));
+  const remainingClip = (1 - imgT) * 100;
+  const translateOffset = (1 - imgT) * 150; // J'ai monté à 150px pour un effet de glissement plus prononcé
+  
+  // CORRECTION : on anime le masque par la gauche pour révéler de droite à gauche
+  wcImg.style.clipPath  = `inset(0 0 0 ${remainingClip}%)`; 
+  wcImg.style.transform = `translateX(${translateOffset}px)`;
+}
 
     // ── Liste animée ──
     if (p >= P.content[0] + 0.05 && !listDone) {
