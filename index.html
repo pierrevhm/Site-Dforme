@@ -1067,6 +1067,7 @@
   line-height: 1.3;
   margin: 0;
   transition: color 0.3s ease;
+}gin: 0;
 }
 
 /* --- La nouvelle classe qui forcera le texte en sombre --- */
@@ -1195,24 +1196,25 @@
     opacity: 1;
     transform: translateX(0);
   }
-/* L'état final quand le JavaScript déclenche l'apparition */
+  /* L'état final quand le JavaScript déclenche l'apparition */
 .cr-anim-list li.show {
   opacity: 1;
   transform: translateY(0);
-}
+}}
 
 
-#cr-wc-right {
+  #cr-wc-right {
   width: 100%;          /* Prend toute la largeur de sa colonne */
   aspect-ratio: 4/3;    /* Force les proportions parfaites comme en bas */
   border-radius: 20px;  /* Bords arrondis sur le conteneur */
   overflow: hidden;     /* Magique : l'image glissera À L'INTÉRIEUR du cadre */
   display: block;       
+}
+  
   /* L'animation de droite à gauche reste intacte */
   clip-path: inset(0 0 0 100%); 
   transform: translateX(150px);
   will-change: clip-path, transform;
-}will-change: clip-path, transform;
 }
 
   #cr-anchor {
@@ -1235,7 +1237,7 @@
     #cr-wc-right { height: 220px; order: 1; }
   }
   /* --- 1. Gestion de la taille de l'image --- */
-/* --- Section 1 Image : Restauration des bords arrondis --- */
+ /* --- Section 1 Image : Restauration des bords arrondis --- */
 #cr-wc-right img {
   width: 100%;
   height: auto;
@@ -1246,6 +1248,7 @@
   clip-path: inset(0 0 0 100%);
   transform: translateX(150px);
   will-change: clip-path, transform;
+}
   /* --- 2. Application de l'animation --- */
   /* L'animation dure 1 seconde, ralentit à la fin (ease-out) et reste dans son état final (forwards) */
   animation: slideFromRight 1s ease-out forwards;
@@ -1460,17 +1463,6 @@ if (wcImg) {
   wcImg.style.clipPath  = `inset(0 0 0 ${remainingClip}%)`; 
   wcImg.style.transform = `translateX(${translateOffset}px)`;
 }
-    // ── Texte gauche : slide depuis le bas sans fondu (lié au scroll) ──
-    const wcTextContainer = document.getElementById('cr-wc-title');
-    if (wcTextContainer) {
-      const textT = eout(norm(p, ...P.imgReveal)); // On utilise la même synchronisation que l'image
-      const translateOffsetY = (1 - textT) * 120;  // Le texte démarre 120px plus bas
-      const clipTop = (1 - textT) * 100;           // Le masque se lève de haut en bas
-      
-      // On applique le masque et le glissement
-      wcTextContainer.style.clipPath = `inset(${clipTop}% 0 0 0)`; 
-      wcTextContainer.style.transform = `translateY(${translateOffsetY}px)`;
-    }
     // ── Texte gauche : slide depuis le bas sans fondu (lié au scroll) ──
     const wcTextContainer = document.getElementById('cr-wc-title');
     if (wcTextContainer) {
