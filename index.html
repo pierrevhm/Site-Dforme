@@ -1208,10 +1208,6 @@
   border-radius: 20px;  
   overflow: hidden;     
   display: block;       
-  /* L'animation de droite à gauche reste intacte */
-  clip-path: inset(0 0 0 100%); 
-  transform: translateX(150px);
-  will-change: clip-path, transform;
 }
 
   #cr-anchor {
@@ -1236,19 +1232,17 @@
   /* --- 1. Gestion de la taille de l'image --- */
  /* --- Section 1 Image : Restauration des bords arrondis --- */
 /* --- Section 1 Image : Restauration des bords arrondis --- */
+/* --- Section 1 Image : Restauration des bords arrondis --- */
 #cr-wc-right img {
   width: 100%;
   height: auto;
   aspect-ratio: 4/3;
   object-fit: cover;
   display: block;
-  border-radius: 20px; /* C'est cette ligne qui fait les coins arrondis ! */
+  border-radius: 20px; 
   clip-path: inset(0 0 0 100%);
   transform: translateX(150px);
   will-change: clip-path, transform;
-  /* --- 2. Application de l'animation --- */
-  /* L'animation dure 1 seconde, ralentit à la fin (ease-out) et reste dans son état final (forwards) */
-  animation: slideFromRight 1s ease-out forwards;
 }
 
 /* (Optionnel) Pour éviter l'apparition d'une barre de défilement horizontale pendant que l'image arrive de la droite */
