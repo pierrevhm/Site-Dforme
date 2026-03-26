@@ -1048,7 +1048,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 5rem;
+  gap: 13rem; /* <-- J'ai passé l'espace de 5rem à 7rem */
   width: 100%;
 }
 
@@ -1285,7 +1285,7 @@ body {
     <div id="cr-white">
 
       <!-- Colonne gauche : texte + liste animée -->
-      <div id="cr-wc-title">
+      <div id="cr-wc-title" style="padding-left: 180px;">
         <div class="teachable-text anim-fade-up">
           <h2 style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">Notre expertise repose sur une compréhension fine des enjeux :</h2>
           <ul class="cr-anim-list" id="cr-anim-list">
@@ -1415,7 +1415,7 @@ body {
     const pushX = Math.max(0, radius - 8);
     darkTitle.style.transform = `translateX(${pushX * 1.2}vw)`;
     darkTitle.style.opacity   = '1';
-    darkSub.style.transform   = `translateX(${pushX * 0.9}vw)`;
+    darkSub.style.transform   = `translateX(${pushX * 1.2}vw)`; // On met 1.2 pour qu'il aille à la même vitesse que le titre
     darkSub.style.opacity     = '1';
 
     // ── Bullets mangés par le cercle ──
