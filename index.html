@@ -1214,8 +1214,8 @@
 
 #cr-wc-right {
   width: 100%;
-  max-width: 1000px;
-  margin: 0 auto 0 0; /* Décalé vers le centre pour la symétrie */
+  max-width: 1000px; 
+  margin: 0 0 0 auto; /* C'est cette ligne qui plaque l'image complètement à droite */
   border-radius: 20px;
   overflow: hidden;
   display: block;
@@ -1321,35 +1321,25 @@ body {
   <div id="cr-spacer-2" style="height:100vh;"></div>
 </div>
 <!-- Rangée 2 : hors du container, en flux normal — glisse depuis le bas sans chevaucher la section 1 -->
-<section id="teachable-row-2" style="background:#fff; transform:translateY(100vh); position:relative; margin-top: -20vh;">
+<section id="teachable-row-2" style="background:#fff; transform:translateY(100vh); position:relative; margin-top: -25vh;">
   <div style="width: 80%; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 10px 0 60px 0; gap: 80px; box-sizing: border-box;">
-  <div>
-    <div class="teachable-text anim-fade-up" style="width: 100%; max-width: 600px; display: block; margin: 0 auto;"> <h2>Nos formations digitales sont :</h2>
-      <ul class="animate-list-container">
-        <li>
-          <div class="list-bullet" style="color:#ffffff; font-family:'Nunito',sans-serif; font-weight:400; font-size:16px;"><span class="arrow-animate">✓</span> Qualité de service</div>
-        </li>
-        <li>
-          <div class="list-bullet" style="color:#ffffff; font-family:'Nunito',sans-serif; font-weight:400; font-size:16px;"><span class="arrow-animate">✓</span> Exigences réglementaires</div>
-        </li>
-        <li>
-          <div class="list-bullet" style="color:#ffffff; font-family:'Nunito',sans-serif; font-weight:400; font-size:16px;"><span class="arrow-animate">✓</span> Exigences de certification</div>
-        </li>
-        <li>
-          <div class="list-bullet" style="color:#ffffff; font-family:'Nunito',sans-serif; font-weight:400; font-size:16px;"><span class="arrow-animate">✓</span> Exigences réglementaires</div>
-        </li>
-        <li>
-          <div class="list-bullet" style="color:#ffffff; font-family:'Nunito',sans-serif; font-weight:400; font-size:16px;"><span class="arrow-animate">✓</span> Exigences réglementaires</div>
-        </li>
+    
+    <div style="width: 100%; max-width: 1000px; margin: 0 auto 0 0; border-radius: 20px; overflow: hidden;">
+      <img src="images/image du pptx/image45.jpg" alt="Nos formations digitales" style="width: 100%; height: auto; object-fit: contain; display: block;">
+    </div>
+    
+    <div style="display:flex; flex-direction:column; justify-content:center;">
+      <h2 style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">Nos formations digitales sont :</h2>
+      <ul class="flex flex-col gap-4 animate-list-container">
+        <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Conformes aux exigences HAS</span></li>
+        <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Accessibles sur smartphone, 24h/24 et 7j/7</span></li>
+        <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Basées sur des situations réelles</span></li>
+        <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Immédiatement applicables au domicile</span></li>
+        <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate" style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Déployables sans perturber l'organisation terrain</span></li>
       </ul>
     </div>
+    
   </div>
-  
-  <div>
-    <div style="width: 100%; max-width: 1000px; margin: 0 auto 0 0; border-radius: 20px; overflow: hidden;"> <img src="images/image du pptx/image45.jpg" alt="Nos formations digitales" style="width: 100%; height: auto; object-fit: contain; display: block;">
-    </div>
-  </div>
-</div>
 </section>
 
 <script>
