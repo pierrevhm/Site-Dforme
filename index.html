@@ -1059,14 +1059,15 @@
 }
 
 .cr-bullet p {
-  color: #ffffff; /* Le !important est supprimé */
+  color: #ffffff; 
   font-family: 'Nunito', sans-serif;
   font-weight: 700;
   font-size: clamp(1.2rem, 2vw, 2rem);
   font-style: italic;
   line-height: 1.3;
   margin: 0;
-  transition: color 0.3s ease; /* Rend le passage du blanc au noir très fluide */
+  transition: color 0.3s ease;
+}gin: 0;
 }
 
 /* --- La nouvelle classe qui forcera le texte en sombre --- */
@@ -1433,11 +1434,16 @@ body {
     b2.style.transform=`translateX(${-eatX * 1.5}vw)`; b2.style.opacity='1';
     b3.style.transform=`translateX(${-eatX * 1.8}vw)`; b3.style.opacity='1';
 
-    // ── Ancre : reste à sa position bullet, change de couleur ──
-const colorT = eout(norm(p, ...P.anchorColor));
+// ── Ancre : reste à sa position bullet, change de couleur ──
+    // (ne se déplace PAS pendant la phase cercle — elle est déjà dedans)
+    const colorT = eout(norm(p, ...P.anchorColor));
+    anchorEl.style.color = `rgb(${Math.round(lerp(255,11,colorT))},${Math.round(lerp(255,18,colorT))},${Math.round(lerp(255,33,colorT))})`;
 
-// CORRECTION : On cible spécifiquement la balise <p> à l'intérieur de l'ancre
-anchorEl.style.color = colorT > 0.05 ? 'rgb(11,18,33)' : '#ffffff';
+    // CORRECTION : On cible VRAIMENT le texte <p> à l'intérieur de la bulle
+    const anchorText = anchorEl.querySelector('p');
+    if (anchorText) {
+        anchorText.style.color = colorT > 0.05 ? 'rgb(11,18,33)' : '#ffffff';
+    }
 
     const start = getStartRect();
     const end   = getEndRect();
@@ -2285,7 +2291,7 @@ if (wcImg) {
     })();
   </script>
 
-  <script>
+<script>
     (function () {
       const bar = document.getElementById('steps-progress-bar');
       const section = bar ? bar.closest('section') : null;
@@ -2295,4 +2301,15 @@ if (wcImg) {
         const rect = section.getBoundingClientRect();
         const windowH = window.innerHeight;
         // Progress: 0 when section top enters viewport, 1 when section bottom exits
-        const raw = Math.max(0, (windowH - rect.top) / (rect.heigh
+        const raw = Math.max(0, (windowH - rect.top) / (rect.height + windowH));
+        const progress = Math.min(1, raw * 2.5);
+        bar.style.width = (progress * 100) + '%';
+      }
+
+      window.addEventListener('scroll', updateBar, { passive: true });
+      updateBar();
+    })();
+  </script>
+
+</body>
+</html>
