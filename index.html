@@ -1186,6 +1186,34 @@
     #cr-wc-left { padding: 36px 24px 20px; order: 2; }
     #cr-wc-right { height: 220px; order: 1; }
   }
+  /* --- 1. Gestion de la taille de l'image --- */
+#cr-wc-img {
+  width: 100%;          /* S'adapte à l'écran sur mobile */
+  max-width: 902px;     /* Bloque la taille maximum pour correspondre à votre inspiration */
+  height: auto;         /* Garde les bonnes proportions de votre image */
+  display: block;
+  
+  /* --- 2. Application de l'animation --- */
+  /* L'animation dure 1 seconde, ralentit à la fin (ease-out) et reste dans son état final (forwards) */
+  animation: slideFromRight 1s ease-out forwards;
+}
+
+/* (Optionnel) Pour éviter l'apparition d'une barre de défilement horizontale pendant que l'image arrive de la droite */
+body {
+  overflow-x: hidden; 
+}
+
+/* --- 3. Création de l'animation de droite à gauche --- */
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(150px); /* L'image commence décalée de 150 pixels vers la droite */
+    opacity: 0;                   /* L'image est transparente au début */
+  }
+  100% {
+    transform: translateX(0);     /* L'image arrive à sa position normale */
+    opacity: 1;                   /* L'image devient totalement visible */
+  }
+}
 </style>
 
 <div id="cr-scroll-container">
@@ -1225,8 +1253,8 @@
 
       <!-- Colonne droite : image qui slide depuis la droite (identique à Teachable) -->
       <div id="cr-wc-right">
-        <img id="cr-wc-img" src="images/image du pptx/image2.jpg" alt="Notre expertise">
-      </div>
+  <img id="cr-wc-img" src="images/image du pptx/image2.jpg" alt="Notre expertise" width="902" height="598">
+</div>
 
     </div>
 
