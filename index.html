@@ -1422,11 +1422,11 @@ if (wcImg) {
 }
 
     // ── Liste animée ──
-    if (p >= P.content[0] + 0.05 && !listDone) {
-      listDone = true;
-      animList.querySelectorAll('li').forEach((li,i) =>
-        setTimeout(() => li.classList.add('show'), i * 160));
-    }
+if (p >= P.content[0] + 0.05 && !listDone) {
+  listDone = true;
+  animList.querySelectorAll('li').forEach((li,i) =>
+    setTimeout(() => li.classList.add('show'), i * 160));
+}
   }
 
   window.addEventListener('scroll', tick, { passive: true });
