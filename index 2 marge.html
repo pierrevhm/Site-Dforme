@@ -1,0 +1,2813 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>DFormPro Digital - Former autrement</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <!-- Tailwind CSS & Material Icons -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+  <!-- Custom Font Configuration -->
+  <style data-purpose="typography">
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Bangers&display=swap');
+
+    body {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+      font-weight: 700;
+      color: #111827;
+      background-color: #ffffff;
+    }
+
+    /* Section-level headings: Bangers (substitute for Komika Display Bold — not available on CDN) */
+    h1,
+    .main-title {
+      font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
+      font-weight: 400 !important;
+      font-style: normal !important;
+      letter-spacing: 0.03em;
+    }
+
+    h2,
+    h2.secondary-title {
+      font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
+      font-weight: 400 !important;
+      font-style: normal !important;
+      letter-spacing: 0.03em;
+      font-size: 2rem !important;
+      line-height: 1.25 !important;
+    }
+
+    /* Sous-titres de section uniformes */
+    .section-subtitle {
+      font-size: 1.1rem !important;
+      line-height: 1.6 !important;
+      color: #374151;
+    }
+
+    /* Blue underline on section titles */
+    h1.main-title::after,
+    h2.secondary-title::after {
+      content: '';
+      display: block;
+      width: 160px;
+      height: 5px;
+      background-color: #67DAD5;
+      border-radius: 3px;
+      margin: 10px auto 0;
+    }
+
+    h3,
+    h4,
+    .secondary-title {
+      font-family: 'Arial', sans-serif !important;
+      font-weight: bold !important;
+      font-style: normal !important;
+    }
+
+    h3 {
+      font-size: 1.25rem !important;
+      line-height: 1.4 !important;
+    }
+
+    /* Modal headings */
+    #modal-inscription h2,
+    #modal-connexion h2,
+    #modal-devis h2 {
+      font-family: 'Bangers', 'Arial Black', 'Impact', sans-serif !important;
+      font-size: 28px !important;
+      letter-spacing: 0.03em !important;
+    }
+
+    .text-cyan-brand {
+      color: #67DAD5;
+    }
+
+    .bg-cyan-brand {
+      background-color: #67DAD5;
+    }
+
+    .border-cyan-brand {
+      border-color: #67DAD5;
+    }
+
+    .text-secondary-gray {
+      color: #111827 !important;
+    }
+
+    .shadow-neo {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .body-rounded {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+    }
+
+    /* White background globally */
+    section,
+    main {
+      background-color: #ffffff !important;
+    }
+
+    /* Steps section: gray background */
+    .expertise-section {
+      background-color: #f5f5f5 !important;
+    }
+
+    /* Sections with explicit bg-gray-50 or bg-white get overridden */
+    section.bg-gray-50,
+    section.py-20.bg-gray-50,
+    .bg-gray-50:not(.testimonial-card):not(.bg-white) {
+      background-color: #ffffff !important;
+    }
+
+    section.bg-white,
+    .bg-white:not(.testimonial-card):not(header):not(.modal-content):not([id^="modal"]) {
+      background-color: transparent;
+    }
+
+    /* ── Échelle typographique stricte ── */
+    .txt-niv-1 {
+      font-size: 48px;
+    }
+
+    .txt-niv-2 {
+      font-size: 30px;
+    }
+
+    .txt-niv-3 {
+      font-size: 20px;
+    }
+
+    .txt-niv-4 {
+      font-size: 16px;
+    }
+
+    .txt-niv-5 {
+      font-size: 14px;
+    }
+
+    .txt-niv-6 {
+      font-size: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .txt-niv-1 {
+        font-size: 60px;
+      }
+
+      .txt-niv-2 {
+        font-size: 36px;
+      }
+
+      .txt-niv-3 {
+        font-size: 24px;
+      }
+
+      .txt-niv-4 {
+        font-size: 18px;
+      }
+    }
+
+    /* ── Tailles de police en pixels (équivalents Tailwind) ── */
+    .fs-12 {
+      font-size: 12px;
+    }
+
+    .fs-14 {
+      font-size: 14px;
+    }
+
+    .fs-16 {
+      font-size: 16px;
+    }
+
+    .fs-18 {
+      font-size: 18px;
+    }
+
+    .fs-20 {
+      font-size: 20px;
+    }
+
+    .fs-24 {
+      font-size: 24px;
+    }
+
+    .fs-30 {
+      font-size: 30px;
+    }
+
+    .fs-36 {
+      font-size: 36px;
+    }
+
+    .fs-48 {
+      font-size: 48px;
+    }
+
+    .fs-60 {
+      font-size: 60px;
+    }
+
+    .fs-72 {
+      font-size: 72px;
+    }
+
+    @media (min-width: 768px) {
+      .md-fs-14 {
+        font-size: 14px;
+      }
+
+      .md-fs-16 {
+        font-size: 16px;
+      }
+
+      .md-fs-18 {
+        font-size: 18px;
+      }
+
+      .md-fs-20 {
+        font-size: 20px;
+      }
+
+      .md-fs-24 {
+        font-size: 24px;
+      }
+
+      .md-fs-30 {
+        font-size: 30px;
+      }
+
+      .md-fs-36 {
+        font-size: 36px;
+      }
+
+      .md-fs-48 {
+        font-size: 48px;
+      }
+
+      .md-fs-60 {
+        font-size: 60px;
+      }
+
+      .md-fs-72 {
+        font-size: 72px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .lg-fs-48 {
+        font-size: 48px;
+      }
+
+      .lg-fs-60 {
+        font-size: 60px;
+      }
+
+      .lg-fs-72 {
+        font-size: 72px;
+      }
+    }
+
+    /* ── Animations scroll-triggered sections teachable ── */
+    .anim-fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    /* Texte section 1 : slide sans fondu */
+    .teachable-text.anim-fade-up {
+      opacity: 0;
+      transform: translateY(60px);
+      /* Le texte commence 60px plus bas */
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .teachable-text.anim-fade-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      /* Il remonte à sa position normale */
+    }
+
+    .anim-fade-right {
+      opacity: 0;
+      transform: translateX(80px);
+      transition: opacity 0.9s ease-out 0.25s, transform 0.9s ease-out 0.25s;
+    }
+
+    .anim-slide-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .anim-fade-up.is-visible,
+    .anim-fade-right.is-visible,
+    .anim-slide-up.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyanBrand: '#67DAD5',
+            darkFooter: '#0B1221',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .testimonial-carousel-card {
+      border: 1px solid #e5e7eb;
+      transition: background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .testimonial-carousel-card:hover {
+      background: #f5f5f5 !important;
+      box-shadow: none;
+    }
+
+    .relative-section {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Form styles for Quote Modal */
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #000000 !important;
+      border-radius: 999px !important;
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+      font-weight: 700 !important;
+      font-size: 1rem !important;
+      color: #000 !important;
+      background: #FFFFFF !important;
+      transition: all 0.3s ease !important;
+      outline: none !important;
+    }
+
+    .form-input:focus {
+      border-color: #67DAD5 !important;
+      box-shadow: 4px 4px 0px 0px #67DAD5 !important;
+    }
+
+    .form-input::placeholder {
+      color: #74888F !important;
+      font-weight: 400 !important;
+      font-family: 'Nunito', sans-serif !important;
+    }
+
+    select.form-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2374888F' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 20px;
+      padding-right: 44px;
+    }
+
+    textarea.form-input {
+      border-radius: 20px !important;
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      color: #000;
+      margin-bottom: 8px;
+    }
+
+    .form-label .material-symbols-outlined {
+      font-size: 20px;
+      color: #67DAD5;
+    }
+
+    .modal-checkbox {
+      border-radius: 50% !important;
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #000 !important;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      flex-shrink: 0;
+      margin: 0 !important;
+    }
+
+    .modal-checkbox:checked {
+      background-color: #67DAD5 !important;
+      border-color: #67DAD5 !important;
+    }
+
+    .modal-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .section-title-modal {
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 16px;
+      color: #000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #67DAD5;
+    }
+
+    .section-title-modal .material-symbols-outlined {
+      font-size: 22px;
+      color: #67DAD5;
+    }
+
+    .formation-checkbox {
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      padding: 8px 12px !important;
+      border: 2px solid #E5E7EB !important;
+      border-radius: 12px !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .formation-checkbox:hover {
+      border-color: #67DAD5 !important;
+      background-color: rgba(103, 218, 213, 0.05) !important;
+    }
+
+    .modal-submit-btn {
+      background-color: #67DAD5;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+      padding: 14px;
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .modal-submit-btn:hover {
+      background-color: #4fc8c3;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(103, 218, 213, 0.4);
+    }
+
+    .modal-submit-btn:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    /* ===== GLOBAL BACKGROUND COLOR ===== */
+    section {
+      background-color: #ffffff !important;
+    }
+
+    section.bg-gray-50,
+    section.bg-white {
+      background-color: #ffffff !important;
+    }
+
+    footer {
+      background-color: #000000 !important;
+    }
+
+    .testimonial-card {
+      background-color: #e5e7eb !important;
+      /* Un gris plus foncé (équivalent gray-200) */
+    }
+
+    .strategic-card {
+      background-color: #ffffff !important;
+      /* Fond blanc */
+      border: 1px solid #e5e7eb !important;
+      /* Bordure fine et discrète */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important;
+      /* Ombre fixe et très légère */
+    }
+
+    .problem-card {
+      background-color: #ffffff !important;
+    }
+
+    .step-card {
+      background-color: #ffffff !important;
+      /* Force le fond en blanc */
+      color: #111827 !important;
+      /* Force la couleur du chiffre en foncé pour qu'il soit lisible */
+      border: 4px solid #9ca3af !important;
+      /* Ajoute la bordure grise prononcée (4 pixels) */
+      box-shadow: none !important;
+      /* Supprime l'ombre pour n'avoir que la bordure */
+      transition: transform 0.25s ease !important;
+      cursor: default;
+    }
+
+    .step-card:hover {
+      transform: translateY(-8px) scale(1.05) !important;
+      /* Garde le petit effet de soulèvement au survol */
+      box-shadow: none !important;
+    }
+
+    #steps-progress-bar {
+      width: 0%;
+      transition: width 0.6s ease;
+    }
+
+    .step-label {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+      font-weight: 700 !important;
+    }
+
+    .stats-block {
+      background-color: transparent !important;
+    }
+
+    #modal-inscription>div,
+    #modal-devis>div {
+      background-color: #ffffff !important;
+    }
+  </style>
+
+  <!-- ===== RESPONSIVE STYLES ===== -->
+  <style id="responsive-styles">
+    /* ---- STYLE PADDING GLOBAL (inspiré de Teachable) ---- */
+    .padding-global {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+
+    @media (max-width: 991px) {
+      .padding-global {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+    }
+
+    @media (max-width: 479px) {
+      .padding-global {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    /* ---- MOBILE MENU ---- */
+    #mobile-menu-btn {
+      display: none;
+    }
+
+    #mobile-nav {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      #mobile-menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        color: #000;
+        order: 3;
+      }
+
+      #mobile-menu-btn .bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #000;
+        margin: 4px 0;
+        transition: all 0.3s ease;
+      }
+
+      #mobile-nav {
+        display: none;
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        z-index: 999;
+        padding: 16px 24px 24px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        gap: 0;
+      }
+
+      #mobile-nav.open {
+        display: flex;
+      }
+
+      #mobile-nav a {
+        display: block;
+        padding: 14px 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #000;
+        border-bottom: 1px solid #f3f4f6;
+        text-decoration: none;
+      }
+
+      #mobile-nav a:last-child {
+        border-bottom: none;
+      }
+
+      #mobile-nav .mobile-btn-create {
+        margin-top: 16px;
+        padding: 12px 0;
+        background: none;
+        border: none;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #000;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      #mobile-nav .mobile-btn-connect {
+        margin-top: 8px;
+        padding: 12px 24px;
+        border: 2px solid #67DAD5;
+        border-radius: 999px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #67DAD5;
+        background: #fff;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      /* Masquer le bouton "Créer un compte" dans la nav sur mobile (géré dans le menu) */
+      .nav-create-btn-desktop {
+        display: none !important;
+      }
+    }
+
+    /* ---- DÉCORATIONS MOBILES ---- */
+    @media (max-width: 1024px) {
+
+      /* Masquer les éléments décoratifs débordants sur mobile et tablette */
+      .deco-hide-mobile {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+
+      /* Hero section */
+      .hero-section-main {
+        min-height: clamp(350px, 60vh, 620px) !important;
+      }
+
+      /* Section TestimonialVideo : images latérales */
+      .testimonial-side-img {
+        display: none !important;
+      }
+
+      .testimonial-center {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Section hero blur */
+      .hero-blur-section {
+        min-height: clamp(280px, 50vh, 620px) !important;
+      }
+
+      /* Design bas */
+      .design-bas-img {
+        width: 100% !important;
+      }
+
+      /* CTA section */
+      .cta-section-img {
+        display: none !important;
+      }
+
+      /* Header nav "Créer un compte" text: réduire la taille sur mobile */
+      .nav-right-container {
+        gap: 8px !important;
+      }
+    }
+
+    /* ---- DÉCORATIONS TABLETTE ---- */
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .deco-scale-tablet {
+        transform: scale(0.6) !important;
+        transform-origin: center center !important;
+      }
+
+      .deco-scale-tablet-tl {
+        transform: scale(0.6) !important;
+        transform-origin: top left !important;
+      }
+
+      .deco-scale-tablet-tr {
+        transform: scale(0.6) !important;
+        transform-origin: top right !important;
+      }
+
+      .deco-scale-tablet-bl {
+        transform: scale(0.6) !important;
+        transform-origin: bottom left !important;
+      }
+
+      .deco-scale-tablet-br {
+        transform: scale(0.6) !important;
+        transform-origin: bottom right !important;
+      }
+
+      /* Section TestimonialVideo : réduire les images latérales */
+      .testimonial-side-img {
+        width: 280px !important;
+      }
+
+      /* Hero section */
+      .hero-blur-section {
+        min-height: clamp(400px, 55vh, 620px) !important;
+      }
+    }
+
+    /* ---- GRILLE TABLETTE ---- */
+    @media (max-width: 767px) {
+
+      /* Stats block: 1 col */
+      .stats-grid-mobile {
+        grid-template-columns: 1fr 1fr !important;
+      }
+    }
+
+    /* ---- TEACHABLE SECTIONS RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .teachable-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .teachable-img {
+        min-height: 280px;
+      }
+
+      .teachable-text {
+        padding: 40px 24px !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+  <!-- BEGIN: MainHeader -->
+  <header class="fixed top-0 left-0 right-0 bg-white z-50" style="box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+
+    <nav class="w-full py-2 flex items-center relative"
+      style="justify-content: space-between; padding-left: 0; padding-right: 0;">
+      <div class="flex items-center flex-shrink-0" data-purpose="logo-container"
+        style="margin-right: auto; padding-left: 0;">
+        <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
+          <img src="images/logo.jpg" alt="DFormPro Digital" class="h-16 md:h-24 w-auto object-contain">
+        </a>
+      </div>
+      <div
+        class="hidden md:flex items-center justify-center space-x-8 fs-20 font-medium absolute left-1/2 -translate-x-1/2">
+        <div class="relative group">
+          <a class="hover:text-cyanBrand transition-colors text-black font-bold flex items-center gap-1 py-4"
+            href="formations.html">
+            Nos formations
+            <span class="material-symbols-outlined fs-20 transition-transform group-hover:rotate-180">expand_more</span>
+          </a>
+          <div
+            class="fixed top-[72px] left-1/2 -translate-x-1/2 w-[80vw] !bg-white rounded-2xl shadow-xl border border-gray-100 opacity-1 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-[999]">
+            <div class="grid grid-cols-3 gap-5 mb-5">
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/aide_domicile.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Le métier d'aide à domicile</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Les savoirs de base
+                    essentiels pour bien démarrer.</p>
+                </div>
+              </a>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/prevention_risques.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Prévention des risques</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Sécuriser les interventions
+                    au quotidien.</p>
+                </div>
+              </a>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/bientraitance.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Bientraitance</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Prévention de la
+                    maltraitance et bonnes pratiques.</p>
+                </div>
+              </a>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/cadre_vie.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Entretien du cadre de vie</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Techniques et protocoles
+                    d'intervention.</p>
+                </div>
+              </a>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/entretien_linge.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Entretien du linge</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Maîtrisez les techniques
+                    d'entretien textile professionnel.</p>
+                </div>
+              </a>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img src="formations_images/repas.jpg"
+                    alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Préparation des repas</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Nutrition, hygiène et
+                    adaptation aux besoins spécifiques.</p>
+                </div>
+              </a>
+            </div>
+            <div class="pt-4 mt-2 border-t border-gray-100 text-left">
+              <a href="formations.html" class="inline-flex items-center fs-14 font-bold transition-colors group/link"
+                style="color: #67DAD5;">Voir les 8 formations de notre catalogue<span
+                  class="material-symbols-outlined fs-16 ml-1 transition-transform group-hover/link:translate-x-1">arrow_forward</span></a>
+            </div>
+          </div>
+        </div>
+        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">À propos</a>
+        <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">Contact</a>
+      </div>
+      <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1"
+        style="margin-left: auto; padding-right: 0; margin-right: 10px;">
+        <button onclick="document.getElementById('modal-inscription').style.display='flex'"
+          class="text-black font-bold fs-18 whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline"
+          style="padding: 0;">Créer un compte</button>
+        <button onclick="document.getElementById('modal-connexion').style.display='flex'"
+          class="hidden md:flex fs-18 font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
+          style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;">Se
+          connecter</button>
+        <!-- Bouton hamburger mobile -->
+        <button id="mobile-menu-btn" aria-label="Menu"
+          onclick="document.getElementById('mobile-nav').classList.toggle('open')">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- Menu mobile -->
+    <nav id="mobile-nav" aria-label="Navigation mobile">
+      <a href="formations.html">Nos formations</a>
+      <a href="#">À propos</a>
+      <a href="#">Contact</a>
+      <button class="mobile-btn-create"
+        onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-inscription').style.display='flex'">Créer
+        un compte</button>
+      <button class="mobile-btn-connect"
+        onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-connexion').style.display='flex'">Se
+        connecter</button>
+    </nav>
+  </header>
+
+  <div id="modal-inscription"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999; align-items:center; justify-content:center;"
+    onclick="if(event.target===this)this.style.display='none'">
+    <iframe src="tunnel_inscription.html"
+      style="border:none; width:100%; height:100%; position:absolute; top:0; left:0;"></iframe>
+  </div>
+
+  <!-- Modal: Se connecter -->
+  <div id="modal-connexion"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;"
+    onclick="if(event.target===this)this.style.display='none'">
+    <div
+      style="background:#fff; border-radius:20px; padding:40px; max-width:460px; width:90%; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.15);">
+      <button onclick="document.getElementById('modal-connexion').style.display='none'"
+        style="position:absolute; top:16px; right:16px; background:none; border:none; cursor:pointer; color:#999;"
+        class="txt-niv-3">&times;</button>
+      <h2 style="font-family:Arial,sans-serif; font-weight:bold; margin-bottom:8px; color:#000;">Se connecter</h2>
+      <p class="txt-niv-5" style="color:#6b7280; margin-bottom:24px;">Accédez à votre espace DFormPro Digital.</p>
+      <form onsubmit="event.preventDefault();">
+        <div style="margin-bottom:16px;">
+          <label class="txt-niv-5" style="display:block; font-weight:bold; margin-bottom:6px; color:#333;">Adresse
+            e-mail</label>
+          <input type="email" placeholder="votre@email.com"
+            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
+            onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <div style="margin-bottom:8px;">
+          <label class="txt-niv-5" style="display:block; font-weight:bold; margin-bottom:6px; color:#333;">Mot de
+            passe</label>
+          <input type="password" placeholder="••••••••"
+            style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
+            onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
+        </div>
+        <div style="text-align:right; margin-bottom:20px;">
+          <a href="#" class="txt-niv-6" style="color:#67DAD5; font-weight:bold; text-decoration:none;"
+            onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Mot de
+            passe oublié ?</a>
+        </div>
+        <button type="submit" class="modal-submit-btn">Se connecter</button>
+        <p class="txt-niv-6" style="text-align:center; margin-top:16px; color:#6b7280;">
+          Pas encore de compte ?
+          <button type="button"
+            onclick="document.getElementById('modal-connexion').style.display='none'; document.getElementById('modal-inscription').style.display='flex';"
+            class="txt-niv-6"
+            style="background:none; border:none; color:#67DAD5; font-weight:bold; cursor:pointer; padding:0;"
+            onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Créer un
+            compte</button>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Demande de devis -->
+  <div id="modal-devis"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center; backdrop-filter: blur(4px);"
+    onclick="if(event.target===this)this.style.display='none'">
+    <div
+      style="background:#fff; border-radius:24px; padding:0; max-width:750px; width:95%; max-height: 90vh; position:relative; box-shadow:0 25px 80px rgba(0,0,0,0.3); overflow: hidden; display: flex; flex-direction: column;">
+      <!-- Header Fixed -->
+      <div
+        style="padding: 24px 40px; border-bottom: 1px solid #f3f4f6; position: relative; background: #fff; z-index: 10;">
+        <button onclick="document.getElementById('modal-devis').style.display='none'"
+          style="position:absolute; top:20px; right:20px; background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#666; transition: all 0.2s;"
+          class="txt-niv-3" onmouseover="this.style.background='#e5e7eb'"
+          onmouseout="this.style.background='#f3f4f6'">&times;</button>
+        <h2 style="font-family:Arial,sans-serif; font-weight:bold; color:#000; margin: 0;">Demande de
+          devis</h2>
+        <p class="txt-niv-5" style="color:#111827; margin-top: 4px; margin-bottom: 0;">Recevez votre devis personnalisé
+          sous <span class="font-bold text-cyanBrand">48h</span>.</p>
+      </div>
+
+      <!-- Scrollable Body -->
+      <div style="padding: 32px 40px; overflow-y: auto; flex-grow: 1; scroll-behavior: smooth;">
+        <form id="quote-form-modal" onsubmit="event.preventDefault(); handleSubmitDevis();">
+          <div class="space-y-10">
+            <!-- SECTION 1: Informations de contact -->
+            <div>
+              <div class="section-title-modal">
+                <span class="material-symbols-outlined">person</span>
+                Vos coordonnées
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label class="form-label">Nom *</label>
+                  <input type="text" class="form-input" placeholder="Votre nom" required>
+                </div>
+                <div>
+                  <label class="form-label">Prénom *</label>
+                  <input type="text" class="form-input" placeholder="Votre prénom" required>
+                </div>
+                <div class="md:col-span-2">
+                  <label class="form-label">Adresse e-mail *</label>
+                  <input type="email" class="form-input" placeholder="exemple@email.com" required>
+                </div>
+                <div>
+                  <label class="form-label">Téléphone *</label>
+                  <input type="tel" class="form-input" placeholder="06 00 00 00 00" required>
+                </div>
+                <div>
+                  <label class="form-label">Fonction</label>
+                  <input type="text" class="form-input" placeholder="Ex: Directeur">
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 2: Informations sur la structure -->
+            <div>
+              <div class="section-title-modal">
+                <span class="material-symbols-outlined">business</span>
+                Votre structure
+              </div>
+              <div class="space-y-6">
+                <div>
+                  <label class="form-label">Nom de la structure *</label>
+                  <input type="text" class="form-input" placeholder="Nom de l'entreprise / association" required>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label class="form-label">Secteur d'activité *</label>
+                    <select class="form-input" required>
+                      <option value="" disabled selected>Choisir un secteur</option>
+                      <option value="aide_domicile">Aide à domicile</option>
+                      <option value="ehpad">EHPAD / Résidence seniors</option>
+                      <option value="siad">SSIAD / HAD</option>
+                      <option value="petite_enfance">Petite enfance</option>
+                      <option value="handicap">Handicap / IME</option>
+                      <option value="autre">Autre</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="form-label">Nombre d'apprenants *</label>
+                    <select class="form-input" required>
+                      <option value="" disabled selected>Sélectionner</option>
+                      <option value="1-10">1 à 10</option>
+                      <option value="11-25">11 à 25</option>
+                      <option value="26-50">26 à 50</option>
+                      <option value="51-100">51 à 100</option>
+                      <option value="100+">Plus de 100</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: Besoins en formation -->
+            <div>
+              <div class="section-title-modal">
+                <span class="material-symbols-outlined">school</span>
+                Vos besoins
+              </div>
+              <div class="space-y-6">
+                <label class="form-label">Formations souhaitées *</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="bientraitance" class="modal-checkbox">
+                    <span class="txt-niv-5 body-rounded font-medium">Bientraitance</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="alzheimer" class="modal-checkbox">
+                    <span class="txt-niv-5 body-rounded font-medium">Maladie d'Alzheimer</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="gestes_postures" class="modal-checkbox">
+                    <span class="txt-niv-5 body-rounded font-medium">Gestes et postures</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="nutrition" class="modal-checkbox">
+                    <span class="txt-niv-5 body-rounded font-medium">Nutrition</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="communication" class="modal-checkbox">
+                    <span class="txt-niv-5 body-rounded font-medium">Communication</span>
+                  </label>
+                  <label class="formation-checkbox">
+                    <input type="checkbox" name="formations-modal" value="secourisme" class="modal-checkbox">
+                    <span class="txt-niv-5 body-rounded font-medium">Premiers secours</span>
+                  </label>
+                </div>
+
+                <div class="pt-4">
+                  <label class="form-label">Message / Précisions</label>
+                  <textarea class="form-input" placeholder="Décrivez vos besoins spécifiques..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- CGU + Submit -->
+            <div class="space-y-6 pb-4">
+              <div class="flex items-start gap-3">
+                <input type="checkbox" required class="modal-checkbox mt-1">
+                <label class="txt-niv-6 body-rounded text-secondary-gray" style="font-weight: 400;">
+                  J'accepte que mes informations soient utilisées pour me recontacter conformément à la <a href="#"
+                    class="font-bold text-cyanBrand hover:underline">politique de confidentialité</a>.
+                </label>
+              </div>
+
+              <button type="submit"
+                class="w-full py-4 rounded-full text-white font-bold txt-niv-4 transition-all duration-300 hover:shadow-lg hover:opacity-90 active:scale-[0.98] body-rounded"
+                style="background-color: #67DAD5;">
+                Envoyer ma demande
+              </button>
+
+              <p class="text-center text-[10px] body-rounded text-secondary-gray" style="font-weight: 400;">
+                * Champs obligatoires — Réponse garantie sous 48h ouvrées.
+              </p>
+            </div>
+          </div>
+        </form>
+
+        <!-- Success Message -->
+        <div id="success-message-modal" class="hidden text-center py-12">
+          <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-cyanBrand/10 mb-6">
+            <span class="material-symbols-outlined text-cyanBrand" style="font-size:40px">check_circle</span>
+          </div>
+          <h2 class="txt-niv-3 font-black mb-3 secondary-title">Demande envoyée !</h2>
+          <p class="body-rounded text-secondary-gray mb-8">
+            Votre demande a bien été enregistrée. Notre équipe vous recontactera sous <span
+              class="font-bold text-cyanBrand">48h ouvrées</span>.
+          </p>
+          <button onclick="document.getElementById('modal-devis').style.display='none'"
+            class="inline-block py-3 px-10 rounded-full text-white font-bold transition-all hover:bg-opacity-90 body-rounded"
+            style="background-color: #67DAD5;">
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSubmitDevis() {
+      const formations = document.querySelectorAll('input[name="formations-modal"]:checked');
+      if (formations.length === 0) {
+        alert('Veuillez sélectionner au moins une formation.');
+        return;
+      }
+      document.getElementById('quote-form-modal').style.display = 'none';
+      document.getElementById('success-message-modal').classList.remove('hidden');
+    }
+  </script>
+  <!-- END: MainHeader -->
+  <main class="pt-24" style="background-color: #F7FBFF; position: relative;">
+    <!-- BEGIN: HeroSection -->
+    <section class="relative relative-section overflow-hidden w-full padding-global" style="background-color: #F7FBFF;">
+      <div class="py-20 text-center max-w-4xl mx-auto relative z-10 padding-global">
+        <h1 class="fs-48 md-fs-60 lg-fs-72 font-black mb-8 leading-tight main-title">
+          Former autrement pour<br />mieux accompagner
+        </h1>
+        <div class="space-y-1 text-gray-600 body-rounded fs-18 text-secondary-gray" style="color: #111827;">
+          <p class="text-secondary-gray" style="color: #111827;">Chaque jour, vos équipes interviennent au domicile des
+            personnes les plus fragiles.</p>
+          <p class="font-bold text-secondary-gray" style="color: #111827;">La formation ne doit plus être une
+            contrainte. Elle doit être un levier.</p>
+        </div>
+      </div>
+    </section>
+    <!-- END: HeroSection -->
+    <!-- BEGIN: ProblemSection -->
+    <section class="py-16 md:py-24 relative relative-section padding-global" style="background-color: #F7FBFF;">
+      <div class="mx-auto w-full max-w-[1350px] relative z-10">
+
+        <div class="rounded-[2.5rem] p-8 md:p-16 text-center shadow-sm" style="background-color: #E5E7EB;">
+
+          <h2 class="fs-30 md-fs-36 font-black mb-12 secondary-title">Vous gérez plus qu'un planning. Vous portez une
+            mission.</h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12 text-left">
+            <div class="problem-card bg-white p-6 lg:p-10 rounded-2xl shadow-neo border-2 border-black h-full"
+              style="background-color: #ffffff;">
+              <h3
+                class="fs-18 lg:fs-20 xl:fs-24 font-bold mb-6 text-black secondary-title border-b-2 border-cyanBrand pb-3 flex items-center xl:whitespace-nowrap"
+                style="border-color: #67DAD5;">Dans le secteur des services à la personne :</h3>
+              <ul class="space-y-4 text-secondary-gray body-rounded font-medium fs-18" style="color: #111827;">
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                    style="color: #67DAD5;">event_busy</span>
+                  <span>Les plannings sont tendus.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                    style="color: #67DAD5;">directions_car</span>
+                  <span>Les équipes sont mobiles.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                    style="color: #67DAD5;">fact_check</span>
+                  <span>Les exigences HAS sont renforcées.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                    style="color: #67DAD5;">timer</span>
+                  <span>Les déplacements sont coûteux et chronophages.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined text-cyanBrand shrink-0 mt-0.5"
+                    style="color: #67DAD5;">energy_savings_leaf</span>
+                  <span>Les engagements RSE deviennent stratégiques.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="problem-card bg-white p-6 lg:p-10 rounded-2xl shadow-neo border-2 h-full"
+              style="background-color: #ffffff; border-color: #000000;">
+              <h3
+                class="fs-18 lg:fs-20 xl:fs-24 font-bold mb-6 secondary-title border-b-2 pb-3 flex items-center xl:whitespace-nowrap"
+                style="border-color: #67DAD5;">
+                Former en présentiel, c'est :</h3>
+              <ul class="space-y-4 text-secondary-gray body-rounded font-medium fs-18" style="color: #111827;">
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined shrink-0 mt-0.5" style="color: #67DAD5;">warning</span>
+                  <span>désorganiser les tournées,</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined shrink-0 mt-0.5" style="color: #67DAD5;">route</span>
+                  <span>multiplier les kilomètres,</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined shrink-0 mt-0.5" style="color: #67DAD5;">person_off</span>
+                  <span>immobiliser les intervenants,</span>
+                </li>
+                <li class="flex items-start gap-4">
+                  <span class="material-symbols-outlined shrink-0 mt-0.5" style="color: #67DAD5;">payments</span>
+                  <span>générer des coûts indirects.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="fs-24 md-fs-30 text-cyanBrand font-bold mt-6 secondary-title"
+            style="color: #0B1221; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">Il est
+            temps de former différemment.</h3>
+
+        </div>
+      </div>
+    </section>
+    <!-- END: ProblemSection -->
+    <!-- BEGIN: SolutionSection -->
+
+    <!-- HERO : titre + image DForm -->
+    <section class="py-16 md:py-24 padding-global" style="background-color: #F7FBFF;">
+      <div class="flex flex-col items-center text-center">
+        <h1 class="fs-48 md-fs-60 lg-fs-72 font-black main-title"
+          style="color:#0B1221; width:90vw; max-width:1300px; margin:0 auto 1.25rem; line-height:1.15;">
+          La plateforme de formation digitale<br>dédiée aux services à la personne
+        </h1>
+        <p class="section-subtitle body-rounded" style="max-width:580px; margin:0 auto 1.5rem;">
+          Une solution pensée pour l'ensemble de l'écosystème des services à la personne
+        </p>
+        <div
+          style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.2rem; margin-top:1.5rem; margin-bottom:2.5rem;">
+          <span class="fs-14"
+            style="background:#fff; border:2px solid #67DAD5; color:#0B1221; font-weight:700; padding:10px 20px; border-radius:50px; display:flex; align-items:center; gap:8px;">
+            <span style="color:#67DAD5;">✓</span> Conforme HAS
+          </span>
+          <span class="fs-14"
+            style="background:#fff; border:2px solid #67DAD5; color:#0B1221; font-weight:700; padding:10px 20px; border-radius:50px; display:flex; align-items:center; gap:8px;">
+            <span style="color:#67DAD5;">✓</span> 100% mobile
+          </span>
+          <span class="fs-14"
+            style="background:#fff; border:2px solid #67DAD5; color:#0B1221; font-weight:700; padding:10px 20px; border-radius:50px; display:flex; align-items:center; gap:8px;">
+            <span style="color:#67DAD5;">✓</span> Déployable rapidement
+          </span>
+          <span class="fs-14"
+            style="background:#fff; border:2px solid #67DAD5; color:#0B1221; font-weight:700; padding:10px 20px; border-radius:50px; display:flex; align-items:center; gap:8px;">
+            <span style="color:#67DAD5;">✓</span> Engagement RSE
+          </span>
+        </div>
+        <img src="images/image tel pc .png" alt="DFormPro Digital" style="max-width:100%; width:900px;">
+      </div>
+    </section>
+
+    <!-- ══ CIRCULAR REVEAL ══ -->
+    <style>
+      #cr-scroll-container {
+        position: relative;
+      }
+
+      #cr-scroll-container .cr-spacer {
+        height: 400vh;
+      }
+
+      #cr-sticky {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #0B1221 !important;
+      }
+
+      #cr-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background:
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.68) 100%),
+          url('images/ee88375f-41bd-4ea6-b6a2-30c46f9e2763.png') center/cover no-repeat;
+      }
+
+      #cr-dark {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 6vw;
+      }
+
+      #cr-dark-title {
+        font-family: 'Bangers', 'Arial Black', Impact, sans-serif !important;
+        font-weight: 400 !important;
+        letter-spacing: 0.03em;
+        font-size: clamp(2.8rem, 5vw, 5.5rem) !important;
+        color: #fff !important;
+        line-height: 1.1 !important;
+        margin-bottom: 2rem !important;
+        text-decoration: none !important;
+        will-change: transform, opacity;
+      }
+
+      #cr-dark-title::after {
+        display: none !important;
+      }
+
+      #cr-dark-sub {
+        color: #ffffff;
+        font-size: 1.15rem;
+        max-width: 600px;
+        margin-bottom: 3.5rem;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 400;
+        will-change: transform, opacity;
+      }
+
+      /* --- Conteneur global des bulles --- */
+      #cr-bullets {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 13rem;
+        /* <-- J'ai passé l'espace de 5rem à 7rem */
+        width: 100%;
+      }
+
+      /* --- Style de base pour les 4 bulles (Les 3 inactives seront comme ça) --- */
+      .cr-bullet {
+        opacity: 0.4;
+        /* Légèrement transparentes pour montrer qu'elles sont "en attente" */
+        transition: opacity 0.3s ease;
+      }
+
+      .cr-bullet p {
+        color: #ffffff;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-size: clamp(1.2rem, 2vw, 2rem);
+        font-style: italic;
+        line-height: 1.3;
+        margin: 0;
+        transition: color 0.3s ease;
+      }
+
+      /* --- La nouvelle classe qui forcera le texte en sombre --- */
+      #cr-b0.is-dark p {
+        color: #0B1221 !important;
+        /* Couleur sombre qui s'activera au scroll */
+      }
+
+      /* --- La bulle active (L'ancre "Compréhension des enjeux") --- */
+      .cr-bullet.is-anchor {
+        visibility: hidden !important;
+        /* On la cache car c'est le texte flottant #cr-anchor qui prend le relais ! */
+      }
+
+      #cr-circle {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: #fff;
+        clip-path: circle(0% at 10% 66%);
+        will-change: clip-path;
+      }
+
+      /* ══ Zone blanche — LAYOUT TEACHABLE 50/50 symétrique ══ */
+      #cr-white {
+        position: absolute;
+        /* On centre la zone et on la force à 80% de largeur pour s'aligner avec le bas */
+        left: 10%;
+        right: 10%;
+        top: 0;
+        bottom: 0;
+        z-index: 3;
+        opacity: 0;
+        pointer-events: none;
+        background-color: transparent !important;
+        /* Enlève le fond blanc qui pourrait déborder */
+        will-change: opacity;
+
+        /* On applique la même grille que la section du bas */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        /* Même espacement central que le bas */
+        align-items: center;
+      }
+
+      #cr-white.live {
+        pointer-events: auto;
+      }
+
+      .cr-anim-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        /* Espacement calqué sur la section du bas */
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      /* --- 1. Colonne gauche (sans overflow hidden pour éviter le bug de coupe) --- */
+      #cr-wc-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0;
+        height: 100%;
+        box-sizing: border-box;
+      }
+
+      /* --- Global : Master Style Texte (Basé sur la Section 1) --- */
+
+      /* Titres pour les deux sections */
+      #cr-wc-title,
+      .teachable-row-2-title {
+        /* On applique le même style à l'ID et à la classe de la section 2 */
+        font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+        font-size: clamp(1.8rem, 3vw, 2.8rem) !important;
+        color: #0B1221;
+        margin-bottom: 1.5rem;
+        line-height: 1.2 !important;
+        letter-spacing: normal;
+        /* (Section 1 spécifique) La visibilité est gérée par JS pour l'animation */
+      }
+
+      /* Liste pour les deux sections */
+      .cr-anim-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      /* Lignes de liste pour les deux sections */
+      .cr-anim-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'Arial', 'Nunito', sans-serif !important;
+        /* On retire la police Bold */
+        font-size: 20px !important;
+        color: #000;
+        font-weight: normal !important;
+        /* On force une épaisseur normale */
+      }
+
+      /* --- Désactiver le gras pour la deuxième liste (Nos formations digitales) --- */
+      .animate-list-container li {
+        font-family: 'Arial', 'Nunito', sans-serif !important;
+        font-weight: normal !important;
+      }
+
+      /* --- Affiner également les symboles ✓ de la deuxième liste --- */
+      .animate-list-container .arrow-animate {
+        font-weight: normal !important;
+      }
+
+      /* --- Uniformiser parfaitement l'espacement vertical des deux listes --- */
+      /* --- Uniformiser parfaitement l'espacement vertical des deux listes --- */
+      .cr-anim-list,
+      .animate-list-container {
+        gap: 0.5rem !important;
+        /* On réduit l'espace entre les lignes (environ 8px) */
+      }
+
+      .cr-anim-list li,
+      .animate-list-container li {
+        line-height: 1.2 !important;
+        /* On réduit la hauteur de chaque ligne */
+      }
+
+      /* --- 4. Sécurité globale : on désactive les vieux effets de fondu --- */
+      .teachable-text,
+      .teachable-text.anim-fade-up {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        visibility: visible !important;
+      }
+
+      /* Flèche : apparaît depuis la gauche — identique à Teachable */
+      .cr-arrow {
+        color: #67DAD5;
+        flex-shrink: 0;
+        opacity: 0;
+        transform: translateX(-30px);
+        display: inline-block;
+        transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+        font-size: 1.4rem;
+        font-weight: normal;
+        /* On enlève le bold */
+      }
+
+      .cr-anim-list li.show .cr-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* L'état final quand le JavaScript déclenche l'apparition */
+      /* L'état final quand le JavaScript déclenche l'apparition */
+      .cr-anim-list li.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      #cr-wc-right {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 0 0 auto;
+        /* C'est cette ligne qui plaque l'image complètement à droite */
+        border-radius: 20px;
+        overflow: hidden;
+        display: block;
+      }
+
+      #cr-anchor {
+        position: absolute;
+        z-index: 20;
+        pointer-events: none;
+        color: #ffffff;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        font-style: italic;
+        font-size: clamp(1.2rem, 2vw, 2rem);
+        line-height: 1.3;
+        left: 6vw;
+        top: 82%;
+        will-change: left, top, color;
+      }
+
+      /* ── Responsive mobile ── */
+      @media (max-width: 768px) {
+        #cr-white {
+          grid-template-columns: 1fr;
+          overflow-y: auto;
+        }
+
+        #cr-wc-right {
+          height: 220px;
+          order: 1;
+        }
+      }
+
+      /* --- 1. Gestion de la taille de l'image --- */
+      /* --- Section 1 Image : Restauration des bords arrondis --- */
+      /* --- Section 1 Image : Restauration des bords arrondis --- */
+      /* --- Section 1 Image : Restauration des bords arrondis --- */
+      #cr-wc-right img {
+        width: 100%;
+        height: auto;
+        /* La hauteur s'adaptera pour garder le bon ratio */
+        object-fit: contain;
+        /* L'image s'affichera entièrement dans le rectangle */
+        display: block;
+        border-radius: 20px;
+        /* (Garde ici tes autres lignes pour le clip-path, transform, etc.) */
+      }
+
+      /* (Optionnel) Pour éviter l'apparition d'une barre de défilement horizontale pendant que l'image arrive de la droite */
+      body {
+        overflow-x: hidden;
+      }
+
+      /* --- 3. Création de l'animation de droite à gauche --- */
+      @keyframes slideFromRight {
+        0% {
+          transform: translateX(150px);
+          /* L'image commence décalée de 150 pixels vers la droite */
+          opacity: 0;
+          /* L'image est transparente au début */
+        }
+
+        100% {
+          transform: translateX(0);
+          /* L'image arrive à sa position normale */
+          opacity: 1;
+          /* L'image devient totalement visible */
+        }
+      }
+    </style>
+
+    <div id="cr-scroll-container">
+      <div id="cr-sticky">
+
+        <div id="cr-bg"></div>
+
+        <div id="cr-dark">
+          <h2 id="cr-dark-title">DFORMPRO DIGITAL accompagne toutes les <br>structures d'aide à domicile</h2>
+          <p id="cr-dark-sub">Une approche sur mesure pour transformer vos contraintes terrain en véritables leviers de
+            montée en compétences.</p>
+          <div id="cr-bullets">
+            <div class="cr-bullet is-anchor" id="cr-b0">
+              <p>Compréhension<br>des enjeux</p>
+            </div>
+            <div class="cr-bullet" id="cr-b1">
+              <p>Formation<br>digitale</p>
+            </div>
+            <div class="cr-bullet" id="cr-b2">
+              <p>Avantage<br>stratégique</p>
+            </div>
+            <div class="cr-bullet" id="cr-b3">
+              <p>Comment ça<br>fonctionne&nbsp;?</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="cr-circle"></div>
+
+        <!-- Zone blanche — GRID 50/50 symétrique comme Teachable -->
+        <div id="cr-white">
+
+          <!-- Colonne gauche : texte + liste animée -->
+          <div id="cr-wc-title">
+            <div class="teachable-text anim-fade-up">
+              <h2
+                style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">
+                Notre expertise repose sur une compréhension fine des enjeux :</h2>
+              <ul class="cr-anim-list" id="cr-anim-list">
+                <li><span class="cr-arrow">→</span> Qualité de service</li>
+                <li><span class="cr-arrow">→</span> Exigences réglementaires</li>
+                <li><span class="cr-arrow">→</span> Contraintes de planning</li>
+                <li><span class="cr-arrow">→</span> Engagement RSE</li>
+                <li><span class="cr-arrow">→</span> Professionnalisation des équipes</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Colonne droite : image qui slide depuis la droite (identique à Teachable) -->
+          <div id="cr-wc-right">
+            <img id="cr-wc-img" src="images/image du pptx/image2.jpg" alt="Notre expertise" width="902" height="598">
+          </div>
+
+        </div>
+
+        <div id="cr-anchor">Compréhension<br>des enjeux</div>
+
+      </div>
+      <div class="cr-spacer"></div>
+      <!-- Spacer 2 : 100vh supplémentaires pour que la section 1 reste sticky pendant le slide -->
+      <div id="cr-spacer-2" style="height:100vh;"></div>
+    </div>
+    <!-- Rangée 2 : hors du container, en flux normal — glisse depuis le bas sans chevaucher la section 1 -->
+    <section id="teachable-row-2"
+      style="background:#fff; transform:translateY(100vh); position:relative; margin-top: -25vh;">
+      <div
+        style="width: 80%; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 10px 0 60px 0; gap: 80px; box-sizing: border-box;">
+
+        <div style="width: 100%; max-width: 1000px; margin: 0 auto 0 0; border-radius: 20px; overflow: hidden;">
+          <img src="images/image du pptx/image45.jpg" alt="Nos formations digitales"
+            style="width: 100%; height: auto; object-fit: contain; display: block;">
+        </div>
+
+        <div style="display:flex; flex-direction:column; justify-content:center;">
+          <h2
+            style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">
+            Nos formations digitales sont :</h2>
+          <ul class="flex flex-col gap-4 animate-list-container">
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Conformes aux exigences HAS</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Accessibles sur smartphone, 24h/24 et
+                7j/7</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Basées sur des situations réelles</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Immédiatement applicables au domicile</span>
+            </li>
+            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Déployables sans perturber l'organisation
+                terrain</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        const container = document.getElementById('cr-scroll-container');
+        const sticky = document.getElementById('cr-sticky');
+        const bgLayer = document.getElementById('cr-bg');
+        const darkLayer = document.getElementById('cr-dark');
+        const darkTitle = document.getElementById('cr-dark-title');
+        const darkSub = document.getElementById('cr-dark-sub');
+        const b0 = document.getElementById('cr-b0');
+        const b1 = document.getElementById('cr-b1');
+        const b2 = document.getElementById('cr-b2');
+        const b3 = document.getElementById('cr-b3');
+        const circleLayer = document.getElementById('cr-circle');
+        const whiteContent = document.getElementById('cr-white');
+        const wcTitle = document.getElementById('cr-wc-title');
+        const animList = document.getElementById('cr-anim-list');
+        const anchorEl = document.getElementById('cr-anchor');
+        // Image dans la colonne droite (maintenant DANS #cr-white)
+        const wcImg = document.getElementById('cr-wc-img');
+
+        const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+        const norm = (v, a, b) => clamp((v - a) / (b - a), 0, 1);
+        const lerp = (a, b, t) => a + (b - a) * t;
+        const eio = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        const eout = t => 1 - Math.pow(1 - t, 3);
+        const ein = t => t * t * t;
+
+        const CX = 10, CY = 66;
+        const R0 = 14;
+
+        /*
+          Phases sur progress 0→1 (400vh) :
+          0.15→0.22  cercle apparaît 0%→R0%
+          0.22→0.72  cercle grandit R0%→155%
+          0.24→0.65  titre + sub glissent à droite
+          0.22→0.45  bullets mangés par le cercle
+          0.15→0.30  ancre blanc→noir
+          0.60→0.78  contenu blanc fade in
+          0.68→0.80  ancre disparaît → wc-title visible
+          0.65→0.92  image slide depuis droite (simultané avec révélation blanche)
+        */
+        const P = {
+          circleIn: [0.15, 0.22],
+          circle: [0.22, 0.72],
+          pause: 0.22,
+          slide: [0.22, 0.65],
+          b1: [0.22, 0.45],
+          b2: [0.22, 0.45],
+          b3: [0.22, 0.45],
+          anchorColor: [0.15, 0.30],
+          content: [0.60, 0.78],
+          anchorOut: [0.68, 0.80],
+          imgReveal: [0.65, 0.92],
+        };
+
+        function getStartRect() {
+          const bR = b0.getBoundingClientRect(), sR = sticky.getBoundingClientRect();
+          return { x: bR.left - sR.left, y: bR.top - sR.top };
+        }
+        function getEndRect() {
+          const wR = wcTitle.getBoundingClientRect(), sR = sticky.getBoundingClientRect();
+          return { x: wR.left - sR.left, y: wR.top - sR.top };
+        }
+
+        let listDone = false;
+
+        function tick() {
+          const scrollable = 4 * window.innerHeight;
+          const scrolled = -container.getBoundingClientRect().top;
+          const p = clamp(scrolled / scrollable, 0, 1);
+
+          // ── Cercle ──
+          const inP2 = p >= P.pause;
+          const circInT = eout(norm(p, ...P.circleIn));
+          const circT = inP2 ? eio(norm(p, ...P.circle)) : 0;
+          const radius = circInT < 1
+            ? circInT * R0
+            : R0 + circT * (155 - R0);
+          circleLayer.style.clipPath = `circle(${radius}% at ${CX}% ${CY}%)`;
+
+          // ── Titre + sous-titre glissent droite ──
+          const pushX = Math.max(0, radius - 8);
+          darkTitle.style.transform = `translateX(${pushX * 1.2}vw)`;
+          darkTitle.style.opacity = '1';
+          darkSub.style.transform = `translateX(${pushX * 1.2}vw)`; // On met 1.2 pour qu'il aille à la même vitesse que le titre
+          darkSub.style.opacity = '1';
+
+          // ── Bullets mangés par le cercle ──
+          const eatX = Math.max(0, radius - 8);
+          b1.style.transform = `translateX(${-eatX * 1.2}vw)`; b1.style.opacity = '1';
+          b2.style.transform = `translateX(${-eatX * 1.5}vw)`; b2.style.opacity = '1';
+          b3.style.transform = `translateX(${-eatX * 1.8}vw)`; b3.style.opacity = '1';
+
+          // ── Ancre : reste à sa position bullet, change de couleur au fur et à mesure ──
+          const colorT = eout(norm(p, ...P.anchorColor));
+          anchorEl.style.color = `rgb(${Math.round(lerp(255, 11, colorT))},${Math.round(lerp(255, 18, colorT))},${Math.round(lerp(255, 33, colorT))})`;
+
+          const start = getStartRect();
+          const end = getEndRect();
+          const moveT = eio(norm(p, 0.45, 0.68));
+          anchorEl.style.left = `${lerp(start.x, end.x, moveT)}px`;
+          anchorEl.style.top = `${lerp(start.y, end.y, moveT)}px`;
+
+          // ── Ancre disparaît ──
+          const outT = eout(norm(p, ...P.anchorOut));
+          anchorEl.style.opacity = String(1 - outT);
+
+          // ── Contenu blanc fade in ──
+          const contentT = eout(norm(p, ...P.content));
+          whiteContent.style.opacity = String(contentT);
+          whiteContent.classList.toggle('live', contentT > 0.05);
+
+          // ── Image droite : slide depuis la droite (clip-path + translateX) — exactement comme Teachable ──
+          // ── Image droite : slide depuis la droite (clip-path + translateX) ──
+          if (wcImg) {
+            const imgT = eout(norm(p, ...P.imgReveal));
+            const remainingClip = (1 - imgT) * 100;
+            const translateOffset = (1 - imgT) * 150; // J'ai monté à 150px pour un effet de glissement plus prononcé
+
+            // CORRECTION : on anime le masque par la gauche pour révéler de droite à gauche
+            wcImg.style.clipPath = `inset(0 0 0 ${remainingClip}%)`;
+            wcImg.style.transform = `translateX(${translateOffset}px)`;
+          }
+          // ── Texte gauche : slide depuis le bas sans fondu (lié au scroll) ──
+          const wcTextContainer = document.getElementById('cr-wc-title');
+          if (wcTextContainer) {
+            const textT = eout(norm(p, ...P.imgReveal)); // On utilise la même synchronisation que l'image
+            const translateOffsetY = (1 - textT) * 120;  // Le texte démarre 120px plus bas
+            const clipTop = (1 - textT) * 100;           // Le masque se lève de haut en bas
+
+            // On applique le masque et le glissement
+            wcTextContainer.style.clipPath = `inset(${clipTop}% 0 0 0)`;
+            wcTextContainer.style.transform = `translateY(${translateOffsetY}px)`;
+          }
+
+          // ── Liste animée ──
+          if (p >= P.content[0] + 0.05 && !listDone) {
+            listDone = true;
+            animList.querySelectorAll('li').forEach((li, i) =>
+              setTimeout(() => li.classList.add('show'), i * 160));
+          }
+        }
+
+        window.addEventListener('scroll', tick, { passive: true });
+        window.addEventListener('resize', tick);
+        setTimeout(tick, 100);
+      })();
+    </script>
+    <!-- ══ FIN CIRCULAR REVEAL ══ -->
+
+    <script>
+      (function () {
+        function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+
+        var crContainer = document.getElementById('cr-scroll-container');
+        var row2 = document.getElementById('teachable-row-2');
+
+        function getBase() { return 4 * window.innerHeight; }
+
+        function update() {
+          if (!crContainer) return;
+          var scrolled = -crContainer.getBoundingClientRect().top;
+          var base = getBase();
+
+          /* Section 2 : slide depuis le bas (400 vh → 500 vh) */
+          if (row2) {
+            var r2Start = base;
+            var r2Range = window.innerHeight;
+            var t2 = clamp((scrolled - r2Start) / r2Range, 0, 1);
+            row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
+          }
+        }
+
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+
+        /* Texte 1 : slide sans fondu quand #cr-white devient live */
+        var crWhite = document.getElementById('cr-white');
+        var textBlock = document.querySelector('.teachable-text');
+        if (crWhite && textBlock) {
+          new MutationObserver(function (m, obs) {
+            if (crWhite.classList.contains('live')) {
+              textBlock.classList.add('is-visible');
+              obs.disconnect();
+            }
+          }).observe(crWhite, { attributes: true, attributeFilter: ['class'] });
+        }
+      })();
+    </script>
+
+    <!-- END: SolutionSection -->
+    <!-- BEGIN: StrategicAdvantagesGrid -->
+    <section class="relative py-16 md:py-24 relative-section padding-global" style="background-color: #F7FBFF; z-index: 2;">
+      <div class="container mx-auto max-w-6xl relative z-10">
+        <div class="text-center mb-16">
+          <h2 class="fs-36 font-black mb-4 secondary-title">Des avantages stratégiques concrets</h2>
+          <p class="section-subtitle body-rounded text-center">Une approche optimisée pour transformer vos contraintes
+            en leviers de croissance.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Card 1 -->
+          <div class="strategic-card flex flex-col h-full rounded-2xl overflow-hidden shadow-sm"
+            style="background-color: #FFFFFF;">
+            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+              <img alt="Planning" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBka07X7tr4iFn1GJ-AmzeiPJA5cxY4_fURhCUGnWEWgXVsc8AxlsqFKyYh3ijIPW8uOeN0TnqkxqYbG_9RBnc9w05Y5zxQ5nme9rHqOzBycP2ksUuvLIrqP0XdLK3R-ZKWfyz5Lmcm2GAmOCioadCZw2aEfKaiuGhlKvZuUjIRUIgjuZ2juTSFw3nCLzix6pQJmwXulyIkL6na7O5h0dz5kJKpG6CmDcQ-35aAR56XBWyHffh4EWNdTRUKSiW9y1lVl0bfhdUpS30" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="fs-24 font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Réduction de
+                l'impact planning</h3>
+              <p class="text-gray-600 fs-14 mb-6 flex-grow"
+                style="font-family: 'Nunito', sans-serif; font-weight: 400;">
+                Formation à la carte, sans immobilisation collective. Pas de salle à réserver. Pas de déplacements.
+                Intégration fluide. La formation s'adapte au terrain. Le terrain ne s'adapte plus à la formation.
+              </p>
+              <a class="inline-flex items-center font-bold fs-16 transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
+                href="page avantage planning.html" style="background-color: #67DAD5; color: #FFFFFF;">
+                En savoir plus <span class="ml-2 fs-20">→</span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="strategic-card flex flex-col h-full rounded-2xl overflow-hidden shadow-sm"
+            style="background-color: #FFFFFF;">
+            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+              <img alt="Réglementaire" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9mXriKTrkrq6h0vedv6j1dUpR3kOPUkO5F3vFnlxGbJiUKQ0tuhPwWbo72J6OD1lEFy5UcfrlChTsr91RSq_y3JhMXKEKjDPK9atFx0B3rCDQgsBcjA19QYTAPLrN0GJ36KuoUP2-BGazD04u6il83aPe4yii9avy4EYw96ovzcvCWmlwEnNEEdEw_UgBQZqK9mjn_lx4oOIcOgT_-YpxHU5s_aOxihfGIGrStJAmehq-5Gkpb8qRwOFOlteb-McazOndHiOH85g" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="fs-24 font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Sécurisation
+                réglementaire</h3>
+              <p class="text-gray-600 fs-14 mb-6 flex-grow"
+                style="font-family: 'Nunito', sans-serif; font-weight: 400;">
+                Suivi des parcours. Certificats de réalisation. Traçabilité complète pour audits HAS. Garantissez la
+                conformité de chaque agent en temps réel.
+              </p>
+              <a class="inline-flex items-center font-bold fs-16 transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
+                href="page avantage réglemeanteir .html" style="background-color: #67DAD5; color: #FFFFFF;">
+                En savoir plus <span class="ml-2 fs-20">→</span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="strategic-card flex flex-col h-full rounded-2xl overflow-hidden shadow-sm"
+            style="background-color: #FFFFFF;">
+            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+              <img alt="Budget" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWePKrt8xHxZoyj12SWob-6eYnoQids18Th5U031T2YwtQRBvZPo646kRviN8GTngtnyJr67G1L8HALooqlhGOwieWhJ8nfMOfCo6rsWx0hC5prfcshVkYbrZSYUJvGKupqi1TI6qXYk0m2UsE_TrvP3WsC-q7Hmr02qHNkyHvlq5tsWF8CjOUrlT1yg7xuTCKxsqxOWnjpxAC9vodLbkhA1BZx0PhLYZk-UZGP0Xd_TKiivx5YoqGgUTPoWvygplqYzjcKqV6cXo" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="fs-24 font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Optimisation
+                budgétaire</h3>
+              <p class="text-gray-600 fs-14 mb-6 flex-grow"
+                style="font-family: 'Nunito', sans-serif; font-weight: 400;">
+                Suppression des frais logistiques. Réduction des coûts indirects. Déploiement immédiat à grande échelle.
+                Transformez vos coûts fixes en leviers de performance.
+              </p>
+              <a class="inline-flex items-center font-bold fs-16 transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
+                href="page avantage Budget.html" style="background-color: #67DAD5; color: #FFFFFF;">
+                En savoir plus <span class="ml-2 fs-20">→</span>
+              </a>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="strategic-card flex flex-col h-full rounded-2xl overflow-hidden shadow-sm"
+            style="background-color: #FFFFFF;">
+            <div class="aspect-video w-full overflow-hidden bg-gray-100">
+              <img alt="RSE" class="w-full h-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsDwXCv_Hn7_iGQ-8GPEqNErdebj-373B58Z1Rj5D3k-tj2WJSkAgIYjyvmVgrl9KWD526LY6MK48Bi91TZzUl9bVeViO6zxsr7i28fo0B4r2j4_ThTPiGZu6b0cyZv9UUJP5poUKYeFsnbdDWCwGKdXF57ho6Ie4EXjGXEvnnDMfUAzCIxsPfLwKTN1OXs5i_nxNJy-UvAKrfeMTVa-BXtmZ-HpopkeVAqNwadANuDi4p0Z0q2CWIUu4wO-vfH-VzdHafGtjPouM" />
+            </div>
+            <div class="p-6 flex flex-col flex-grow">
+              <h3 class="fs-24 font-bold mb-4 leading-tight" style="font-family: Arial, sans-serif;">Engagement RSE
+                et décarbonation</h3>
+              <p class="text-gray-600 fs-14 mb-6 flex-grow"
+                style="font-family: 'Nunito', sans-serif; font-weight: 400;">
+                Suppression des déplacements inter-sites. Réduction des kilomètres. Diminution des impressions papier.
+                Former en digital, c'est intégrer la montée en compétences dans une démarche responsable.
+              </p>
+              <a class="inline-flex items-center font-bold fs-16 transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
+                href="PAge avantage RSE.html" style="background-color: #67DAD5; color: #FFFFFF;">
+                En savoir plus <span class="ml-2 fs-20">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: StrategicAdvantagesGrid -->
+    <!-- BEGIN: StepsSection -->
+    <section class="py-10 md:py-16 relative text-center relative-section expertise-section padding-global"
+      style="background-color: #F7FBFF; z-index: 1;">
+      <!-- Title block (centré, contraint) -->
+      <div class="container mx-auto max-w-7xl relative z-10 padding-global">
+        <div class="text-center mb-12 flex flex-col items-center">
+          <h2 class="fs-30 md-fs-36 font-black mb-4 secondary-title" style="color: #000;">Comment ça fonctionne ?
+          </h2>
+          <p class="section-subtitle body-rounded text-center font-semibold">
+            Une mise en oeuvre simple, rapide et sécurisée
+          </p>
+        </div>
+      </div>
+
+      <!-- Timeline (pleine largeur) -->
+      <div class="relative z-10 px-12 md:px-24">
+        <!-- Timeline Container -->
+        <div class="relative w-full flex flex-col md:flex-row items-start justify-between mb-10">
+
+          <!-- Continuous Horizontal Line (Desktop) -->
+          <!-- Bar track (gray background) -->
+          <div class="hidden md:block absolute w-[75%] left-[12.5%] rounded-full"
+            style="top: 136px; z-index: 0; height: 8px; background: #d1d5db; border-radius: 4px;">
+            <!-- Animated fill -->
+            <div id="steps-progress-bar"
+              style="height: 100%; border-radius: 4px; background: linear-gradient(to right, #000000, #4B5563, #67DAD5);">
+            </div>
+          </div>
+
+          <!-- Item 1 -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-16 md:mb-0">
+            <div
+              class="step-card shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-2xl font-bold fs-30 md-fs-36 text-white w-24 h-24 md:w-28 md:h-28 flex items-center justify-center secondary-title border border-gray-50"
+              style="background-color: #9e9e9e;">
+              1
+            </div>
+            <div class="hidden md:flex flex-col items-center w-full">
+              <div class="w-0.5 h-4 bg-gray-400 rounded-full"></div>
+              <div class="w-2 h-2 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            </div>
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
+            <div class="md:mt-6 font-bold fs-20 text-black max-w-[280px] w-full mx-auto step-label padding-global"
+              style="color: #000;">
+              Créez votre compte
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-16 md:mb-0">
+            <div
+              class="step-card shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-2xl font-bold fs-30 md-fs-36 text-white w-24 h-24 md:w-28 md:h-28 flex items-center justify-center secondary-title border border-gray-50"
+              style="background-color: #9e9e9e;">
+              2
+            </div>
+            <div class="hidden md:flex flex-col items-center w-full">
+              <div class="w-0.5 h-4 bg-gray-400 rounded-full"></div>
+              <div class="w-2 h-2 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            </div>
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
+            <div class="md:mt-6 font-bold fs-20 text-black max-w-[280px] w-full mx-auto step-label padding-global"
+              style="color: #000;">
+              Sélectionnez vos formations
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-16 md:mb-0">
+            <div
+              class="step-card shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-2xl font-bold fs-30 md-fs-36 text-white w-24 h-24 md:w-28 md:h-28 flex items-center justify-center secondary-title border border-gray-50"
+              style="background-color: #9e9e9e;">
+              3
+            </div>
+            <div class="hidden md:flex flex-col items-center w-full">
+              <div class="w-0.5 h-4 bg-gray-400 rounded-full"></div>
+              <div class="w-2 h-2 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            </div>
+            <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
+            <div class="md:mt-6 font-bold fs-20 text-black max-w-[280px] w-full mx-auto step-label padding-global"
+              style="color: #000;">
+              Inscrivez vos équipes
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="flex-1 flex flex-col items-center text-center relative z-10 w-full mb-8 md:mb-0">
+            <div
+              class="step-card shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-2xl font-bold fs-30 md-fs-36 text-white w-24 h-24 md:w-28 md:h-28 flex items-center justify-center secondary-title border border-gray-50"
+              style="background-color: #9e9e9e;">
+              4
+            </div>
+            <div class="hidden md:flex flex-col items-center w-full">
+              <div class="w-0.5 h-4 bg-gray-400 rounded-full"></div>
+              <div class="w-2 h-2 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
+            </div>
+            <div class="md:mt-6 font-bold fs-20 text-black max-w-[280px] w-full mx-auto step-label padding-global"
+              style="color: #000;">
+              Suivez les résultats et téléchargez vos certificats
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Texte bas (centré) -->
+      <div class="text-center fs-20 md-fs-24 font-bold text-black mt-4"
+        style="color: #000; background-color: transparent; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">
+        En quelques clics, votre plan de formation devient opérationnel.
+      </div>
+    </section>
+    <!-- END: StepsSection -->
+    <!-- BEGIN: ExpertiseSection -->
+    <section class="pt-16 md:pt-24 pb-6 relative relative-section padding-global" style="background-color: #F7FBFF;">
+      <div class="container mx-auto px-6 relative z-10">
+        <!-- Title -->
+        <h2 class="fs-30 md-fs-36 font-black text-center text-black mb-16 secondary-title">
+          Ensemble, faire progresser le secteur
+        </h2>
+        <!-- Statistics Block -->
+        <div class="stats-block py-16 mb-24 backdrop-blur-sm"
+          style="border-top: 2px solid #9ca3af; border-bottom: 2px solid #9ca3af;"
+          style="background-color: transparent;">
+          <div class="grid grid-cols-1 md:grid-cols-4">
+            <!-- Col 1 -->
+            <div class="text-center px-4 md:border-r-2 border-[#9ca3af]">
+              <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">+
+                de 15 ans</p>
+              <p class="fs-14 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827;">d'expertise dans
+                le secteur des services à la personne</p>
+            </div>
+            <!-- Col 2 -->
+            <div class="text-center px-4 md:border-r-2 border-[#9ca3af] mt-8 md:mt-0">
+              <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
+                Des milliers</p>
+              <p class="fs-14 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827;">d'apprenants
+                formés</p>
+            </div>
+            <!-- Col 3 -->
+            <div class="text-center px-4 md:border-r-2 border-[#9ca3af] mt-8 md:mt-0">
+              <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
+                100% Terrain</p>
+              <p class="fs-14 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827;">Une plateforme
+                pensée pour le terrain</p>
+            </div>
+            <!-- Col 4 -->
+            <div class="text-center px-4 mt-8 md:mt-0">
+              <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
+                Engagement</p>
+              <p class="fs-14 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827;">Une approche
+                conforme, responsable et moderne</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END: ExpertiseSection -->
+
+    <!-- BEGIN: TestimonialVideo -->
+    <section class="pt-8 pb-16 md:pt-10 md:pb-24 relative overflow-hidden padding-global" style="background-color: #ffffff;">
+
+      <!-- Layout pleine largeur -->
+      <div class="flex items-center justify-between" style="gap: 0; flex-wrap: wrap;">
+
+        <!-- Centre : moniteur + texte -->
+        <div class="flex-1 flex flex-col items-center px-6 testimonial-center">
+          <h2 class="secondary-title mb-8" style="color: #111827;">Ce que nos élèves disent de nous
+          </h2>
+          <div class="relative inline-block cursor-pointer group w-full max-w-2xl"
+            onclick="window.open('https://youtu.be/BRQYfc9qoVg?si=HrwzaYf7uhd3VlaX','_blank')"
+            title="Voir la vidéo sur YouTube">
+            <svg id="monitor-svg" viewBox="0 0 620 420" class="w-full" xmlns="http://www.w3.org/2000/svg"
+              style="filter: none; transition: filter 0.3s ease;">
+              <rect x="10" y="10" width="600" height="350" rx="18" ry="18" fill="#1a1a1a" stroke="#555"
+                stroke-width="3" />
+              <rect x="26" y="26" width="568" height="318" rx="10" ry="10" fill="#000" />
+              <rect x="270" y="362" width="80" height="24" rx="4" fill="#333" />
+              <rect x="230" y="384" width="160" height="12" rx="6" fill="#444" />
+              <image href="images/image du pptx/Phto PC avis.png" x="26" y="26" width="568" height="318"
+                preserveAspectRatio="xMidYMid slice" clip-path="url(#sc2)" />
+              <defs>
+                <clipPath id="sc2">
+                  <rect x="26" y="26" width="568" height="318" rx="10" />
+                </clipPath>
+              </defs>
+              <circle cx="310" cy="185" r="44" fill="rgba(0,0,0,0.6)" />
+              <polygon points="298,165 298,205 336,185" fill="white" />
+            </svg>
+          </div>
+
+          <!-- Texte sous moniteur -->
+          <p class="mt-8 font-bold fs-20 md-fs-24 text-center italic"
+            style="font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif; color: #111827; line-height: 1.6;">
+            Parcours d'intégration mixant tutorat terrain<br>et modules digitaux
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Modal vidéo -->
+    <div id="modal-video"
+      onclick="if(event.target===this){this.style.display='none'; document.getElementById('video-iframe').src=''}"
+      style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center;">
+      <div style="position:relative; width:90%; max-width:900px;">
+        <button
+          onclick="document.getElementById('modal-video').style.display='none'; document.getElementById('video-iframe').src=''"
+          class="fs-30"
+          style="position:absolute; top:-40px; right:0; background:none; border:none; color:#fff; cursor:pointer; line-height:1;">✕</button>
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px;">
+          <iframe id="video-iframe" src="" data-src="https://www.youtube.com/embed/BRQYfc9qoVg?autoplay=1"
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- END: TestimonialVideo -->
+
+    <!-- BEGIN: TestimonialsCarousel -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden padding-global">
+      <div class="text-center mb-12">
+        <h2 class="secondary-title">Nos témoignages clients</h2>
+        <p class="section-subtitle body-rounded mt-4" style="color:#374151;">Des résultats concrets : lisez comment ils
+          ont fait évoluer leur apprentissage.</p>
+      </div>
+
+      <!-- Carousel wrapper — full width -->
+      <div class="relative">
+        <div id="carousel-track-wrapper" class="overflow-hidden w-full">
+          <div id="carousel-track" class="flex gap-6 transition-transform duration-500 ease-in-out">
+
+            <!-- Card 1 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=1" alt="Leila Gharani"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Leila Gharani</p>
+                    <p class="fs-14 text-gray-500">XelPlus Academy</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">Global Reach</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"Grâce à DFormPro Digital, nos équipes réparties partout
+                  en France se forment sans contrainte de déplacement. Une portée nationale, enfin accessible."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=2" alt="Erin Booth"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Erin Booth</p>
+                    <p class="fs-14 text-gray-500">Directrice formation</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">Contrôle total</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"Vous ne devriez jamais laisser quiconque dicter la façon
+                  dont vous formez vos équipes. Avec DFormPro, vous gardez le contrôle total — vous choisissez les
+                  modules, le rythme, et suivez chaque apprenant en temps réel."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 3 (active) -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="background: #f5f5f5; transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=3" alt="Razvan Ciobanu"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Razvan Ciobanu</p>
+                    <p class="fs-14 text-gray-500">Responsable RH</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">Sérénité totale</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"DFormPro Digital est constamment disponible et fiable.
+                  En tant que responsable formation, cette tranquillité d'esprit est inestimable — la traçabilité HAS
+                  est assurée sans effort."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=4" alt="Francesco Cositore"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Marie Laurent</p>
+                    <p class="fs-14 text-gray-500">Directrice SAAD</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">Essentiel pour nous</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"DFormPro Digital a été essentiel pour la croissance de
+                  notre structure. Il automatise la gestion des inscriptions et des certificats, me libérant pour me
+                  concentrer sur l'humain."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 5 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=5" alt="Dan George"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Thomas Renard</p>
+                    <p class="fs-14 text-gray-500">Gérant SSIAD</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">+200 apprenants</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"DFormPro m'a donné la structure pour aller au-delà du
+                  présentiel. Ce qui a commencé avec une petite équipe est devenu un plan de formation complet,
+                  opérationnel en quelques clics."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 6 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=6" alt="Nathalie Morin"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Nathalie Morin</p>
+                    <p class="fs-14 text-gray-500">Coordinatrice EHPAD</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">Zéro papier</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"On a éliminé tous les classeurs de suivi formation. Tout
+                  est centralisé, les attestations sont générées automatiquement. L'inspection n'a plus rien à redire."
+                </p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 7 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=7" alt="Julien Pérez"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Julien Pérez</p>
+                    <p class="fs-14 text-gray-500">Responsable qualité</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">Audit HAS réussi</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"Grâce aux tableaux de bord DFormPro, notre dernier audit
+                  HAS s'est déroulé sans accroc. Les preuves de formation étaient accessibles en deux clics. Un gain de
+                  temps énorme."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 8 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=8" alt="Isabelle Fontaine"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Isabelle Fontaine</p>
+                    <p class="fs-14 text-gray-500">Auxiliaire de vie</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">Accessible partout</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"Je n'ai pas de bureau fixe. Avec DFormPro, je me forme
+                  sur mon téléphone, chez les clients ou dans les transports. Les modules sont courts et vraiment
+                  adaptés à notre métier."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 9 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=9" alt="François Lemaire"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">François Lemaire</p>
+                    <p class="fs-14 text-gray-500">Dirigeant SAP</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">ROI immédiat</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"Fini les frais de salle, de repas et de déplacement. On
+                  a rentabilisé l'abonnement DFormPro dès le premier mois. Et la qualité de formation est bien
+                  supérieure au présentiel classique."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+            <!-- Card 10 -->
+            <div
+              class="testimonial-carousel-card flex-shrink-0 w-[320px] bg-white rounded-2xl p-8 flex flex-col justify-between cursor-pointer"
+              style="transition: background 0.3s ease;">
+              <div>
+                <div class="flex items-center gap-4 mb-6">
+                  <img src="https://i.pravatar.cc/80?img=10" alt="Camille Durand"
+                    class="w-14 h-14 rounded-full object-cover">
+                  <div>
+                    <p class="font-bold text-black fs-16">Camille Durand</p>
+                    <p class="fs-14 text-gray-500">Directrice multi-sites</p>
+                  </div>
+                </div>
+                <h3 class="font-black fs-20 md-fs-24 text-black mb-3"
+                  style="font-family: 'Arial', sans-serif !important;">Vue unifiée</h3>
+                <p class="text-gray-600 fs-14 leading-relaxed">"Je pilote 4 agences depuis un seul tableau de bord. Je
+                  vois en temps réel quelles équipes sont à jour, qui doit se former en priorité. DFormPro a transformé
+                  ma façon de manager."</p>
+              </div>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
+                savoir plus →</a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="flex justify-center gap-4 mt-12">
+          <button id="carousel-prev"
+            class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors fs-18 font-bold"
+            aria-label="Précédent">←</button>
+          <button id="carousel-next"
+            class="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center hover:bg-gray-800 transition-colors fs-18 font-bold"
+            aria-label="Suivant">→</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        const track = document.getElementById('carousel-track');
+        const CARD_W = 320;
+        const GAP = 24;
+        const STEP = CARD_W + GAP;
+        let current = 0;
+
+        const originals = Array.from(track.querySelectorAll('.testimonial-carousel-card'));
+        const total = originals.length;
+        originals.forEach(c => track.appendChild(c.cloneNode(true)));
+
+        function translate(x, animated) {
+          track.style.transition = animated ? 'transform 0.5s ease' : 'none';
+          track.style.transform = `translateX(${x}px)`;
+        }
+
+        function updateActive() {
+          track.querySelectorAll('.testimonial-carousel-card').forEach((c) => {
+            c.style.background = '#ffffff';
+          });
+        }
+
+        function goTo(i, animated = true) {
+          current = i;
+          translate(-current * STEP, animated);
+          updateActive();
+        }
+
+        track.addEventListener('transitionend', () => {
+          if (current >= total) {
+            current -= total;
+            translate(-current * STEP, false);
+            updateActive();
+          } else if (current < 0) {
+            current += total;
+            translate(-current * STEP, false);
+            updateActive();
+          }
+        });
+
+        function next() { goTo(current + 1); }
+        function prev() {
+          if (current <= 0) {
+            current = total;
+            translate(-current * STEP, false);
+            track.getBoundingClientRect();
+          }
+          goTo(current - 1);
+        }
+
+        document.getElementById('carousel-next').addEventListener('click', next);
+        document.getElementById('carousel-prev').addEventListener('click', prev);
+
+        // Drag souris — calcule le nombre de cards à sauter selon la distance
+        let dragStartX = 0;
+        let dragging = false;
+
+        track.addEventListener('mousedown', e => {
+          dragging = true;
+          dragStartX = e.clientX;
+          track.style.transition = 'none';
+          track.style.cursor = 'grabbing';
+        });
+
+        window.addEventListener('mousemove', e => {
+          if (!dragging) return;
+          const delta = e.clientX - dragStartX;
+          track.style.transform = `translateX(${-current * STEP + delta}px)`;
+        });
+
+        window.addEventListener('mouseup', e => {
+          if (!dragging) return;
+          dragging = false;
+          track.style.cursor = '';
+          const delta = e.clientX - dragStartX;
+          // Calcule combien de cards sauter selon la distance parcourue
+          const steps = Math.round(-delta / STEP);
+          if (steps !== 0) {
+            goTo(current + steps);
+          } else {
+            goTo(current);
+          }
+        });
+
+        // Touch
+        let touchStartX = 0;
+        track.addEventListener('touchstart', e => {
+          touchStartX = e.touches[0].clientX;
+          track.style.transition = 'none';
+        }, { passive: true });
+
+        track.addEventListener('touchmove', e => {
+          const delta = e.touches[0].clientX - touchStartX;
+          track.style.transform = `translateX(${-current * STEP + delta}px)`;
+        }, { passive: true });
+
+        track.addEventListener('touchend', e => {
+          const delta = e.changedTouches[0].clientX - touchStartX;
+          const steps = Math.round(-delta / STEP);
+          if (steps !== 0) {
+            goTo(current + steps);
+          } else {
+            goTo(current);
+          }
+        });
+
+        updateActive();
+      })();
+    </script>
+    <style>
+      .arrow-animate {
+        opacity: 0 !important;
+        transform: translateX(-20px) !important;
+        display: inline-block !important;
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out !important;
+      }
+
+      .arrow-animate.is-visible {
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+      }
+    </style>
+
+    <script>
+      (function () {
+        const init = () => {
+          const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const arrows = entry.target.querySelectorAll('.arrow-animate');
+                arrows.forEach((arrow, index) => {
+                  setTimeout(() => {
+                    arrow.classList.add('is-visible');
+                  }, index * 350);
+                });
+                obs.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1 });
+
+          document.querySelectorAll('.animate-list-container').forEach(el => {
+            observer.observe(el);
+          });
+        };
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', init);
+        } else {
+          init();
+        }
+      })();
+    </script>
+    <!-- END: TestimonialsCarousel -->
+  </main>
+  <!-- Giant CTA Section -->
+  <section class="py-16 md:py-24 relative padding-global" style="background-color: #F7FBFF;">
+    <div class="max-w-5xl mx-auto rounded-[40px] py-16 text-center relative overflow-hidden padding-global"
+      style="background-color: #67DAD5;">
+      <div class="relative z-10">
+        <h2 class="fs-30 md-fs-36 lg-fs-48 font-black mb-6 secondary-title text-[#0B1221]"
+          style="font-family: 'Arial', sans-serif !important; font-weight: bold !important;">
+          Prêt à digitaliser vos formations ?
+        </h2>
+        <p class="body-rounded text-[#0B1221] fs-18 md-fs-20 max-w-3xl mx-auto mb-12 opacity-80"
+          style="font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;">
+          Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <button onclick="document.getElementById('modal-devis').style.display='flex'"
+            class="text-white font-bold py-4 px-10 rounded-[20px] fs-18 hover:bg-opacity-90 transition-all body-rounded cursor-pointer"
+            style="background-color: #0B1221;">
+            Demander un devis
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-slate-300 pt-16 px-6 md:px-12" style="background-color: #000000;">
+    <div class="max-w-7xl mx-auto">
+
+      <!-- Top section: nav columns left + brand text right -->
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.5fr] gap-12 pb-12"
+        style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+
+        <!-- Col 1: Contact -->
+        <div class="flex flex-col gap-5">
+          <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Contact</h3>
+          <div class="flex items-center gap-3 mb-2">
+            <img src="images/image du pptx/photo pdg.jpg" alt="Régis DE OLIVEIRA"
+              class="w-20 h-20 rounded-full border-2 object-cover" style="border-color: #67DAD5;">
+            <div>
+              <p class="font-bold fs-14" style="color: #FFFFFF;">Régis DE OLIVEIRA</p>
+              <p class="fs-12" style="color: #67DAD5;">Directeur</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 fs-14 body-rounded">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined fs-16" style="color: #67DAD5;">call</span>
+              <span style="color: #FFFFFF;">06 64 90 33 43</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined fs-16" style="color: #67DAD5;">mail</span>
+              <a href="/cdn-cgi/l/email-protection#86f4a8e2e3e9eaeff0e3eff4e7c6e2e0e9f4ebf6f4e9a8e0f4"
+                class="hover:underline" style="color: #FFFFFF;"><span class="__cf_email__"
+                  data-cfemail="bcce92d8d9d3d0d5cad9d5ceddfcd8dad3ced1ccced392dace">[email&#160;protected]</span></a>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined fs-16 mt-0.5" style="color: #67DAD5;">location_on</span>
+              <span style="color: #FFFFFF;">15 rue du Pré la Reine,<br>63100 Clermont-Fd.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Informations -->
+        <div class="flex flex-col gap-5">
+          <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Informations
+          </h3>
+          <nav class="flex flex-col gap-3 fs-14 body-rounded">
+            <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">À propos</a>
+            <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">CGV</a>
+            <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">Mentions
+              légales</a>
+            <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">Politique de
+              confidentialité</a>
+          </nav>
+        </div>
+
+        <!-- Col 3: Brand description (right) -->
+        <div class="flex flex-col gap-4">
+          <h3 class="font-bold fs-20 secondary-title" style="color: #FFFFFF;">DFormPro Digital</h3>
+          <p class="fs-14 leading-relaxed body-rounded" style="color: rgba(255,255,255,0.7);">
+            La plateforme de formation digitale dédiée aux services à la personne. Accélérez la montée en compétences de
+            vos équipes.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Bottom section: big logo left + copyright right -->
+      <div class="flex flex-col md:flex-row items-end justify-between gap-6 pt-4">
+        <img src="images/image du pptx/Logo lettre blanc sur fond noir .jpg" alt="DFormPro Digital"
+          class="object-contain"
+          style="max-height: 200px; width: auto; max-width: 55%; margin-left: -16px; opacity: 0.95;">
+        <p class="body-rounded fs-12 pb-6 text-right" style="color: rgba(255,255,255,0.5);">
+          © 2026 DFormPro Digital.<br>Tous droits réservés.
+        </p>
+      </div>
+
+      <div class="h-10"></div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    (function () {
+      const mon = document.getElementById('monitor-svg');
+      if (mon) {
+        const glowNormal = 'none';
+        const glowHover = 'drop-shadow(0 0 12px rgba(103,218,213,0.7)) drop-shadow(0 0 24px rgba(103,218,213,0.3))';
+        mon.closest('[onclick]').addEventListener('mouseenter', () => mon.style.filter = glowHover);
+        mon.closest('[onclick]').addEventListener('mouseleave', () => mon.style.filter = glowNormal);
+      }
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const bar = document.getElementById('steps-progress-bar');
+      const section = bar ? bar.closest('section') : null;
+      if (!bar || !section) return;
+
+      function updateBar() {
+        const rect = section.getBoundingClientRect();
+        const windowH = window.innerHeight;
+        // Progress: 0 when section top enters viewport, 1 when section bottom exits
+        const raw = Math.max(0, (windowH - rect.top) / (rect.height + windowH));
+        const progress = Math.min(1, raw * 2.5);
+        bar.style.width = (progress * 100) + '%';
+      }
+
+      window.addEventListener('scroll', updateBar, { passive: true });
+      updateBar();
+    })();
+  </script>
+
+</body>
+
+</html>
