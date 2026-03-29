@@ -6,6 +6,7 @@
   <title>Créer un compte – DFormPro Digital</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link rel="stylesheet" href="fonts.css">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Bangers&display=swap');
 
@@ -413,8 +414,8 @@
           <p style="font-size:13px;color:#6b7280;margin-bottom:24px;" id="step3-subtitle">Dites-nous en plus sur votre environnement.</p>
 
           <div id="section-responsable" class="conditional space-y-4">
-            <div><label class="form-label">Nom de l'environnement *</label><input type="text" class="form-input" placeholder="Ex : ADMR de la Loire"></div>
-            <div><label class="form-label">Code postal *</label><input type="text" class="form-input" placeholder="Ex : 63000"></div>
+            <div><label class="form-label">Nom de l'environnement *</label><input type="text" id="input-structure" class="form-input" placeholder="Ex : ADMR de la Loire"></div>
+            <div><label class="form-label">Code postal *</label><input type="text" id="input-cp" class="form-input" placeholder="Ex : 63000"></div>
             <div>
               <label class="form-label">Type d'environnement</label>
               <div class="space-y-2 mt-2">
@@ -642,32 +643,48 @@
           <div id="devis-details" class="space-y-6" style="border-top:1px solid #e5e7eb; padding-top:24px; margin-top:24px; display:none;">
             <div class="card-section">
               <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">list_alt</span>Formations disponibles</div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Accompagnement à la toilette</span>
-                </label>
-                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Aide aux repas</span>
-                </label>
-                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Bientraitance et maltraitance</span>
-                </label>
-                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Prévention des risques à domicile</span>
-                </label>
-                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Entretien du cadre de vie</span>
-                </label>
-                <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-teal-50 transition" style="border-color:#e5e7eb;">
-                  <input type="checkbox" class="checkbox-custom mr-3"><span style="font-size:13px;color:#374151;font-weight:bold;">Accompagnement fin de vie</span>
-                </label>
+
+              <!-- Menu déroulant multi-sélection -->
+              <div id="formation-dropdown" style="position:relative;">
+                <button type="button" onclick="toggleFormationDropdown()"
+                  style="width:100%;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border:1.5px solid #e5e7eb;border-radius:10px;background:#fff;cursor:pointer;font-size:13px;color:#374151;font-family:'Nunito',sans-serif;">
+                  <span id="formation-dropdown-label">Sélectionnez vos formations...</span>
+                  <span class="material-symbols-outlined" id="formation-dropdown-arrow" style="font-size:18px;color:#67DAD5;transition:transform 0.2s;">expand_more</span>
+                </button>
+                <div id="formation-dropdown-list"
+                  style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1.5px solid #67DAD5;border-radius:10px;z-index:50;box-shadow:0 8px 24px rgba(0,0,0,0.1);overflow:hidden;">
+                  <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-teal-50 transition" style="border-bottom:1px solid #f3f4f6;">
+                    <input type="checkbox" class="checkbox-custom" value="Accompagnement à la toilette" onchange="updateFormationLabel()">
+                    <span style="font-size:13px;color:#374151;font-weight:bold;">Accompagnement à la toilette</span>
+                  </label>
+                  <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-teal-50 transition" style="border-bottom:1px solid #f3f4f6;">
+                    <input type="checkbox" class="checkbox-custom" value="Aide aux repas" onchange="updateFormationLabel()">
+                    <span style="font-size:13px;color:#374151;font-weight:bold;">Aide aux repas</span>
+                  </label>
+                  <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-teal-50 transition" style="border-bottom:1px solid #f3f4f6;">
+                    <input type="checkbox" class="checkbox-custom" value="Bientraitance et maltraitance" onchange="updateFormationLabel()">
+                    <span style="font-size:13px;color:#374151;font-weight:bold;">Bientraitance et maltraitance</span>
+                  </label>
+                  <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-teal-50 transition" style="border-bottom:1px solid #f3f4f6;">
+                    <input type="checkbox" class="checkbox-custom" value="Prévention des risques à domicile" onchange="updateFormationLabel()">
+                    <span style="font-size:13px;color:#374151;font-weight:bold;">Prévention des risques à domicile</span>
+                  </label>
+                  <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-teal-50 transition" style="border-bottom:1px solid #f3f4f6;">
+                    <input type="checkbox" class="checkbox-custom" value="Entretien du cadre de vie" onchange="updateFormationLabel()">
+                    <span style="font-size:13px;color:#374151;font-weight:bold;">Entretien du cadre de vie</span>
+                  </label>
+                  <label class="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-teal-50 transition">
+                    <input type="checkbox" class="checkbox-custom" value="Accompagnement fin de vie" onchange="updateFormationLabel()">
+                    <span style="font-size:13px;color:#374151;font-weight:bold;">Accompagnement fin de vie</span>
+                  </label>
+                </div>
               </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div><label class="form-label">Numéro SIRET *</label><input type="text" class="form-input" placeholder="Ex : 123 456 789 00012"></div>
-              <div><label class="form-label">Adresse de facturation *</label><input type="text" class="form-input" placeholder="Ex : 12 rue de la Paix, Paris"></div>
-              <div><label class="form-label">Numéro de téléphone *</label><input type="tel" class="form-input" placeholder="Ex : 06 12 34 56 78"></div>
+              <div><label class="form-label">Numéro SIRET *</label><input type="text" id="input-siret" class="form-input" placeholder="Ex : 123 456 789 00012"></div>
+              <div><label class="form-label">Adresse de facturation *</label><input type="text" id="input-adresse" class="form-input" placeholder="Ex : 12 rue de la Paix, Paris"></div>
+              <div><label class="form-label">Numéro de téléphone *</label><input type="tel" id="input-tel" class="form-input" placeholder="Ex : 06 12 34 56 78"></div>
               <div>
                 <label class="form-label">Type de financement prévu</label>
                 <select class="form-input">
@@ -692,7 +709,53 @@
           </div>
         </div>
 
+        <!-- ÉTAPE 6 : VÉRIFICATION -->
         <div class="step" id="step-6">
+          <h2 style="font-size:1.6rem;margin-bottom:4px;color:#111827;">Vérifiez vos informations</h2>
+          <p style="font-size:13px;color:#6b7280;margin-bottom:24px;">Relisez vos informations avant de valider. Vous pouvez revenir modifier une étape si nécessaire.</p>
+
+          <!-- Identité -->
+          <div class="card-section mb-4">
+            <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">person</span>Identité</div>
+            <ul style="font-size:13px;color:#374151;line-height:2;">
+              <li><strong>Nom complet :</strong> <span id="verif-nom"></span></li>
+              <li><strong>Email :</strong> <span id="verif-email"></span></li>
+              <li><strong>Profil :</strong> <span id="verif-profil"></span></li>
+            </ul>
+          </div>
+
+          <!-- Environnement -->
+          <div class="card-section mb-4" id="verif-bloc-structure" style="display:none;">
+            <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">apartment</span>Environnement</div>
+            <ul style="font-size:13px;color:#374151;line-height:2;">
+              <li><strong>Structure :</strong> <span id="verif-structure"></span></li>
+              <li><strong>Code postal :</strong> <span id="verif-cp"></span></li>
+            </ul>
+          </div>
+
+          <!-- Devis -->
+          <div class="card-section mb-4" id="verif-bloc-devis" style="display:none;">
+            <div class="section-title"><span class="material-symbols-outlined" style="font-size:18px;">description</span>Demande de devis</div>
+            <ul style="font-size:13px;color:#374151;line-height:2;">
+              <li><strong>Formations sélectionnées :</strong> <span id="verif-formations"></span></li>
+              <li><strong>SIRET :</strong> <span id="verif-siret"></span></li>
+              <li><strong>Adresse de facturation :</strong> <span id="verif-adresse"></span></li>
+              <li><strong>Téléphone :</strong> <span id="verif-tel"></span></li>
+            </ul>
+          </div>
+
+          <div style="background:rgba(103,218,213,0.08);border:1px solid #67DAD5;border-radius:10px;padding:10px 14px;font-size:12px;color:#374151;display:flex;align-items:center;gap:8px;margin-bottom:24px;">
+            <span class="material-symbols-outlined" style="font-size:16px;color:#67DAD5;flex-shrink:0;">info</span>
+            Si une information est incorrecte, utilisez le bouton Retour pour la corriger.
+          </div>
+
+          <div class="flex justify-between mt-6">
+            <button class="btn-secondary" onclick="prevStep(6)">← Retour</button>
+            <button class="btn-primary" onclick="nextStep(6)">Confirmer et envoyer →</button>
+          </div>
+        </div>
+
+        <div class="step" id="step-7">
           <div class="text-center py-8">
             <div class="success-check">
               <span class="material-symbols-outlined" style="font-size:40px;color:#67DAD5;">check_circle</span>
@@ -780,7 +843,8 @@
       3: { label: 'Étape 3 sur 6', title: 'Votre Environnement', progress: '49.8%' },
       4: { label: 'Étape 4 sur 6', title: 'Vos objectifs', progress: '66.4%' },
       5: { label: 'Étape 5 sur 6', title: 'Création de devis', progress: '83%' },
-      6: { label: 'Terminé !', title: 'Confirmation', progress: '100%' },
+      6: { label: 'Étape 6 sur 6', title: 'Vérification', progress: '95%' },
+      7: { label: 'Terminé !', title: 'Confirmation', progress: '100%' },
     };
 
     function updateHeader(step) {
@@ -799,6 +863,34 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
+
+    // Dropdown formations
+    function toggleFormationDropdown() {
+      const list = document.getElementById('formation-dropdown-list');
+      const arrow = document.getElementById('formation-dropdown-arrow');
+      const isOpen = list.style.display === 'block';
+      list.style.display = isOpen ? 'none' : 'block';
+      arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+    }
+    function updateFormationLabel() {
+      const checked = document.querySelectorAll('#formation-dropdown-list input[type="checkbox"]:checked');
+      const label = document.getElementById('formation-dropdown-label');
+      if (checked.length === 0) {
+        label.textContent = 'Sélectionnez vos formations...';
+        label.style.color = '#9ca3af';
+      } else {
+        label.textContent = checked.length + ' formation' + (checked.length > 1 ? 's' : '') + ' sélectionnée' + (checked.length > 1 ? 's' : '');
+        label.style.color = '#111827';
+      }
+    }
+    // Fermer le dropdown si clic en dehors
+    document.addEventListener('click', function(e) {
+      const dropdown = document.getElementById('formation-dropdown');
+      if (dropdown && !dropdown.contains(e.target)) {
+        document.getElementById('formation-dropdown-list').style.display = 'none';
+        document.getElementById('formation-dropdown-arrow').style.transform = '';
+      }
+    });
 
     // Gestion de l'affichage du devis (sans option cochée par défaut)
     function toggleDevis(show) {
@@ -837,13 +929,50 @@
         applyProfil();
       }
 
-      // Remplissage du récapitulatif quand on valide l'étape 5
+      // Remplissage de la vérification quand on valide l'étape 5
       if (from === 5) {
+        const labelsProfils = {
+          'responsable': 'Responsable d\'environnement',
+          'intervenant': 'Professionnel de terrain',
+          'aidant': 'Aidant',
+          'particulier': 'Particulier',
+          'prospect': 'En découverte (Prospect)'
+        };
         const prenom = document.getElementById('input-prenom').value;
         const nom = document.getElementById('input-nom').value;
-        document.getElementById('recap-nom').textContent = prenom + ' ' + nom;
+        document.getElementById('verif-nom').textContent = (prenom + ' ' + nom).trim() || '—';
+        document.getElementById('verif-email').textContent = document.getElementById('input-email').value || '—';
+        document.getElementById('verif-profil').textContent = labelsProfils[selectedProfil] || selectedProfil || '—';
+
+        const structure = document.getElementById('input-structure') ? document.getElementById('input-structure').value : '';
+        const cp = document.getElementById('input-cp') ? document.getElementById('input-cp').value : '';
+        if (structure || cp) {
+          document.getElementById('verif-structure').textContent = structure || '—';
+          document.getElementById('verif-cp').textContent = cp || '—';
+          document.getElementById('verif-bloc-structure').style.display = 'block';
+        } else {
+          document.getElementById('verif-bloc-structure').style.display = 'none';
+        }
+
+        const devisOui = document.getElementById('opt-devis-oui').classList.contains('selected');
+        if (devisOui) {
+          const formations = Array.from(document.querySelectorAll('#formation-dropdown-list input[type="checkbox"]:checked')).map(c => c.value);
+          document.getElementById('verif-formations').textContent = formations.length ? formations.join(', ') : '—';
+          document.getElementById('verif-siret').textContent = document.getElementById('input-siret').value || '—';
+          document.getElementById('verif-adresse').textContent = document.getElementById('input-adresse').value || '—';
+          document.getElementById('verif-tel').textContent = document.getElementById('input-tel').value || '—';
+          document.getElementById('verif-bloc-devis').style.display = 'block';
+        } else {
+          document.getElementById('verif-bloc-devis').style.display = 'none';
+        }
+      }
+
+      // Remplissage du récapitulatif final quand on valide l'étape 6
+      if (from === 6) {
+        const prenom = document.getElementById('input-prenom').value;
+        const nom = document.getElementById('input-nom').value;
+        document.getElementById('recap-nom').textContent = (prenom + ' ' + nom).trim();
         document.getElementById('recap-email').textContent = document.getElementById('input-email').value;
-        
         const labelsProfils = {
           'responsable': 'Responsable d\'environnement',
           'intervenant': 'Professionnel de terrain',
@@ -852,13 +981,8 @@
           'prospect': 'En découverte (Prospect)'
         };
         document.getElementById('recap-profil').textContent = labelsProfils[selectedProfil] || selectedProfil;
-
         const devisOui = document.getElementById('opt-devis-oui').classList.contains('selected');
-        if (devisOui) {
-          document.getElementById('recap-devis').style.display = 'block';
-        } else {
-          document.getElementById('recap-devis').style.display = 'none';
-        }
+        document.getElementById('recap-devis').style.display = devisOui ? 'block' : 'none';
       }
 
       currentStep = from + 1;

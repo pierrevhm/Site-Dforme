@@ -13,6 +13,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     rel="stylesheet" />
+  <link rel="stylesheet" href="fonts.css">
   <!-- Custom Font Configuration -->
   <style data-purpose="typography">
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Bangers&display=swap');
@@ -294,6 +295,16 @@
       opacity: 1;
       transform: translateY(0);
       /* Il remonte à sa position normale */
+    }
+
+    /* Texte section 2 : slide sans fondu */
+    #row2-text {
+      opacity: 1;
+      transform: translateY(60px);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    #row2-text.is-visible {
+      transform: translateY(0);
     }
 
     .anim-fade-right {
@@ -1197,7 +1208,7 @@
       <div class="mx-auto w-full relative z-10" style="padding-left: 10%; padding-right: 10%;">
 
         <div class="rounded-[2.5rem] py-12 px-8 md:py-20 md:px-20 text-center shadow-sm"
-          style="background-color: #D1D5DB;">
+          style="background-color: #f5f5f5;">
 
           <h2 class="fs-30 md-fs-36 font-black mb-12 secondary-title">Vous gérez plus qu'un planning. Vous portez une
             mission.</h2>
@@ -1414,7 +1425,7 @@
         inset: 0;
         z-index: 2;
         background: #fff;
-        clip-path: circle(0% at 10% 66%);
+        clip-path: circle(0% at 10% 80%);
         will-change: clip-path;
       }
 
@@ -1709,7 +1720,7 @@
             style="width: 100%; height: 100%; object-fit: cover; display: block;">
         </div>
 
-        <div style="flex: 1; display:flex; flex-direction:column; justify-content:center;">
+        <div id="row2-text" style="flex: 1; display:flex; flex-direction:column; justify-content:center;">
           <h2
             style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">
             Nos formations digitales sont :</h2>
@@ -1760,8 +1771,14 @@
         const eout = t => 1 - Math.pow(1 - t, 3);
         const ein = t => t * t * t;
 
-        const CX = 10, CY = 66;
         const R0 = 14;
+
+        function getCircleOrigin() {
+          const bR = b0.getBoundingClientRect(), sR = sticky.getBoundingClientRect();
+          const cx = ((bR.left + bR.width / 2 - sR.left) / sR.width) * 100;
+          const cy = ((bR.top + bR.height / 2 - sR.top) / sR.height) * 100;
+          return { cx, cy };
+        }
 
         /*
           Phases sur progress 0→1 (400vh) :
@@ -1811,6 +1828,7 @@
           const radius = circInT < 1
             ? circInT * R0
             : R0 + circT * (155 - R0);
+          const { cx: CX, cy: CY } = getCircleOrigin();
           circleLayer.style.clipPath = `circle(${radius}% at ${CX}% ${CY}%)`;
 
           // ── Titre + sous-titre glissent droite ──
@@ -1889,6 +1907,8 @@
 
         var crContainer = document.getElementById('cr-scroll-container');
         var row2 = document.getElementById('teachable-row-2');
+        var row2Text = document.getElementById('row2-text');
+        var row2TextTriggered = false;
 
         function getBase() { return 4 * window.innerHeight; }
 
@@ -1903,6 +1923,12 @@
             var r2Range = window.innerHeight;
             var t2 = clamp((scrolled - r2Start) / r2Range, 0, 1);
             row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
+
+            /* Texte section 2 : slide-up déclenché à 70% de la slide */
+            if (!row2TextTriggered && t2 >= 0.7 && row2Text) {
+              row2Text.classList.add('is-visible');
+              row2TextTriggered = true;
+            }
           }
         }
 
@@ -1951,7 +1977,7 @@
               </p>
               <a class="inline-flex items-center font-bold fs-16 transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
                 href="page avantage planning.html" style="background-color: #67DAD5; color: #FFFFFF;">
-                En savoir plus <span class="ml-2 fs-20">→</span>
+                Explorer nos formations <span class="ml-2 fs-20">→</span>
               </a>
             </div>
           </div>
@@ -1972,7 +1998,7 @@
               </p>
               <a class="inline-flex items-center font-bold fs-16 transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
                 href="page avantage réglemeanteir .html" style="background-color: #67DAD5; color: #FFFFFF;">
-                En savoir plus <span class="ml-2 fs-20">→</span>
+                Explorer nos formations <span class="ml-2 fs-20">→</span>
               </a>
             </div>
           </div>
@@ -1993,7 +2019,7 @@
               </p>
               <a class="inline-flex items-center font-bold fs-16 transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
                 href="page avantage Budget.html" style="background-color: #67DAD5; color: #FFFFFF;">
-                En savoir plus <span class="ml-2 fs-20">→</span>
+                Explorer nos formations <span class="ml-2 fs-20">→</span>
               </a>
             </div>
           </div>
@@ -2014,7 +2040,7 @@
               </p>
               <a class="inline-flex items-center font-bold fs-16 transition-all px-6 py-2.5 rounded-full hover:shadow-md self-start"
                 href="PAge avantage RSE.html" style="background-color: #67DAD5; color: #FFFFFF;">
-                En savoir plus <span class="ml-2 fs-20">→</span>
+                Explorer nos formations <span class="ml-2 fs-20">→</span>
               </a>
             </div>
           </div>
@@ -2270,8 +2296,7 @@
                 <p class="text-gray-600 fs-14 leading-relaxed">"Grâce à DFormPro Digital, nos équipes réparties partout
                   en France se forment sans contrainte de déplacement. Une portée nationale, enfin accessible."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 2 -->
@@ -2293,8 +2318,7 @@
                   dont vous formez vos équipes. Avec DFormPro, vous gardez le contrôle total — vous choisissez les
                   modules, le rythme, et suivez chaque apprenant en temps réel."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 3 (active) -->
@@ -2316,8 +2340,7 @@
                   En tant que responsable formation, cette tranquillité d'esprit est inestimable — la traçabilité HAS
                   est assurée sans effort."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 4 -->
@@ -2339,8 +2362,7 @@
                   notre structure. Il automatise la gestion des inscriptions et des certificats, me libérant pour me
                   concentrer sur l'humain."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 5 -->
@@ -2362,8 +2384,7 @@
                   présentiel. Ce qui a commencé avec une petite équipe est devenu un plan de formation complet,
                   opérationnel en quelques clics."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 6 -->
@@ -2385,8 +2406,7 @@
                   est centralisé, les attestations sont générées automatiquement. L'inspection n'a plus rien à redire."
                 </p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 7 -->
@@ -2408,8 +2428,7 @@
                   HAS s'est déroulé sans accroc. Les preuves de formation étaient accessibles en deux clics. Un gain de
                   temps énorme."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 8 -->
@@ -2431,8 +2450,7 @@
                   sur mon téléphone, chez les clients ou dans les transports. Les modules sont courts et vraiment
                   adaptés à notre métier."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 9 -->
@@ -2454,8 +2472,7 @@
                   a rentabilisé l'abonnement DFormPro dès le premier mois. Et la qualité de formation est bien
                   supérieure au présentiel classique."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
             <!-- Card 10 -->
@@ -2477,8 +2494,7 @@
                   vois en temps réel quelles équipes sont à jour, qui doit se former en priorité. DFormPro a transformé
                   ma façon de manager."</p>
               </div>
-              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">En
-                savoir plus →</a>
+              <a href="#" class="mt-6 fs-14 font-bold text-black hover:underline inline-flex items-center gap-1">Explorer nos formations →</a>
             </div>
 
           </div>
@@ -2652,23 +2668,35 @@
     <!-- END: TestimonialsCarousel -->
   </main>
   <!-- Giant CTA Section -->
-  <section class="px-6 py-16 md:py-24 relative" style="background-color: #F7FBFF;">
-    <div class="max-w-5xl mx-auto rounded-[40px] py-16 px-8 md:px-12 text-center relative overflow-hidden"
-      style="background-color: #67DAD5;">
-      <div class="relative z-10">
-        <h2 class="fs-30 md-fs-36 lg-fs-48 font-black mb-6 secondary-title text-[#0B1221]"
-          style="font-family: 'Arial', sans-serif !important; font-weight: bold !important;">
-          Prêt à digitaliser vos formations ?
-        </h2>
-        <p class="body-rounded text-[#0B1221] fs-18 md-fs-20 max-w-3xl mx-auto mb-12 opacity-80"
-          style="font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;">
-          Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <button onclick="document.getElementById('modal-devis').style.display='flex'"
-            class="text-white font-bold py-4 px-10 rounded-[20px] fs-18 hover:bg-opacity-90 transition-all body-rounded cursor-pointer"
-            style="background-color: #0B1221;">
-            Demander un devis
+  <section class="px-6 py-16 md:py-24" style="background-color:#ffffff !important;">
+<div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
+  style="background-color:#67DAD5 !important;border:2px solid #000; margin-top: 60px;">
+
+        <div class="relative z-10" style="background-color:transparent !important;">
+
+          <h2
+            style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:32px;color:#000;margin-bottom:16px;background-color:transparent !important;">
+            Prêt à digitaliser vos formations ? ?
+          </h2>
+
+          <p
+            style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
+            Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
+<a href="index.html"
+  class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
+  style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);"
+  style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+  Demander un devis →
+</a>
+<a href="formations.html"
+  class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
+  style="background-color:#fff;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);"
+  style="background-color:#fff;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+  Voir toutes nos formations
+</a>
           </button>
         </div>
       </div>
