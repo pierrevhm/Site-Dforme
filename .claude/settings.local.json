@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e \":*)",
+      "Bash(node transform_headers.js)",
+      "Bash(del transform_headers.js)",
+      "Bash(GIT_EDITOR=true git rebase --continue)",
+      "Bash(python3 -c \":*)",
+      "Bash(for f:*)",
+      "Bash(do tail:*)",
+      "Bash(tr '\\\\n' '|')",
+      "Bash(echo \" -- $f\")",
+      "Bash(done)",
+      "Bash(head -3 grep -n \"</style>\" \"f:/Site Dforme/page avantage réglemeanteir .html\")",
+      "Bash(head -3 grep -n \"</style>\" \"f:/Site Dforme/tunnel_inscription.html\")",
+      "Bash(head -3 grep -n \"</style>\" \"f:/Site Dforme/index.html\")",
+      "Bash(python -:*)",
+      "Bash(where node:*)",
+      "Bash(head -20 grep -n \"<section\" \"f:/Site Dforme/tunnel_inscription.html\")"
+    ]
+  }
+}

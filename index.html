@@ -297,13 +297,13 @@
       /* Il remonte à sa position normale */
     }
 
-    /* Texte section 2 : slide sans fondu */
-    #row2-text {
+    /* Texte section 2 : slide en cascade */
+    .row2-slide {
       opacity: 1;
-      transform: translateY(60px);
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(50px);
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    #row2-text.is-visible {
+    .row2-slide.is-visible {
       transform: translateY(0);
     }
 
@@ -1274,8 +1274,8 @@
             </div>
           </div>
 
-          <h3 class="fs-24 md-fs-30 text-cyanBrand font-bold mt-6 secondary-title"
-            style="color: #0B1221; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">Il est
+          <h3 class="font-bold mt-6 secondary-title"
+            style="font-size:20px;color: #0B1221; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">Il est
             temps de former différemment.</h3>
 
         </div>
@@ -1358,7 +1358,7 @@
         font-family: 'Bangers', 'Arial Black', Impact, sans-serif !important;
         font-weight: 400 !important;
         letter-spacing: 0.03em;
-        font-size: clamp(2.8rem, 5vw, 5.5rem) !important;
+        font-size: 72px !important;
         color: #fff !important;
         line-height: 1.1 !important;
         margin-bottom: 2rem !important;
@@ -1721,21 +1721,21 @@
         </div>
 
         <div id="row2-text" style="flex: 1; display:flex; flex-direction:column; justify-content:center;">
-          <h2
-            style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">
+          <h2 class="row2-slide"
+            style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal; transition-delay:0s;">
             Nos formations digitales sont :</h2>
           <ul class="flex flex-col gap-4 animate-list-container">
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+            <li class="flex items-center gap-3 body-rounded text-black fs-20 row2-slide" style="transition-delay:0.1s;"><span class="arrow-animate"
                 style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Conformes aux exigences HAS</span></li>
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+            <li class="flex items-center gap-3 body-rounded text-black fs-20 row2-slide" style="transition-delay:0.2s;"><span class="arrow-animate"
                 style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Accessibles sur smartphone, 24h/24 et
                 7j/7</span></li>
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+            <li class="flex items-center gap-3 body-rounded text-black fs-20 row2-slide" style="transition-delay:0.3s;"><span class="arrow-animate"
                 style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Basées sur des situations réelles</span></li>
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+            <li class="flex items-center gap-3 body-rounded text-black fs-20 row2-slide" style="transition-delay:0.4s;"><span class="arrow-animate"
                 style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Immédiatement applicables au domicile</span>
             </li>
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
+            <li class="flex items-center gap-3 body-rounded text-black fs-20 row2-slide" style="transition-delay:0.5s;"><span class="arrow-animate"
                 style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Déployables sans perturber l'organisation
                 terrain</span></li>
           </ul>
@@ -1924,9 +1924,11 @@
             var t2 = clamp((scrolled - r2Start) / r2Range, 0, 1);
             row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
 
-            /* Texte section 2 : slide-up déclenché à 70% de la slide */
-            if (!row2TextTriggered && t2 >= 0.7 && row2Text) {
-              row2Text.classList.add('is-visible');
+            /* Texte section 2 : slide en cascade déclenché quand la section est arrivée */
+            if (!row2TextTriggered && t2 >= 1) {
+              document.querySelectorAll('.row2-slide').forEach(function(el) {
+                el.classList.add('is-visible');
+              });
               row2TextTriggered = true;
             }
           }
@@ -2152,8 +2154,8 @@
       </div>
 
       <!-- Texte bas (centré) -->
-      <div class="text-center fs-20 md-fs-24 font-bold text-black mt-4"
-        style="color: #000; background-color: transparent; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">
+      <div class="text-center font-bold text-black mt-4"
+        style="font-size:20px;color: #000; background-color: transparent; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">
         En quelques clics, votre plan de formation devient opérationnel.
       </div>
     </section>
@@ -2237,8 +2239,8 @@
           </div>
 
           <!-- Texte sous moniteur -->
-          <p class="mt-8 font-bold fs-20 md-fs-24 text-center italic"
-            style="font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif; color: #111827; line-height: 1.6;">
+          <p class="mt-8 font-bold text-center italic"
+            style="font-size:20px;font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif; color: #111827; line-height: 1.6;">
             Parcours d'intégration mixant tutorat terrain<br>et modules digitaux
           </p>
         </div>
