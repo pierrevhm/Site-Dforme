@@ -303,11 +303,22 @@
       transform: translateY(60px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .row2-slide.is-visible {
+   .row2-slide.is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
+    /* --- NOUVEAU : Animation du titre de la section 2 --- */
+    #row2-title {
+      clip-path: inset(100% 0 0 0);
+      transform: translateY(40px); /* Départ beaucoup plus proche = effet plus direct */
+      transition: clip-path 0.4s ease-out, transform 0.4s ease-out; /* 2x plus rapide, mouvement plus sec */
+    }
+    
+    #row2-title.is-visible {
+      clip-path: inset(0 0 0 0);
+      transform: translateY(0);
+    }
     .anim-fade-right {
       opacity: 0;
       transform: translateX(80px);
@@ -656,18 +667,7 @@
         cursor: pointer;
         width: 100%;
       }
-      
-      /* Animation séquentielle du titre section 2 */
-    #row2-title {
-      clip-path: inset(100% 0 0 0);
-      transform: translateY(120px);
-      transition: clip-path 0.8s ease-out, transform 0.8s ease-out;
-    }
     
-    #row2-title.is-visible {
-      clip-path: inset(0 0 0 0);
-      transform: translateY(0);
-    }
 
       /* Masquer le bouton "Créer un compte" dans la nav sur mobile (géré dans le menu) */
       .nav-create-btn-desktop {
@@ -1945,17 +1945,19 @@
             // 1. La section globale remonte
             row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
             
-            // 2. Le titre s'anime EN MÊME TEMPS (quand la section est à la moitié de son trajet)
+            // 2. Le titre s'anime APRÈS l'arrivée de la section
             if (row2TitleEl) {
-              var titleProgress = clamp((t2 - 0.5) / 0.5, 0, 1);
-              var ease = 1 - Math.pow(1 - titleProgress, 3);
-              
-              var y = (1 - ease) * 120;
-              var clip = (1 - ease) * 100;
-              
-              row2TitleEl.style.transform = 'translateY(' + y + 'px)';
-              row2TitleEl.style.clipPath = 'inset(' + clip + '% 0 0 0)';
-            }
+              // SÉCURITÉ : On nettoie le style en ligne pour laisser le CSS faire l'animation
+              row2TitleEl.style.transform = '';
+              row2TitleEl.style.clipPath = '';
+
+              // Dès que le panneau atteint 95% de sa course, on allume l'interrupteur
+              if (t2 >= 0.95) {
+                row2TitleEl.classList.add('is-visible');
+              } else {
+                row2TitleEl.classList.remove('is-visible'); // Permet de relancer l'effet si on remonte la page
+              }
+          }
           }
         }
 
