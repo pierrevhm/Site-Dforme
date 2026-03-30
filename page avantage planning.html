@@ -709,20 +709,25 @@ window.addEventListener('load', () => {
           </div>
 
         </div>
-
-        <!-- 2 880 € big stat -->
-        <div class="fade-up delay-2" style="background:#67DAD5;border-radius:20px;padding:32px 40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
-          <div style="background:rgba(255,255,255,0.25);border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-            <span style="font-size:24px;">💰</span>
-          </div>
-          <div>
-            <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:40px;color:#fff;line-height:1.1;margin:0;">2 880 € d'économie</p>
-            <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(255,255,255,0.9);margin:6px 0 0;">Sur 10 agents formés, par rapport à une formation en présentiel </p>
-          </div>
-        </div>
-
-      </div>
-    </section>
+<!-- 2 880 € big stat -->
+<div class="fade-up delay-2" style="background:#67DAD5;border-radius:20px;padding:40px 48px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:space-between;">
+  <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
+    <div style="background:rgba(255,255,255,0.25);border-radius:50%;width:64px;height:64px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <span class="material-symbols-outlined" style="font-size:32px;color:#fff;">savings</span>
+    </div>
+    <div>
+      <p style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:44px;color:#fff;line-height:1.1;margin:0;">2 880 € d'économie</p>
+      <p style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(255,255,255,0.9);margin:6px 0 0;">Sur 10 agents formés, par rapport à une formation en présentiel</p>
+    </div>
+  </div>
+  <button onclick="document.getElementById('modal-devis').style.display='flex'"
+    style="background:#fff;color:#000;border:none;border-radius:999px;padding:16px 32px;font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;cursor:pointer;white-space:nowrap;flex-shrink:0;display:flex;align-items:center;gap:8px;transition:all 0.2s ease;box-shadow:0 4px 16px rgba(0,0,0,0.15);"
+    onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,0.2)'"
+    onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'">
+    <span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">request_quote</span>
+    Demander un devis
+  </button>
+</div>
 
     <!-- IMPACT ORGANISATIONNEL ──────────────── -->
     <section class="py-16 md:py-24 relative overflow-hidden" style="background-color:#ffffff !important;">
