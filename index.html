@@ -1921,7 +1921,7 @@
     </script>
     <!-- ══ FIN CIRCULAR REVEAL ══ -->
 
-    <script>
+<script>
       (function () {
         function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
 
@@ -1941,19 +1941,24 @@
             var r2Start = base;
             var r2Range = window.innerHeight;
             var t2 = clamp((scrolled - r2Start) / r2Range, 0, 1);
+            
+            // 1. La section globale remonte
             row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
             
-        /* Titre section 2 : Déclenchement automatique une fois le panneau en place */
-        if (row2TitleEl) {
-          // Dès que le panneau est à 95% de son arrivée, on lance l'animation
-          if (t2 >= 0.95) {
-            row2TitleEl.classList.add('is-visible');
-          } else {
-            // Optionnel : l'enlever permet de rejouer l'animation si on remonte la page
-            row2TitleEl.classList.remove('is-visible'); 
+            // 2. Le titre s'anime EN MÊME TEMPS (quand la section est à la moitié de son trajet)
+            if (row2TitleEl) {
+              var titleProgress = clamp((t2 - 0.5) / 0.5, 0, 1);
+              var ease = 1 - Math.pow(1 - titleProgress, 3);
+              
+              var y = (1 - ease) * 120;
+              var clip = (1 - ease) * 100;
+              
+              row2TitleEl.style.transform = 'translateY(' + y + 'px)';
+              row2TitleEl.style.clipPath = 'inset(' + clip + '% 0 0 0)';
+            }
           }
         }
-        }
+
         window.addEventListener('scroll', update, { passive: true });
         window.addEventListener('resize', update);
         update();
