@@ -656,6 +656,18 @@
         cursor: pointer;
         width: 100%;
       }
+      
+      /* Animation séquentielle du titre section 2 */
+    #row2-title {
+      clip-path: inset(100% 0 0 0);
+      transform: translateY(120px);
+      transition: clip-path 0.8s ease-out, transform 0.8s ease-out;
+    }
+    
+    #row2-title.is-visible {
+      clip-path: inset(0 0 0 0);
+      transform: translateY(0);
+    }
 
       /* Masquer le bouton "Créer un compte" dans la nav sur mobile (géré dans le menu) */
       .nav-create-btn-desktop {
@@ -1723,7 +1735,7 @@
         </div>
 
         <div id="row2-text" style="flex: 1; display:flex; flex-direction:column; justify-content:center;">
-          <h2 id="row2-title" style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal; will-change:transform, clip-path;">
+          <h2 id="row2-title" style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">
             Nos formations digitales sont :</h2>
           <ul class="flex flex-col gap-4 animate-list-container">
             <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
@@ -1924,22 +1936,16 @@
             var t2 = clamp((scrolled - r2Start) / r2Range, 0, 1);
             row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
             
-        /* Titre section 2 : slide + effet masque (clip-path) au scroll */
+        /* Titre section 2 : Déclenchement automatique une fois le panneau en place */
         if (row2TitleEl) {
-          // L'animation démarre à 80% de l'arrivée de la section et se termine à 100%
-          var titleT = clamp((t2 - 0.95) / 0.05, 0, 1); 
-          
-          // Fonction d'adoucissement (ease-out)
-          var easeOut = 1 - Math.pow(1 - titleT, 3);
-          
-          // Calculs du glissement (120px) et du masque (100% -> 0%)
-          var translateY = (1 - easeOut) * 120;
-          var clipTop = (1 - easeOut) * 100;    
-          
-          row2TitleEl.style.transform = 'translateY(' + translateY + 'px)';
-          row2TitleEl.style.clipPath = 'inset(' + clipTop + '% 0 0 0)';
-        }
+          // Dès que le panneau est à 95% de son arrivée, on lance l'animation
+          if (t2 >= 0.95) {
+            row2TitleEl.classList.add('is-visible');
+          } else {
+            // Optionnel : l'enlever permet de rejouer l'animation si on remonte la page
+            row2TitleEl.classList.remove('is-visible'); 
           }
+        }
         }
         window.addEventListener('scroll', update, { passive: true });
         window.addEventListener('resize', update);
