@@ -308,11 +308,12 @@
       transform: translateY(0);
     }
 
-    /* --- NOUVEAU : Animation du titre de la section 2 --- */
+    /* --- NOUVEAU : Animation du titre de la section 2 (Ultra Brute) --- */
     #row2-title {
       clip-path: inset(100% 0 0 0);
-      transform: translateY(40px); /* Départ beaucoup plus proche = effet plus direct */
-      transition: clip-path 0.4s ease-out, transform 0.4s ease-out; /* 2x plus rapide, mouvement plus sec */
+      transform: translateY(30px); /* Le mouvement est encore plus court */
+      /* "linear" = pas de freinage à l'arrivée. Le texte tape sa position finale d'un coup sec. */
+      transition: clip-path 0.25s linear, transform 0.25s linear; 
     }
     
     #row2-title.is-visible {
