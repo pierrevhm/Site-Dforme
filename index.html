@@ -308,17 +308,9 @@
       transform: translateY(0);
     }
 
-    /* --- NOUVEAU : Animation du titre de la section 2 (Ultra Brute) --- */
+    /* Animation du titre section 2 : géré en JS (scroll lié) */
     #row2-title {
-      clip-path: inset(100% 0 0 0);
-      transform: translateY(30px); /* Le mouvement est encore plus court */
-      /* "linear" = pas de freinage à l'arrivée. Le texte tape sa position finale d'un coup sec. */
-      transition: clip-path 0.25s linear, transform 0.25s linear; 
-    }
-    
-    #row2-title.is-visible {
-      clip-path: inset(0 0 0 0);
-      transform: translateY(0);
+      will-change: transform, clip-path;
     }
     .anim-fade-right {
       opacity: 0;
@@ -1202,9 +1194,9 @@
     }
   </script>
   <!-- END: MainHeader -->
-  <main class="pt-24" style="background-color: #F7FBFF; position: relative;">
+  <main class="pt-24" style="background-color: #ffffff; position: relative;">
     <!-- BEGIN: HeroSection -->
-    <section class="relative relative-section overflow-hidden w-full" style="background-color: #F7FBFF;">
+    <section class="relative relative-section overflow-hidden w-full" style="background-color: #ffffff;">
       <div class="py-20 text-center relative z-10" style="padding-left: 5%; padding-right: 5%;">
         <h1 class="fs-48 md-fs-60 lg-fs-72 font-black mb-8 leading-tight main-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">
           Former autrement pour<br />mieux accompagner
@@ -1219,18 +1211,18 @@
     </section>
     <!-- END: HeroSection -->
     <!-- BEGIN: ProblemSection -->
-    <section class="py-16 md:py-24 relative relative-section" style="background-color: #F0f0f0;">
+    <section class="py-16 md:py-24 relative relative-section" style="background-color: #ffffff !important;">
       <div class="mx-auto w-full relative z-10" style="padding-left: 10%; padding-right: 10%;">
 
         <div class="rounded-[2.5rem] py-12 px-8 md:py-20 md:px-20 text-center shadow-sm"
-          style="background-color: #f5f5f5;">
+          style="background-color: #F0F0F0;">
 
           <h2 class="fs-30 md-fs-36 font-black mb-12 secondary-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">Vous gérez plus qu'un planning. Vous portez une
             mission.</h2>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-12 text-left">
-            <div class="problem-card bg-white p-6 lg:p-10 rounded-2xl shadow-neo border-2 border-black h-full"
-              style="background-color: #ffffff;">
+            <div class="problem-card bg-white p-6 lg:p-10 rounded-2xl shadow-neo border-2 h-full"
+              style="background-color: #ffffff; border-color: #67DAD5;">
               <h3
                 class="fs-18 lg:fs-20 xl:fs-24 font-bold mb-6 text-black secondary-title border-b-2 border-cyanBrand pb-3 flex items-center xl:whitespace-nowrap"
                 style="border-color: #67DAD5;">Dans le secteur des services à la personne :</h3>
@@ -1263,7 +1255,7 @@
               </ul>
             </div>
             <div class="problem-card bg-white p-6 lg:p-10 rounded-2xl shadow-neo border-2 h-full"
-              style="background-color: #ffffff; border-color: #000000;">
+              style="background-color: #ffffff; border-color: #67DAD5;">
               <h3
                 class="fs-18 lg:fs-20 xl:fs-24 font-bold mb-6 secondary-title border-b-2 pb-3 flex items-center xl:whitespace-nowrap"
                 style="border-color: #67DAD5;">
@@ -1300,7 +1292,7 @@
     <!-- BEGIN: SolutionSection -->
 
     <!-- HERO : titre + image DForm -->
-    <section class="py-16 md:py-24" style="background-color: #F7FBFF;">
+    <section class="py-16 md:py-24" style="background-color: #ffffff;">
       <div class="flex flex-col items-center text-center" style="padding-left: 5%; padding-right: 5%;">
         <h1 class="fs-48 md-fs-60 lg-fs-72 font-black main-title"
           style="color:#0B1221; width:90vw; max-width:1300px; margin:0 auto 1.25rem; line-height:1.15; font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">
@@ -1947,18 +1939,13 @@
             // 1. La section globale remonte
             row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
             
-            // 2. Le titre s'anime APRÈS l'arrivée de la section
+            // 2. Le titre s'anime avec le même effet que le titre 1 (clipPath + translateY lié au scroll)
             if (row2TitleEl) {
-              // SÉCURITÉ : On nettoie le style en ligne pour laisser le CSS faire l'animation
-              row2TitleEl.style.transform = '';
-              row2TitleEl.style.clipPath = '';
-
-              // Dès que le panneau atteint 95% de sa course, on allume l'interrupteur
-              if (t2 >= 0.95) {
-                row2TitleEl.classList.add('is-visible');
-              } else {
-                row2TitleEl.classList.remove('is-visible'); // Permet de relancer l'effet si on remonte la page
-              }
+              var titleT = Math.max(0, Math.min(1, (t2 - 0.5) / 0.5)); // commence à 50% de la course
+              var titleClip = (1 - titleT) * 100;
+              var titleTranslate = (1 - titleT) * 120;
+              row2TitleEl.style.clipPath = 'inset(' + titleClip + '% 0 0 0)';
+              row2TitleEl.style.transform = 'translateY(' + titleTranslate + 'px)';
           }
           }
         }
@@ -1979,11 +1966,34 @@
           }).observe(crWhite, { attributes: true, attributeFilter: ['class'] });
         }
       })();
+
+      // Animation indépendante du titre "Nos formations digitales sont :"
+      (function() {
+        var titleEl = document.getElementById('row2-title');
+        if (!titleEl) return;
+
+        function updateTitle() {
+          var rect = titleEl.getBoundingClientRect();
+          var vh = window.innerHeight;
+          // L'animation se déclenche quand le titre entre dans le bas de l'écran
+          // progress 0 = titre à vh (bas de l'écran), progress 1 = titre à vh*0.4 (40% depuis le bas)
+          var progress = (vh * 1.1 - rect.top) / (vh * 0.6);
+          progress = Math.max(0, Math.min(1, progress));
+          var clip = (1 - progress) * 100;
+          var translate = (1 - progress) * 20;
+          titleEl.style.clipPath = 'inset(' + clip + '% 0 0 0)';
+          titleEl.style.transform = 'translateY(' + translate + 'px)';
+        }
+
+        window.addEventListener('scroll', updateTitle, { passive: true });
+        window.addEventListener('resize', updateTitle);
+        updateTitle();
+      })();
     </script>
 
     <!-- END: SolutionSection -->
     <!-- BEGIN: StrategicAdvantagesGrid -->
-    <section class="relative py-16 md:py-24 relative-section" style="background-color: #F7FBFF; z-index: 2;">
+    <section class="relative py-16 md:py-24 relative-section" style="background-color: #ffffff; z-index: 2;">
       <div class="relative z-10" style="padding-left: 10%; padding-right: 10%;">
         <div class="text-center mb-16">
           <h2 class="fs-36 font-black mb-4 secondary-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">Des avantages stratégiques concrets</h2>
@@ -2081,7 +2091,7 @@
     <!-- END: StrategicAdvantagesGrid -->
     <!-- BEGIN: StepsSection -->
     <section class="py-10 md:py-16 relative text-center relative-section expertise-section"
-      style="background-color: #F7FBFF; z-index: 1;">
+      style="background-color: #ffffff; z-index: 1;">
       <!-- Title block (centré, contraint) -->
       <div class="relative z-10" style="padding-left: 10%; padding-right: 10%;">
         <div class="text-center mb-12 flex flex-col items-center">
@@ -2190,7 +2200,7 @@
     </section>
     <!-- END: StepsSection -->
     <!-- BEGIN: ExpertiseSection -->
-    <section class="pt-16 md:pt-24 pb-6 relative relative-section" style="background-color: #F7FBFF;">
+    <section class="pt-16 md:pt-24 pb-6 relative relative-section" style="background-color: #ffffff;">
       <div class="relative z-10" style="padding-left: 10%; padding-right: 10%;">
         <!-- Title -->
         <h2 class="fs-30 md-fs-36 font-black text-center text-black mb-16 secondary-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">
