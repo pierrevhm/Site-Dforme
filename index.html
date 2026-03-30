@@ -1397,11 +1397,18 @@
       /* --- Conteneur global des bulles --- */
       #cr-bullets {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* Force les 4 éléments à rester sur la même ligne sur PC */
         justify-content: flex-start;
-        gap: 13rem;
-        /* <-- J'ai passé l'espace de 5rem à 7rem */
+        gap: clamp(2rem, 6vw, 10rem); /* L'espace agit comme un élastique : il s'adapte à la largeur de l'écran */
         width: 100%;
+      }
+
+      /* Sécurité : On autorise le retour à la ligne uniquement sur les petits écrans (tablettes/mobiles) */
+      @media (max-width: 1024px) {
+        #cr-bullets {
+          flex-wrap: wrap;
+          gap: 3rem;
+        }
       }
 
       /* --- Style de base pour les 4 bulles (Les 3 inactives seront comme ça) --- */
