@@ -1724,7 +1724,7 @@
 
         <div id="row2-text" style="flex: 1; display:flex; flex-direction:column; justify-content:center;">
           <h2 id="row2-title"
-            style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal; will-change:transform;">
+            <h2 id="row2-title" style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal; will-change:transform, clip-path;">
             Nos formations digitales sont :</h2>
           <ul class="flex flex-col gap-4 animate-list-container">
             <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
@@ -1925,14 +1925,24 @@
             var t2 = clamp((scrolled - r2Start) / r2Range, 0, 1);
             row2.style.transform = 'translateY(' + ((1 - t2) * 100) + 'vh)';
 
-            /* Titre section 2 : slide brut au scroll, derniers 30% du slide de la section */
-            if (row2TitleEl) {
-              var titleT = clamp((t2 - 0.7) / 0.3, 0, 1);
-              row2TitleEl.style.transform = 'translateY(' + ((1 - titleT) * 80) + 'px)';
-            }
+            /* Titre section 2 : slide + effet masque (clip-path) au scroll */
+        /* Titre section 2 : slide + effet masque (clip-path) au scroll */
+        if (row2TitleEl) {
+          // On allonge un peu la plage (0.6 au lieu de 0.7) pour laisser le temps à l'effet de se déployer
+          var titleT = clamp((t2 - 0.6) / 0.4, 0, 1); 
+          
+          // Fonction d'adoucissement (ease-out) pour fluidifier l'animation comme sur la section 1
+          var easeOut = 1 - Math.pow(1 - titleT, 3);
+          
+          // Calculs du glissement et du masque
+          var translateY = (1 - easeOut) * 120; // Glissement de 120px (identique à la section 1)
+          var clipTop = (1 - easeOut) * 100;    // Révélation de haut en bas (100% masqué -> 0% masqué)
+          
+          row2TitleEl.style.transform = 'translateY(' + translateY + 'px)';
+          row2TitleEl.style.clipPath = 'inset(' + clipTop + '% 0 0 0)';
+        }
           }
         }
-
         window.addEventListener('scroll', update, { passive: true });
         window.addEventListener('resize', update);
         update();
