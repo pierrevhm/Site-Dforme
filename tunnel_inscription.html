@@ -878,7 +878,8 @@
         label.textContent = 'Sélectionnez vos formations...';
         label.style.color = '#9ca3af';
       } else {
-        label.textContent = checked.length + ' formation' + (checked.length > 1 ? 's' : '') + ' sélectionnée' + (checked.length > 1 ? 's' : '');
+        const names = Array.from(checked).map(cb => cb.value);
+        label.textContent = names.join(', ');
         label.style.color = '#111827';
       }
     }
