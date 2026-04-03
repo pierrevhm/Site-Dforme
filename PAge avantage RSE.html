@@ -339,14 +339,36 @@
     }
 
     /* ---- DÉCO FLUIDE (proportionnel 24" → tout écran) ---- */
-    img[src*="angle gauche"]               { width: clamp(220px, 29vw, 550px) !important; }
-    img[src*="droit imagehaut"]            { width: clamp(280px, 35vw, 680px) !important; }
-    img[src*="design 2 traits"]            { width: clamp(140px, 16vw, 310px) !important; }
-    img[src*="element desgin bannière"]    { width: clamp(280px, 35vw, 680px) !important; }
-    img[src*="element design4"]            { width: clamp(260px, 33vw, 640px) !important; }
-    img[src*="hauT droit noir"]            { width: clamp(130px, 16vw, 310px) !important; }
-    img[src*="haut gauche noir"]           { width: clamp(110px, 14vw, 260px) !important; }
-    img[src*="grand coté gauche"]          { width: clamp(130px, 15vw, 280px) !important; }
+    /* Retrait du clamp qui forçait une taille trop grande sur RSE */
+    img[src*="angle gauche"] {}
+
+    img[src*="droit imagehaut"] {
+      width: clamp(280px, 35vw, 680px) !important;
+    }
+
+    img[src*="design 2 traits"] {
+      width: clamp(140px, 16vw, 310px) !important;
+    }
+
+    img[src*="element desgin bannière"] {
+      width: clamp(280px, 35vw, 680px) !important;
+    }
+
+    img[src*="element design4"] {
+      width: clamp(260px, 33vw, 640px) !important;
+    }
+
+    img[src*="hauT droit noir"] {
+      width: clamp(130px, 16vw, 310px) !important;
+    }
+
+    img[src*="haut gauche noir"] {
+      width: clamp(110px, 14vw, 260px) !important;
+    }
+
+    img[src*="grand coté gauche"] {
+      width: clamp(130px, 15vw, 280px) !important;
+    }
 
     @media (max-width: 768px) {
       .card {
@@ -380,17 +402,49 @@
     }
 
     /* ── Tailles de police en pixels (équivalents Tailwind) ── */
-    .fs-12 { font-size: clamp(0.625rem, 0.625vw, 0.75rem); }
-    .fs-14 { font-size: clamp(0.75rem, 0.73vw, 0.875rem); }
-    .fs-16 { font-size: clamp(0.8125rem, 0.833vw, 1rem); }
-    .fs-18 { font-size: clamp(0.875rem, 0.9375vw, 1.125rem); }
-    .fs-20 { font-size: clamp(0.9375rem, 1.04vw, 1.25rem); }
-    .fs-24 { font-size: clamp(1.0625rem, 1.25vw, 1.5rem); }
-    .fs-30 { font-size: clamp(1.25rem, 1.5625vw, 1.875rem); }
-    .fs-36 { font-size: clamp(1.375rem, 1.875vw, 2.25rem); }
-    .fs-48 { font-size: clamp(1.75rem, 2.5vw, 3rem); }
-    .fs-60 { font-size: clamp(2rem, 3.125vw, 3.75rem); }
-    .fs-72 { font-size: clamp(2rem, 2.9vw, 3.5rem); }
+    .fs-12 {
+      font-size: clamp(0.625rem, 0.625vw, 0.75rem);
+    }
+
+    .fs-14 {
+      font-size: clamp(0.75rem, 0.73vw, 0.875rem);
+    }
+
+    .fs-16 {
+      font-size: clamp(0.8125rem, 0.833vw, 1rem);
+    }
+
+    .fs-18 {
+      font-size: clamp(0.875rem, 0.9375vw, 1.125rem);
+    }
+
+    .fs-20 {
+      font-size: clamp(0.9375rem, 1.04vw, 1.25rem);
+    }
+
+    .fs-24 {
+      font-size: clamp(1.0625rem, 1.25vw, 1.5rem);
+    }
+
+    .fs-30 {
+      font-size: clamp(1.25rem, 1.5625vw, 1.875rem);
+    }
+
+    .fs-36 {
+      font-size: clamp(1.375rem, 1.875vw, 2.25rem);
+    }
+
+    .fs-48 {
+      font-size: clamp(1.75rem, 2.5vw, 3rem);
+    }
+
+    .fs-60 {
+      font-size: clamp(2rem, 3.125vw, 3.75rem);
+    }
+
+    .fs-72 {
+      font-size: clamp(2rem, 2.9vw, 3.5rem);
+    }
 
     @media (min-width: 768px) {
       .md-fs-14 {
@@ -1019,12 +1073,14 @@
   <script>function handleSubmitDevis() { const formations = document.querySelectorAll('input[name="formations-modal"]:checked'); if (formations.length === 0) { alert('Veuillez sélectionner au moins une formation.'); return; } document.getElementById('quote-form-modal').style.display = 'none'; document.getElementById('success-message-modal').classList.remove('hidden'); }</script>
   <!-- END: MainHeader -->
 
-  <main style="background-color:#ffffff !important;">
+  <main class="pt-24" style="background-color:#ffffff !important;">
 
     <!-- HERO -->
-    <section class="relative py-16 md:py-24" style="background-color:#ffffff !important; overflow:visible; z-index:2;">
-      <img src="images/image angle gauche.png" alt="" style="position:absolute; top:110px; left:0; width:510px; max-width:35%; pointer-events:none; z-index:0; display:block;">
-      <img src="images/image du pptx/image haut droite acceuil.png" alt="" style="position:absolute; right:0; top:0; width:280px; pointer-events:none; z-index:30; display:block;">
+    <section class="relative py-16 md:py-24" style="background-color:#ffffff !important; overflow:visible; z-index:20;">
+      <img src="images/image du pptx/image RSE haut gauche.png" alt=""
+        style="position:absolute; top:0; left:0; width:440px; max-width:35%; pointer-events:none; z-index:0; display:block;">
+      <img src="images/image du pptx/image haut droite acceuil.png" alt=""
+        style="position:absolute; right:0; top:0; width:220px; pointer-events:none; z-index:30; display:block;">
       <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
 
         <!-- Badge au-dessus du titre -->
@@ -1050,7 +1106,8 @@
     </section>
 
     <!-- 4 IMPACTS RSE -->
-    <section class="pt-16 md:pt-24 pb-16 relative overflow-hidden" style="background-color:#F0F0F0 !important;">
+    <section class="pt-16 md:pt-24 pb-16 relative overflow-hidden"
+      style="background-color:#F0F0F0 !important; z-index: 10;">
       <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:280px;opacity:0.15;" alt="">
       <div class="max-w-7xl mx-auto px-6 relative z-10">
 
@@ -1125,8 +1182,10 @@
 
     <!-- CALCULATEUR CO₂ -->
     <section class="py-16 md:py-24 relative" style="background-color:#ffffff !important; overflow:visible; z-index:3;">
-      <img src="images/image du pptx/element gauche avec traits .png" alt="" style="position:absolute; left:0; top:37%; transform:translateY(-50%); width:280px; pointer-events:none; z-index:3; display:block;">
-      <img src="images/image du pptx/element droite avec traits.png" alt="" style="position:absolute; right:0; top:80%; transform:translateY(-50%); width:280px; pointer-events:none; z-index:3; display:block;">
+      <img src="images/image du pptx/element gauche avec traits .png" alt=""
+        style="position:absolute; left:0; top:37%; transform:translateY(-50%); width:280px; pointer-events:none; z-index:3; display:block;">
+      <img src="images/image du pptx/element droite avec traits.png" alt=""
+        style="position:absolute; right:0; top:80%; transform:translateY(-50%); width:280px; pointer-events:none; z-index:3; display:block;">
       <div class="max-w-7xl mx-auto px-6 relative z-10">
 
         <div class="text-center mb-14">
@@ -1400,17 +1459,18 @@
     <section class="px-6 pt-16 md:pt-24 pb-0 relative" style="background-color:#ffffff !important; overflow: visible;">
       <!-- Éléments décoratifs (Sync avec index.html) -->
       <img src="images/image du pptx/design 2 traits.png" alt="" class="cta-section-img deco-hide-mobile"
-        style="position:absolute;left:-110px;top:calc(50% - 290px);transform:translateY(-30%) rotate(90deg);width:300px;opacity:1;pointer-events:none;z-index:2;">
+        style="position:absolute;left:-110px;top:calc(30% - 290px);transform:translateY(-30%) rotate(90deg);width:300px;opacity:1;pointer-events:none;z-index:2;">
 
-      <img src="images/image du pptx/droit blanc.jpg" alt="" style="position:absolute; right:-50px; top:150px; transform:translateY(-50%); width:220px; pointer-events:none; z-index:2; display:block;">
+      <img src="images/image du pptx/droit blanc.jpg" alt=""
+        style="position:absolute; right:-50px; top:150px; transform:translateY(-50%); width:220px; pointer-events:none; z-index:2; display:block;">
       <div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
         style="background-color:#67DAD5; border:2px solid #67DAD5; margin-top:40px; z-index: 10;">
         <div class="relative z-10">
           <h2 class="secondary-title text-[#0B1221] mb-4"
             style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important; font-weight:400 !important; letter-spacing:0.03em;">
             Engagez-vous pour une formation plus responsable</h2>
-          <p
-            class="fs-16" style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;color:rgba(0,0,0,0.75);margin-bottom:32px;">
+          <p class="fs-16"
+            style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;color:rgba(0,0,0,0.75);margin-bottom:32px;">
             Demandez votre devis et découvrez comment DFORMPRO DIGITAL contribue à votre stratégie RSE.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
@@ -1431,8 +1491,10 @@
 
     <!-- Design bas -->
     <div style="line-height:0;text-align:right;margin-top:-4px; position:relative; z-index:2;">
-      <img src="images/image du pptx/element desgin bannière.png" alt="" class="cta-section-img deco-hide-mobile" style="position:absolute;left:-350px;bottom:0px;transform:rotate(6deg);width:670px;opacity:1;pointer-events:none;z-index:-1;">
-      <img src="images/image du pptx/desgin bas .png" alt="" style="display:inline-block;width:40%; margin-right:-105px;">
+      <img src="images/image du pptx/element desgin bannière.png" alt="" class="cta-section-img deco-hide-mobile"
+        style="position:absolute;left:-350px;bottom:0px;transform:rotate(6deg);width:670px;opacity:1;pointer-events:none;z-index:-1;">
+      <img src="images/image du pptx/desgin bas .png" alt=""
+        style="display:inline-block;width:40%; margin-right:-105px;">
     </div>
 
     <!-- Footer -->

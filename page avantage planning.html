@@ -15,7 +15,8 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Bangers&display=swap');
 
-    body { overflow-x: hidden;
+    body {
+      overflow-x: hidden;
       font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
       font-weight: 700;
       color: #111827;
@@ -276,13 +277,33 @@
     }
 
     /* ---- DÉCO FLUIDE (proportionnel 24" → tout écran) ---- */
-    img[src*="angle gauche"]               { width: clamp(220px, 29vw, 550px) !important; }
-    img[src*="planning haut gauche"]       { width: clamp(290px, 38vw, 720px) !important; }
-    img[src*="design 2 traits"]            { width: clamp(140px, 16vw, 310px) !important; }
-    img[src*="element design bleu2"]       { width: clamp(210px, 26vw, 505px) !important; }
-    img[src*="cote gauche bleu"]           { width: clamp(100px, 12vw, 220px) !important; }
-    img[src*="cote droit bleu"]            { width: clamp(100px, 12vw, 220px) !important; }
-    img[src*="grand coté gauche"]          { width: clamp(130px, 16vw, 300px) !important; }
+    img[src*="angle gauche"] {
+      width: clamp(220px, 29vw, 550px) !important;
+    }
+
+    img[src*="planning haut gauche"] {
+      width: clamp(290px, 38vw, 720px) !important;
+    }
+
+    img[src*="design 2 traits"] {
+      width: clamp(140px, 16vw, 310px) !important;
+    }
+
+    img[src*="element design bleu2"] {
+      width: clamp(210px, 26vw, 505px) !important;
+    }
+
+    img[src*="cote gauche bleu"] {
+      width: clamp(100px, 12vw, 220px) !important;
+    }
+
+    img[src*="cote droit bleu"] {
+      width: clamp(100px, 12vw, 220px) !important;
+    }
+
+    img[src*="grand coté gauche"] {
+      width: clamp(130px, 16vw, 300px) !important;
+    }
 
     @media (max-width: 768px) {
       .grid.grid-cols-1.md\\:grid-cols-2 {
@@ -475,17 +496,49 @@
     }
 
     /* ── Tailles de police en pixels (équivalents Tailwind) ── */
-    .fs-12 { font-size: clamp(0.625rem, 0.625vw, 0.75rem); }
-    .fs-14 { font-size: clamp(0.75rem, 0.73vw, 0.875rem); }
-    .fs-16 { font-size: clamp(0.8125rem, 0.833vw, 1rem); }
-    .fs-18 { font-size: clamp(0.875rem, 0.9375vw, 1.125rem); }
-    .fs-20 { font-size: clamp(0.9375rem, 1.04vw, 1.25rem); }
-    .fs-24 { font-size: clamp(1.0625rem, 1.25vw, 1.5rem); }
-    .fs-30 { font-size: clamp(1.25rem, 1.5625vw, 1.875rem); }
-    .fs-36 { font-size: clamp(1.375rem, 1.875vw, 2.25rem); }
-    .fs-48 { font-size: clamp(1.75rem, 2.5vw, 3rem); }
-    .fs-60 { font-size: clamp(2rem, 3.125vw, 3.75rem); }
-    .fs-72 { font-size: clamp(2rem, 2.9vw, 3.5rem); }
+    .fs-12 {
+      font-size: clamp(0.625rem, 0.625vw, 0.75rem);
+    }
+
+    .fs-14 {
+      font-size: clamp(0.75rem, 0.73vw, 0.875rem);
+    }
+
+    .fs-16 {
+      font-size: clamp(0.8125rem, 0.833vw, 1rem);
+    }
+
+    .fs-18 {
+      font-size: clamp(0.875rem, 0.9375vw, 1.125rem);
+    }
+
+    .fs-20 {
+      font-size: clamp(0.9375rem, 1.04vw, 1.25rem);
+    }
+
+    .fs-24 {
+      font-size: clamp(1.0625rem, 1.25vw, 1.5rem);
+    }
+
+    .fs-30 {
+      font-size: clamp(1.25rem, 1.5625vw, 1.875rem);
+    }
+
+    .fs-36 {
+      font-size: clamp(1.375rem, 1.875vw, 2.25rem);
+    }
+
+    .fs-48 {
+      font-size: clamp(1.75rem, 2.5vw, 3rem);
+    }
+
+    .fs-60 {
+      font-size: clamp(2rem, 3.125vw, 3.75rem);
+    }
+
+    .fs-72 {
+      font-size: clamp(2rem, 2.9vw, 3.5rem);
+    }
 
     @media (min-width: 768px) {
       .md-fs-14 {
@@ -544,7 +597,8 @@
     }
 
     /* ── Système de polices harmonisé ── */
-    body { overflow-x: hidden;
+    body {
+      overflow-x: hidden;
       font-family: 'Nunito', sans-serif;
     }
 
@@ -930,12 +984,14 @@
   <script>function handleSubmitDevis() { const formations = document.querySelectorAll('input[name="formations-modal"]:checked'); if (formations.length === 0) { alert('Veuillez sélectionner au moins une formation.'); return; } document.getElementById('quote-form-modal').style.display = 'none'; document.getElementById('success-message-modal').classList.remove('hidden'); }</script>
   <!-- END: MainHeader -->
 
-  <main style="background-color:#ffffff !important;">
+  <main class="pt-24" style="background-color:#ffffff !important;">
 
     <!-- HERO ─────────────────────────────────── -->
     <section class="relative py-16 md:py-24" style="background-color:#ffffff !important; overflow:visible;">
-      <img src="images/image du pptx/angle gauche.png" class="bg-deco" style="top:0;left:0px;width:550px;opacity:1;" alt="">
-      <img src="images/image du pptx/planning haut gauche.png" alt="" style="position:absolute; right:-220px; top:60%; transform:translateY(-50%); width:720px; pointer-events:none; z-index:1; display:block;">
+      <img src="images/image du pptx/angle gauche.png" class="bg-deco"
+        style="top:0;left:0px;width:440px;max-width:35%;opacity:1;z-index:0;" alt="">
+      <img src="images/image du pptx/image planning haut droit.png" alt=""
+        style="position:absolute; right:-45px; top:0; width:450px; pointer-events:none; z-index:1; display:block;">
       <div class="max-w-6xl mx-auto px-6 text-center relative z-10" style="background-color:transparent !important;">
         <div class="flex justify-center mb-6 fade-up" style="margin-top: 80px;">
           <span class="badge" style="border-color:#67DAD5;color:#67DAD5;">
@@ -957,8 +1013,10 @@
     <!-- PROBLÈME + STAT ──────────────────────── -->
     <section class="relative overflow-hidden py-16 md:py-24" style="background-color:#ffffff !important;">
       <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:300px;opacity:0.15;" alt="">
-      <img src="images/image du pptx/element design bleu2.png" alt="" style="position:absolute; left:-200px; top:51%; transform:translateY(-50%) rotate(-15deg); width:505px; pointer-events:none; z-index:0; display:block;">
-      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; right:-60px; top:39%; transform:translateY(-50%) rotate(180deg); width:320px; pointer-events:none; z-index:0; display:block;">
+      <img src="images/image du pptx/element design bleu2.png" alt=""
+        style="position:absolute; left:-200px; top:51%; transform:translateY(-50%) rotate(-15deg); width:505px; pointer-events:none; z-index:0; display:block;">
+      <img src="images/image du pptx/design 2 traits.png" alt=""
+        style="position:absolute; right:-60px; top:39%; transform:translateY(-50%) rotate(180deg); width:320px; pointer-events:none; z-index:0; display:block;">
       <div class="max-w-6xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch"
           style="background-color:transparent !important;">
@@ -1111,10 +1169,14 @@
 
     <!-- COMPARAISON ──────────────────────────── -->
     <section class="py-16 md:py-24 relative" style="background-color:#ffffff !important; overflow:visible; z-index:2;">
-      <img src="images/image du pptx/cote gauche bleu .jpg" alt="" style="position:absolute; left:0; top:70%; transform:translateY(-50%); width:220px; pointer-events:none; z-index:0; display:block;">
-      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; left:-100px; top:-80px; transform:translateY(0) rotate(84deg); width:300px; pointer-events:none; z-index:3; display:block;">
-      <img src="images/image du pptx/cote droit bleu.jpg" alt="" style="position:absolute; right:0; top:35%; transform:translateY(-50%); width:220px; pointer-events:none; z-index:1; display:block;">
-      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; right:-107px; top:100%; transform:translateY(-50%) rotate(90deg) scaleY(-1); width:300px; pointer-events:none; z-index:3; display:block;">
+      <img src="images/image du pptx/cote gauche bleu .jpg" alt=""
+        style="position:absolute; left:0; top:70%; transform:translateY(-50%); width:220px; pointer-events:none; z-index:0; display:block;">
+      <img src="images/image du pptx/design 2 traits.png" alt=""
+        style="position:absolute; left:-100px; top:-80px; transform:translateY(0) rotate(84deg); width:300px; pointer-events:none; z-index:3; display:block;">
+      <img src="images/image du pptx/cote droit bleu.jpg" alt=""
+        style="position:absolute; right:0; top:35%; transform:translateY(-50%); width:220px; pointer-events:none; z-index:1; display:block;">
+      <img src="images/image du pptx/design 2 traits.png" alt=""
+        style="position:absolute; right:-107px; top:100%; transform:translateY(-50%) rotate(90deg) scaleY(-1); width:300px; pointer-events:none; z-index:3; display:block;">
       <div class="max-w-7xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
 
         <div class="text-center mb-14" style="background-color:transparent !important;">
@@ -1237,190 +1299,189 @@
     <!-- IMPACT ORGANISATIONNEL ──────────────── -->
     <section class="py-16 md:py-24 relative" style="background-color:#ffffff !important; overflow:visible; z-index:1;">
       <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:280px;opacity:0.15;" alt="">
-      <img src="images/image du pptx/image avec photos.png" alt="" style="position:absolute; left:-100px; bottom:50px; width:400px; pointer-events:none; z-index:1; display:block;">
-      <img src="images/image du pptx/element desgin bannière.png" alt="" style="position:absolute; right:-220px; top:90%; transform:translateY(-50%) rotate(-10deg); width:620px; pointer-events:none; z-index:2; display:block;">
+      <img src="images/image du pptx/image avec photos.png" alt=""
+        style="position:absolute; left:-100px; bottom:50px; width:400px; pointer-events:none; z-index:1; display:block;">
+      <img src="images/image du pptx/element desgin bannière.png" alt=""
+        style="position:absolute; right:-220px; top:90%; transform:translateY(-50%) rotate(-10deg); width:620px; pointer-events:none; z-index:2; display:block;">
       <div class="max-w-7xl mx-auto px-6 relative z-10" style="background-color:transparent !important;">
 
-            <!-- Titre centré au-dessus du grid -->
-            <div class="text-center mb-12">
-              <h2 class="secondary-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">
-                Impact organisationnel réduit</h2>
-              <p
-                style="font-family:'Nunito',sans-serif;font-weight:400;font-size:22px;color:#74888F;margin-top:16px;font-style:italic;">
-                Former vos équipes sans bloquer votre activité ni désorganiser votre terrain.</p>
-            </div>
+        <!-- Titre centré au-dessus du grid -->
+        <div class="text-center mb-12">
+          <h2 class="secondary-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">
+            Impact organisationnel réduit</h2>
+          <p
+            style="font-family:'Nunito',sans-serif;font-weight:400;font-size:22px;color:#74888F;margin-top:16px;font-style:italic;">
+            Former vos équipes sans bloquer votre activité ni désorganiser votre terrain.</p>
+        </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch"
-              style="background-color:transparent !important;">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch"
+          style="background-color:transparent !important;">
 
-              <!-- Timeline gauche -->
-              <div style="background-color:transparent !important;">
-                <p
-                  style="font-family:'Nunito',sans-serif;font-weight:400;font-size:20px;color:#374151;margin-bottom:24px;font-style:italic;padding-left:52px;">
-                  La formation digitale permet :</p>
-                <div class="space-y-5" style="background-color:transparent !important;">
-                  <div class="timeline-step fade-up items-center">
-                    <div class="step-dot">1</div>
-                    <div class="card flex-1 p-4" style="border-color:#67DAD5 !important;">
-                      <p
-                        style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:15px;color:#000;">
-                        d'éviter l'arrêt collectif d'activité</p>
-                    </div>
-                  </div>
-                  <div class="timeline-step fade-up delay-1">
-                    <div class="step-dot">2</div>
-                    <div class="card flex-1 p-4" style="border-color:#67DAD5 !important;">
-                      <p
-                        style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:15px;color:#000;">
-                        de répartir les connexions dans le temps</p>
-                    </div>
-                  </div>
-                  <div class="timeline-step fade-up delay-2">
-                    <div class="step-dot">3</div>
-                    <div class="card flex-1 p-4" style="border-color:#67DAD5 !important;">
-                      <p
-                        style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:15px;color:#000;">
-                        de former sans bloquer des journées complètes</p>
-                    </div>
-                  </div>
-                  <div class="timeline-step fade-up delay-3">
-                    <div class="step-dot">4</div>
-                    <div class="card flex-1 p-4" style="border-color:#67DAD5 !important;">
-                      <p
-                        style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:15px;color:#000;">
-                        d'intégrer la montée en compétences dans la réalité du terrain</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- DFormPro droite -->
-              <div style="background-color:#FFFFFF !important;">
-                <div class="card-cyan p-8 md:p-10"
-                  style="background: linear-gradient(135deg, #3db8b3 0%, #67DAD5 100%); border: none;">
-
-                  <!-- Titre avec icône -->
-                  <div class="flex items-center gap-3 mb-6 pb-5" style="border-bottom: 2px solid #ffffff;">
-                    <img src="images/avatar.png" alt="DFormPro Digital"
-                      style="width:44px;height:44px;border-radius:16px;object-fit:contain;background:#fff;padding:4px;flex-shrink:0;">
-                    <h3
-                      style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:900;font-size:20px;color:#fff;margin:0;">
-                      Avec DFORMPRO DIGITAL
-                    </h3>
-                  </div>
-                  <div class="space-y-3">
-                    <div class="flex items-center gap-3 p-3"
-                      style="background:rgba(255,255,255,0.2);border-radius:16px;">
-                      <div
-                        style="width:28px;height:28px;border-radius:50%;background-color:#ffffff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <span style="color:#67DAD5;font-size:16px;font-weight:bold;">✔</span>
-                      </div>
-                      <span
-                        style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#fff;">Vous
-                        préservez vos heures d'intervention</span>
-                    </div>
-                    <div class="flex items-center gap-3 p-3"
-                      style="background:rgba(255,255,255,0.2);border-radius:16px;">
-                      <div
-                        style="width:28px;height:28px;border-radius:50%;background-color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <span style="color:#67DAD5;font-size:16px;font-weight:bold;">✔</span>
-                      </div>
-                      <span
-                        style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#fff;">Vous
-                        limitez les pertes de chiffre d'affaires</span>
-                    </div>
-                    <div class="flex items-center gap-3 p-3"
-                      style="background:rgba(255,255,255,0.2);border-radius:16px;">
-                      <div
-                        style="width:28px;height:28px;border-radius:50%;background-color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <span style="color:#67DAD5;font-size:16px;font-weight:bold;">✔</span>
-                      </div>
-                      <span
-                        style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#fff;">Vous
-                        sécurisez votre organisation</span>
-                    </div>
-                    <div class="flex items-center gap-3 p-3"
-                      style="background:rgba(255,255,255,0.2);border-radius:16px;">
-                      <div
-                        style="width:28px;height:28px;border-radius:50%;background-color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                        <span style="color:#67DAD5;font-size:16px;font-weight:bold;">✔</span>
-                      </div>
-                      <span
-                        style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#fff;">Vous
-                        développez les compétences sans fragiliser votre modèle économique</span>
-                    </div>
-                  </div>
-                </div><!-- fin space-y-3 -->
-
-                <div class="mt-6 pt-5 text-center" style="border-top:2px solid rgba(255,255,255,0.3);">
+          <!-- Timeline gauche -->
+          <div style="background-color:transparent !important;">
+            <p
+              style="font-family:'Nunito',sans-serif;font-weight:400;font-size:20px;color:#374151;margin-bottom:24px;font-style:italic;padding-left:52px;">
+              La formation digitale permet :</p>
+            <div class="space-y-5" style="background-color:transparent !important;">
+              <div class="timeline-step fade-up items-center">
+                <div class="step-dot">1</div>
+                <div class="card flex-1 p-4" style="border-color:#67DAD5 !important;">
                   <p
-                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-style:italic;font-size:15px;color:#fff;line-height:1.6;">
-                    Former devient un investissement maîtrisé,<br>non une perturbation opérationnelle.
-                  </p>
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:15px;color:#000;">
+                    d'éviter l'arrêt collectif d'activité</p>
                 </div>
-
-              </div><!-- fin card-cyan -->
-            </div><!-- fin colonne droite -->
-
-          </div><!-- fin grid lg:grid-cols-2 -->
-
-          <!-- Card citation pleine largeur -->
-          <div class="card p-10 mt-10 text-center max-w-4xl mx-auto" style="border: 2px solid #67DAD5;">
-            <p
-              style="font-family:'Bangers','Arial Black',Impact,sans-serif; font-size:clamp(1.3rem,2.5vw,1.8rem); color:#000; letter-spacing:0.03em; margin-bottom:8px;">
-              La formation s'adapte au planning.
-            </p>
-            <p
-              style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif; font-size:clamp(1.3rem,2.5vw,1.8rem); color:#67DAD5; font-weight:bold; font-style:italic;">
-              Le planning ne subit plus la formation.
-            </p>
-          </div><!-- fin card citation -->
-        </div><!-- fin max-w-7xl -->
-      </section>
-
-      <!-- CTA ─────────────────────────────────── -->
-      <section class="px-6 pt-16 md:pt-24 pb-0 relative"
-          style="background-color:#ffffff !important; overflow: visible;">
-          <!-- Éléments décoratifs (Sync avec index.html) -->
-          <img src="images/image du pptx/design 2 traits.png" alt="" class="cta-section-img deco-hide-mobile"
-            style="position:absolute;left:-110px;top:calc(50% - 250px);transform:translateY(-30%) rotate(90deg);width:300px;opacity:1;pointer-events:none;z-index:2;mix-blend-mode:multiply;">
-
-          <div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
-            style="background-color:#67DAD5 !important;border:2px solid #67DAD5; margin-top: 60px; z-index: 10;">
-
-            <div class="relative z-10" style="background-color:transparent !important;">
-
-              <h2 class="secondary-title text-[#000] mb-4"
-                style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;font-weight:400 !important;letter-spacing:0.03em;background-color:transparent !important;">
-                Prêt à former sans perdre de CA ?
-              </h2>
-
-              <p class="fs-16"
-                style="font-family:'Nunito',sans-serif;font-weight:400;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
-                Demandez votre devis personnalisé sous 48h et découvrez combien vous pouvez préserver.
-              </p>
-
-              <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
-                <a href="index.html"
-                  class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
-                  style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
-                  Demander un devis →
-                </a>
-                <a href="formations.html"
-                  class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
-                  style="background-color:#fff;color:#000;border:0px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-                  Voir toutes nos formations
-                </a>
               </div>
-
+              <div class="timeline-step fade-up delay-1">
+                <div class="step-dot">2</div>
+                <div class="card flex-1 p-4" style="border-color:#67DAD5 !important;">
+                  <p
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:15px;color:#000;">
+                    de répartir les connexions dans le temps</p>
+                </div>
+              </div>
+              <div class="timeline-step fade-up delay-2">
+                <div class="step-dot">3</div>
+                <div class="card flex-1 p-4" style="border-color:#67DAD5 !important;">
+                  <p
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:15px;color:#000;">
+                    de former sans bloquer des journées complètes</p>
+                </div>
+              </div>
+              <div class="timeline-step fade-up delay-3">
+                <div class="step-dot">4</div>
+                <div class="card flex-1 p-4" style="border-color:#67DAD5 !important;">
+                  <p
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:15px;color:#000;">
+                    d'intégrer la montée en compétences dans la réalité du terrain</p>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+
+          <!-- DFormPro droite -->
+          <div style="background-color:#FFFFFF !important;">
+            <div class="card-cyan p-8 md:p-10"
+              style="background: linear-gradient(135deg, #3db8b3 0%, #67DAD5 100%); border: none;">
+
+              <!-- Titre avec icône -->
+              <div class="flex items-center gap-3 mb-6 pb-5" style="border-bottom: 2px solid #ffffff;">
+                <img src="images/avatar.png" alt="DFormPro Digital"
+                  style="width:44px;height:44px;border-radius:16px;object-fit:contain;background:#fff;padding:4px;flex-shrink:0;">
+                <h3
+                  style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:900;font-size:20px;color:#fff;margin:0;">
+                  Avec DFORMPRO DIGITAL
+                </h3>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3" style="background:rgba(255,255,255,0.2);border-radius:16px;">
+                  <div
+                    style="width:28px;height:28px;border-radius:50%;background-color:#ffffff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <span style="color:#67DAD5;font-size:16px;font-weight:bold;">✔</span>
+                  </div>
+                  <span
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#fff;">Vous
+                    préservez vos heures d'intervention</span>
+                </div>
+                <div class="flex items-center gap-3 p-3" style="background:rgba(255,255,255,0.2);border-radius:16px;">
+                  <div
+                    style="width:28px;height:28px;border-radius:50%;background-color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <span style="color:#67DAD5;font-size:16px;font-weight:bold;">✔</span>
+                  </div>
+                  <span
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#fff;">Vous
+                    limitez les pertes de chiffre d'affaires</span>
+                </div>
+                <div class="flex items-center gap-3 p-3" style="background:rgba(255,255,255,0.2);border-radius:16px;">
+                  <div
+                    style="width:28px;height:28px;border-radius:50%;background-color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <span style="color:#67DAD5;font-size:16px;font-weight:bold;">✔</span>
+                  </div>
+                  <span
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#fff;">Vous
+                    sécurisez votre organisation</span>
+                </div>
+                <div class="flex items-center gap-3 p-3" style="background:rgba(255,255,255,0.2);border-radius:16px;">
+                  <div
+                    style="width:28px;height:28px;border-radius:50%;background-color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <span style="color:#67DAD5;font-size:16px;font-weight:bold;">✔</span>
+                  </div>
+                  <span
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:16px;color:#fff;">Vous
+                    développez les compétences sans fragiliser votre modèle économique</span>
+                </div>
+              </div>
+            </div><!-- fin space-y-3 -->
+
+            <div class="mt-6 pt-5 text-center" style="border-top:2px solid rgba(255,255,255,0.3);">
+              <p
+                style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-style:italic;font-size:15px;color:#fff;line-height:1.6;">
+                Former devient un investissement maîtrisé,<br>non une perturbation opérationnelle.
+              </p>
+            </div>
+
+          </div><!-- fin card-cyan -->
+        </div><!-- fin colonne droite -->
+
+      </div><!-- fin grid lg:grid-cols-2 -->
+
+      <!-- Card citation pleine largeur -->
+      <div class="card p-10 mt-10 text-center max-w-4xl mx-auto" style="border: 2px solid #67DAD5;">
+        <p
+          style="font-family:'Bangers','Arial Black',Impact,sans-serif; font-size:clamp(1.3rem,2.5vw,1.8rem); color:#000; letter-spacing:0.03em; margin-bottom:8px;">
+          La formation s'adapte au planning.
+        </p>
+        <p
+          style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif; font-size:clamp(1.3rem,2.5vw,1.8rem); color:#67DAD5; font-weight:bold; font-style:italic;">
+          Le planning ne subit plus la formation.
+        </p>
+      </div><!-- fin card citation -->
+      </div><!-- fin max-w-7xl -->
+    </section>
+
+    <!-- CTA ─────────────────────────────────── -->
+    <section class="px-6 pt-16 md:pt-24 pb-0 relative" style="background-color:#ffffff !important; overflow: visible;">
+      <!-- Éléments décoratifs (Sync avec index.html) -->
+      <img src="images/image du pptx/design 2 traits.png" alt="" class="cta-section-img deco-hide-mobile"
+        style="position:absolute;left:-110px;top:calc(30% - 250px);transform:translateY(-30%) rotate(90deg);width:300px;opacity:1;pointer-events:none;z-index:2;mix-blend-mode:multiply;">
+
+      <div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
+        style="background-color:#67DAD5 !important;border:2px solid #67DAD5; margin-top: 60px; z-index: 10;">
+
+        <div class="relative z-10" style="background-color:transparent !important;">
+
+          <h2 class="secondary-title text-[#000] mb-4"
+            style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;font-weight:400 !important;letter-spacing:0.03em;background-color:transparent !important;">
+            Prêt à former sans perdre de CA ?
+          </h2>
+
+          <p class="fs-16"
+            style="font-family:'Nunito',sans-serif;font-weight:400;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
+            Demandez votre devis personnalisé sous 48h et découvrez combien vous pouvez préserver.
+          </p>
+
+          <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
+            <a href="index.html"
+              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
+              style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+              Demander un devis →
+            </a>
+            <a href="formations.html"
+              class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
+              style="background-color:#fff;color:#000;border:0px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+              Voir toutes nos formations
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
     <!-- Design bas -->
     <div style="line-height:0;text-align:right;margin-top:-4px; position:relative; z-index:2;">
-      <img src="images/image du pptx/element desgin bannière.png" alt="" class="cta-section-img deco-hide-mobile" style="position:absolute;left:-350px;bottom:0px;transform:rotate(6deg);width:670px;opacity:1;pointer-events:none;z-index:-1;">
-      <img src="images/image du pptx/desgin bas .png" alt="" style="display:inline-block;width:40%; margin-right:-105px;">
+      <img src="images/image du pptx/element desgin bannière.png" alt="" class="cta-section-img deco-hide-mobile"
+        style="position:absolute;left:-350px;bottom:0px;transform:rotate(6deg);width:670px;opacity:1;pointer-events:none;z-index:-1;">
+      <img src="images/image du pptx/desgin bas .png" alt=""
+        style="display:inline-block;width:40%; margin-right:-105px;">
     </div>
 
     <!-- Footer -->
