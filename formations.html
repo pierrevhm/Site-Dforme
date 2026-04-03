@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DFormPro Digital - Nos Formations</title>
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>DFormPro Digital - Nos Formations</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <!-- Tailwind CSS & Material Icons -->
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link
@@ -20,6 +22,7 @@
       font-weight: 700;
       color: #111827;
       background-color: #ffffff;
+      overflow-x: hidden;
     }
 
     /* Section-level headings: Bangers (substitute for Komika Display Bold — not available on CDN) */
@@ -92,7 +95,7 @@
     }
 
     .shadow-neo {
-      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12) !important;
     }
 
     .body-rounded {
@@ -121,35 +124,106 @@
     .bg-white:not(.testimonial-card):not(header):not(.modal-content):not([id^="modal"]) {
       background-color: transparent;
     }
-  
+
     /* ── Tailles de police en pixels (équivalents Tailwind) ── */
-    .fs-12 { font-size: 12px; }
-    .fs-14 { font-size: 14px; }
-    .fs-16 { font-size: 16px; }
-    .fs-18 { font-size: 18px; }
-    .fs-20 { font-size: 20px; }
-    .fs-24 { font-size: 24px; }
-    .fs-30 { font-size: 30px; }
-    .fs-36 { font-size: 36px; }
-    .fs-48 { font-size: 48px; }
-    .fs-60 { font-size: 60px; }
-    .fs-72 { font-size: 72px; }
-    @media (min-width: 768px) {
-      .md-fs-14 { font-size: 14px; }
-      .md-fs-16 { font-size: 16px; }
-      .md-fs-18 { font-size: 18px; }
-      .md-fs-20 { font-size: 20px; }
-      .md-fs-24 { font-size: 24px; }
-      .md-fs-30 { font-size: 30px; }
-      .md-fs-36 { font-size: 36px; }
-      .md-fs-48 { font-size: 48px; }
-      .md-fs-60 { font-size: 60px; }
-      .md-fs-72 { font-size: 72px; }
+    .fs-12 {
+      font-size: 12px;
     }
+
+    .fs-14 {
+      font-size: 14px;
+    }
+
+    .fs-16 {
+      font-size: 16px;
+    }
+
+    .fs-18 {
+      font-size: 18px;
+    }
+
+    .fs-20 {
+      font-size: 20px;
+    }
+
+    .fs-24 {
+      font-size: 24px;
+    }
+
+    .fs-30 {
+      font-size: 30px;
+    }
+
+    .fs-36 {
+      font-size: 36px;
+    }
+
+    .fs-48 {
+      font-size: 48px;
+    }
+
+    .fs-60 {
+      font-size: 60px;
+    }
+
+    .fs-72 {
+      font-size: 72px;
+    }
+
+    @media (min-width: 768px) {
+      .md-fs-14 {
+        font-size: 14px;
+      }
+
+      .md-fs-16 {
+        font-size: 16px;
+      }
+
+      .md-fs-18 {
+        font-size: 18px;
+      }
+
+      .md-fs-20 {
+        font-size: 20px;
+      }
+
+      .md-fs-24 {
+        font-size: 24px;
+      }
+
+      .md-fs-30 {
+        font-size: 30px;
+      }
+
+      .md-fs-36 {
+        font-size: 36px;
+      }
+
+      .md-fs-48 {
+        font-size: 48px;
+      }
+
+      .md-fs-60 {
+        font-size: 60px;
+      }
+
+      .md-fs-72 {
+        font-size: 72px;
+      }
+    }
+
     @media (min-width: 1024px) {
-      .lg-fs-48 { font-size: 48px; }
-      .lg-fs-60 { font-size: 60px; }
-      .lg-fs-72 { font-size: 72px; }
+      .lg-fs-48 {
+        font-size: 48px;
+      }
+
+      .lg-fs-60 {
+        font-size: 60px;
+      }
+
+      .lg-fs-72 {
+        font-size: 72px;
+      }
     }
   </style>
   <script>
@@ -329,142 +403,263 @@
   <style id="responsive-styles">
     /* ---- MOBILE MENU ---- */
     /* ---- MOBILE MENU ---- */
-    #mobile-menu-btn { display: none; }
-    #mobile-nav { display: none; }
-
-    @media (max-width: 767px) {
-
-    @media (max-width: 767px) {
-      #mobile-menu-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-        color: #000;
-      }
-      #mobile-menu-btn .bar {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: #000;
-        margin: 4px 0;
-        transition: all 0.3s ease;
-      }
-      #mobile-nav {
-        display: none;
-        position: fixed;
-        top: 72px;
-        left: 0;
-        right: 0;
-        background: #fff;
-        z-index: 999;
-        padding: 16px 24px 24px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        flex-direction: column;
-        gap: 0;
-      }
-      #mobile-nav.open { display: flex; }
-      #mobile-nav a {
-        display: block;
-        padding: 14px 0;
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: #000;
-        border-bottom: 1px solid #f3f4f6;
-        text-decoration: none;
-      }
-      #mobile-nav a:last-of-type { border-bottom: none; }
-      #mobile-nav .mobile-btn-create {
-        margin-top: 16px;
-        padding: 12px 0;
-        background: none;
-        border: none;
-        font-size: 1rem;
-        font-weight: bold;
-        color: #000;
-        cursor: pointer;
-        text-align: left;
-      }
-      #mobile-nav .mobile-btn-connect {
-        margin-top: 8px;
-        padding: 12px 24px;
-        border: 2px solid #67DAD5;
-        border-radius: 999px;
-        font-size: 1rem;
-        font-weight: bold;
-        color: #67DAD5;
-        background: #fff;
-        cursor: pointer;
-        width: 100%;
-      }
-      .nav-create-btn-desktop { display: none !important; }
-
-      /* Background deco overflow */
-      .bg-decorations { display: none !important; }
-
-      /* Design bas */
-      .design-bas-img { width: 100% !important; }
+    #mobile-menu-btn {
+      display: none;
     }
+
+    #mobile-nav {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+
+      @media (max-width: 767px) {
+        #mobile-menu-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+          color: #000;
+        }
+
+        #mobile-menu-btn .bar {
+          display: block;
+          width: 24px;
+          height: 2px;
+          background: #000;
+          margin: 4px 0;
+          transition: all 0.3s ease;
+        }
+
+        #mobile-nav {
+          display: none;
+          position: fixed;
+          top: 72px;
+          left: 0;
+          right: 0;
+          background: #fff;
+          z-index: 999;
+          padding: 16px 24px 24px;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+          flex-direction: column;
+          gap: 0;
+        }
+
+        #mobile-nav.open {
+          display: flex;
+        }
+
+        #mobile-nav a {
+          display: block;
+          padding: 14px 0;
+          font-size: 1.1rem;
+          font-weight: bold;
+          color: #000;
+          border-bottom: 1px solid #f3f4f6;
+          text-decoration: none;
+        }
+
+        #mobile-nav a:last-of-type {
+          border-bottom: none;
+        }
+
+        #mobile-nav .mobile-btn-create {
+          margin-top: 16px;
+          padding: 12px 0;
+          background: none;
+          border: none;
+          font-size: 1rem;
+          font-weight: bold;
+          color: #000;
+          cursor: pointer;
+          text-align: left;
+        }
+
+        #mobile-nav .mobile-btn-connect {
+          margin-top: 8px;
+          padding: 12px 24px;
+          border: 2px solid #67DAD5;
+          border-radius: 999px;
+          font-size: 1rem;
+          font-weight: bold;
+          color: #67DAD5;
+          background: #fff;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        .nav-create-btn-desktop {
+          display: none !important;
+        }
+
+        /* Background deco overflow */
+        .bg-decorations {
+          display: none !important;
+        }
+
+        /* Design bas */
+        .design-bas-img {
+          width: 100% !important;
+        }
+      }
   </style>
 </head>
+
 <body class="antialiased">
-<!-- BEGIN: MainHeader -->
+  <!-- BEGIN: MainHeader -->
   <header class="fixed top-0 left-0 right-0 bg-white z-50" style="box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
 
-    <nav class="w-full py-2 flex items-center relative" style="justify-content: space-between; padding-left: 0; padding-right: 0;">
-      <div class="flex items-center flex-shrink-0" data-purpose="logo-container" style="margin-right: auto; padding-left: 0;">
+    <nav class="w-full py-2 flex items-center relative"
+      style="justify-content: space-between; padding-left: 0; padding-right: 0;">
+      <div class="flex items-center flex-shrink-0" data-purpose="logo-container"
+        style="margin-right: auto; padding-left: 0;">
         <a href="index.html" class="flex items-center hover:opacity-80 transition-opacity">
           <img src="images/logo.jpg" alt="DFormPro Digital" class="h-16 md:h-24 w-auto object-contain">
         </a>
       </div>
-      <div class="hidden md:flex items-center justify-center space-x-8 fs-20 font-medium absolute left-1/2 -translate-x-1/2">
+      <div
+        class="hidden md:flex items-center justify-center space-x-8 fs-20 font-medium absolute left-1/2 -translate-x-1/2">
         <div class="relative group">
-          <a class="hover:text-cyanBrand transition-colors text-black font-bold flex items-center gap-1 py-4" href="formations.html">
+          <a class="hover:text-cyanBrand transition-colors text-black font-bold flex items-center gap-1 py-4"
+            href="formations.html">
             Nos formations
             <span class="material-symbols-outlined fs-20 transition-transform group-hover:rotate-180">expand_more</span>
           </a>
-          <div class="fixed top-[72px] left-1/2 -translate-x-1/2 w-[80vw] !bg-white rounded-2xl shadow-xl border border-gray-100 opacity-1 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-[999]">
+          <div
+            class="fixed top-[72px] left-1/2 -translate-x-1/2 w-[80vw] !bg-white rounded-2xl shadow-xl border border-gray-100 opacity-1 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top group-hover:translate-y-0 translate-y-2 p-8 z-[999]">
             <div class="grid grid-cols-3 gap-5 mb-5">
-              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors" style="background-color: #f3f4f6 !important;">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined fs-30">image</span></div><img src="formations_images/aide_domicile.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
-                <div class="p-4"><h4 class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Le métier d'aide à domicile</h4><p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Les savoirs de base essentiels pour bien démarrer.</p></div>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/aide_domicile.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Le métier d'aide à domicile</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Les savoirs de base
+                    essentiels pour bien démarrer.</p>
+                </div>
               </a>
-              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors" style="background-color: #f3f4f6 !important;">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined fs-30">image</span></div><img src="formations_images/prevention_risques.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
-                <div class="p-4"><h4 class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Prévention des risques</h4><p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Sécuriser les interventions au quotidien.</p></div>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/prevention_risques.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Prévention des risques</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Sécuriser les interventions
+                    au quotidien.</p>
+                </div>
               </a>
-              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors" style="background-color: #f3f4f6 !important;">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined fs-30">image</span></div><img src="formations_images/bientraitance.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
-                <div class="p-4"><h4 class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Bientraitance</h4><p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Prévention de la maltraitance et bonnes pratiques.</p></div>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/bientraitance.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Bientraitance</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Prévention de la
+                    maltraitance et bonnes pratiques.</p>
+                </div>
               </a>
-              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors" style="background-color: #f3f4f6 !important;">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined fs-30">image</span></div><img src="formations_images/cadre_vie.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
-                <div class="p-4"><h4 class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Entretien du cadre de vie</h4><p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Techniques et protocoles d'intervention.</p></div>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/cadre_vie.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Entretien du cadre de vie</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Techniques et protocoles
+                    d'intervention.</p>
+                </div>
               </a>
-              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors" style="background-color: #f3f4f6 !important;">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined fs-30">image</span></div><img src="formations_images/entretien_linge.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
-                <div class="p-4"><h4 class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Entretien du linge</h4><p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Maîtrisez les techniques d'entretien textile professionnel.</p></div>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img
+                    src="formations_images/entretien_linge.jpg" alt=""
+                    class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Entretien du linge</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Maîtrisez les techniques
+                    d'entretien textile professionnel.</p>
+                </div>
               </a>
-              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors" style="background-color: #f3f4f6 !important;">
-                <div class="h-36 bg-gray-200 w-full overflow-hidden relative"><div class="absolute inset-0 flex items-center justify-center text-gray-400"><span class="material-symbols-outlined fs-30">image</span></div><img src="formations_images/repas.jpg" alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();" onerror="this.remove()"></div>
-                <div class="p-4"><h4 class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">Préparation des repas</h4><p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Nutrition, hygiène et adaptation aux besoins spécifiques.</p></div>
+              <a href="formations.html" class="block group/card rounded-xl overflow-hidden transition-colors"
+                style="background-color: #f3f4f6 !important;">
+                <div class="h-36 bg-gray-200 w-full overflow-hidden relative">
+                  <div class="absolute inset-0 flex items-center justify-center text-gray-400"><span
+                      class="material-symbols-outlined fs-30">image</span></div><img src="formations_images/repas.jpg"
+                    alt="" class="w-full h-full object-cover opacity-0 transition-opacity duration-300"
+                    onload="this.classList.remove('opacity-0'); this.previousElementSibling.remove();"
+                    onerror="this.remove()">
+                </div>
+                <div class="p-4">
+                  <h4
+                    class="font-bold fs-16 text-black leading-tight mb-1 group-hover/card:text-cyanBrand transition-colors">
+                    Préparation des repas</h4>
+                  <p class="fs-14 text-secondary-gray line-clamp-2" style="color: #111827;">Nutrition, hygiène et
+                    adaptation aux besoins spécifiques.</p>
+                </div>
               </a>
             </div>
             <div class="pt-4 mt-2 border-t border-gray-100 text-left">
-              <a href="formations.html" class="inline-flex items-center fs-14 font-bold transition-colors group/link" style="color: #67DAD5;">Voir les 8 formations de notre catalogue<span class="material-symbols-outlined fs-16 ml-1 transition-transform group-hover/link:translate-x-1">arrow_forward</span></a>
+              <a href="formations.html" class="inline-flex items-center fs-14 font-bold transition-colors group/link"
+                style="color: #67DAD5;">Voir les 8 formations de notre catalogue<span
+                  class="material-symbols-outlined fs-16 ml-1 transition-transform group-hover/link:translate-x-1">arrow_forward</span></a>
             </div>
           </div>
         </div>
         <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">À propos</a>
         <a class="hover:text-cyanBrand transition-colors text-black font-bold py-4" href="#">Contact</a>
       </div>
-      <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1" style="margin-left: auto; padding-right: 0; margin-right: 10px;">
-        <button onclick="document.getElementById('modal-inscription').style.display='flex'" class="text-black font-bold fs-18 whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline" style="padding: 0;">Créer un compte</button>
-        <button onclick="document.getElementById('modal-connexion').style.display='flex'" class="hidden md:flex fs-18 font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2" style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;">Se connecter</button>
-        <button id="mobile-menu-btn" aria-label="Menu" onclick="document.getElementById('mobile-nav').classList.toggle('open')">
+      <div class="flex items-center justify-end gap-3 md:gap-4 flex-shrink-1"
+        style="margin-left: auto; padding-right: 0; margin-right: 10px;">
+        <button onclick="document.getElementById('modal-inscription').style.display='flex'"
+          class="text-black font-bold fs-18 whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline"
+          style="padding: 0;">Créer un compte</button>
+        <button onclick="document.getElementById('modal-connexion').style.display='flex'"
+          class="hidden md:flex fs-18 font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
+          style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; transition: all 0.3s ease;">Se
+          connecter</button>
+        <button id="mobile-menu-btn" aria-label="Menu"
+          onclick="document.getElementById('mobile-nav').classList.toggle('open')">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -475,16 +670,21 @@
       <a href="formations.html">Nos formations</a>
       <a href="#">À propos</a>
       <a href="#">Contact</a>
-      <button class="mobile-btn-create" onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-inscription').style.display='flex'">Créer un compte</button>
-      <button class="mobile-btn-connect" onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-connexion').style.display='flex'">Se connecter</button>
+      <button class="mobile-btn-create"
+        onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-inscription').style.display='flex'">Créer
+        un compte</button>
+      <button class="mobile-btn-connect"
+        onclick="document.getElementById('mobile-nav').classList.remove('open'); document.getElementById('modal-connexion').style.display='flex'">Se
+        connecter</button>
     </nav>
   </header>
 
-<div id="modal-inscription"
-  style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999; align-items:center; justify-content:center;"
-  onclick="if(event.target===this)this.style.display='none'">
-  <iframe src="tunnel_inscription.html" style="border:none; width:100%; height:100%; position:absolute; top:0; left:0;"></iframe>
-</div>
+  <div id="modal-inscription"
+    style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; z-index:9999; align-items:center; justify-content:center;"
+    onclick="if(event.target===this)this.style.display='none'">
+    <iframe src="tunnel_inscription.html"
+      style="border:none; width:100%; height:100%; position:absolute; top:0; left:0;"></iframe>
+  </div>
 
   <div id="modal-connexion"
     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; align-items:center; justify-content:center;"
@@ -492,31 +692,39 @@
     <div
       style="background:#fff; border-radius:20px; padding:40px; max-width:460px; width:90%; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.15);">
       <button onclick="document.getElementById('modal-connexion').style.display='none'"
-        style="position:absolute; top:16px; right:16px; background:none; border:none; cursor:pointer; color:#999;" class="txt-niv-3">×</button>
+        style="position:absolute; top:16px; right:16px; background:none; border:none; cursor:pointer; color:#999;"
+        class="txt-niv-3">×</button>
       <h2 style="font-family:Arial,sans-serif; font-weight:bold; margin-bottom:8px; color:#000;">Se connecter</h2>
       <p class="txt-niv-5" style="color:#6b7280; margin-bottom:24px;">Accédez à votre espace DFormPro Digital.</p>
       <form onsubmit="event.preventDefault();">
         <div style="margin-bottom:16px;">
-          <label class="txt-niv-5" style="display:block; font-weight:bold; margin-bottom:6px; color:#333;">Adresse e-mail</label>
+          <label class="txt-niv-5" style="display:block; font-weight:bold; margin-bottom:6px; color:#333;">Adresse
+            e-mail</label>
           <input type="email" placeholder="votre@email.com"
             style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
             onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
         </div>
         <div style="margin-bottom:8px;">
-          <label class="txt-niv-5" style="display:block; font-weight:bold; margin-bottom:6px; color:#333;">Mot de passe</label>
+          <label class="txt-niv-5" style="display:block; font-weight:bold; margin-bottom:6px; color:#333;">Mot de
+            passe</label>
           <input type="password" placeholder="••••••••"
             style="width:100%; padding:12px 16px; border:2px solid #e5e7eb; border-radius:12px; outline:none; box-sizing:border-box; transition:border-color 0.2s;"
             onfocus="this.style.borderColor='#67DAD5'" onblur="this.style.borderColor='#e5e7eb'">
         </div>
         <div style="text-align:right; margin-bottom:20px;">
-          <a href="#" class="txt-niv-6" style="color:#67DAD5; font-weight:bold; text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Mot de passe oublié ?</a>
+          <a href="#" class="txt-niv-6" style="color:#67DAD5; font-weight:bold; text-decoration:none;"
+            onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Mot de
+            passe oublié ?</a>
         </div>
         <button type="submit" class="modal-submit-btn">Se connecter</button>
         <p class="txt-niv-6" style="text-align:center; margin-top:16px; color:#6b7280;">
           Pas encore de compte ?
-          <button type="button" onclick="document.getElementById('modal-connexion').style.display='none'; document.getElementById('modal-inscription').style.display='flex';"
-            class="txt-niv-6" style="background:none; border:none; color:#67DAD5; font-weight:bold; cursor:pointer; padding:0;"
-            onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Créer un compte</button>
+          <button type="button"
+            onclick="document.getElementById('modal-connexion').style.display='none'; document.getElementById('modal-inscription').style.display='flex';"
+            class="txt-niv-6"
+            style="background:none; border:none; color:#67DAD5; font-weight:bold; cursor:pointer; padding:0;"
+            onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Créer un
+            compte</button>
         </p>
       </form>
     </div>
@@ -530,8 +738,9 @@
       <div
         style="padding: 24px 40px; border-bottom: 1px solid #f3f4f6; position: relative; background: #fff; z-index: 10;">
         <button onclick="document.getElementById('modal-devis').style.display='none'"
-          style="position:absolute; top:20px; right:20px; background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#666; transition: all 0.2s;" class="txt-niv-3"
-          onmouseover="this.style.background='#e5e7eb'" onmouseout="this.style.background='#f3f4f6'">×</button>
+          style="position:absolute; top:20px; right:20px; background:#f3f4f6; border:none; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; color:#666; transition: all 0.2s;"
+          class="txt-niv-3" onmouseover="this.style.background='#e5e7eb'"
+          onmouseout="this.style.background='#f3f4f6'">×</button>
         <h2 style="font-family:Arial,sans-serif; font-weight:bold; color:#000; margin: 0;">Demande de
           devis</h2>
         <p class="txt-niv-5" style="color:#111827; margin-top: 4px; margin-bottom: 0;">Recevez votre devis personnalisé
@@ -653,7 +862,8 @@
               <div class="flex items-start gap-3">
                 <input type="checkbox" required class="modal-checkbox mt-1">
                 <label class="txt-niv-6 body-rounded text-secondary-gray" style="font-weight: 400;">
-                  J'accepte que mes informations soient utilisées pour me recontacter conformément à la <a href="politique-confidentialite.html" target="_blank"
+                  J'accepte que mes informations soient utilisées pour me recontacter conformément à la <a
+                    href="politique-confidentialite.html" target="_blank"
                     class="font-bold text-cyanBrand hover:underline">politique de confidentialité</a>.
                 </label>
               </div>
@@ -701,263 +911,382 @@
       document.getElementById('success-message-modal').classList.remove('hidden');
     }
   </script>
-<!-- END: MainHeader -->
+  <!-- END: MainHeader -->
 
-<main class="pt-24 pb-24 relative relative-section" style="background-color: #F8FAFC;">
-  <!-- Background Decorations -->
-  <div class="bg-decorations z-0 opacity-60" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
-    <div class="cyan-band-large cyan-band-top"></div>
-    <div class="topographic-svg" style="left: -200px; top: -100px; transform: scale(1.2);"></div>
-    <div class="topographic-svg topographic-svg-cyan" style="right: -400px; top: 200px; transform: scale(0.8) rotate(45deg);"></div>
-    <div class="nodal-network" style="top: 15%; right: 10%;">
-      <div class="nodal-dot nodal-dot-cyan" style="width: 24px; height: 24px;"></div>
-      <div class="nodal-line nodal-line-cyan" style="height: 200px; transform: rotate(45deg); top: 0; left: 0; transform-origin: top left;"></div>
-      <div class="nodal-dot" style="width: 16px; height: 16px; top: 141px; left: -141px;"></div>
+  <main class="pt-24 pb-24 relative relative-section" style="background-color: #F8FAFC;">
+    <!-- Background Decorations -->
+    <div class="bg-decorations z-0 opacity-60"
+      style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
+      <div class="cyan-band-large cyan-band-top"></div>
+      <div class="topographic-svg" style="left: -200px; top: -100px; transform: scale(1.2);"></div>
+      <div class="topographic-svg topographic-svg-cyan"
+        style="right: -400px; top: 200px; transform: scale(0.8) rotate(45deg);"></div>
+
+      <!-- Image haut droite acceuil -->
+      <img src="images/image du pptx/image haut droite acceuil.png" alt=""
+        style="position:absolute; right:0; top:0; width:300px; pointer-events:none; z-index:30; display:block;">
+
+      <div class="nodal-network" style="top: 15%; right: 10%;">
+        <div class="nodal-dot nodal-dot-cyan" style="width: 24px; height: 24px;"></div>
+        <div class="nodal-line nodal-line-cyan"
+          style="height: 200px; transform: rotate(45deg); top: 0; left: 0; transform-origin: top left;"></div>
+        <div class="nodal-dot" style="width: 16px; height: 16px; top: 141px; left: -141px;"></div>
+      </div>
+      <div class="nodal-network" style="bottom: 20%; left: 5%;">
+        <div class="nodal-dot" style="width: 20px; height: 20px;"></div>
+        <div class="nodal-line"
+          style="height: 150px; transform: rotate(-30deg); top: 0; left: 0; transform-origin: top left;"></div>
+        <div class="nodal-dot nodal-dot-cyan" style="width: 12px; height: 12px; top: -130px; left: 75px;"></div>
+      </div>
     </div>
-    <div class="nodal-network" style="bottom: 20%; left: 5%;">
-      <div class="nodal-dot" style="width: 20px; height: 20px;"></div>
-      <div class="nodal-line" style="height: 150px; transform: rotate(-30deg); top: 0; left: 0; transform-origin: top left;"></div>
-      <div class="nodal-dot nodal-dot-cyan" style="width: 12px; height: 12px; top: -130px; left: 75px;"></div>
+    <!-- Traits décoratifs latéraux -->
+    <img src="images/image du pptx/element gauche avec traits .png" alt=""
+      style="position:absolute; left:0; top:28%; width:220px; pointer-events:none; z-index:5; opacity:0.8;">
+    <img src="images/image du pptx/element droite avec traits.png" alt=""
+      style="position:absolute; right:0; top:45%; width:220px; pointer-events:none; z-index:5; opacity:0.8;">
+
+    <div class="container mx-auto max-w-7xl relative z-10 px-6">
+      <!-- Header Section -->
+      <div class="text-center py-20 mb-16 max-w-3xl mx-auto">
+        <h1 class="fs-48 md-fs-60 lg-fs-72 font-black mb-6 main-title text-[#0B1221]">
+          Nos Formations Digitales
+        </h1>
+        <p class="fs-20 text-gray-500 max-w-2xl mx-auto"
+          style="color: #74888F; font-family: Arial, sans-serif !important; font-weight: 400 !important;">
+          Des parcours pensés pour l'ensemble de votre écosystème, accessibles partout, tout le temps.
+        </p>
+      </div>
+
+      <!-- Grid Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+        <!-- Card 1 -->
+        <div
+          class="flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-neo hover:shadow-xl transition-shadow duration-300">
+          <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
+              <div class="text-center">
+                <span class="material-symbols-outlined fs-36 mb-2">image</span>
+                <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
+              </div>
+            </div>
+            <img src="formations_images/aide_domicile.jpg" alt="Le métier d'aide à domicile - Les savoirs de base"
+              class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300"
+              onload="this.classList.remove('opacity-0');" onerror="this.remove()">
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Le métier d'aide à
+              domicile - Les savoirs de base</h3>
+            <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3"
+              style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
+              Maîtriser les fondamentaux indispensables pour intervenir à domicile en toute sérénité et
+              professionnalisme.
+            </p>
+            <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto"
+              href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+              En savoir plus <span class="ml-2 fs-18">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-neo hover:shadow-xl transition-shadow duration-300">
+          <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
+              <div class="text-center">
+                <span class="material-symbols-outlined fs-36 mb-2">image</span>
+                <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
+              </div>
+            </div>
+            <img src="formations_images/prevention_risques.jpg" alt="Prévention des risques"
+              class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300"
+              onload="this.classList.remove('opacity-0');" onerror="this.remove()">
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Prévention des
+              risques</h3>
+            <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3"
+              style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
+              Sécuriser vos interventions au quotidien avec les bons gestes et postures pour vous et les bénéficiaires.
+            </p>
+            <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto"
+              href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+              En savoir plus <span class="ml-2 fs-18">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-neo hover:shadow-xl transition-shadow duration-300">
+          <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
+              <div class="text-center">
+                <span class="material-symbols-outlined fs-36 mb-2">image</span>
+                <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
+              </div>
+            </div>
+            <img src="formations_images/bientraitance.jpg" alt="Prévention de la maltraitance et bientraitance"
+              class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300"
+              onload="this.classList.remove('opacity-0');" onerror="this.remove()">
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Prévention de la
+              maltraitance et bientraitance</h3>
+            <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3"
+              style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
+              Acquérir les attitudes et comportements clés pour garantir le respect et la dignité de la personne
+              accompagnée.
+            </p>
+            <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto"
+              href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+              En savoir plus <span class="ml-2 fs-18">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div
+          class="flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-neo hover:shadow-xl transition-shadow duration-300">
+          <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
+              <div class="text-center">
+                <span class="material-symbols-outlined fs-36 mb-2">image</span>
+                <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
+              </div>
+            </div>
+            <img src="formations_images/cadre_vie.jpg" alt="L'entretien du cadre de vie"
+              class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300"
+              onload="this.classList.remove('opacity-0');" onerror="this.remove()">
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">L'entretien du cadre
+              de vie</h3>
+            <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3"
+              style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
+              Les techniques, produits et protocoles pour assurer un environnement propre, sûr et agréable.
+            </p>
+            <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto"
+              href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+              En savoir plus <span class="ml-2 fs-18">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div
+          class="flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-neo hover:shadow-xl transition-shadow duration-300">
+          <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
+              <div class="text-center">
+                <span class="material-symbols-outlined fs-36 mb-2">image</span>
+                <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
+              </div>
+            </div>
+            <img src="formations_images/entretien_linge.jpg" alt="L'entretien du linge"
+              class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300"
+              onload="this.classList.remove('opacity-0');" onerror="this.remove()">
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">L'entretien du linge
+            </h3>
+            <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3"
+              style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
+              Tri, lavage, repassage et rangement : toutes les étapes pour un entretien optimal du linge à domicile.
+            </p>
+            <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto"
+              href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+              En savoir plus <span class="ml-2 fs-18">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div
+          class="flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-neo hover:shadow-xl transition-shadow duration-300">
+          <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
+              <div class="text-center">
+                <span class="material-symbols-outlined fs-36 mb-2">image</span>
+                <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
+              </div>
+            </div>
+            <img src="formations_images/repas.jpg" alt="Accompagnement aux repas"
+              class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300"
+              onload="this.classList.remove('opacity-0');" onerror="this.remove()">
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Accompagnement aux
+              repas</h3>
+            <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3"
+              style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
+              Aide à la prise de repas, prévention de la dénutrition et respect des régimes spécifiques.
+            </p>
+            <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto"
+              href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+              En savoir plus <span class="ml-2 fs-18">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div
+          class="flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-neo hover:shadow-xl transition-shadow duration-300">
+          <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
+              <div class="text-center">
+                <span class="material-symbols-outlined fs-36 mb-2">image</span>
+                <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
+              </div>
+            </div>
+            <img src="formations_images/toilette.jpg" alt="Accompagnement à la toilette"
+              class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300"
+              onload="this.classList.remove('opacity-0');" onerror="this.remove()">
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Accompagnement à la
+              toilette</h3>
+            <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3"
+              style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
+              Techniques d'aide à la toilette dans le respect de la pudeur et favorisant l'autonomie de la personne.
+            </p>
+            <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto"
+              href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+              En savoir plus <span class="ml-2 fs-18">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div
+          class="flex flex-col h-full bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-neo hover:shadow-xl transition-shadow duration-300">
+          <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
+            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
+              <div class="text-center">
+                <span class="material-symbols-outlined fs-36 mb-2">image</span>
+                <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
+              </div>
+            </div>
+            <img src="formations_images/fin_vie.jpg" alt="Accompagnement à la fin de vie"
+              class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300"
+              onload="this.classList.remove('opacity-0');" onerror="this.remove()">
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Accompagnement à la
+              fin de vie</h3>
+            <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3"
+              style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
+              Savoir être et accompagnement spécifique pour soutenir la personne et son entourage dans ces moments
+              difficiles.
+            </p>
+            <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto"
+              href="#" style="background-color: #67DAD5; color: #FFFFFF;">
+              En savoir plus <span class="ml-2 fs-18">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
+  </main>
 
-  <div class="container mx-auto max-w-7xl relative z-10 px-6">
-    <!-- Header Section -->
-    <div class="text-center py-20 mb-16 max-w-3xl mx-auto">
-      <h1 class="fs-48 md-fs-60 lg-fs-72 font-black mb-6 main-title text-[#0B1221]">
-        Nos Formations Digitales
-      </h1>
-      <p class="fs-20 text-gray-500 max-w-2xl mx-auto body-rounded" style="color: #74888F;">
-        Des parcours pensés pour l'ensemble de votre écosystème, accessibles partout, tout le temps.
-      </p>
+  <!-- CTA ─────────────────────────────────── -->
+  <section class="px-6 pt-16 md:pt-24 pb-0 relative" style="background-color:#ffffff !important; overflow: visible;">
+    <!-- Éléments décoratifs (Sync avec index.html) -->
+    <img src="images/image du pptx/design 2 traits.png" alt="" class="cta-section-img deco-hide-mobile"
+      style="position:absolute;left:-115px;top:calc(35% - 250px);transform:translateY(-30%) rotate(90deg);width:300px;opacity:1;pointer-events:none;z-index:2;mix-blend-mode:multiply;">
+
+    <div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
+      style="background-color:#67DAD5 !important;border:2px solid #67DAD5; margin-top: 60px; z-index: 10;">
+
+      <div class="relative z-10" style="background-color:transparent !important;">
+
+        <h2 class="secondary-title text-[#000] mb-4"
+          style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;font-weight:400 !important;letter-spacing:0.03em;background-color:transparent !important;">
+          Prêt à digitaliser vos formations ?
+        </h2>
+
+        <p class="fs-16"
+          style="font-family:Arial, sans-serif !important;font-weight:400;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
+          Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
+        </p>
+
+        <div class="flex justify-center" style="background-color:transparent !important;">
+          <a href="#" onclick="document.getElementById('modal-devis').style.display='flex'"
+            class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
+            style="background-color:#000;color:#fff;font-family:'Arial Rounded MT Bold','Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+            Demander un devis →
+          </a>
+        </div>
+
+      </div>
     </div>
-
-    <!-- Grid Section -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-      
-      <!-- Card 1 -->
-      <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-        <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
-              <div class="text-center">
-                  <span class="material-symbols-outlined fs-36 mb-2">image</span>
-                  <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
-              </div>
-            </div>
-            <img src="formations_images/aide_domicile.jpg" alt="Le métier d'aide à domicile - Les savoirs de base" class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0');" onerror="this.remove()">
-        </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Le métier d'aide à domicile - Les savoirs de base</h3>
-          <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3" style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
-            Maîtriser les fondamentaux indispensables pour intervenir à domicile en toute sérénité et professionnalisme.
-          </p>
-          <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto" href="#" style="background-color: #67DAD5; color: #FFFFFF;">
-            En savoir plus <span class="ml-2 fs-18">→</span>
-          </a>
-        </div>
-      </div>
-
-       <!-- Card 2 -->
-      <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-        <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
-              <div class="text-center">
-                  <span class="material-symbols-outlined fs-36 mb-2">image</span>
-                  <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
-              </div>
-            </div>
-            <img src="formations_images/prevention_risques.jpg" alt="Prévention des risques" class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0');" onerror="this.remove()">
-        </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Prévention des risques</h3>
-          <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3" style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
-            Sécuriser vos interventions au quotidien avec les bons gestes et postures pour vous et les bénéficiaires.
-          </p>
-          <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto" href="#" style="background-color: #67DAD5; color: #FFFFFF;">
-            En savoir plus <span class="ml-2 fs-18">→</span>
-          </a>
-        </div>
-      </div>
-
-       <!-- Card 3 -->
-      <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-        <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
-              <div class="text-center">
-                  <span class="material-symbols-outlined fs-36 mb-2">image</span>
-                  <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
-              </div>
-            </div>
-            <img src="formations_images/bientraitance.jpg" alt="Prévention de la maltraitance et bientraitance" class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0');" onerror="this.remove()">
-        </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Prévention de la maltraitance et bientraitance</h3>
-          <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3" style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
-            Acquérir les attitudes et comportements clés pour garantir le respect et la dignité de la personne accompagnée.
-          </p>
-          <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto" href="#" style="background-color: #67DAD5; color: #FFFFFF;">
-            En savoir plus <span class="ml-2 fs-18">→</span>
-          </a>
-        </div>
-      </div>
-
-       <!-- Card 4 -->
-      <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-        <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
-              <div class="text-center">
-                  <span class="material-symbols-outlined fs-36 mb-2">image</span>
-                  <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
-              </div>
-            </div>
-            <img src="formations_images/cadre_vie.jpg" alt="L'entretien du cadre de vie" class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0');" onerror="this.remove()">
-        </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">L'entretien du cadre de vie</h3>
-          <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3" style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
-            Les techniques, produits et protocoles pour assurer un environnement propre, sûr et agréable.
-          </p>
-          <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto" href="#" style="background-color: #67DAD5; color: #FFFFFF;">
-            En savoir plus <span class="ml-2 fs-18">→</span>
-          </a>
-        </div>
-      </div>
-
-       <!-- Card 5 -->
-      <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-        <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
-              <div class="text-center">
-                  <span class="material-symbols-outlined fs-36 mb-2">image</span>
-                  <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
-              </div>
-            </div>
-            <img src="formations_images/entretien_linge.jpg" alt="L'entretien du linge" class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0');" onerror="this.remove()">
-        </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">L'entretien du linge</h3>
-          <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3" style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
-            Tri, lavage, repassage et rangement : toutes les étapes pour un entretien optimal du linge à domicile.
-          </p>
-          <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto" href="#" style="background-color: #67DAD5; color: #FFFFFF;">
-            En savoir plus <span class="ml-2 fs-18">→</span>
-          </a>
-        </div>
-      </div>
-
-       <!-- Card 6 -->
-      <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-        <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
-              <div class="text-center">
-                  <span class="material-symbols-outlined fs-36 mb-2">image</span>
-                  <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
-              </div>
-            </div>
-            <img src="formations_images/repas.jpg" alt="Accompagnement aux repas" class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0');" onerror="this.remove()">
-        </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Accompagnement aux repas</h3>
-          <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3" style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
-            Aide à la prise de repas, prévention de la dénutrition et respect des régimes spécifiques.
-          </p>
-          <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto" href="#" style="background-color: #67DAD5; color: #FFFFFF;">
-            En savoir plus <span class="ml-2 fs-18">→</span>
-          </a>
-        </div>
-      </div>
-
-       <!-- Card 7 -->
-      <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-        <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
-              <div class="text-center">
-                  <span class="material-symbols-outlined fs-36 mb-2">image</span>
-                  <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
-              </div>
-            </div>
-            <img src="formations_images/toilette.jpg" alt="Accompagnement à la toilette" class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0');" onerror="this.remove()">
-        </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Accompagnement à la toilette</h3>
-          <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3" style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
-            Techniques d'aide à la toilette dans le respect de la pudeur et favorisant l'autonomie de la personne.
-          </p>
-          <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto" href="#" style="background-color: #67DAD5; color: #FFFFFF;">
-            En savoir plus <span class="ml-2 fs-18">→</span>
-          </a>
-        </div>
-      </div>
-
-       <!-- Card 8 -->
-      <div class="flex flex-col h-full bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100">
-        <div class="h-48 w-full bg-gray-100 overflow-hidden relative">
-            <div class="absolute inset-0 flex items-center justify-center text-gray-400 bg-gray-200">
-              <div class="text-center">
-                  <span class="material-symbols-outlined fs-36 mb-2">image</span>
-                  <p class="fs-12 font-bold font-sans">1_Zz9z-9kKKEugOqkK4Gg6fKy7T6Tn3pj</p>
-              </div>
-            </div>
-            <img src="formations_images/fin_vie.jpg" alt="Accompagnement à la fin de vie" class="w-full h-full object-cover z-10 relative opacity-0 transition-opacity duration-300" onload="this.classList.remove('opacity-0');" onerror="this.remove()">
-        </div>
-        <div class="p-6 flex flex-col flex-grow">
-          <h3 class="fs-20 font-bold mb-3 leading-tight" style="font-family: Arial, sans-serif;">Accompagnement à la fin de vie</h3>
-          <p class="text-gray-600 fs-14 mb-6 flex-grow line-clamp-3" style="font-family: 'Nunito', sans-serif; font-weight: 400; color: #74888F;">
-            Savoir être et accompagnement spécifique pour soutenir la personne et son entourage dans ces moments difficiles.
-          </p>
-          <a class="inline-flex items-center font-bold fs-16 transition-all px-5 py-2.5 rounded-full hover:shadow-md self-start mt-auto" href="#" style="background-color: #67DAD5; color: #FFFFFF;">
-            En savoir plus <span class="ml-2 fs-18">→</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</main>
+  </section>
 
   <!-- Design bas -->
-  <div style="line-height: 0; text-align: right;">
-    <img src="images/image du pptx/desgin bas .png" alt="" class="design-bas-img" style="display:inline-block;width:40%; margin-right:-105px;">
+  <div style="line-height: 0; text-align: right; position: relative; z-index: 20;">
+    <img src="images/image du pptx/element desgin bannière.png" alt="" class="cta-section-img deco-hide-mobile"
+      style="position:absolute;left:-350px;bottom:0px;transform:rotate(6deg);width:670px;opacity:1;pointer-events:none;z-index:30;">
+    <img src="images/image du pptx/desgin bas .png" alt="" class="design-bas-img"
+      style="display:inline-block;width:40%; margin-right:-105px;">
   </div>
 
   <!-- Footer -->
   <footer class="text-slate-300 pt-16 px-6 md:px-12" style="background-color: #000000;">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.5fr] gap-12 pb-12" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.5fr] gap-12 pb-12"
+        style="border-bottom: 1px solid rgba(255,255,255,0.1);">
         <div class="flex flex-col gap-5">
           <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Contact</h3>
           <div class="flex items-center gap-3 mb-2">
-            <img src="images/image du pptx/photo pdg.jpg" alt="Régis DE OLIVEIRA" class="w-14 h-14 rounded-full border-2 object-cover" style="border-color: #67DAD5;">
+            <img src="images/image du pptx/photo pdg.jpg" alt="Régis DE OLIVEIRA"
+              class="w-14 h-14 rounded-full border-2 object-cover" style="border-color: #67DAD5;">
             <div>
               <p class="font-bold fs-14" style="color: #FFFFFF;">Régis DE OLIVEIRA</p>
               <p class="fs-12" style="color: #67DAD5;">Directeur</p>
             </div>
           </div>
           <div class="flex flex-col gap-3 fs-14 body-rounded">
-            <div class="flex items-center gap-3"><span class="material-symbols-outlined fs-16" style="color: #67DAD5;">call</span><span style="color: #FFFFFF;">06 64 90 33 43</span></div>
-            <div class="flex items-center gap-3"><span class="material-symbols-outlined fs-16" style="color: #67DAD5;">mail</span><a href="mailto:r.deoliveira@dformpro.fr" class="hover:underline" style="color: #FFFFFF;">r.deoliveira@dformpro.fr</a></div>
-            <div class="flex items-start gap-3"><span class="material-symbols-outlined fs-16 mt-0.5" style="color: #67DAD5;">location_on</span><span style="color: #FFFFFF;">15 rue du Pré la Reine,<br>63100 Clermont-Fd.</span></div>
+            <div class="flex items-center gap-3"><span class="material-symbols-outlined fs-16"
+                style="color: #67DAD5;">call</span><span style="color: #FFFFFF;">06 64 90 33 43</span></div>
+            <div class="flex items-center gap-3"><span class="material-symbols-outlined fs-16"
+                style="color: #67DAD5;">mail</span><a href="mailto:r.deoliveira@dformpro.fr" class="hover:underline"
+                style="color: #FFFFFF;">r.deoliveira@dformpro.fr</a></div>
+            <div class="flex items-start gap-3"><span class="material-symbols-outlined fs-16 mt-0.5"
+                style="color: #67DAD5;">location_on</span><span style="color: #FFFFFF;">15 rue du Pré la Reine,<br>63100
+                Clermont-Fd.</span></div>
           </div>
         </div>
         <div class="flex flex-col gap-5">
-          <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Informations</h3>
+          <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Informations
+          </h3>
           <nav class="flex flex-col gap-3 fs-14 body-rounded">
-  <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">À propos</a>
-  <a href="cgu.html" target="_blank" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">Conditions Générales d'Utilisation (CGU)</a>
-  <a href="rgpd.html" target="_blank" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">Politique RGPD</a>
-  <a href="politique-confidentialite.html" target="_blank" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">Politique de confidentialité</a>
-</nav>
+            <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">À propos</a>
+            <a href="cgu.html" target="_blank" class="hover:text-white transition-colors"
+              style="color: rgba(255,255,255,0.75);">Conditions Générales d'Utilisation (CGU)</a>
+            <a href="rgpd.html" target="_blank" class="hover:text-white transition-colors"
+              style="color: rgba(255,255,255,0.75);">Politique RGPD</a>
+            <a href="politique-confidentialite.html" target="_blank" class="hover:text-white transition-colors"
+              style="color: rgba(255,255,255,0.75);">Politique de confidentialité</a>
+          </nav>
         </div>
         <div class="flex flex-col gap-4">
           <h3 class="font-bold fs-20 secondary-title" style="color: #FFFFFF;">DFormPro Digital</h3>
-          <p class="fs-14 leading-relaxed body-rounded" style="color: rgba(255,255,255,0.7);">La plateforme de formation digitale dédiée aux services à la personne. Accélérez la montée en compétences de vos équipes.</p>
+          <p class="fs-14 leading-relaxed body-rounded" style="color: rgba(255,255,255,0.7);">La plateforme de formation
+            digitale dédiée aux services à la personne. Accélérez la montée en compétences de vos équipes.</p>
         </div>
       </div>
       <div class="flex flex-col md:flex-row items-end justify-between gap-6 pt-4">
-        <img src="images/image du pptx/Logo lettre blanc sur fond noir .jpg" alt="DFormPro Digital" class="object-contain" style="max-height: 200px; width: auto; max-width: 55%; margin-left: -16px; opacity: 0.95;">
-        <p class="body-rounded fs-12 pb-6 text-right" style="color: rgba(255,255,255,0.5);">© 2026 DFormPro Digital.<br>Tous droits réservés.</p>
+        <img src="images/image du pptx/Logo lettre blanc sur fond noir .jpg" alt="DFormPro Digital"
+          class="object-contain"
+          style="max-height: 200px; width: auto; max-width: 55%; margin-left: -16px; opacity: 0.95;">
+        <p class="body-rounded fs-12 pb-6 text-right" style="color: rgba(255,255,255,0.5);">© 2026 DFormPro
+          Digital.<br>Tous droits réservés.</p>
       </div>
       <div class="h-10"></div>
     </div>
   </footer>
-</body></html>
+</body>
+
+</html>

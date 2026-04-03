@@ -904,10 +904,10 @@
         style="margin-left: auto; padding-right: 0; margin-right: 10px;">
         <button onclick="document.getElementById('modal-inscription').style.display='flex'"
           class="text-black font-bold fs-18 whitespace-nowrap cursor-pointer bg-transparent border-none hover:underline"
-          style="padding: 0;">Créer un compte</button>
+          style="padding: 0; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;">Créer un compte</button>
         <button onclick="document.getElementById('modal-connexion').style.display='flex'"
           class="hidden md:flex fs-18 font-bold whitespace-nowrap cursor-pointer px-4 md:px-6 py-2 rounded-full border-2"
-          style="color: #67DAD5; border-color: #67DAD5" ; background-color: #fff;">
+          style="color: #67DAD5; border-color: #67DAD5; background-color: #fff; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;">
           Se connecter
         </button>
       </div>
@@ -1081,6 +1081,8 @@
         style="position:absolute; top:0; left:0; width:440px; max-width:35%; pointer-events:none; z-index:0; display:block;">
       <img src="images/image du pptx/image haut droite acceuil.png" alt=""
         style="position:absolute; right:0; top:0; width:220px; pointer-events:none; z-index:30; display:block;">
+      <img src="images/image du pptx/Trait remov.png" alt=""
+        style="position:absolute; right:-140px; bottom:-130px; width:330px; pointer-events:none; z-index:15; display:block; transform:rotate(269deg);">
       <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
 
         <!-- Badge au-dessus du titre -->
@@ -1106,9 +1108,13 @@
     </section>
 
     <!-- 4 IMPACTS RSE -->
-    <section class="pt-16 md:pt-24 pb-16 relative overflow-hidden"
-      style="background-color:#F0F0F0 !important; z-index: 10;">
-      <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:280px;opacity:0.15;" alt="">
+    <section class="pt-16 md:pt-24 pb-16 relative" style="background-color:#FFFFFF !important; z-index: 10;">
+      <!-- Éléments décoratifs latéraux au premier plan -->
+      <img src="images/image du pptx/cote gauche bleu .jpg" alt=""
+        style="position:absolute; left:0; top:15%; width:180px; pointer-events:none; z-index:999; opacity:1; display:block;">
+      <img src="images/image du pptx/cote droit bleu.jpg" alt=""
+        style="position:absolute; right:0; top:45%; width:180px; pointer-events:none; z-index:999; opacity:1; display:block;">
+
       <div class="max-w-7xl mx-auto px-6 relative z-10">
 
         <div class="text-center mb-14">
@@ -1213,7 +1219,7 @@
                 <div class="flex items-center gap-3">
                   <span class="material-symbols-outlined" style="font-size:20px;color:#67DAD5;">groups</span>
                   <span
-                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:14px;color:#374151;">Intervenants</span>
+                    style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:16px;color:#374151;">Intervenants</span>
                 </div>
                 <span
                   style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:bold;font-size:18px;color:#000;">10</span>
@@ -1306,7 +1312,7 @@
           <div class="flex flex-col h-full gap-6">
             <div class="card p-8 text-center">
               <p
-                style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:14px;color:#374151;margin-bottom:8px;">
+                style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;font-size:16px;color:#374151;margin-bottom:8px;">
                 CO₂ évité sur 10 sessions annuelles</p>
               <p class="co2-display" style="color:#67DAD5;">480 kg</p>
               <p
@@ -1503,7 +1509,7 @@
         <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.5fr] gap-12 pb-12"
           style="border-bottom: 1px solid rgba(255,255,255,0.1);">
           <div class="flex flex-col gap-5">
-            <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Contact</h3>
+            <h3 class="font-bold fs-16 tracking-widest secondary-title" style="color: #67DAD5;">Contact</h3>
             <div class="flex items-center gap-3 mb-2"><img src="images/image du pptx/photo pdg.jpg"
                 alt="Régis DE OLIVEIRA" class="w-14 h-14 rounded-full border-2 object-cover"
                 style="border-color: #67DAD5;">
@@ -1524,7 +1530,7 @@
             </div>
           </div>
           <div class="flex flex-col gap-5">
-            <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Informations
+            <h3 class="font-bold fs-16 tracking-widest secondary-title" style="color: #67DAD5;">Informations
             </h3>
             <nav class="flex flex-col gap-3 fs-14 body-rounded">
               <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">À propos</a>
