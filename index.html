@@ -19,8 +19,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Bangers&display=swap');
 
     body {
-      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
-      font-weight: 700;
+      font-family: 'Arial', sans-serif;
+      font-weight: 400;
       color: #111827;
       background-color: #ffffff;
     }
@@ -106,7 +106,8 @@
     }
 
     .body-rounded {
-      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
+      font-family: 'Arial', sans-serif;
+      font-weight: 400;
     }
 
     /* White background globally */
@@ -177,47 +178,47 @@
 
     /* ── Tailles de police en pixels (équivalents Tailwind) ── */
     .fs-12 {
-      font-size: 12px;
+      font-size: clamp(0.625rem, 0.625vw, 0.75rem);
     }
 
     .fs-14 {
-      font-size: 14px;
+      font-size: clamp(0.75rem, 0.73vw, 0.875rem);
     }
 
     .fs-16 {
-      font-size: 16px;
+      font-size: clamp(0.8125rem, 0.833vw, 1rem);
     }
 
     .fs-18 {
-      font-size: 18px;
+      font-size: clamp(0.875rem, 0.9375vw, 1.125rem);
     }
 
     .fs-20 {
-      font-size: 20px;
+      font-size: clamp(0.9375rem, 1.04vw, 1.25rem);
     }
 
     .fs-24 {
-      font-size: 24px;
+      font-size: clamp(1.0625rem, 1.25vw, 1.5rem);
     }
 
     .fs-30 {
-      font-size: 30px;
+      font-size: clamp(1.25rem, 1.5625vw, 1.875rem);
     }
 
     .fs-36 {
-      font-size: 36px;
+      font-size: clamp(1.375rem, 1.875vw, 2.25rem);
     }
 
     .fs-48 {
-      font-size: 48px;
+      font-size: clamp(1.75rem, 2.5vw, 3rem);
     }
 
     .fs-60 {
-      font-size: 60px;
+      font-size: clamp(2rem, 3.125vw, 3.75rem);
     }
 
     .fs-72 {
-      font-size: 56px;
+      font-size: clamp(2rem, 2.9vw, 3.5rem);
     }
 
     @media (min-width: 768px) {
@@ -528,11 +529,8 @@
 
     .strategic-card {
       background-color: #ffffff !important;
-      /* Fond blanc */
       border: 1px solid #e5e7eb !important;
-      /* Bordure fine et discrète */
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important;
-      /* Ombre fixe et très légère */
     }
 
     .problem-card {
@@ -753,6 +751,17 @@
         min-height: clamp(400px, 55vh, 620px) !important;
       }
     }
+
+    /* ---- DÉCO FLUIDE (proportionnel 24" → tout écran) ---- */
+    img[src*="image angle gauche"]         { width: clamp(200px, 23vw, 440px) !important; }
+    img[src*="image haut droite acceuil"]  { width: clamp(110px, 12vw, 220px) !important; }
+    img[src*="design 2 traits"]            { width: clamp(150px, 16vw, 320px) !important; }
+    img[src*="element design bleu2"]       { width: clamp(280px, 35vw, 680px) !important; }
+    img[src*="droit imagehaut"]            { width: clamp(300px, 39vw, 750px) !important; }
+    img[src*="image gauche.png"]           { width: clamp(240px, 28vw, 540px) !important; }
+    img[src*="image droite.png"]           { width: clamp(220px, 26vw, 500px) !important; }
+    img[src*="element desgin bannière"]    { width: clamp(280px, 35vw, 680px) !important; }
+    img[src*="image droite sans rond"]     { width: clamp(180px, 19vw, 360px) !important; }
 
     /* ---- GRILLE TABLETTE ---- */
     @media (max-width: 767px) {
@@ -1200,7 +1209,7 @@
     <section class="relative relative-section w-full" style="background-color: #ffffff; overflow: visible; z-index: auto;">
       <img src="images/image angle gauche.png" alt="" style="position:absolute; top:0; left:0; width:440px; max-width:35%; pointer-events:none; z-index:0; display:block;">
       <img src="images/image du pptx/image haut droite acceuil.png" alt="" style="position:absolute; right:0; top:0; width:220px; pointer-events:none; z-index:30; display:block;">
-      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; right:-140px; bottom:-380px; width:330px; pointer-events:none; z-index:15; display:block; transform:rotate(260deg);">
+      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; right:-140px; bottom:-380px; width:330px; pointer-events:none; z-index:15; display:block; transform:rotate(270deg);">
       <div class="py-20 text-center relative z-10" style="padding-left: 5%; padding-right: 5%;">
         <h1 class="fs-48 md-fs-60 lg-fs-72 font-black mb-8 leading-tight main-title"
           style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">
@@ -1210,7 +1219,7 @@
           <p class="text-secondary-gray" style="color: #111827; font-size: 22px;">Chaque jour, vos équipes interviennent
             au domicile des
             personnes les plus fragiles.</p>
-          <p class="font-bold text-secondary-gray" style="color: #111827; font-size: 22px;">La formation ne doit plus
+          <p class="text-secondary-gray" style="color: #111827; font-size: 22px;">La formation ne doit plus
             être une
             contrainte. Elle doit être un levier.</p>
         </div>
@@ -1308,7 +1317,7 @@
       <!-- element design bleu2 à gauche de l'image -->
       <img src="images/image du pptx/element design bleu2.png" alt="" style="position:absolute; left:-278px; bottom:75px; width:680px; pointer-events:none; z-index:0; display:block; transform:rotate(-65deg);">
       <!-- droit imagehaut à droite du sous-titre -->
-      <img src="images/image du pptx/droit imagehaut.png" alt="" style="position:absolute; right:-310px; top:37%; transform:translateY(-50%); width:750px; pointer-events:none; z-index:1; display:block;">
+      <img src="images/image du pptx/droit imagehaut.png" alt="" style="position:absolute; right:-280px; top:43%; transform:translateY(-50%); width:750px; pointer-events:none; z-index:1; display:block;">
       <!-- 2 traits en dessous de droit imagehaut -->
       <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; right:-110px; top:8%; transform:translateY(-54%) rotate(260deg); width:340px; pointer-events:none; z-index:1; display:block;">
       <div class="flex flex-col items-center text-center" style="padding-left: 5%; padding-right: 5%; position:relative; z-index:1;">
@@ -1384,7 +1393,7 @@
         font-family: 'KMKDSPB', 'Arial Rounded MT Bold', sans-serif !important;
         font-weight: 400 !important;
         letter-spacing: 0.03em;
-        font-size: 56px !important;
+        font-size: clamp(1.8rem, 4.5vw, 3.5rem) !important;
         color: #fff !important;
         line-height: 1.1 !important;
         margin-bottom: 2rem !important;
@@ -1398,7 +1407,7 @@
 
       #cr-dark-sub {
         color: #ffffff;
-        font-size: 22px;
+        font-size: clamp(1rem, 1.8vw, 1.375rem);
         max-width: 900px;
         margin-bottom: 3.5rem;
         /* On force une police classique et une épaisseur normale */
@@ -1484,7 +1493,7 @@
         /* On applique la même grille que la section du bas */
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 80px;
+        gap: 0;
         /* Même espacement central que le bas */
         align-items: center;
       }
@@ -1525,6 +1534,7 @@
         margin-bottom: 1.5rem;
         line-height: 1.2 !important;
         letter-spacing: normal;
+        padding-right: clamp(16px, 2vw, 40px);
         /* (Section 1 spécifique) La visibilité est gérée par JS pour l'animation */
       }
 
@@ -1545,7 +1555,7 @@
         gap: 12px;
         font-family: 'Arial', 'Nunito', sans-serif !important;
         /* On retire la police Bold */
-        font-size: 20px !important;
+        font-size: clamp(0.9rem, 1.6vw, 1.25rem) !important;
         color: #000;
         font-weight: normal !important;
         /* On force une épaisseur normale */
@@ -1635,16 +1645,90 @@
         will-change: left, top, color;
       }
 
-      /* ── Responsive mobile ── */
+      /* ── Responsive tablette (≤ 1024px) ── */
+      @media (max-width: 1024px) {
+        #cr-white {
+          left: 5%;
+          right: 5%;
+          gap: 0;
+        }
+
+        #cr-wc-title,
+        .teachable-row-2-title {
+          padding-right: clamp(10px, 1.5vw, 20px);
+        }
+
+        #cr-wc-right img {
+          max-height: clamp(180px, 38vw, 380px);
+          object-fit: cover;
+        }
+
+        #teachable-row-2 > div {
+          flex-direction: column;
+          padding-left: 5%;
+          padding-right: 5%;
+          gap: clamp(16px, 2.5vw, 30px);
+        }
+
+        #teachable-row-2 > div > div:first-child {
+          flex: 0 0 auto !important;
+          width: 100%;
+          max-height: clamp(180px, 38vw, 380px);
+          overflow: hidden;
+        }
+
+        #teachable-row-2 > div > div:first-child img {
+          max-height: clamp(180px, 38vw, 380px);
+          object-fit: cover;
+        }
+
+        #row2-text {
+          padding-left: 0 !important;
+        }
+      }
+
+      /* ── Responsive mobile (≤ 768px) ── */
       @media (max-width: 768px) {
         #cr-white {
           grid-template-columns: 1fr;
           overflow-y: auto;
+          left: 4%;
+          right: 4%;
         }
 
         #cr-wc-right {
-          height: 220px;
+          max-height: clamp(140px, 40vw, 240px);
+          height: auto;
           order: 1;
+          overflow: hidden;
+        }
+
+        #cr-wc-right img {
+          max-height: clamp(140px, 40vw, 240px);
+          object-fit: cover;
+        }
+
+        #cr-wc-title,
+        .teachable-row-2-title {
+          padding-right: 0;
+        }
+
+        #cr-dark-sub {
+          margin-bottom: 1.5rem;
+        }
+
+        #teachable-row-2 > div {
+          padding-top: clamp(12px, 3vw, 20px);
+          padding-bottom: clamp(20px, 4vw, 30px);
+        }
+
+        #teachable-row-2 > div > div:first-child {
+          max-height: clamp(140px, 40vw, 240px);
+        }
+
+        #teachable-row-2 > div > div:first-child img {
+          max-height: clamp(140px, 40vw, 240px);
+          object-fit: cover;
         }
       }
 
@@ -1734,7 +1818,7 @@
 
           <!-- Colonne droite : image qui slide depuis la droite (identique à Teachable) -->
           <div id="cr-wc-right">
-            <img id="cr-wc-img" src="images/image du pptx/image45.jpg" alt="Notre expertise" width="902" height="598">
+            <img id="cr-wc-img" src="images/image du pptx/image45.jpg" alt="Notre expertise" width="456" height="277">
           </div>
 
         </div>
@@ -1750,13 +1834,13 @@
     <section id="teachable-row-2"
       style="background:#fff; transform:translateY(100vh); position:relative; margin-top: -17vh;">
       <div
-        style="display: flex; align-items: center; gap: 80px; padding-left: 10%; padding-right: 10%; padding-top: 10px; padding-bottom: 60px; box-sizing: border-box;">
+        style="display: flex; align-items: center; gap: 0; padding-left: 10%; padding-right: 10%; padding-top: 10px; padding-bottom: 60px; box-sizing: border-box;">
 
-        <div style="flex: 0 0 42vw; border-radius: 20px; overflow: hidden;">
-          <img src="images/image du pptx/image2.jpg" alt="Nos formations digitales" width="902" height="598">
+        <div style="flex: 0 0 50%; border-radius: 20px; overflow: hidden;">
+          <img src="images/image du pptx/image2.jpg" alt="Nos formations digitales" style="width: 100%; height: auto; display: block; border-radius: 20px;">
         </div>
 
-        <div id="row2-text" style="flex: 1; display:flex; flex-direction:column; justify-content:center;">
+        <div id="row2-text" style="flex: 1; display:flex; flex-direction:column; justify-content:center; padding-left: 40px;">
           <h2 id="row2-title"
             style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">
             Nos formations digitales sont :</h2>
@@ -2124,7 +2208,7 @@
             style="color: #000; font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">Comment ça
             fonctionne ?
           </h2>
-          <p class="section-subtitle body-rounded text-center font-semibold" style="font-size: 22px !important;">
+          <p class="section-subtitle body-rounded text-center" style="font-size: 22px !important;">
             Une mise en oeuvre simple, rapide et sécurisée
           </p>
         </div>
@@ -2243,28 +2327,28 @@
             <div class="text-center px-4 md:border-r-2 border-[#9ca3af]">
               <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">+
                 de 15 ans</p>
-              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827;">d'expertise dans
+              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827; font-weight: 400;">d'expertise dans
                 le secteur des services à la personne</p>
             </div>
             <!-- Col 2 -->
             <div class="text-center px-4 md:border-r-2 border-[#9ca3af] mt-8 md:mt-0">
               <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
                 Des milliers</p>
-              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827;">d'apprenants
+              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827; font-weight: 400;">d'apprenants
                 formés</p>
             </div>
             <!-- Col 3 -->
             <div class="text-center px-4 md:border-r-2 border-[#9ca3af] mt-8 md:mt-0">
               <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
                 100% Terrain</p>
-              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827;">Une plateforme
+              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827; font-weight: 400;">Une plateforme
                 pensée pour le terrain</p>
             </div>
             <!-- Col 4 -->
             <div class="text-center px-4 mt-8 md:mt-0">
               <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
                 Engagement</p>
-              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827;">Une approche
+              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827; font-weight: 400;">Une approche
                 conforme, responsable et moderne</p>
             </div>
           </div>
@@ -2281,7 +2365,7 @@
       <!-- image droite (bas) -->
       <img src="images/image du pptx/image droite.png" alt="" style="position:absolute; right:-60px; top:44%; transform:translateY(-50%); width:500px; pointer-events:none; z-index:1; display:block;">
       <!-- 2 traits gauche -->
-      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; left:-80px; top:620px; width:280px; pointer-events:none; z-index:0; display:block; transfomr:scaleX(-1) rotate(240deg);">
+      <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; left:-80px; top:620px; width:280px; pointer-events:none; z-index:0; display:block; transform:scaleX(-1) rotate(240deg);">
       <!-- 2 traits droite -->
       <img src="images/image du pptx/design 2 traits.png" alt="" style="position:absolute; right:-80px; top:-180px; width:280px; pointer-events:none; z-index:0; display:block; transform:rotate(260deg);">
 
@@ -2789,60 +2873,49 @@
     </script>
     <!-- END: TestimonialsCarousel -->
   </main>
-  <!-- Giant CTA Section -->
-  <!-- Giant CTA Section -->
-  <section class="px-6 pt-16 md:pt-24 pb-0"
-    style="background-color:#ffffff !important;position:relative;overflow:visible;">
-    <!-- 2 traits décoratifs au-dessus de l'élément bannière -->
-    <img src="images/image du pptx/design 2 traits.png" alt="" class="cta-section-img deco-hide-mobile"
-      style="position:absolute;left:-110px;top:calc(50% - 300px);transform:translateY(-30%) rotate(90deg);width:300px;opacity:1;pointer-events:none;z-index:2;">
+  <!-- CTA ─────────────────────────────────── -->
+      <section class="px-6 pt-16 md:pt-24 pb-0 relative"
+          style="background-color:#ffffff !important; overflow: visible;">
+          <!-- Éléments décoratifs (Sync avec index.html) -->
+          <img src="images/image du pptx/design 2 traits.png" alt="" class="cta-section-img deco-hide-mobile"
+            style="position:absolute;left:-110px;top:calc(50% - 250px);transform:translateY(-30%) rotate(90deg);width:300px;opacity:1;pointer-events:none;z-index:2;mix-blend-mode:multiply;">
 
-    <!-- Element décoratif gauche : moitié visible, moitié hors page -->
-    <img src="images/image du pptx/element desgin bannière.png" alt="" class="cta-section-img deco-hide-mobile"
-      style="position:absolute;left:-350px;top:calc(50% + 118px);transform:translateY(-30%) rotate(6deg);width:670px;opacity:1;pointer-events:none;z-index:2;">
+          <div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
+            style="background-color:#67DAD5 !important;border:2px solid #67DAD5; margin-top: 60px; z-index: 10;">
 
-    <!-- Image droite sans rond -->
-    <img src="images/image du pptx/image droite sans rond .jpg" alt="" class="cta-section-img deco-hide-mobile"
-      style="position:absolute;right:-69px;top:20%;transform:translateY(-50%);width:260px;opacity:1;pointer-events:none;z-index:2;">
+            <div class="relative z-10" style="background-color:transparent !important;">
 
-    <div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
-      style="background-color:#67DAD5 !important;border:2px solid #67DAD5; margin-top: 60px;">
+              <h2 class="secondary-title text-[#000] mb-4"
+                style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;font-weight:400 !important;letter-spacing:0.03em;background-color:transparent !important;">
+                Prêt à digitaliser vos formations ?
+              </h2>
 
+              <p class="fs-16"
+                style="font-family:'Nunito',sans-serif;font-weight:400;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
+                Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
+              </p>
 
-      <div class="relative z-10" style="background-color:transparent !important;">
+              <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
+                <a href="index.html"
+                  class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
+                  style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+                  Demander un devis →
+                </a>
+                <a href="formations.html"
+                  class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
+                  style="background-color:#fff;color:#000;border:0px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
+                  Voir toutes nos formations
+                </a>
+              </div>
 
-        <h2
-          style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;font-weight:bold;font-size:32px;color:#000;margin-bottom:16px;background-color:transparent !important;">
-          Prêt à digitaliser vos formations ?
-        </h2>
-
-        <p
-          style="font-family:'Nunito',sans-serif;font-weight:400;font-size:16px;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
-          Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
-        </p>
-
-        <div class="flex flex-wrap justify-center gap-4" style="background-color:transparent !important;">
-          <a href="index.html"
-            class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
-            style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);"
-            style="background-color:#000;color:#fff;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.2);">
-            Demander un devis →
-          </a>
-          <a href="formations.html"
-            class="inline-flex items-center gap-2 font-bold py-4 px-10 rounded-full fs-18 body-rounded cursor-pointer"
-            style="background-color:#fff;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);"
-            style="background-color:#fff;color:#000;border:2px solid #000;font-family:'Nunito',sans-serif;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(0,0,0,0.1);">
-            Voir toutes nos formations
-          </a>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
+            </div>
+          </div>
+        </section>
 
   <!-- Design bas -->
-  <div style="line-height:0;text-align:right;margin-top:-4px;">
-    <img src="images/image du pptx/desgin bas .png" alt="" style="display:inline-block;width:55%; margin-right:-130px;">
+  <div style="line-height:0;text-align:right;margin-top:-4px; position:relative; z-index:2;">
+    <img src="images/image du pptx/element desgin bannière.png" alt="" class="cta-section-img deco-hide-mobile" style="position:absolute;left:-350px;bottom:0px;transform:rotate(6deg);width:670px;opacity:1;pointer-events:none;z-index:-1;">
+    <img src="images/image du pptx/desgin bas .png" alt="" style="display:inline-block;width:40%; margin-right:-105px;">
   </div>
 
   <!-- Footer -->
