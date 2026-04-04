@@ -21,3 +21,38 @@ p.line-clamp-2 {
   font-family: Arial, sans-serif !important;
   font-weight: 400 !important;
 }
+
+/* Uniformisation de la barre du header (liens et boutons visibles) à 20px */
+/* On cible les éléments directs des nav ou ceux dans des conteneurs simples de premier niveau */
+header nav > a,
+header nav > button,
+header nav > div > a,
+header nav > div > button,
+header nav > div > div > a:not([class*="group/card"]),
+header nav > div > div > button {
+  font-size: 20px !important;
+}
+
+/* Exception pour le menu des formations (dropdown) */
+/* Les titres des formations dans le dropdown à 18px */
+header nav div.shadow-xl h4 {
+  font-size: 18px !important;
+}
+
+/* Les descriptions et autres textes dans le dropdown à 16px */
+header nav div.shadow-xl p,
+header nav div.shadow-xl a,
+header nav div.shadow-xl span,
+header nav div.shadow-xl a.font-bold {
+  font-size: 16px !important;
+}
+
+/* Icones dans la barre principale à 20px */
+header nav .material-symbols-outlined {
+  font-size: 20px !important;
+}
+
+/* Icones dans le dropdown à 16px */
+header nav div.shadow-xl .material-symbols-outlined {
+  font-size: 16px !important;
+}
