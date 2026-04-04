@@ -1484,7 +1484,8 @@
       }
 
       /* Lignes de liste pour les deux sections */
-      .cr-anim-list li {
+      .cr-anim-list li,
+      .animate-list-container li {
         display: flex;
         align-items: center;
         gap: 12px;
@@ -1494,12 +1495,6 @@
         color: #000;
         font-weight: normal !important;
         /* On force une épaisseur normale */
-      }
-
-      /* --- Désactiver le gras pour la deuxième liste (Nos formations digitales) --- */
-      .animate-list-container li {
-        font-family: 'Arial', 'Nunito', sans-serif !important;
-        font-weight: normal !important;
       }
 
       /* --- Affiner également les symboles ✓ de la deuxième liste --- */
@@ -1673,13 +1668,10 @@
       /* --- Section 1 Image : Restauration des bords arrondis --- */
       #cr-wc-right img {
         width: 100%;
-        height: auto;
-        /* La hauteur s'adaptera pour garder le bon ratio */
-        object-fit: contain;
-        /* L'image s'affichera entièrement dans le rectangle */
+        aspect-ratio: 456 / 277; /* On force le ratio de l'image de référence */
+        object-fit: cover; /* On assure que l'image remplit parfaitement le cadre */
         display: block;
         border-radius: 20px;
-        /* (Garde ici tes autres lignes pour le clip-path, transform, etc.) */
       }
 
       /* (Optionnel) Pour éviter l'apparition d'une barre de défilement horizontale pendant que l'image arrive de la droite */
@@ -1771,9 +1763,9 @@
       <div
         style="display: flex; align-items: center; gap: 0; padding-left: 10%; padding-right: 10%; padding-top: 10px; padding-bottom: 60px; box-sizing: border-box;">
 
-        <div style="flex: 0 0 50%; border-radius: 20px; overflow: hidden;">
+        <div style="flex: 0 0 50%; max-width: 1000px; border-radius: 20px; overflow: hidden;">
           <img src="images/image du pptx/image22.jpg" alt="Nos formations digitales"
-            style="width: 100%; height: auto; display: block; border-radius: 20px;">
+            style="width: 100%; aspect-ratio: 456 / 277; object-fit: cover; display: block; border-radius: 20px;">
         </div>
 
         <div id="row2-text"
@@ -1782,18 +1774,18 @@
             style="font-size:clamp(1.8rem, 3vw, 2.8rem); color:#0B1221; margin-bottom:1.5rem; line-height:1.2; font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important; letter-spacing:normal;">
             Nos formations digitales sont :</h2>
           <ul class="flex flex-col gap-4 animate-list-container">
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
-                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Conformes aux exigences HAS</span></li>
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
-                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Accessibles sur smartphone, 24h/24 et
+            <li class="flex items-center gap-3 body-rounded text-black"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.4rem;">✓</span> <span>Conformes aux exigences HAS</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.4rem;">✓</span> <span>Accessibles sur smartphone, 24h/24 et
                 7j/7</span></li>
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
-                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Basées sur des situations réelles</span></li>
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
-                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Immédiatement applicables au domicile</span>
+            <li class="flex items-center gap-3 body-rounded text-black"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.4rem;">✓</span> <span>Basées sur des situations réelles</span></li>
+            <li class="flex items-center gap-3 body-rounded text-black"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.4rem;">✓</span> <span>Immédiatement applicables au domicile</span>
             </li>
-            <li class="flex items-center gap-3 body-rounded text-black fs-20"><span class="arrow-animate"
-                style="color: #67DAD5; font-size: 1.5rem;">✓</span> <span>Déployables sans perturber l'organisation
+            <li class="flex items-center gap-3 body-rounded text-black"><span class="arrow-animate"
+                style="color: #67DAD5; font-size: 1.4rem;">✓</span> <span>Déployables sans perturber l'organisation
                 terrain</span></li>
           </ul>
         </div>
@@ -2179,8 +2171,8 @@
               <div class="w-2 h-2 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
             </div>
             <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
-            <div class="md:mt-6 font-bold fs-20 text-black px-4 max-w-[280px] w-full mx-auto step-label"
-              style="color: #000;">
+            <div class="md:mt-6 font-bold text-black px-4 max-w-[280px] w-full mx-auto step-label"
+              style="color: #000; font-size: 20px;">
               Créez votre compte
             </div>
           </div>
@@ -2197,8 +2189,8 @@
               <div class="w-2 h-2 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
             </div>
             <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
-            <div class="md:mt-6 font-bold fs-20 text-black px-4 max-w-[280px] w-full mx-auto step-label"
-              style="color: #000;">
+            <div class="md:mt-6 font-bold text-black px-4 max-w-[280px] w-full mx-auto step-label"
+              style="color: #000; font-size: 20px;">
               Sélectionnez vos formations
             </div>
           </div>
@@ -2215,8 +2207,8 @@
               <div class="w-2 h-2 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
             </div>
             <div class="md:hidden w-px h-10 bg-gray-200 mt-2 mb-2"></div>
-            <div class="md:mt-6 font-bold fs-20 text-black px-4 max-w-[280px] w-full mx-auto step-label"
-              style="color: #000;">
+            <div class="md:mt-6 font-bold text-black px-4 max-w-[280px] w-full mx-auto step-label"
+              style="color: #000; font-size: 20px;">
               Inscrivez vos équipes
             </div>
           </div>
@@ -2232,8 +2224,8 @@
               <div class="w-0.5 h-4 bg-gray-400 rounded-full"></div>
               <div class="w-2 h-2 bg-black rounded-full relative z-10 shadow-[0_0_0_4px_rgba(255,255,255,1)]"></div>
             </div>
-            <div class="md:mt-6 font-bold fs-20 text-black px-4 max-w-[280px] w-full mx-auto step-label"
-              style="color: #000;">
+            <div class="md:mt-6 font-bold text-black px-4 max-w-[280px] w-full mx-auto step-label"
+              style="color: #000; font-size: 20px;">
               Suivez les résultats et téléchargez vos certificats
             </div>
           </div>
@@ -2263,33 +2255,42 @@
           <div class="grid grid-cols-1 md:grid-cols-4">
             <!-- Col 1 -->
             <div class="text-center px-4 md:border-r-2 border-[#9ca3af]">
-              <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">+
+              <p class="font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
+                style="color: #111827; font-size: 30px; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">
+                +
                 de 15 ans</p>
-              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827; font-weight: 400;">
+              <p class="text-[#4B5563] font-sans text-secondary-gray"
+                style="color: #111827; font-weight: 400; font-size: 16px;">
                 d'expertise dans
                 le secteur des services à la personne</p>
             </div>
             <!-- Col 2 -->
             <div class="text-center px-4 md:border-r-2 border-[#9ca3af] mt-8 md:mt-0">
-              <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
+              <p class="font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
+                style="color: #111827; font-size: 30px; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">
                 Des milliers</p>
-              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827; font-weight: 400;">
+              <p class="text-[#4B5563] font-sans text-secondary-gray"
+                style="color: #111827; font-weight: 400; font-size: 16px;">
                 d'apprenants
                 formés</p>
             </div>
             <!-- Col 3 -->
             <div class="text-center px-4 md:border-r-2 border-[#9ca3af] mt-8 md:mt-0">
-              <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
+              <p class="font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
+                style="color: #111827; font-size: 30px; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">
                 100% Terrain</p>
-              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827; font-weight: 400;">
+              <p class="text-[#4B5563] font-sans text-secondary-gray"
+                style="color: #111827; font-weight: 400; font-size: 16px;">
                 Une plateforme
                 pensée pour le terrain</p>
             </div>
             <!-- Col 4 -->
             <div class="text-center px-4 mt-8 md:mt-0">
-              <p class="fs-30 font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray" style="color: #67DAD5;">
+              <p class="font-bold body-rounded text-cyanBrand mb-2 text-secondary-gray"
+                style="color: #111827; font-size: 30px; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">
                 Engagement</p>
-              <p class="fs-16 text-[#4B5563] font-sans text-secondary-gray" style="color: #111827; font-weight: 400;">
+              <p class="text-[#4B5563] font-sans text-secondary-gray"
+                style="color: #111827; font-weight: 400; font-size: 16px;">
                 Une approche
                 conforme, responsable et moderne</p>
             </div>
@@ -2308,7 +2309,7 @@
         style="position:absolute; left:-60px; top:44%; transform:translateY(-50%); width:540px; pointer-events:none; z-index:0; display:block;">
       <!-- image droite (bas) -->
       <img src="images/image du pptx/image droite.png" alt=""
-        style="position:absolute; right:-60px; top:44%; transform:translateY(-50%); width:500px; pointer-events:none; z-index:1; display:block;">
+        style="position:absolute; right:-23px; top:44%; transform:translateY(-50%); width:500px; pointer-events:none; z-index:1; display:block;">
       <!-- 2 traits gauche -->
       <img src="images/image du pptx/design 2 traits.png" alt=""
         style="position:absolute; left:-100px; top:620px; width:280px; pointer-events:none; z-index:0; display:block; transform:scaleX(-1) rotate(260deg);">
@@ -2866,36 +2867,65 @@
   </div>
 
   <!-- Footer -->
-  <footer class="text-slate-300 pt-16 px-6 md:px-12" style="background-color: #000000; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;">
+  <style>
+    /* Footer-specific isolation styles from Budget Page - Enlarged version */
+    .footer-exact {
+      background-color: #000000 !important;
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+      color: #cbd5e1 !important;
+    }
+    .footer-exact .max-w-7xl { max-width: 96rem; margin-left: auto; margin-right: auto; }
+    .footer-exact .secondary-title {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+      font-weight: bold !important;
+    }
+    .footer-exact .fs-12 { font-size: 14px !important; }
+    .footer-exact .fs-14 { font-size: 16px !important; }
+    .footer-exact .fs-16 { font-size: 18px !important; }
+    .footer-exact .fs-18 { font-size: 20px !important; }
+    .footer-exact .fs-20 { font-size: 24px !important; }
+    .footer-exact .fs-24 { font-size: 30px !important; }
+    .footer-exact .body-rounded { font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important; }
+    
+    @media (min-width: 768px) {
+      .footer-exact .md-fs-14 { font-size: 16px !important; }
+      .footer-exact .md-fs-16 { font-size: 18px !important; }
+      .footer-exact .md-fs-18 { font-size: 20px !important; }
+      .footer-exact .md-fs-20 { font-size: 24px !important; }
+      .footer-exact .md-fs-24 { font-size: 30px !important; }
+    }
+  </style>
+
+  <!-- Footer -->
+  <footer class="footer-exact pt-16 px-4 md:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-[1fr_1fr_1.5fr] gap-12 pb-12"
         style="border-bottom: 1px solid rgba(255,255,255,0.1);">
         <div class="flex flex-col gap-5">
-          <h3 class="font-bold uppercase tracking-widest"
-            style="color: #67DAD5; font-size: 20px !important; line-height: 1.4 !important; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">Contact</h3>
+          <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Contact</h3>
           <div class="flex items-center gap-3 mb-2"><img src="images/image du pptx/photo pdg.jpg"
               alt="Régis DE OLIVEIRA" class="w-14 h-14 rounded-full border-2 object-cover"
               style="border-color: #67DAD5;">
             <div>
-              <p class="font-bold" style="color: #FFFFFF; font-size: 16px !important;">Régis DE OLIVEIRA</p>
-              <p style="color: #67DAD5; font-size: 16px !important;">Directeur</p>
+              <p class="font-bold fs-14" style="color: #FFFFFF;">Régis DE OLIVEIRA</p>
+              <p class="fs-12" style="color: #67DAD5;">Directeur</p>
             </div>
           </div>
-          <div class="flex flex-col gap-3 body-rounded" style="font-size: 16px !important;">
-            <div class="flex items-center gap-3"><span class="material-symbols-outlined"
-                style="color: #67DAD5; font-size: 20px !important;">call</span><span style="color: #FFFFFF;">06 64 90 33 43</span></div>
-            <div class="flex items-center gap-3"><span class="material-symbols-outlined"
-                style="color: #67DAD5; font-size: 20px !important;">mail</span><a href="mailto:r.deoliveira@dformpro.fr" class="hover:underline"
+          <div class="flex flex-col gap-3 fs-14 body-rounded">
+            <div class="flex items-center gap-3"><span class="material-symbols-outlined fs-16"
+                style="color: #67DAD5;">call</span><span style="color: #FFFFFF;">06 64 90 33 43</span></div>
+            <div class="flex items-center gap-3"><span class="material-symbols-outlined fs-16"
+                style="color: #67DAD5;">mail</span><a href="mailto:r.deoliveira@dformpro.fr" class="hover:underline"
                 style="color: #FFFFFF;">r.deoliveira@dformpro.fr</a></div>
-            <div class="flex items-start gap-3"><span class="material-symbols-outlined mt-0.5"
-                style="color: #67DAD5; font-size: 20px !important;">location_on</span><span style="color: #FFFFFF;">15 rue du Pré la
+            <div class="flex items-start gap-3"><span class="material-symbols-outlined fs-16 mt-0.5"
+                style="color: #67DAD5;">location_on</span><span style="color: #FFFFFF;">15 rue du Pré la
                 Reine,<br>63100 Clermont-Fd.</span></div>
           </div>
         </div>
         <div class="flex flex-col gap-5">
-          <h3 class="font-bold uppercase tracking-widest"
-            style="color: #67DAD5; font-size: 20px !important; line-height: 1.4 !important; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">Informations</h3>
-          <nav class="flex flex-col gap-3 body-rounded" style="font-size: 16px !important;">
+          <h3 class="font-bold fs-16 uppercase tracking-widest secondary-title" style="color: #67DAD5;">Informations
+          </h3>
+          <nav class="flex flex-col gap-3 fs-14 body-rounded">
             <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">À propos</a>
             <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">CGV</a>
             <a href="#" class="hover:text-white transition-colors" style="color: rgba(255,255,255,0.75);">Mentions
@@ -2905,9 +2935,8 @@
           </nav>
         </div>
         <div class="flex flex-col gap-4">
-          <h3 class="font-bold"
-            style="color: #FFFFFF; font-size: 24px !important; line-height: 1.4 !important; font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;">DFormPro Digital</h3>
-          <p class="leading-relaxed body-rounded" style="color: rgba(255,255,255,0.7); font-size: 16px !important;">La plateforme de
+          <h3 class="font-bold fs-20 secondary-title" style="color: #FFFFFF;">DFormPro Digital</h3>
+          <p class="fs-14 leading-relaxed body-rounded" style="color: rgba(255,255,255,0.7);">La plateforme de
             formation digitale dédiée aux services à la personne. Accélérez la montée en compétences de vos équipes.
           </p>
         </div>
@@ -2916,7 +2945,7 @@
         <img src="images/image du pptx/Logo lettre blanc sur fond noir .jpg" alt="DFormPro Digital"
           class="object-contain"
           style="max-height: 200px; width: auto; max-width: 55%; margin-left: -16px; opacity: 0.95;">
-        <p class="body-rounded pb-6 text-right" style="color: rgba(255,255,255,0.5); font-size: 16px !important;">© 2026 DFormPro
+        <p class="body-rounded fs-12 pb-6 text-right" style="color: rgba(255,255,255,0.5);">© 2026 DFormPro
           Digital.<br>Tous droits réservés.</p>
       </div>
       <div class="h-10"></div>
