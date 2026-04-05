@@ -126,9 +126,17 @@
       border: 3px solid;
       font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 16px;
       transition: all 0.3s ease;
       cursor: default;
+    }
+
+    .fs-22 {
+      font-size: 22px !important;
+      line-height: 1.6 !important;
+      font-family: 'Arial', sans-serif !important;
+      font-weight: 400 !important;
+      color: #111827 !important;
     }
 
     .card {
@@ -404,7 +412,7 @@
       }
 
       .badge {
-        font-size: 11px !important;
+        font-size: 16px !important;
       }
 
       h1 {
@@ -938,8 +946,8 @@
         </h1>
 
         <!-- Sous-titre -->
-        <p class="font-bold fade-up delay-2"
-          style="font-size:22px; color:#74888F; font-family:'Arial Rounded MT Bold','Nunito',sans-serif; font-style:italic; margin-top:16px;">
+        <p class="fs-22 fade-up delay-2"
+          style="font-family:'Arial',sans-serif;font-weight:400 !important;margin-top:16px;">
           Former, c'est aussi se protéger.
         </p>
       </div>
@@ -1011,64 +1019,92 @@
               style="scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0 40px;">
               <style>
                 #snap-carousel-v3::-webkit-scrollbar {
-                  display: none;
+                  display : none;
                 }
 
                 .image-style-card {
-                  flex: 0 0 calc(90% - 16px);
-                  scroll-snap-align: start;
-                  border-radius: 28px;
-                  overflow: hidden;
-                  display: flex;
-                  flex-direction: column;
-                  min-height: 580px;
-                  transition: transform 0.3s ease;
-                  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+                  flex : 0 0 calc(90% - 16px);
+                  scroll-snap-align : start;
+                  border-radius : 28px;
+                  overflow : hidden;
+                  display : flex;
+                  flex-direction : column;
+                  min-height : 580px;
+                  /* Micro-interactions Premium - Standardisées */
+                  transition : transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+                               opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+                               box-shadow 0.4s ease;
+                  /* Shadow standard identique aux autres cartes du site */
+                  box-shadow : 0 8px 30px rgba(0, 0, 0, 0.10);
+                  /* Bordure forcée et bien épaisse pour rester visible */
+                  border : 2.5px solid #67DAD5 !important;
+                  /* État Inactif par défaut */
+                  transform : scale(0.95);
+                  opacity : 0.6;
+                  cursor : pointer;
+                  background-color : #fff !important;
                 }
 
                 @media (min-width: 1024px) {
                   .image-style-card {
-                    flex: 0 0 calc(50% - 16px);
+                    flex : 0 0 calc(50% - 16px);
                   }
                 }
 
+                /* État Actif (Focus au défilement) */
+                .image-style-card.is-active {
+                  transform : scale(1);
+                  opacity : 1;
+                  border : 2.5px solid #67DAD5 !important;
+                }
+
+                /* Effet au survol (Hover) porté uniquement sur la carte entière */
+                .image-style-card:hover {
+                  transform : translateY(-10px);
+                  opacity : 1;
+                  z-index : 20;
+                  border : 2.5px solid #67DAD5 !important;
+                  box-shadow : 0 15px 45px rgba(103, 218, 213, 0.2);
+                }
+
                 .card-header {
-                  height: 300px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  overflow: hidden;
+                  height : 300px;
+                  display : flex;
+                  align-items : center;
+                  justify-content : center;
+                  overflow : hidden;
+                  border-bottom : 1px solid rgba(0, 0, 0, 0.05);
                 }
 
                 .card-header img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                  display: block;
+                  width : 100%;
+                  height : 100%;
+                  object-fit : cover;
+                  display : block;
                 }
 
                 .card-body {
-                  padding: 40px;
-                  flex-grow: 1;
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: flex-start;
+                  padding : 40px;
+                  flex-grow : 1;
+                  display : flex;
+                  flex-direction : column;
+                  justify-content : flex-start;
                 }
 
                 .card-title {
-                  font-size: 26px;
-                  color: #111827;
-                  font-weight: 800;
-                  margin-bottom: 20px;
-                  font-family: 'Arial Rounded MT Bold', sans-serif;
+                  font-size : 26px;
+                  color : #111827;
+                  font-weight : 800;
+                  margin-bottom : 20px;
+                  font-family : 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
                 }
 
                 .card-text {
-                  color: #374151;
-                  font-size: 1.1rem;
-                  line-height: 1.6;
-                  font-family: 'Nunito', sans-serif;
-                  font-weight: 400;
+                  color : #374151;
+                  font-size : 1.1rem;
+                  line-height : 1.6;
+                  font-family : 'Arial', sans-serif !important;
+                  font-weight : 400 !important;
                 }
               </style>
 
@@ -1090,7 +1126,7 @@
                   <img src="audit_bluegrey_bg_1775305519393.png" alt="Audit Illustration">
                 </div>
                 <div class="card-body">
-                  <h3 class="card-title" style="color: #74888F;">Audits & Contrôles</h3>
+                  <h3 class="card-title" style="color: #000000;">Audits & Contrôles</h3>
                   <p class="card-text">Générez vos preuves de formation en un clic pour justifier du respect des
                     obligations légales lors des inspections de la DGCCRF.</p>
                 </div>
@@ -1119,9 +1155,11 @@
           const carousel = document.getElementById('snap-carousel-v3');
           const btnPrev = document.getElementById('snap-prev-v3');
           const btnNext = document.getElementById('snap-next-v3');
+          const cards = carousel.querySelectorAll('.image-style-card');
 
           if (!carousel || !btnPrev || !btnNext) return;
 
+          /* --- Gestion des Boutons --- */
           const updateButtons = () => {
             const scrollLeft = carousel.scrollLeft;
             const scrollWidth = carousel.scrollWidth;
@@ -1146,6 +1184,39 @@
           carousel.addEventListener('scroll', updateButtons);
           window.addEventListener('resize', updateButtons);
           setTimeout(updateButtons, 200);
+
+          /* --- IntersectionObserver pour État Actif/Inactif --- */
+          const observerOptions = {
+            root: carousel,
+            threshold: [0, 0.5, 0.7, 1.0] // Plusieurs seuils pour plus de précision
+          };
+
+          const observerCallback = (entries) => {
+            entries.forEach(entry => {
+              // Si la carte est visible à plus de 70%, on peut la considérer comme active
+              // Sur mobile (une carte), ça marche direct. 
+              // Sur desktop, cela peut activer les deux cartes visibles.
+              if (entry.isIntersecting && entry.intersectionRatio > 0.7) {
+                entry.target.classList.add('is-active');
+              } else if (entry.intersectionRatio < 0.5) {
+                entry.target.classList.remove('is-active');
+              }
+            });
+
+            // Sécurité : S'assurer qu'au moins une carte est active (la plus visible)
+            // utile si l'on est entre deux seuils
+            let mostVisible = { card: null, ratio: 0 };
+            cards.forEach(card => {
+              // Note: on ne peut pas récupérer le ratio réel ici facilement sans stocker
+            });
+          };
+
+          const observer = new IntersectionObserver(observerCallback, observerOptions);
+          cards.forEach(card => observer.observe(card));
+
+          // Optionnel : Forcer la première carte au chargement
+          if (cards[0]) cards[0].classList.add('is-active');
+
         })();
       </script>
     </section>
@@ -1529,8 +1600,7 @@
           <h2 class="secondary-title text-[#0B1221] mb-4"
             style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important; font-weight:400 !important; letter-spacing:0.03em;">
             Calculez vos économies potentielles</h2>
-          <p class="fs-16"
-            style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif;font-weight:400;color:rgba(0,0,0,0.75);margin-bottom:32px;">
+          <p class="fs-22" style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important;font-weight:bold !important;margin-bottom:32px;">
             Demandez votre devis personnalisé et découvrez combien DFORMPRO DIGITAL peut vous faire économiser.
           </p>
           <div class="flex flex-wrap justify-center gap-4">

@@ -47,7 +47,7 @@
 
     /* Sous-titres de section uniformes */
     .section-subtitle {
-      font-size: 1.1rem !important;
+      font-size: 22px !important;
       line-height: 1.6 !important;
       color: #374151;
     }
@@ -196,6 +196,22 @@
 
     .fs-20 {
       font-size: clamp(1.125rem, 1.25vw, 1.5rem);
+    }
+
+    .fs-22 {
+      font-size: 22px !important;
+      line-height: 1.6 !important;
+      font-family: 'Arial', sans-serif !important;
+      font-weight: 400 !important;
+      color: #111827 !important;
+    }
+
+    .section-subtitle {
+      font-size: 22px !important;
+      line-height: 1.6 !important;
+      font-family: 'Arial', sans-serif !important;
+      font-weight: 400 !important;
+      color: #111827 !important;
     }
 
     .fs-24 {
@@ -1260,8 +1276,7 @@
           style="color:#0B1221; width:90vw; max-width:1300px; margin:0 auto 1.25rem; line-height:1.15; font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">
           La plateforme de formation digitale<br>dédiée aux services à la personne
         </h1>
-        <p class="section-subtitle body-rounded"
-          style="max-width:580px; margin:0 auto 1.5rem; font-size: 22px !important;">
+        <p class="section-subtitle body-rounded" style="max-width:580px; margin:0 auto 1.5rem; font-family:'Arial',sans-serif;">
           Une solution pensée pour l'ensemble de l'écosystème des services à la personne
         </p>
         <div
@@ -1342,11 +1357,11 @@
 
       #cr-dark-sub {
         color: #ffffff;
-        font-size: clamp(1rem, 1.8vw, 1.375rem);
+        font-size: 22px !important;
         max-width: 900px;
         margin-bottom: 3.5rem;
         /* On force une police classique et une épaisseur normale */
-        font-family: 'Arial', 'Nunito', sans-serif !important;
+        font-family: 'Arial', sans-serif !important;
         font-weight: normal !important;
         line-height: 1.4;
         will-change: transform, opacity;
@@ -1668,8 +1683,10 @@
       /* --- Section 1 Image : Restauration des bords arrondis --- */
       #cr-wc-right img {
         width: 100%;
-        aspect-ratio: 456 / 277; /* On force le ratio de l'image de référence */
-        object-fit: cover; /* On assure que l'image remplit parfaitement le cadre */
+        aspect-ratio: 456 / 277;
+        /* On force le ratio de l'image de référence */
+        object-fit: cover;
+        /* On assure que l'image remplit parfaitement le cadre */
         display: block;
         border-radius: 20px;
       }
@@ -1704,8 +1721,7 @@
 
         <div id="cr-dark">
           <h2 id="cr-dark-title">DFORMPRO DIGITAL accompagne toutes les <br>structures d'aide à domicile</h2>
-          <p id="cr-dark-sub">Une approche sur mesure pour transformer vos contraintes terrain <br> en véritables
-            leviers de montée en compétences.</p>
+          <p id="cr-dark-sub">Une approche optimisée pour transformer vos contraintes en leviers de croissance.</p>
           <div id="cr-bullets">
             <div class="cr-bullet is-anchor" id="cr-b0">
               <p>Compréhension<br>des enjeux</p>
@@ -2035,7 +2051,7 @@
           <h2 class="fs-36 font-black mb-4 secondary-title"
             style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">Des avantages stratégiques
             concrets</h2>
-          <p class="section-subtitle body-rounded text-center" style="font-size: 22px;">Une approche optimisée pour
+          <p class="section-subtitle body-rounded text-center">Une approche optimisée pour
             transformer vos contraintes
             en leviers de croissance.</p>
         </div>
@@ -2138,7 +2154,7 @@
             style="color: #000; font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">Comment ça
             fonctionne ?
           </h2>
-          <p class="section-subtitle body-rounded text-center" style="font-size: 22px !important;">
+          <p class="section-subtitle body-rounded text-center fs-22">
             Une mise en oeuvre simple, rapide et sécurisée
           </p>
         </div>
@@ -2382,9 +2398,7 @@
       <div class="text-center mb-12">
         <h2 class="secondary-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">Nos
           témoignages clients</h2>
-        <p class="section-subtitle body-rounded mt-4" style="color:#374151; font-size: 22px;">Des résultats concrets :
-          lisez comment ils
-          ont fait évoluer leur apprentissage.</p>
+        <p class="section-subtitle body-rounded mt-4 fs-22">Des résultats concrets : lisez comment ils ont fait évoluer leur apprentissage.</p>
       </div>
 
       <!-- Carousel wrapper — full width -->
@@ -2837,8 +2851,8 @@
           Prêt à digitaliser vos formations ?
         </h2>
 
-        <p class="fs-16"
-          style="font-family:'Nunito',sans-serif;font-weight:400;color:rgba(0,0,0,0.75);margin-bottom:32px;background-color:transparent !important;">
+        <p class="fs-22"
+          style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important;font-weight:bold !important;color:#000;margin-bottom:32px;background-color:transparent !important;">
           Rejoignez les centres de formation qui nous font déjà confiance pour leur transformation numérique.
         </p>
 
@@ -2874,25 +2888,66 @@
       font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
       color: #cbd5e1 !important;
     }
-    .footer-exact .max-w-7xl { max-width: 96rem; margin-left: auto; margin-right: auto; }
+
+    .footer-exact .max-w-7xl {
+      max-width: 96rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     .footer-exact .secondary-title {
       font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
       font-weight: bold !important;
     }
-    .footer-exact .fs-12 { font-size: 14px !important; }
-    .footer-exact .fs-14 { font-size: 16px !important; }
-    .footer-exact .fs-16 { font-size: 18px !important; }
-    .footer-exact .fs-18 { font-size: 20px !important; }
-    .footer-exact .fs-20 { font-size: 24px !important; }
-    .footer-exact .fs-24 { font-size: 30px !important; }
-    .footer-exact .body-rounded { font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important; }
-    
+
+    .footer-exact .fs-12 {
+      font-size: 14px !important;
+    }
+
+    .footer-exact .fs-14 {
+      font-size: 16px !important;
+    }
+
+    .footer-exact .fs-16 {
+      font-size: 18px !important;
+    }
+
+    .footer-exact .fs-18 {
+      font-size: 20px !important;
+    }
+
+    .footer-exact .fs-20 {
+      font-size: 24px !important;
+    }
+
+    .footer-exact .fs-24 {
+      font-size: 30px !important;
+    }
+
+    .footer-exact .body-rounded {
+      font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+    }
+
     @media (min-width: 768px) {
-      .footer-exact .md-fs-14 { font-size: 16px !important; }
-      .footer-exact .md-fs-16 { font-size: 18px !important; }
-      .footer-exact .md-fs-18 { font-size: 20px !important; }
-      .footer-exact .md-fs-20 { font-size: 24px !important; }
-      .footer-exact .md-fs-24 { font-size: 30px !important; }
+      .footer-exact .md-fs-14 {
+        font-size: 16px !important;
+      }
+
+      .footer-exact .md-fs-16 {
+        font-size: 18px !important;
+      }
+
+      .footer-exact .md-fs-18 {
+        font-size: 20px !important;
+      }
+
+      .footer-exact .md-fs-20 {
+        font-size: 24px !important;
+      }
+
+      .footer-exact .md-fs-24 {
+        font-size: 30px !important;
+      }
     }
   </style>
 
