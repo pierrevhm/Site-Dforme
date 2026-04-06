@@ -942,296 +942,34 @@
         <!-- Titre principal -->
         <h1 class="font-black mb-4 fade-up main-title"
           style="font-size: 56px; line-height: 1.3; max-width: 900px; margin-left: auto; margin-right: auto;">
-          Sécurisation réglementaire
+          Sécurisation réglementaire : Former, c'est aussi se protéger
         </h1>
 
         <!-- Sous-titre -->
         <p class="fs-22 fade-up delay-2"
           style="font-family:'Arial',sans-serif;font-weight:400 !important;margin-top:16px;">
-          Former, c'est aussi se protéger.
+          Dans le secteur des services à la personne, la Formation n'est pas uniquement une démarche de montée en
+          compétences.
         </p>
       </div>
 
     </section>
 
-    <!-- SECTION CAROUSEL STYLE IMAGE: DEUX CARTES A LA FOIS (CYAN, GRIS-BLEU, NOIR) -->
-    <section class="py-24 md:py-44 relative overflow-hidden"
-      style="background-color: #ffffff; width: 100vw; position: relative; left: 50%; transform: translateX(-50%);">
-      <div class="max-w-[1600px] mx-auto px-10 relative z-10">
-
-        <!-- Titre Haut Centré -->
-        <div class="text-center mb-20 max-w-5xl mx-auto fade-up relative">
-          <img src="images/image du pptx/Trait remov.png" alt=""
-            style="position:absolute; left:-540px; top:-150px; width:320px; pointer-events:none; z-index:0; display:block; transform:rotate(80deg);">
-          <h2
-            style="font-family: 'KMKDSPB', 'Arial Rounded MT Bold', sans-serif !important; font-size: clamp(2rem, 3.5vw, 2.8rem); color: #000; line-height: 1.3; font-weight: 900; font-style: italic;">
-            Dans le secteur des services à la personne, la Formation n'est pas uniquement une démarche de montée en
-            compétences.
-          </h2>
-          <div style="width: 140px; height: 6px; background-color: #67DAD5; margin: 24px auto 0; border-radius: 20px;">
-          </div>
-        </div>
-
-        <div class="flex flex-col lg:flex-row items-stretch gap-12 lg:gap-20">
-
-          <!-- Column 1: Text & Navigation (32%) -->
-          <div class="w-full lg:w-[32%] flex flex-col justify-center px-4">
-            <h2
-              style="font-family: 'KMKDSPB', 'Arial Rounded MT Bold', sans-serif !important; font-size: clamp(2.2rem, 3.8vw, 3.2rem); color: #000000; margin-bottom: 24px; line-height: 1.1; letter-spacing: -0.01em; max-width: 500px;">
-              Un pilier de votre<br>conformité réglementaire</h2>
-            <p
-              style="font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important; font-size: 1.05rem; color: #4b5563; line-height: 1.6; margin-bottom: 56px; font-weight: normal; max-width: 440px;">
-              Les exigences HAS et les audits qualité imposent une <strong>traçabilité rigoureuse</strong>. DFormPro
-              Digital centralise vos justificatifs pour répondre sereinement à toute inspection.
-            </p>
-
-            <!-- Navigation Buttons -->
-            <div class="flex gap-5">
-              <button id="snap-prev-v3"
-                class="w-16 h-16 rounded-full flex items-center justify-center transition-all bg-[#1d1d1d] hover:bg-black"
-                style="border: none; cursor: pointer;">
-                <span class="material-symbols-outlined" style="color: #ffffff; font-size: 28px;">arrow_back</span>
-              </button>
-              <button id="snap-next-v3"
-                class="w-16 h-16 rounded-full flex items-center justify-center transition-all bg-[#1d1d1d] hover:bg-black"
-                style="border: none; cursor: pointer;">
-                <span class="material-symbols-outlined" style="color: #ffffff; font-size: 28px;">arrow_forward</span>
-              </button>
-            </div>
-            <style>
-              #snap-prev-v3:disabled,
-              #snap-next-v3:disabled {
-                background-color: #f1f1f1 !important;
-                cursor: not-allowed;
-                pointer-events: none;
-              }
-
-              #snap-prev-v3:disabled span,
-              #snap-next-v3:disabled span {
-                color: #9f9f9f !important;
-              }
-            </style>
-          </div>
-
-          <!-- Column 2: Carousel (68%) -->
-          <div class="w-full lg:w-[68%] relative">
-            <div id="snap-carousel-v3" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth"
-              style="scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0 40px;">
-              <style>
-                #snap-carousel-v3::-webkit-scrollbar {
-                  display : none;
-                }
-
-                .image-style-card {
-                  flex : 0 0 calc(90% - 16px);
-                  scroll-snap-align : start;
-                  border-radius : 28px;
-                  overflow : hidden;
-                  display : flex;
-                  flex-direction : column;
-                  min-height : 580px;
-                  /* Micro-interactions Premium - Standardisées */
-                  transition : transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
-                               opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
-                               box-shadow 0.4s ease;
-                  /* Shadow standard identique aux autres cartes du site */
-                  box-shadow : 0 8px 30px rgba(0, 0, 0, 0.10);
-                  /* Bordure forcée et bien épaisse pour rester visible */
-                  border : 2.5px solid #67DAD5 !important;
-                  /* État Inactif par défaut */
-                  transform : scale(0.95);
-                  opacity : 0.6;
-                  cursor : pointer;
-                  background-color : #fff !important;
-                }
-
-                @media (min-width: 1024px) {
-                  .image-style-card {
-                    flex : 0 0 calc(50% - 16px);
-                  }
-                }
-
-                /* État Actif (Focus au défilement) */
-                .image-style-card.is-active {
-                  transform : scale(1);
-                  opacity : 1;
-                  border : 2.5px solid #67DAD5 !important;
-                }
-
-                /* Effet au survol (Hover) porté uniquement sur la carte entière */
-                .image-style-card:hover {
-                  transform : translateY(-10px);
-                  opacity : 1;
-                  z-index : 20;
-                  border : 2.5px solid #67DAD5 !important;
-                  box-shadow : 0 15px 45px rgba(103, 218, 213, 0.2);
-                }
-
-                .card-header {
-                  height : 300px;
-                  display : flex;
-                  align-items : center;
-                  justify-content : center;
-                  overflow : hidden;
-                  border-bottom : 1px solid rgba(0, 0, 0, 0.05);
-                }
-
-                .card-header img {
-                  width : 100%;
-                  height : 100%;
-                  object-fit : cover;
-                  display : block;
-                }
-
-                .card-body {
-                  padding : 40px;
-                  flex-grow : 1;
-                  display : flex;
-                  flex-direction : column;
-                  justify-content : flex-start;
-                }
-
-                .card-title {
-                  font-size : 26px;
-                  color : #111827;
-                  font-weight : 800;
-                  margin-bottom : 20px;
-                  font-family : 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
-                }
-
-                .card-text {
-                  color : #374151;
-                  font-size : 1.1rem;
-                  line-height : 1.6;
-                  font-family : 'Arial', sans-serif !important;
-                  font-weight : 400 !important;
-                }
-              </style>
-
-              <!-- Card 1: Exigences HAS (Vibrant Cyan Gradient) -->
-              <div class="image-style-card" style="background-color: #faffff;">
-                <div class="card-header" style="background: linear-gradient(135deg, #67DAD5 0%, #3db8b3 100%);">
-                  <img src="regulatory_has_cyan_bg_1775305273083.png" alt="HAS Illustration">
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title">Exigences HAS</h3>
-                  <p class="card-text">Modules conformes aux référentiels de la HAS pour sécuriser vos pratiques
-                    professionnelles et garantir une conformité totale lors de vos inspections.</p>
-                </div>
-              </div>
-
-              <!-- Card 2: Audits & Contrôles (Modern Indigo Gradient) -->
-              <div class="image-style-card" style="background-color: #fbfbff;">
-                <div class="card-header" style="background: linear-gradient(135deg, #818CF8 0%, #4F46E5 100%);">
-                  <img src="audit_bluegrey_bg_1775305519393.png" alt="Audit Illustration">
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title" style="color: #000000;">Audits & Contrôles</h3>
-                  <p class="card-text">Générez vos preuves de formation en un clic pour justifier du respect des
-                    obligations légales lors des inspections de la DGCCRF.</p>
-                </div>
-              </div>
-
-              <!-- Card 3: Traçabilité Rigoureuse (Sleek Dark Gradient) -->
-              <div class="image-style-card" style="background-color: #fcfcfc;">
-                <div class="card-header" style="background: linear-gradient(135deg, #4B5563 0%, #111827 100%);">
-                  <img src="tracking_digital_archive_black_bg_1775305611511.png" alt="Digital Archive Illustration">
-                </div>
-                <div class="card-body">
-                  <h3 class="card-title" style="color: #000000;">Traçabilité Digitale</h3>
-                  <p class="card-text">Archives centralisées de chaque parcours pour une visibilité totale sur
-                    l'évolution des compétences de vos équipes au fil du temps.</p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <script>
-        (function () {
-          const carousel = document.getElementById('snap-carousel-v3');
-          const btnPrev = document.getElementById('snap-prev-v3');
-          const btnNext = document.getElementById('snap-next-v3');
-          const cards = carousel.querySelectorAll('.image-style-card');
-
-          if (!carousel || !btnPrev || !btnNext) return;
-
-          /* --- Gestion des Boutons --- */
-          const updateButtons = () => {
-            const scrollLeft = carousel.scrollLeft;
-            const scrollWidth = carousel.scrollWidth;
-            const clientWidth = carousel.clientWidth;
-            btnPrev.disabled = scrollLeft <= 20;
-            btnNext.disabled = scrollLeft + clientWidth >= scrollWidth - 60;
-          };
-
-          const getCardWidth = () => {
-            const card = carousel.querySelector('.image-style-card');
-            return card ? card.offsetWidth + 32 : carousel.clientWidth / 2;
-          };
-
-          btnNext.addEventListener('click', () => {
-            carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
-          });
-
-          btnPrev.addEventListener('click', () => {
-            carousel.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
-          });
-
-          carousel.addEventListener('scroll', updateButtons);
-          window.addEventListener('resize', updateButtons);
-          setTimeout(updateButtons, 200);
-
-          /* --- IntersectionObserver pour État Actif/Inactif --- */
-          const observerOptions = {
-            root: carousel,
-            threshold: [0, 0.5, 0.7, 1.0] // Plusieurs seuils pour plus de précision
-          };
-
-          const observerCallback = (entries) => {
-            entries.forEach(entry => {
-              // Si la carte est visible à plus de 70%, on peut la considérer comme active
-              // Sur mobile (une carte), ça marche direct. 
-              // Sur desktop, cela peut activer les deux cartes visibles.
-              if (entry.isIntersecting && entry.intersectionRatio > 0.7) {
-                entry.target.classList.add('is-active');
-              } else if (entry.intersectionRatio < 0.5) {
-                entry.target.classList.remove('is-active');
-              }
-            });
-
-            // Sécurité : S'assurer qu'au moins une carte est active (la plus visible)
-            // utile si l'on est entre deux seuils
-            let mostVisible = { card: null, ratio: 0 };
-            cards.forEach(card => {
-              // Note: on ne peut pas récupérer le ratio réel ici facilement sans stocker
-            });
-          };
-
-          const observer = new IntersectionObserver(observerCallback, observerOptions);
-          cards.forEach(card => observer.observe(card));
-
-          // Optionnel : Forcer la première carte au chargement
-          if (cards[0]) cards[0].classList.add('is-active');
-
-        })();
-      </script>
-    </section>
     <!-- TRAÇABILITÉ + JUSTIFICATIFS -->
     <section class="py-16 md:py-24 relative" style="background-color:#FFFFFF !important; overflow:visible; z-index:50;">
       <!-- Elément design 4 à gauche, coupé par le bord -->
       <img src="images/image du pptx/element design4.png" alt=""
-        style="position:absolute; left:-370px; top:-330px; width:330px; pointer-events:none; z-index:0; transform:rotate(-50deg); opacity:0.9; display:block;">
+        style="position:absolute; left:-370px; top:-230px; width:330px; pointer-events:none; z-index:0; transform:rotate(-50deg); opacity:0.9; display:block;">
+      <img src="images/image du pptx/element design4.png" alt=""
+        style="position:absolute; right:-470px; top:30px; width:230px; pointer-events:none; z-index:0; transform:rotate(-50deg); opacity:0.9; display:block;">
 
 
       <div class="max-w-7xl mx-auto px-6 relative z-10">
 
         <div class="text-center mb-14">
-          <h2 class="secondary-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">Ce
-            que la plateforme fait pour vous</h2>
+          <h2 class="secondary-title" style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important;">Les
+            exigences de la HAS les évaluations externes, les audits qualité et les obligations de formation rendent
+            indispensable une traçabilité rigoureuse et structurée</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -1600,7 +1338,8 @@
           <h2 class="secondary-title text-[#0B1221] mb-4"
             style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important; font-weight:400 !important; letter-spacing:0.03em;">
             Calculez vos économies potentielles</h2>
-          <p class="fs-22" style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important;font-weight:bold !important;margin-bottom:32px;">
+          <p class="fs-22"
+            style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important;font-weight:bold !important;margin-bottom:32px;">
             Demandez votre devis personnalisé et découvrez combien DFORMPRO DIGITAL peut vous faire économiser.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
