@@ -1021,10 +1021,11 @@
                 #snap-carousel-v3::-webkit-scrollbar {
                   display : none;
                 }
-
                 #snap-carousel-v3 {
-                  padding : 50px 40px 80px !important;
-                  margin : -50px -40px -80px;
+                  padding: 40px !important;
+                  margin-top: -40px;
+                  margin-bottom: -40px;
+                  margin-left: -40px;
                 }
 
                 .image-style-card {
@@ -1059,15 +1060,16 @@
                 .image-style-card.is-active {
                   transform : scale(1);
                   opacity : 1;
-                  box-shadow : 0 12px 40px rgba(0, 0, 0, 0.15);
+
                 }
 
                 /* Effet au survol (Hover) porté uniquement sur la carte entière */
                 .image-style-card:hover {
-                  transform : translateY(-12px);
+                  transform : translateY(-10px);
                   opacity : 1;
                   z-index : 20;
-                  box-shadow : 0 20px 60px rgba(0, 0, 0, 0.18);
+
+                  box-shadow : 0 10px 40px rgba(0, 0, 0, 0.15);
                 }
 
                 .card-header {
