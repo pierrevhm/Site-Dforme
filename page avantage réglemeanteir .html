@@ -1016,18 +1016,14 @@
           <!-- Column 2: Carousel (68%) -->
           <div class="w-full lg:w-[68%] relative">
             <div id="snap-carousel-v3" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth"
-              style="scrollbar-width: none; -ms-overflow-style: none;">
+              style="scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0 40px;">
               <style>
                 #snap-carousel-v3::-webkit-scrollbar {
                   display : none;
                 }
-                #snap-carousel-v3 {
-                  padding: 40px 40px 80px 120px !important;
-                  margin-left: -120px;
-                }
 
                 .image-style-card {
-                  flex : 0 0 calc(44% - 16px);
+                  flex : 0 0 calc(90% - 16px);
                   scroll-snap-align : start;
                   border-radius : 28px;
                   overflow : hidden;
@@ -1050,7 +1046,7 @@
 
                 @media (min-width: 1024px) {
                   .image-style-card {
-                    flex : 0 0 calc(44% - 16px);
+                    flex : 0 0 calc(50% - 16px);
                   }
                 }
 
@@ -1058,7 +1054,7 @@
                 .image-style-card.is-active {
                   transform : scale(1);
                   opacity : 1;
-                  box-shadow : 0 10px 40px rgba(0, 0, 0, 0.1);
+
                 }
 
                 /* Effet au survol (Hover) porté uniquement sur la carte entière */
@@ -1067,7 +1063,7 @@
                   opacity : 1;
                   z-index : 20;
 
-                  box-shadow : 0 10px 40px rgba(0, 0, 0, 0.15);
+                  box-shadow : 0 15px 45px rgba(103, 218, 213, 0.2);
                 }
 
                 .card-header {
