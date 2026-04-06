@@ -1016,10 +1016,15 @@
           <!-- Column 2: Carousel (68%) -->
           <div class="w-full lg:w-[68%] relative">
             <div id="snap-carousel-v3" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth"
-              style="scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0 40px;">
+              style="scrollbar-width: none; -ms-overflow-style: none;">
               <style>
                 #snap-carousel-v3::-webkit-scrollbar {
                   display : none;
+                }
+
+                #snap-carousel-v3 {
+                  padding : 50px 40px 80px !important;
+                  margin : -50px -40px -80px;
                 }
 
                 .image-style-card {
