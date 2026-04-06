@@ -1016,98 +1016,94 @@
           <!-- Column 2: Carousel (68%) -->
           <div class="w-full lg:w-[68%] relative">
             <div id="snap-carousel-v3" class="flex gap-8 overflow-x-auto snap-x snap-mandatory scroll-smooth"
-              style="scrollbar-width: none; -ms-overflow-style: none;">
+              style="scrollbar-width: none; -ms-overflow-style: none; padding: 20px 0 40px;">
               <style>
                 #snap-carousel-v3::-webkit-scrollbar {
-                  display: none;
-                }
-                #snap-carousel-v3 {
-                  padding: 40px 80px 80px 80px !important;
-                  margin-left: -80px;
+                  display : none;
                 }
 
                 .image-style-card {
-                  flex: 0 0 calc(90% - 16px);
-                  scroll-snap-align: start;
-                  border-radius: 28px;
-                  overflow: hidden;
-                  display: flex;
-                  flex-direction: column;
-                  min-height: 580px;
+                  flex : 0 0 calc(90% - 16px);
+                  scroll-snap-align : start;
+                  border-radius : 28px;
+                  overflow : hidden;
+                  display : flex;
+                  flex-direction : column;
+                  min-height : 580px;
                   /* Micro-interactions Premium - Standardisées */
-                  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-                    opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-                    box-shadow 0.4s ease;
+                  transition : transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+                               opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), 
+                               box-shadow 0.4s ease;
                   /* Shadow standard identique aux autres cartes du site */
-                  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+                  box-shadow : 0 8px 30px rgba(0, 0, 0, 0.10);
 
                   /* État Inactif par défaut */
-                  transform: scale(0.95);
-                  opacity: 0.6;
-                  cursor: pointer;
-                  background-color: #fff !important;
+                  transform : scale(0.95);
+                  opacity : 0.6;
+                  cursor : pointer;
+                  background-color : #fff !important;
                 }
 
                 @media (min-width: 1024px) {
                   .image-style-card {
-                    flex: 0 0 calc(50% - 16px);
+                    flex : 0 0 calc(50% - 16px);
                   }
                 }
 
                 /* État Actif (Focus au défilement) */
                 .image-style-card.is-active {
-                  transform: scale(1);
-                  opacity: 1;
+                  transform : scale(1);
+                  opacity : 1;
 
                 }
 
                 /* Effet au survol (Hover) porté uniquement sur la carte entière */
                 .image-style-card:hover {
-                  transform: translateY(-10px);
-                  opacity: 1;
-                  z-index: 20;
+                  transform : translateY(-10px);
+                  opacity : 1;
+                  z-index : 20;
 
-                  box-shadow: 0 15px 45px rgba(103, 218, 213, 0.2);
+                  box-shadow : 0 15px 45px rgba(103, 218, 213, 0.2);
                 }
 
                 .card-header {
-                  height: 300px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  overflow: hidden;
-                  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                  height : 300px;
+                  display : flex;
+                  align-items : center;
+                  justify-content : center;
+                  overflow : hidden;
+                  border-bottom : 1px solid rgba(0, 0, 0, 0.05);
                 }
 
                 .card-header img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                  display: block;
+                  width : 100%;
+                  height : 100%;
+                  object-fit : cover;
+                  display : block;
                 }
 
                 .card-body {
-                  padding: 40px;
-                  flex-grow: 1;
-                  display: flex;
-                  flex-direction: column;
-                  justify-content: flex-start;
+                  padding : 40px;
+                  flex-grow : 1;
+                  display : flex;
+                  flex-direction : column;
+                  justify-content : flex-start;
                 }
 
                 .card-title {
-                  font-size: 26px;
-                  color: #111827;
-                  font-weight: 800;
-                  margin-bottom: 20px;
-                  font-family: 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
+                  font-size : 26px;
+                  color : #111827;
+                  font-weight : 800;
+                  margin-bottom : 20px;
+                  font-family : 'Arial Rounded MT Bold', 'Nunito', sans-serif !important;
                 }
 
                 .card-text {
-                  color: #374151;
-                  font-size: 1.1rem;
-                  line-height: 1.6;
-                  font-family: 'Arial', sans-serif !important;
-                  font-weight: 400 !important;
+                  color : #374151;
+                  font-size : 1.1rem;
+                  line-height : 1.6;
+                  font-family : 'Arial', sans-serif !important;
+                  font-weight : 400 !important;
                 }
               </style>
 
@@ -1603,8 +1599,7 @@
           <h2 class="secondary-title text-[#0B1221] mb-4"
             style="font-family:'KMKDSPB','Arial Rounded MT Bold',sans-serif !important; font-weight:400 !important; letter-spacing:0.03em;">
             Calculez vos économies potentielles</h2>
-          <p class="fs-22"
-            style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important;font-weight:bold !important;margin-bottom:32px;">
+          <p class="fs-22" style="font-family:'Arial Rounded MT Bold','Nunito',sans-serif !important;font-weight:bold !important;margin-bottom:32px;">
             Demandez votre devis personnalisé et découvrez combien DFORMPRO DIGITAL peut vous faire économiser.
           </p>
           <div class="flex flex-wrap justify-center gap-4">
