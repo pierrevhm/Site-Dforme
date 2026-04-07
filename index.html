@@ -807,6 +807,23 @@
       width: clamp(180px, 19vw, 360px) !important;
     }
 
+    img[src*="image droite index"] {
+      width: clamp(250px, 40vw, 570px) !important;
+      right: clamp(-200px, -14vw, -50px) !important;
+    }
+
+    img[src*="Trait remov"] {
+      width: clamp(150px, 24vw, 340px) !important;
+      right: clamp(-110px, -8vw, -20px) !important;
+    }
+
+    @media (max-width: 767px) {
+      img[src*="image droite index"],
+      img[src*="Trait remov"] {
+        display: none !important;
+      }
+    }
+
     /* ---- GRILLE TABLETTE ---- */
     @media (max-width: 767px) {
 
