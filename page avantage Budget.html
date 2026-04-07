@@ -339,11 +339,12 @@
 
     /* ---- DÉCO FLUIDE (proportionnel 24" → tout écran) ---- */
     img[src*="angle gauche"] {
-      width: clamp(220px, 29vw, 550px) !important;
+      width: clamp(180px, 23vw, 440px) !important;
     }
 
-    img[src*="droit imagehaut"] {
-      width: clamp(280px, 35vw, 680px) !important;
+    img[src*="droit imagehaut"],
+    img[src*="Capture d'écran 2026-04-05"] {
+      width: clamp(200px, 23vw, 450px) !important;
     }
 
     img[src*="design 2 traits"] {
@@ -355,19 +356,92 @@
     }
 
     img[src*="element design4"] {
-      width: clamp(240px, 31vw, 600px) !important;
+      width: clamp(200px, 26vw, 600px) !important;
     }
 
     img[src*="element gauche avec traits"] {
-      width: clamp(130px, 15vw, 280px) !important;
+      width: clamp(80px, 10vw, 220px) !important;
     }
 
     img[src*="element droite avec traits"] {
-      width: clamp(110px, 13vw, 240px) !important;
+      width: clamp(80px, 10vw, 220px) !important;
     }
 
     img[src*="grand coté gauche"] {
-      width: clamp(130px, 15vw, 280px) !important;
+      width: clamp(100px, 13vw, 280px) !important;
+    }
+
+    img[src*="Trait remov"] {
+      width: clamp(120px, 14vw, 280px) !important;
+    }
+
+    img[src*="desgin bas"] {
+      width: clamp(25%, 40%, 40%) !important;
+    }
+
+    /* ---- PETIT PC (14"-17" → ≤ 1440px) ---- */
+    @media (max-width: 1440px) {
+      /* Reduce hero trait */
+      img[src*="Trait remov"] {
+        width: clamp(100px, 12vw, 220px) !important;
+      }
+
+      /* Reduce left banner element */
+      img[src*="element desgin bannière"] {
+        width: clamp(250px, 30vw, 500px) !important;
+      }
+
+      /* Reduce right design element */
+      img[src*="element design4"] {
+        width: clamp(180px, 22vw, 450px) !important;
+      }
+
+      /* Reduce grand coté gauche */
+      img[src*="grand coté gauche"] {
+        width: clamp(80px, 10vw, 200px) !important;
+      }
+    }
+
+    /* ---- PETIT ÉCRAN PC (≤ 1280px) ---- */
+    @media (max-width: 1280px) {
+      /* Hide the hero diagonal trait that overlaps content */
+      img[src*="Trait remov"] {
+        display: none !important;
+      }
+
+      /* Hide the big left banner decoration */
+      img[src*="element desgin bannière"] {
+        display: none !important;
+      }
+
+      /* Hide the right design4 element */
+      img[src*="element design4"] {
+        display: none !important;
+      }
+
+      /* Reduce grand coté gauche to subtle watermark */
+      img[src*="grand coté gauche"] {
+        width: clamp(60px, 8vw, 140px) !important;
+        opacity: 0.08 !important;
+      }
+
+      /* Reduce top-right hero decoration */
+      img[src*="Capture d'écran 2026-04-05"] {
+        width: clamp(150px, 18vw, 300px) !important;
+      }
+    }
+
+    /* ---- TABLETTE (≤ 1024px) ---- */
+    @media (max-width: 1024px) {
+      /* Hide grand coté gauche completely */
+      img[src*="grand coté gauche"] {
+        display: none !important;
+      }
+
+      /* Reduce hero top-right image */
+      img[src*="Capture d'écran 2026-04-05"] {
+        width: clamp(120px, 15vw, 250px) !important;
+      }
     }
 
     @media (max-width: 768px) {
@@ -394,6 +468,17 @@
 
       .rounded-\[40px\] {
         border-radius: 24px !important;
+      }
+
+      /* Hide hero top-right image */
+      img[src*="Capture d'écran 2026-04-05"] {
+        display: none !important;
+      }
+
+      /* Reduce hero top-left */
+      img[src*="angle gauche"] {
+        width: clamp(100px, 25vw, 200px) !important;
+        opacity: 0.5 !important;
       }
     }
 
@@ -910,7 +995,7 @@
     </section>
 
     <!-- INTRO + COMPARAISON -->
-    <section class="py-16 md:py-24 relative" style="background-color:#ffffff !important; overflow:visible;">
+    <section class="py-16 md:py-24 relative" style="background-color:#ffffff !important; overflow:hidden;">
       <img src="images/grand coté gauche.png" class="bg-deco" style="top:0;left:0;width:280px;opacity:0.15;" alt="">
       <img src="images/image du pptx/element desgin bannière.png" alt=""
         style="position:absolute; left:-430px; top:64%; transform:translateY(-50%) rotate(-15deg); width:680px; pointer-events:none; z-index:0; display:block;">
