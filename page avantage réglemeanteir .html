@@ -405,6 +405,32 @@
       width: clamp(130px, 15vw, 280px) !important;
     }
 
+    img[src*="angle droit"] {
+      width: clamp(230px, 27vw, 510px) !important;
+    }
+
+    img[src*="element gauche avec traits"] {
+      width: clamp(100px, 11vw, 220px) !important;
+    }
+
+    img[src*="element droite avec traits"] {
+      width: clamp(100px, 11vw, 220px) !important;
+    }
+
+    img[src*="element design bleu2"] {
+      width: clamp(235px, 27vw, 520px) !important;
+    }
+
+    @media (max-width: 767px) {
+      img[src*="angle droit"],
+      img[src*="element design bleu2"],
+      img[src*="element design4"],
+      img[src*="element gauche avec traits"],
+      img[src*="element droite avec traits"] {
+        display: none !important;
+      }
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .card {
