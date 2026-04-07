@@ -346,14 +346,41 @@
       background-color: #4fc8c3;
     }
 
-    /* ---- DÉCO FLUIDE (proportionnel 24" → tout écran) ---- */
-    /* Retrait du clamp qui forçait une taille trop grande sur RSE */
-    img[src*="angle gauche"] {}
+    /* ===== RESPONSIVE RSE PAGE ===== */
 
-    img[src*="droit imagehaut"] {
-      width: clamp(280px, 35vw, 680px) !important;
+    /* ---- DÉCO FLUIDE (proportionnel 24" → tout écran) ---- */
+    /* Hero decorations */
+    img[src*="RSE haut gauche"] {
+      width: clamp(180px, 23vw, 440px) !important;
     }
 
+    img[src*="image haut droite acceuil"] {
+      width: clamp(90px, 11vw, 220px) !important;
+    }
+
+    img[src*="Trait remov"] {
+      width: clamp(140px, 17vw, 330px) !important;
+    }
+
+    /* Side blue decorations */
+    img[src*="cote gauche bleu"] {
+      width: clamp(70px, 9.4vw, 180px) !important;
+    }
+
+    img[src*="cote droit bleu"] {
+      width: clamp(70px, 9.4vw, 180px) !important;
+    }
+
+    /* CO2 section side decorations */
+    img[src*="element gauche avec traits"] {
+      width: clamp(110px, 14.6vw, 280px) !important;
+    }
+
+    img[src*="element droite avec traits"] {
+      width: clamp(110px, 14.6vw, 280px) !important;
+    }
+
+    /* CTA section decorations */
     img[src*="design 2 traits"] {
       width: clamp(140px, 16vw, 310px) !important;
     }
@@ -362,50 +389,384 @@
       width: clamp(280px, 35vw, 680px) !important;
     }
 
-    img[src*="element design4"] {
-      width: clamp(260px, 33vw, 640px) !important;
+    /* Design bas image */
+    img[src*="desgin bas"] {
+      width: clamp(25%, 39%, 39%) !important;
     }
 
-    img[src*="hauT droit noir"] {
-      width: clamp(130px, 16vw, 310px) !important;
+    /* ---- PETIT PC (14"-17" → ≤ 1440px) ---- */
+    @media (max-width: 1440px) {
+      .max-w-7xl {
+        max-width: 1100px !important;
+      }
+
+      .max-w-6xl {
+        max-width: 960px !important;
+      }
+
+      .max-w-5xl {
+        max-width: 860px !important;
+      }
+
+      .co2-display {
+        font-size: 60px !important;
+      }
     }
 
-    img[src*="haut gauche noir"] {
-      width: clamp(110px, 14vw, 260px) !important;
+    /* ---- PETIT ÉCRAN PC (≤ 1280px) ---- */
+    @media (max-width: 1280px) {
+      .max-w-7xl {
+        max-width: 980px !important;
+      }
+
+      .max-w-6xl {
+        max-width: 860px !important;
+      }
+
+      .max-w-5xl {
+        max-width: 780px !important;
+      }
+
+      .co2-display {
+        font-size: 54px !important;
+      }
+
+      /* Reduce side decoration overlap */
+      img[src*="cote gauche bleu"],
+      img[src*="cote droit bleu"] {
+        width: clamp(60px, 8vw, 140px) !important;
+      }
     }
 
-    img[src*="grand coté gauche"] {
-      width: clamp(130px, 15vw, 280px) !important;
+    /* ---- TABLETTE PAYSAGE (≤ 1024px) ---- */
+    @media (max-width: 1024px) {
+      .max-w-7xl {
+        max-width: 90% !important;
+      }
+
+      .max-w-6xl {
+        max-width: 90% !important;
+      }
+
+      .max-w-5xl {
+        max-width: 90% !important;
+      }
+
+      /* Hide side blue decorations on tablet */
+      img[src*="cote gauche bleu"],
+      img[src*="cote droit bleu"] {
+        display: none !important;
+      }
+
+      /* Scale CO2 side decorations */
+      img[src*="element gauche avec traits"],
+      img[src*="element droite avec traits"] {
+        width: clamp(80px, 12vw, 180px) !important;
+      }
+
+      /* CO2 display */
+      .co2-display {
+        font-size: 48px !important;
+      }
+
+      /* CTA section padding */
+      .rounded-\[40px\] {
+        border-radius: 30px !important;
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+      }
+
+      /* Hero section margin top reduce */
+      .hero-badge-rse {
+        margin-top: 40px !important;
+      }
     }
 
+    /* ---- TABLETTE PORTRAIT (≤ 768px) ---- */
     @media (max-width: 768px) {
+      /* Cards */
       .card {
         border-radius: 16px !important;
       }
 
-      h1 {
-        font-size: clamp(1.8rem, 6vw, 3rem) !important;
+      /* CO2 calculator: stack to 1 column */
+      .grid.lg\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
       }
 
+      /* 4 impact cards: 1 column */
+      .grid.lg\:grid-cols-4 {
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      /* Section padding */
       .py-16 {
         padding-top: 40px !important;
         padding-bottom: 40px !important;
       }
 
-      .gap-8 {
+      .pt-16 {
+        padding-top: 40px !important;
+      }
+
+      .pb-16 {
+        padding-bottom: 40px !important;
+      }
+
+      .md\:py-24 {
+        padding-top: 48px !important;
+        padding-bottom: 48px !important;
+      }
+
+      .md\:pt-24 {
+        padding-top: 48px !important;
+      }
+
+      /* Gap reductions */
+      .gap-10 {
         gap: 24px !important;
       }
 
+      .gap-6 {
+        gap: 16px !important;
+      }
+
+      .mb-14 {
+        margin-bottom: 32px !important;
+      }
+
+      /* Card padding */
+      .p-8 {
+        padding: 24px !important;
+      }
+
+      .p-6 {
+        padding: 20px !important;
+      }
+
+      .px-5 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* CO2 display */
+      .co2-display {
+        font-size: 42px !important;
+      }
+
+      /* CTA section */
+      .rounded-\[40px\] {
+        border-radius: 24px !important;
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+      }
+
+      .md\:px-12 {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+      }
+
+      /* Gradient banner */
+      .w-full.mx-auto.fade-up.delay-2 > p {
+        font-size: 17px !important;
+      }
+
+      /* Hide CO2 section side decorations on tablet portrait */
+      img[src*="element gauche avec traits"],
+      img[src*="element droite avec traits"] {
+        display: none !important;
+      }
+
+      /* Hero title */
+      h1.main-title {
+        font-size: clamp(1.8rem, 5.5vw, 2.8rem) !important;
+      }
+
+      /* H2 titles */
+      h2, h2.secondary-title {
+        font-size: 1.6rem !important;
+      }
+
+      /* Progress bars spacing */
+      .space-y-4 > * + * {
+        margin-top: 12px !important;
+      }
+
+      /* Footer grid: stack */
+      .grid.md\:grid-cols-\[1fr_1fr_1\.5fr\] {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Footer logo */
+      footer img[src*="Logo lettre blanc"] {
+        max-width: 70% !important;
+        max-height: 160px !important;
+      }
+
+      /* Hide hero decorations on tablet portrait */
+      img[src*="Trait remov"] {
+        display: none !important;
+      }
+    }
+
+    /* ---- MOBILE (≤ 480px) ---- */
+    @media (max-width: 480px) {
+      /* 4 impact cards: full width 1 column */
+      .grid.sm\:grid-cols-2 {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Hero adjustments */
+      h1.main-title {
+        font-size: clamp(1.5rem, 7vw, 2.2rem) !important;
+        line-height: 1.3 !important;
+      }
+
+      /* Badge */
+      .badge {
+        font-size: 13px !important;
+        padding: 6px 14px !important;
+      }
+
+      /* H2 titles */
+      h2, h2.secondary-title {
+        font-size: 1.35rem !important;
+        line-height: 1.3 !important;
+      }
+
+      /* fs-22 subtitle */
+      .fs-22 {
+        font-size: 17px !important;
+        line-height: 1.5 !important;
+      }
+
+      /* CO2 display */
+      .co2-display {
+        font-size: 36px !important;
+      }
+
+      /* Card padding */
       .p-8 {
         padding: 20px !important;
       }
 
-      .rounded-\[40px\] {
-        border-radius: 24px !important;
+      .p-6 {
+        padding: 16px !important;
       }
 
-      .co2-display {
-        font-size: 48px !important;
+      .px-5 {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+
+      .py-4 {
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
+      }
+
+      /* Main padding */
+      .px-6 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* CTA section */
+      .rounded-\[40px\] {
+        border-radius: 20px !important;
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
+      }
+
+      /* CTA buttons stack */
+      .flex.flex-wrap.justify-center.gap-4 {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+
+      .flex.flex-wrap.justify-center.gap-4 a {
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+      }
+
+      /* Gradient eco banner */
+      .w-full.mx-auto.fade-up.delay-2 {
+        padding: 24px 20px !important;
+        border-radius: 16px !important;
+      }
+
+      .w-full.mx-auto.fade-up.delay-2 > p {
+        font-size: 15px !important;
+      }
+
+      /* Leaf icon */
+      .leaf-icon {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 10px !important;
+      }
+
+      /* Step numbers in calculation */
+      .card .flex.items-start.gap-3 div[style*="border-radius:50%"] {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 13px !important;
+      }
+
+      /* Section spacing */
+      .py-16 {
+        padding-top: 32px !important;
+        padding-bottom: 32px !important;
+      }
+
+      .pt-16 {
+        padding-top: 32px !important;
+      }
+
+      /* Section titles margin */
+      .mb-14 {
+        margin-bottom: 24px !important;
+      }
+
+      .mb-8 {
+        margin-bottom: 16px !important;
+      }
+
+      /* Footer */
+      footer {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      footer img[src*="Logo lettre blanc"] {
+        max-width: 80% !important;
+        max-height: 140px !important;
+      }
+
+      /* Hero deco: hide top-left and top-right images */
+      img[src*="RSE haut gauche"] {
+        width: clamp(100px, 30vw, 180px) !important;
+        opacity: 0.5 !important;
+      }
+
+      img[src*="image haut droite acceuil"] {
+        display: none !important;
+      }
+
+      /* Gap in footer bottom section */
+      .flex.flex-col.md\:flex-row.items-end.justify-between.gap-6 {
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+
+      .flex.flex-col.md\:flex-row.items-end.justify-between.gap-6 p {
+        text-align: center !important;
+      }
+
+      /* Design bas image */
+      img[src*="desgin bas"] {
+        width: 55% !important;
+        margin-right: -40px !important;
       }
     }
 
