@@ -378,7 +378,7 @@
 
     /* ---- DÉCO FLUIDE (proportionnel 24" → tout écran) ---- */
     img[src*="angle gauche"] {
-      width: clamp(220px, 29vw, 550px) !important;
+      width: clamp(180px, 23vw, 440px) !important;
     }
 
     img[src*="droit imagehaut"] {
@@ -389,8 +389,15 @@
       width: clamp(140px, 16vw, 310px) !important;
     }
 
+    /* Hero left image - circular photo with cyan background */
+    img[src*="iage haute gauche reglementaire"],
     img[src*="haut gauche reglementair"] {
-      width: clamp(200px, 23vw, 440px) !important;
+      width: clamp(180px, 23vw, 440px) !important;
+    }
+
+    /* Hero right angle decoration */
+    img[src*="angle droit"] {
+      width: clamp(200px, 26vw, 510px) !important;
     }
 
     img[src*="element desgin bannière"] {
@@ -398,27 +405,105 @@
     }
 
     img[src*="element design4"] {
-      width: clamp(260px, 33vw, 640px) !important;
+      width: clamp(200px, 26vw, 640px) !important;
     }
 
     img[src*="grand coté gauche"] {
-      width: clamp(130px, 15vw, 280px) !important;
-    }
-
-    img[src*="angle droit"] {
-      width: clamp(230px, 27vw, 510px) !important;
+      width: clamp(100px, 13vw, 280px) !important;
     }
 
     img[src*="element gauche avec traits"] {
-      width: clamp(100px, 11vw, 220px) !important;
+      width: clamp(80px, 10vw, 220px) !important;
     }
 
     img[src*="element droite avec traits"] {
-      width: clamp(100px, 11vw, 220px) !important;
+      width: clamp(80px, 10vw, 220px) !important;
     }
 
     img[src*="element design bleu2"] {
-      width: clamp(235px, 27vw, 520px) !important;
+      width: clamp(200px, 24vw, 520px) !important;
+    }
+
+    img[src*="desgin bas"] {
+      width: clamp(25%, 39%, 39%) !important;
+    }
+
+    /* ---- PETIT PC (14"-17" → ≤ 1440px) ---- */
+    @media (max-width: 1440px) {
+      /* Reduce hero left image */
+      img[src*="iage haute gauche reglementaire"],
+      img[src*="haut gauche reglementair"] {
+        width: clamp(160px, 20vw, 360px) !important;
+      }
+
+      /* Reduce hero right decoration */
+      img[src*="angle droit"] {
+        width: clamp(180px, 22vw, 420px) !important;
+      }
+
+      /* Reduce design4 elements */
+      img[src*="element design4"] {
+        width: clamp(160px, 20vw, 400px) !important;
+      }
+
+      /* Reduce element design bleu2 */
+      img[src*="element design bleu2"] {
+        width: clamp(180px, 21vw, 420px) !important;
+      }
+    }
+
+    /* ---- PETIT ÉCRAN PC (≤ 1280px) ---- */
+    @media (max-width: 1280px) {
+      /* Further reduce hero image */
+      img[src*="iage haute gauche reglementaire"],
+      img[src*="haut gauche reglementair"] {
+        width: clamp(140px, 18vw, 300px) !important;
+      }
+
+      /* Further reduce hero right */
+      img[src*="angle droit"] {
+        width: clamp(150px, 18vw, 350px) !important;
+      }
+
+      /* Hide design4 elements that overflow */
+      img[src*="element design4"] {
+        display: none !important;
+      }
+
+      /* Reduce element design bleu2 */
+      img[src*="element design bleu2"] {
+        width: clamp(160px, 18vw, 350px) !important;
+      }
+
+      /* Hide side decorations */
+      img[src*="element gauche avec traits"],
+      img[src*="element droite avec traits"] {
+        display: none !important;
+      }
+    }
+
+    /* ---- TABLETTE (≤ 1024px) ---- */
+    @media (max-width: 1024px) {
+      /* Reduce hero left image more */
+      img[src*="iage haute gauche reglementaire"],
+      img[src*="haut gauche reglementair"] {
+        width: clamp(120px, 16vw, 260px) !important;
+      }
+
+      /* Reduce hero right angle */
+      img[src*="angle droit"] {
+        width: clamp(130px, 15vw, 280px) !important;
+      }
+
+      /* Hide grand coté gauche */
+      img[src*="grand coté gauche"] {
+        display: none !important;
+      }
+
+      /* Hide element design bleu2 */
+      img[src*="element design bleu2"] {
+        display: none !important;
+      }
     }
 
     @media (max-width: 767px) {
@@ -428,6 +513,13 @@
       img[src*="element gauche avec traits"],
       img[src*="element droite avec traits"] {
         display: none !important;
+      }
+
+      /* Reduce hero left to small watermark */
+      img[src*="iage haute gauche reglementaire"],
+      img[src*="haut gauche reglementair"] {
+        width: clamp(90px, 25vw, 160px) !important;
+        opacity: 0.5 !important;
       }
     }
 
