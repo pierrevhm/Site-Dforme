@@ -373,11 +373,11 @@
 
     /* CO2 section side decorations */
     img[src*="element gauche avec traits"] {
-      width: clamp(110px, 14.6vw, 280px) !important;
+      width: clamp(80px, 10vw, 220px) !important;
     }
 
     img[src*="element droite avec traits"] {
-      width: clamp(110px, 14.6vw, 280px) !important;
+      width: clamp(80px, 10vw, 220px) !important;
     }
 
     /* CTA section decorations */
@@ -411,6 +411,12 @@
       .co2-display {
         font-size: 60px !important;
       }
+
+      /* Reduce CO2 side decorations on smaller PCs */
+      img[src*="element gauche avec traits"],
+      img[src*="element droite avec traits"] {
+        width: clamp(60px, 8vw, 160px) !important;
+      }
     }
 
     /* ---- PETIT ÉCRAN PC (≤ 1280px) ---- */
@@ -435,6 +441,12 @@
       img[src*="cote gauche bleu"],
       img[src*="cote droit bleu"] {
         width: clamp(60px, 8vw, 140px) !important;
+      }
+
+      /* Hide CO2 side decorations on small PCs */
+      img[src*="element gauche avec traits"],
+      img[src*="element droite avec traits"] {
+        display: none !important;
       }
     }
 
@@ -1556,7 +1568,7 @@
     </section>
 
     <!-- CALCULATEUR CO₂ -->
-    <section class="py-16 md:py-24 relative" style="background-color:#ffffff !important; overflow:visible; z-index:3;">
+    <section class="py-16 md:py-24 relative" style="background-color:#ffffff !important; overflow:hidden; z-index:3;">
       <img src="images/image du pptx/element gauche avec traits .png" alt=""
         style="position:absolute; left:0; top:37%; transform:translateY(-50%); width:280px; pointer-events:none; z-index:3; display:block;">
       <img src="images/image du pptx/element droite avec traits.png" alt=""
@@ -1763,7 +1775,7 @@
     <!-- CTA -->
     <section class="px-6 pt-16 md:pt-24 pb-0 relative" style="background-color:#ffffff !important; overflow: visible;">
       <!-- Éléments décoratifs (Sync avec index.html) -->
-      <img src="images/image du pptx/Trait remov.png" alt="" class="cta-section-img deco-hide-mobile"
+      <img src="images/image du pptx/design 2 traits.png" alt="" class="cta-section-img deco-hide-mobile"
         style="position:absolute;left:-110px;top:calc(30% - 290px);transform:translateY(-30%) rotate(90deg);width:300px;opacity:1;pointer-events:none;z-index:20;">
       <div class="max-w-5xl mx-auto rounded-[40px] py-24 px-8 md:px-12 text-center relative overflow-hidden"
         style="background-color:#67DAD5; border:2px solid #67DAD5; margin-top:40px; z-index: 10;">
