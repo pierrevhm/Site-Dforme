@@ -7,21 +7,18 @@
   <title>Sécurisation réglementaire – DFormPro Digital</title>
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    rel="stylesheet" />
+  <!-- Préconnexions pour accélérer le chargement des polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Préchargement haute priorité de la police personnalisée -->
+  <link rel="preload" href="KMKDSPB_.ttf" as="font" type="font/truetype" crossorigin>
+  <!-- Polices Google via link (évite le flash de police) -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
   <link rel="stylesheet" href="fonts.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&family=Bangers&display=swap');
-
-    @font-face {
-      font-family: 'KMKDSPB';
-      src: url('KMKDSPB_.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
 
     html,
     body {
