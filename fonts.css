@@ -3,7 +3,7 @@
   src: url('KMKDSPB_.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: optional;
+  font-display: swap;
 }
 
 h1, h2, h3,
